@@ -5,6 +5,31 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2025-11-01
+
+### 🔧 Marketplace Compatibility
+
+**Plugin Schema Corrections**
+- Fixed `plugin.json` to match official Claude Code schema
+  - Changed `author` from string to object with `name` and `url` fields
+  - Removed unsupported fields: `displayName`, `categories`, `features`, `engines`, `dependencies`, etc.
+  - Added `commands` and `agents` paths for proper plugin discovery
+
+**Marketplace Distribution**
+- Added `.claude-plugin/marketplace.json` for marketplace installation support
+  - Enables `/plugin marketplace add seth-schultz/orchestr8` command
+  - Configured plugin source path and metadata
+  - Set marketplace owner email to `orchestr8@sethschultz.com`
+
+**What Changed:**
+- Plugin is now fully compatible with Claude Code marketplace installation
+- Follows official plugin schema specifications from Claude Code documentation
+- Users can install via marketplace command instead of manual git clone
+
+This is a bug fix release to ensure proper marketplace integration.
+
+---
+
 ## [1.2.2] - 2025-11-01
 
 ### 🔗 Repository Updates
