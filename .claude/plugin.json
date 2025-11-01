@@ -1,7 +1,7 @@
 {
-  "name": "claude-orchestration",
-  "displayName": "Claude Code Enterprise Orchestration System",
-  "version": "1.2.0",
+  "name": "orchestr8",
+  "displayName": "Orchestr8 - Enterprise Orchestration System",
+  "version": "1.2.1",
   "description": "Complete autonomous software engineering organization with 81+ specialized agents, 13 autonomous workflows, enterprise compliance, game development, AI/ML, and blockchain/Web3 support. Transform Claude Code into a full development team.",
   "author": "Claude Code Community",
   "license": "MIT",

@@ -9,7 +9,7 @@ Get started with the Claude Code Orchestration System in 5 minutes!
 ### Option 1: Plugin Marketplace (Easiest)
 
 ```bash
-/plugin marketplace add claude-orchestration
+/plugin marketplace add orchestr8
 ```
 
 That's it! Skip to [First Steps](#first-steps).
@@ -21,7 +21,7 @@ That's it! Skip to [First Steps](#first-steps).
 cd your-project
 
 # Clone the orchestration system
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/your-org/orchestr8 .claude
 
 # Verify installation
 ls .claude/
@@ -490,7 +490,7 @@ Error: Security audit failed
 
 ```bash
 # Installation
-/plugin marketplace add claude-orchestration
+/plugin marketplace add orchestr8
 
 # Workflows
 /new-project "Your project idea"
@@ -505,7 +505,7 @@ docker-compose ps                 # Check status
 docker-compose logs -f postgres   # View logs
 
 # Updates
-/plugin marketplace update claude-orchestration
+/plugin marketplace update orchestr8
 ```
 
 ---

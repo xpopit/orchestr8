@@ -5,6 +5,27 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2025-11-01
+
+### 🏷️ Rebranding
+
+**Plugin Renamed to "Orchestr8"**
+- Changed plugin name from `claude-orchestration` to `orchestr8`
+- Updated all references across documentation
+- New installation command: `/plugin marketplace add orchestr8`
+- Cleaner, more memorable name for the plugin
+
+**Updated Files:**
+- `.claude/plugin.json` - Plugin name and display name
+- `README.md` - Installation instructions
+- `.claude/QUICKSTART.md` - Quick start guide
+- `.claude/docs/PLUGIN_MARKETPLACE.md` - Marketplace documentation
+- `.claude/RELEASE.md` - Release documentation
+
+This is a naming-only change with no functional updates.
+
+---
+
 ## [1.2.0] - 2025-11-01
 
 ### 📚 Documentation & Distribution

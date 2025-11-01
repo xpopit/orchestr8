@@ -12,16 +12,16 @@ Make the Claude Code Orchestration System available to all users via the officia
 
 ```bash
 # Install from marketplace
-/plugin marketplace add claude-orchestration
+/plugin marketplace add orchestr8
 
 # Or with specific version
-/plugin marketplace add claude-orchestration@v1.0.0
+/plugin marketplace add orchestr8@v1.0.0
 
 # Update to latest
-/plugin marketplace update claude-orchestration
+/plugin marketplace update orchestr8
 
 # Remove
-/plugin marketplace remove claude-orchestration
+/plugin marketplace remove orchestr8
 ```
 
 That's it! The entire orchestration system (72+ agents, 13 workflows) installs automatically.
@@ -36,15 +36,15 @@ Create `.claude/plugin.json`:
 
 ```json
 {
-  "name": "claude-orchestration",
+  "name": "orchestr8",
   "displayName": "Claude Code Enterprise Orchestration System",
   "version": "1.0.0",
   "description": "Complete autonomous software engineering organization with 72+ agents, 13 workflows, and enterprise compliance",
   "author": "Your Organization",
   "license": "MIT",
-  "repository": "https://github.com/your-org/claude-orchestration",
-  "homepage": "https://github.com/your-org/claude-orchestration",
-  "bugs": "https://github.com/your-org/claude-orchestration/issues",
+  "repository": "https://github.com/your-org/orchestr8",
+  "homepage": "https://github.com/your-org/orchestr8",
+  "bugs": "https://github.com/your-org/orchestr8/issues",
   "keywords": [
     "agents",
     "orchestration",
@@ -145,7 +145,7 @@ fi
 echo ""
 echo "✅ Update complete!"
 echo ""
-echo "📚 Full changelog: https://github.com/your-org/claude-orchestration/blob/main/CHANGELOG.md"
+echo "📚 Full changelog: https://github.com/your-org/orchestr8/blob/main/CHANGELOG.md"
 ```
 
 Make scripts executable:
@@ -271,10 +271,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic meta-orchestrators
 - Initial agents
 
-[Unreleased]: https://github.com/your-org/claude-orchestration/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/your-org/claude-orchestration/releases/tag/v1.0.0
-[0.9.0]: https://github.com/your-org/claude-orchestration/releases/tag/v0.9.0
-[0.1.0]: https://github.com/your-org/claude-orchestration/releases/tag/v0.1.0
+[Unreleased]: https://github.com/your-org/orchestr8/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/your-org/orchestr8/releases/tag/v1.0.0
+[0.9.0]: https://github.com/your-org/orchestr8/releases/tag/v0.9.0
+[0.1.0]: https://github.com/your-org/orchestr8/releases/tag/v0.1.0
 ```
 
 ### Step 4: Create Version File
@@ -341,10 +341,10 @@ Users can enable automatic updates:
 
 ```bash
 # Enable auto-update
-/plugin config set claude-orchestration.autoUpdate true
+/plugin config set orchestr8.autoUpdate true
 
 # Check for updates daily
-/plugin config set claude-orchestration.updateFrequency daily
+/plugin config set orchestr8.updateFrequency daily
 ```
 
 ### Manual Updates
@@ -354,20 +354,20 @@ Users can enable automatic updates:
 /plugin marketplace check-updates
 
 # Update specific plugin
-/plugin marketplace update claude-orchestration
+/plugin marketplace update orchestr8
 
 # Update all plugins
 /plugin marketplace update --all
 
 # Revert to previous version
-/plugin marketplace install claude-orchestration@1.0.0
+/plugin marketplace install orchestr8@1.0.0
 ```
 
 ### Update Notifications
 
 Users receive notifications:
 ```
-🆕 Update Available: claude-orchestration v1.1.0
+🆕 Update Available: orchestr8 v1.1.0
    Current version: v1.0.0
 
    What's new:
@@ -375,7 +375,7 @@ Users receive notifications:
    - Enhanced security-auditor with OWASP 2025
    - Bug fixes in terraform-specialist
 
-   Run: /plugin marketplace update claude-orchestration
+   Run: /plugin marketplace update orchestr8
 ```
 
 ---
@@ -399,7 +399,7 @@ Users receive notifications:
 ```bash
 # Users can still install directly
 cd your-project
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/your-org/orchestr8 .claude
 
 # Update
 cd .claude
@@ -423,10 +423,10 @@ git pull origin main
 npm publish
 
 # Users install
-npm install -g @your-org/claude-orchestration
+npm install -g @your-org/orchestr8
 
 # Symlink to .claude
-claude-orchestration init
+orchestr8 init
 ```
 
 ### 4. Docker Image (For Containerized Workflows)
@@ -540,7 +540,7 @@ jobs:
 
 ### Installation Flow
 
-1. User runs: `/plugin marketplace add claude-orchestration`
+1. User runs: `/plugin marketplace add orchestr8`
 2. Claude Code downloads plugin from marketplace
 3. Extracts to `.claude/` directory
 4. Runs post-install script
@@ -551,7 +551,7 @@ jobs:
 
 1. New version published to marketplace
 2. User receives notification
-3. User runs: `/plugin marketplace update claude-orchestration`
+3. User runs: `/plugin marketplace update orchestr8`
 4. Claude Code downloads new version
 5. Backs up current version
 6. Installs new version
@@ -562,7 +562,7 @@ jobs:
 ### Rollback Flow
 
 1. User experiences issue with new version
-2. User runs: `/plugin marketplace install claude-orchestration@1.0.0`
+2. User runs: `/plugin marketplace install orchestr8@1.0.0`
 3. Claude Code restores previous version
 4. User can continue working
 5. User reports issue on GitHub
@@ -642,8 +642,8 @@ User Satisfaction: 4.8/5.0 (1,234 ratings)
 ### Documentation
 
 - **README.md** - Getting started
-- **Docs site** - https://docs.your-org.com/claude-orchestration
-- **Examples** - https://github.com/your-org/claude-orchestration-examples
+- **Docs site** - https://docs.your-org.com/orchestr8
+- **Examples** - https://github.com/your-org/orchestr8-examples
 - **API Reference** - Agent and workflow APIs
 
 ### Community
@@ -689,7 +689,7 @@ Transform Claude Code into an autonomous software engineering organization!
 - Production-ready from day one
 
 📦 Installation:
-/plugin marketplace add claude-orchestration
+/plugin marketplace add orchestr8
 
 🎯 Perfect for:
 - Startups building MVPs
@@ -697,7 +697,7 @@ Transform Claude Code into an autonomous software engineering organization!
 - Solo developers maximizing productivity
 - Teams automating workflows
 
-Try it today! https://github.com/your-org/claude-orchestration
+Try it today! https://github.com/your-org/orchestr8
 ```
 
 ### Content Strategy
@@ -733,7 +733,7 @@ Try it today! https://github.com/your-org/claude-orchestration
 
 **Users can then:**
 ```bash
-/plugin marketplace add claude-orchestration
+/plugin marketplace add orchestr8
 ```
 
 And get the entire 72-agent, 13-workflow system instantly! 🎉

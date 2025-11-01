@@ -74,7 +74,7 @@ This release includes the complete Claude Code Enterprise Orchestration System v
 ### For End Users
 
 ```bash
-/plugin marketplace add claude-orchestration
+/plugin marketplace add orchestr8
 ```
 
 ### For Development
