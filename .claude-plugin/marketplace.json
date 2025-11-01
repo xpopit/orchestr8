@@ -2,7 +2,7 @@
   "name": "orchestr8-marketplace",
   "owner": {
     "name": "Seth Schultz",
-    "email": "seth@example.com"
+    "email": "orchestr8@sethschultz.com"
   },
   "metadata": {
     "description": "Enterprise orchestration system for Claude Code with 81+ specialized agents and 13 autonomous workflows",
