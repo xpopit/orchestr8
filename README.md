@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai)
 
-**The most comprehensive, enterprise-grade orchestration system for Claude Code** — featuring 25+ specialized agents, hierarchical orchestration, built-in quality gates, and autonomous project completion.
+**The most comprehensive, enterprise-grade orchestration system for Claude Code** — featuring 45+ specialized agents, hierarchical orchestration, enterprise compliance (FedRAMP, ISO 27001, SOC2, GDPR, PCI-DSS), autonomous web UI testing, and complete project lifecycle automation.
 
 ## 🎯 What Makes This Different
 
@@ -140,17 +140,24 @@ git init
 </details>
 
 <details>
-<summary><b>💻 Development Agents (9)</b> - Code implementation</summary>
+<summary><b>💻 Development Agents (16)</b> - Code implementation</summary>
 
 **Language Specialists:**
 - `python-developer` - Django, FastAPI, Flask, data science, ML/AI
 - `typescript-developer` - Node.js, React, Next.js, full-stack
 - `java-developer` - Spring Boot, Jakarta EE, microservices
 - `go-developer` - Microservices, cloud-native, concurrent systems
-- `rust-developer` - Systems programming, high-performance
-- `fullstack-developer` - End-to-end feature ownership
+- `rust-developer` - Systems programming, high-performance, WebAssembly
+- `csharp-developer` - .NET 8, ASP.NET Core, Azure, enterprise apps
+- `swift-developer` - SwiftUI, iOS/macOS, Combine, async/await
+- `kotlin-developer` - Jetpack Compose, Android, Coroutines, Flow
+- `ruby-developer` - Rails 7+, RSpec, ActiveRecord, Sidekiq
+- `php-developer` - Laravel 10+, WordPress, modern PHP 8.2+
+- `cpp-developer` - Modern C++20/23, game dev, systems programming
+- `c-developer` - Embedded systems, kernel development, low-level programming
 
-**General:**
+**Full-Stack:**
+- `fullstack-developer` - End-to-end feature ownership
 - `architect` - System design, technology selection
 - `frontend-developer` - React, Vue, modern frontend
 - `backend-developer` - APIs, services, business logic
@@ -158,13 +165,25 @@ git init
 </details>
 
 <details>
-<summary><b>✅ Quality Assurance Agents (5)</b> - Quality enforcement</summary>
+<summary><b>✅ Quality Assurance Agents (6)</b> - Quality enforcement</summary>
 
-- `code-reviewer` - Best practices, SOLID principles
-- `test-engineer` - Unit, integration, E2E tests
-- `security-auditor` - OWASP Top 10, vulnerabilities
+- `code-reviewer` - Best practices, SOLID principles, clean code
+- `test-engineer` - Unit, integration, E2E tests (80%+ coverage)
+- `security-auditor` - OWASP Top 10, vulnerability scanning
+- `debugger` - Production bugs, race conditions, memory leaks
 - `performance-analyzer` - Load testing, optimization
-- `accessibility-expert` - WCAG 2.1 AA compliance
+- `accessibility-expert` - WCAG 2.1 AA/AAA compliance
+
+</details>
+
+<details>
+<summary><b>🔐 Compliance Specialists (5)</b> - Enterprise compliance</summary>
+
+- `fedramp-specialist` - FedRAMP Low/Moderate/High (NIST SP 800-53, 3PAO audit)
+- `iso27001-specialist` - ISO/IEC 27001:2022 ISMS (93 Annex A controls)
+- `soc2-specialist` - SOC 2 Type I/II (Trust Service Criteria, TSC)
+- `gdpr-specialist` - EU GDPR (data subject rights, 72-hour breach notification)
+- `pci-dss-specialist` - PCI DSS 4.0 (12 requirements, quarterly ASV scans)
 
 </details>
 
@@ -348,6 +367,104 @@ Workflows are the easiest way to accomplish complex tasks.
 - Improving maintainability
 - Extracting reusable components
 - Simplifying complex code
+
+---
+
+#### 6. Fix Bug: `/fix-bug`
+
+**Syntax:**
+```bash
+/fix-bug "Bug description and reproduction steps"
+```
+
+**Example:**
+```bash
+/fix-bug "Users can't login after password reset. Steps: 1) Request password reset 2) Click reset link 3) Enter new password 4) Login fails with 401 error"
+```
+
+**What Happens:**
+1. **Bug Triage** - Reproduce bug, create failing test
+2. **Root Cause Analysis** - Debug with profiler, logs, traces
+3. **Implementation** - Fix root cause (not symptom)
+4. **Comprehensive Testing** - Regression tests, all quality gates
+5. **Documentation & Deployment** - Deploy with monitoring
+
+**When to Use:**
+- Production bugs
+- User-reported issues
+- Regression bugs
+- Performance bugs
+
+---
+
+#### 7. Deploy: `/deploy`
+
+**Syntax:**
+```bash
+/deploy [environment] [strategy]
+```
+
+**Example:**
+```bash
+/deploy "production" "blue-green"
+```
+
+**Deployment Strategies:**
+- **Blue-Green**: Zero-downtime with instant rollback
+- **Rolling**: Gradual instance replacement
+- **Canary**: Incremental traffic shift (5% → 100%)
+
+**What Happens:**
+1. Pre-deployment validation (tests, security, build)
+2. Staging deployment and smoke tests
+3. Production deployment with chosen strategy
+4. Post-deployment monitoring
+5. Automatic rollback if issues detected
+
+**When to Use:**
+- Production deployments
+- Staging releases
+- Hotfix deployments
+
+---
+
+#### 8. Test Web UI: `/test-web-ui`
+
+**Syntax:**
+```bash
+/test-web-ui [url] [options]
+```
+
+**Example:**
+```bash
+/test-web-ui "http://localhost:3000" --fix-issues --generate-tests
+```
+
+**What Happens:**
+1. **Visual Testing** - Screenshot comparison, responsive design
+2. **Functional Testing** - User flows, forms, interactions
+3. **Accessibility Testing** - WCAG 2.1 AA/AAA compliance with axe-core
+4. **Performance Testing** - Core Web Vitals (LCP, FID, CLS)
+5. **Browser DevTools Integration** - Console errors, network failures
+6. **Auto-Fix Issues** - Missing alt text, ARIA labels, contrast
+7. **Generate Test Suite** - Playwright/Cypress tests from interactions
+
+**What It Tests:**
+- Visual regression (< 0.5% pixel difference)
+- Mobile/tablet/desktop responsiveness
+- Form validation and submission
+- Keyboard navigation (Tab, Enter, Escape)
+- Screen reader compatibility (ARIA labels)
+- Color contrast ratios (4.5:1 for text)
+- JavaScript coverage
+- Loading performance
+
+**When to Use:**
+- Before production deployment
+- After UI changes
+- Accessibility compliance audits
+- Visual regression testing
+- Automated test generation
 
 ---
 
