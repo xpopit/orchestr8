@@ -5,6 +5,50 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-11-01
+
+### 📚 Documentation & Distribution
+
+**Enhanced Project Documentation**
+- **Root CLAUDE.md** - Comprehensive development guide for maintaining the orchestration system
+  - Version management workflow (VERSION and plugin.json synchronization)
+  - Adding new agents and workflows
+  - Release process and git workflow
+  - Development best practices
+  - Testing and troubleshooting guides
+  - Cross-platform compatibility notes
+
+**Improved Installation Experience**
+- **Plugin Marketplace Support** - Added marketplace installation as recommended method
+  - `/plugin marketplace add` command support
+  - Clear installation options (marketplace, manual for existing projects, manual for new projects)
+  - Verification steps for each installation method
+
+**Repository Updates**
+- Updated all GitHub URLs from placeholder to actual repository
+  - `seth-schultz/claude-org` as the official repository
+  - Updated in README.md, plugin.json, and all documentation
+  - Proper GitHub issue tracking and community links
+
+### 🔧 What's New
+
+1. **Developer Documentation**
+   - Complete guide for contributing to the orchestration system
+   - Version management best practices
+   - Agent and workflow creation tutorials
+
+2. **Distribution Improvements**
+   - Marketplace-ready plugin structure
+   - Multiple installation pathways
+   - Better onboarding for new users
+
+3. **Repository Standardization**
+   - Consistent GitHub URLs throughout
+   - Professional community links
+   - Clear support channels
+
+---
+
 ## [1.1.0] - 2025-11-01
 
 ### 🎮 Game Development

@@ -65,32 +65,61 @@ While other projects provide agent collections, this system delivers a **complet
 
 ### Installation
 
-#### Option 1: For Existing Project
+#### Option 1: Plugin Marketplace (Recommended)
+
+**Easiest method - install directly from Claude Code:**
+
+```bash
+# Open Claude Code and run:
+/plugin marketplace add claude-orchestration
+```
+
+That's it! The orchestration system will be installed in your current project's `.claude/` directory.
+
+**Verification:**
+```bash
+# Check installation
+ls .claude/
+# Should see: CLAUDE.md, agents/, commands/, plugin.json, etc.
+```
+
+---
+
+#### Option 2: Manual Installation - Existing Project
+
+**For adding orchestration to an existing project:**
 
 ```bash
 # Navigate to your project
 cd your-project
 
 # Clone into .claude directory
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/seth-schultz/claude-org .claude
 
 # Verify installation
 ls .claude/
-# Should see: CLAUDE.md, agents/, skills/, commands/, etc.
+# Should see: CLAUDE.md, agents/, commands/, etc.
 ```
 
-#### Option 2: For New Project
+---
+
+#### Option 3: Manual Installation - New Project
+
+**For starting a new project with orchestration:**
 
 ```bash
 # Create new project directory
 mkdir my-awesome-project
 cd my-awesome-project
 
-# Clone orchestration system
-git clone https://github.com/your-org/claude-orchestration .claude
-
-# Initialize git (if needed)
+# Initialize git
 git init
+
+# Clone orchestration system
+git clone https://github.com/seth-schultz/claude-org .claude
+
+# Verify installation
+ls .claude/
 ```
 
 ### First Steps
@@ -361,7 +390,7 @@ brew install python@3.11             # Python
 
 # Clone orchestration system
 cd your-project
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/seth-schultz/claude-org .claude
 
 # Start infrastructure
 cd .claude
@@ -396,7 +425,7 @@ sudo apt-get install -y python3.11 python3-pip
 
 # Clone orchestration system
 cd your-project
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/seth-schultz/claude-org .claude
 
 # Start infrastructure
 cd .claude
@@ -424,7 +453,7 @@ choco install -y python311
 
 # Clone orchestration system (in PowerShell or Git Bash)
 cd your-project
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/seth-schultz/claude-org .claude
 
 # Start infrastructure
 cd .claude
@@ -2054,8 +2083,8 @@ Built on research and inspiration from:
 ## 📞 Support & Community
 
 - **Documentation**: [ARCHITECTURE.md](ARCHITECTURE.md) for deep dive
-- **Issues**: [GitHub Issues](https://github.com/your-org/repo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/repo/discussions)
+- **Issues**: [GitHub Issues](https://github.com/seth-schultz/claude-org/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/seth-schultz/claude-org/discussions)
 - **Website**: [Your Website]
 - **Twitter**: [@YourHandle]
 
@@ -2064,7 +2093,7 @@ Built on research and inspiration from:
 **Ready to transform your development workflow?**
 
 ```bash
-git clone https://github.com/your-org/claude-orchestration .claude
+git clone https://github.com/seth-schultz/claude-org .claude
 claude-code
 /new-project "Your amazing idea here"
 ```
@@ -2077,6 +2106,6 @@ claude-code
 
 **Built with ❤️ for the Claude Code community**
 
-[⭐ Star this repo](https://github.com/your-org/repo) • [🐛 Report Bug](https://github.com/your-org/repo/issues) • [💡 Request Feature](https://github.com/your-org/repo/issues)
+[⭐ Star this repo](https://github.com/seth-schultz/claude-org) • [🐛 Report Bug](https://github.com/seth-schultz/claude-org/issues) • [💡 Request Feature](https://github.com/seth-schultz/claude-org/issues)
 
 </div>
