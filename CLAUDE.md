@@ -113,13 +113,19 @@ argumentHint: "[argument-description]"  # Optional
 
 **To create a new release (e.g., v1.2.0):**
 
-1. **Update version files:**
+1. **Update version files (CRITICAL - all three must match):**
    ```bash
    # Update .claude/VERSION
    echo "1.2.0" > .claude/VERSION
 
    # Update .claude/plugin.json (edit version field)
    # Update features.agents, features.workflows, etc.
+
+   # Update .claude-plugin/marketplace.json (IMPORTANT!)
+   # Update BOTH version fields:
+   #   - metadata.version
+   #   - plugins[0].version
+   # Also update descriptions with accurate agent/workflow counts
    ```
 
 2. **Update CHANGELOG.md:**
@@ -127,24 +133,39 @@ argumentHint: "[argument-description]"  # Optional
    - Document all new agents, workflows, and features
    - Follow existing format with categories: 🎮 🤖 🧪 ⛓️ 📊 🚀
 
-3. **Create release commit:**
+3. **Update README.md:**
+   - Update agent/workflow counts in the tagline (line 7-8)
+   - Add any new major features to the description
+   - Ensure consistency with CHANGELOG and plugin.json
+
+4. **Create release commit:**
    ```bash
-   git add .claude/VERSION .claude/plugin.json .claude/CHANGELOG.md
+   # IMPORTANT: Include all version files
+   git add .claude/VERSION .claude/plugin.json .claude-plugin/marketplace.json .claude/CHANGELOG.md README.md
    git commit -m "release: v1.2.0 - [Brief description of major features]"
    ```
 
-4. **Create and push tag:**
+5. **Create and push tag:**
    ```bash
    git tag -a v1.2.0 -m "Release v1.2.0 - [Description]"
    git push origin v1.2.0
    ```
 
-5. **Create GitHub release:**
+6. **Create GitHub release:**
    ```bash
    gh release create v1.2.0 \
      --title "v1.2.0 - [Feature Summary]" \
-     --notes "[Release notes from CHANGELOG]"
+     --notes "[Comprehensive release notes from CHANGELOG]"
    ```
+
+**Version Sync Checklist (verify before tagging):**
+- [ ] `.claude/VERSION` = 1.2.0
+- [ ] `.claude/plugin.json` version = 1.2.0
+- [ ] `.claude-plugin/marketplace.json` metadata.version = 1.2.0
+- [ ] `.claude-plugin/marketplace.json` plugins[0].version = 1.2.0
+- [ ] README.md agent/workflow counts match plugin.json
+- [ ] CHANGELOG.md has 1.2.0 entry with complete details
+- [ ] All files committed in single "release: v1.2.0" commit
 
 ## Testing
 
