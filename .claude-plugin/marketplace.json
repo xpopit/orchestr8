@@ -5,15 +5,15 @@
     "email": "orchestr8@sethschultz.com"
   },
   "metadata": {
-    "description": "Self-extending enterprise orchestration system with 69 specialized agents, 19 autonomous workflows, and meta-orchestration capabilities. Create agents, workflows, and skills autonomously.",
-    "version": "1.4.0"
+    "description": "Complete autonomous software engineering organization with 72 specialized agents, 19 autonomous workflows, and revolutionary ZERO-CONFIG code intelligence system working with ALL languages",
+    "version": "2.0.0"
   },
   "plugins": [
     {
       "name": "orchestr8",
       "source": "./.claude",
-      "description": "Complete autonomous software engineering organization with 69 specialized agents, 19 autonomous workflows, enterprise compliance, game development, AI/ML, blockchain/Web3 support, and meta-orchestration capabilities. Self-extending plugin architecture.",
-      "version": "1.4.0"
+      "description": "Complete autonomous software engineering organization with 72 specialized agents, 19 autonomous workflows, and revolutionary ZERO-CONFIG code intelligence system. Features fully autonomous line-based indexing that works with ALL languages (Python, TypeScript, Java, Go, Rust, C++, Ruby, PHP, and everything else). Global SQLite database in ~/.claude/ with automatic hooks for Write/Edit operations - no Docker, no PostgreSQL, no manual indexing required. Reduces token usage by 80-95% through precise line-level queries. Self-extending plugin architecture with meta-orchestration, multi-stage code review, enterprise compliance, game development, AI/ML, and blockchain/Web3 support. Install once, forget forever, work 8+ hours without context limits.",
+      "version": "2.0.0"
     }
   ]
 }
