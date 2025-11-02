@@ -5,6 +5,234 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-11-02
+
+### 🔍 Multi-Stage Iterative Code Review System
+
+**Major New Capability: Comprehensive Code Review Workflows**
+
+This release adds a sophisticated multi-stage iterative code review system that evaluates code across 5 quality dimensions with specialized agents and automated iteration cycles.
+
+### ✨ New Agent (1 orchestrator)
+
+**Code Review Orchestrator**
+- **`code-review-orchestrator`** - Orchestrates comprehensive multi-stage iterative code reviews
+  - Coordinates 5 specialized review stages (style, logic, security, performance, architecture)
+  - Parallel execution of independent stages for speed
+  - Aggregates findings from all stages into unified report
+  - Enables iterative improvement cycles with targeted re-reviews
+  - Supports multiple review modes (full, fast, security-focused, performance-focused)
+  - Generates detailed reports with prioritized, actionable feedback
+  - Integrates with GitHub for PR comments and status updates
+
+### 🔄 New Workflows (3 review workflows)
+
+**1. `/review-code` - Multi-Stage Code Review**
+- Comprehensive code review with all 5 quality dimensions
+- Stages: Style & Readability → Logic & Correctness → Security → Performance → Architecture
+- Supports full codebase, directory, file, or PR reviews
+- Multiple modes: full review (~50 min), fast (~15 min), security-focused, performance-focused
+- Iterative improvement with targeted re-reviews
+- Generates master review report with prioritized findings
+- **Use for:** Pre-commit reviews, pre-PR reviews, comprehensive quality validation
+
+**2. `/review-pr` - Pull Request Review**
+- Specialized PR review with GitHub integration
+- Fetches PR metadata, changed files, commits, and diff
+- Validates PR title, description, and metadata
+- Multi-stage code analysis on changed files only
+- Posts detailed review summary to PR comments
+- Creates inline comments for critical issues
+- Sets PR review status (approve/request changes)
+- Applies labels based on findings
+- Supports iterative re-review on new commits
+- **Use for:** Automated PR reviews, quality gates before merge, GitHub Actions integration
+
+**3. `/review-architecture` - Architecture Review**
+- Deep architecture and system design review
+- Analyzes 8 dimensions: pattern, SOLID, scalability, security, technical debt, API, data, integration
+- Evaluates architecture pattern appropriateness and violations
+- Assesses SOLID principles compliance
+- Reviews scalability (horizontal/vertical), caching, async processing
+- Security architecture evaluation (defense in depth, auth/authz)
+- Technical debt quantification and prioritization
+- API design and integration patterns review
+- Generates Architecture Decision Records (ADRs)
+- Creates improvement roadmap (immediate, short-term, long-term)
+- **Use for:** Pre-release audits, major refactoring planning, system design validation
+
+### 🎯 Review Stages
+
+All review workflows leverage a consistent 5-stage architecture:
+
+1. **Stage 1: Style & Readability (15%)** - Quick pass on formatting, naming, documentation
+2. **Stage 2: Logic & Correctness (25%)** - Business logic, algorithms, error handling, edge cases
+3. **Stage 3: Security Audit (20%)** - OWASP Top 10, vulnerabilities, input validation, secrets
+4. **Stage 4: Performance Analysis (20%)** - N+1 queries, algorithm complexity, resource management, caching
+5. **Stage 5: Architecture Review (15%)** - Design patterns, SOLID principles, scalability, technical debt
+6. **Stage 6: Synthesis (5%)** - Aggregate findings, resolve conflicts, prioritize issues, generate report
+
+### 🔄 Iterative Improvement
+
+**Smart Re-Review System:**
+- After developer fixes issues, targeted re-review of only affected stages
+- Validates fixes don't introduce new issues
+- Maximum 3 iterations before escalating to pair programming
+- Tracks iteration count and time to approval
+
+### 📊 Review Outputs
+
+**Comprehensive Reports:**
+- Executive summary with overall quality score
+- Issues categorized by severity (Critical 🔴, High 🟠, Medium 🟡, Low 🔵, Suggestions 💡)
+- Stage-by-stage findings with file:line references
+- Positive feedback on what was done well
+- Improvement roadmap (immediate, short-term, long-term)
+- Architecture Decision Records (ADRs) for key recommendations
+
+**GitHub Integration:**
+- Inline comments on specific lines
+- PR review summary as comment
+- Review status (approve/request changes)
+- Label application based on findings
+- Re-review automation on new commits
+
+### 🚀 Key Features
+
+**Parallel Execution:**
+- Stages 1-3 run in parallel for speed
+- Reduces review time from 90+ minutes to ~50 minutes
+
+**Multiple Review Modes:**
+- **Full Review:** All 5 stages, comprehensive (~50 min)
+- **Fast Review:** Logic + Security only, for hotfixes (~15 min)
+- **Security-Focused:** Deep security audit with compliance checks (~30 min)
+- **Performance-Focused:** Deep performance analysis with benchmarks (~30 min)
+- **Architecture-Focused:** System design and patterns (~30 min)
+
+**Quality Gates:**
+- Mandatory gates: No critical vulnerabilities, no crashes, tests pass, no secrets
+- Recommended gates: No high issues, consistent style, good performance, sound architecture
+- Nice-to-have: Medium/low improvements, optimizations
+
+**Integration Points:**
+- GitHub PR reviews (comments, status, labels)
+- CI/CD pipelines (block merge on critical issues)
+- Slack/Teams notifications
+- Metrics tracking (issues by severity, iterations, time)
+
+### 📈 Statistics Update
+
+**Total System Capabilities:**
+- ✅ **82+ specialized agents** (was 81+)
+  - 64+ execution agents
+  - 1 new orchestrator (code-review-orchestrator)
+  - 2 meta-orchestrators
+- ✅ **16 autonomous workflows** (was 13)
+  - 13 existing workflows
+  - 3 new review workflows (/review-code, /review-pr, /review-architecture)
+- ✅ 11 programming languages
+- ✅ 3 cloud providers (AWS, Azure, GCP)
+- ✅ 5 compliance frameworks
+- ✅ 3 game engines
+- ✅ 2 AI/ML frameworks
+- ✅ 2 blockchain platforms
+
+### 💡 Use Cases
+
+**Pre-Commit Reviews:**
+```bash
+# Before committing, ensure code quality
+/review-code src/features/new-feature
+```
+
+**Pre-PR Reviews:**
+```bash
+# Before creating PR, validate changes
+/review-code
+# Fix issues, then create PR
+```
+
+**Automated PR Reviews:**
+```bash
+# In GitHub Actions workflow
+/review-pr 123
+# Automatically comments on PR with findings
+```
+
+**Architecture Audits:**
+```bash
+# Quarterly architecture review
+/review-architecture full
+# Generate ADRs and improvement roadmap
+```
+
+**Security Audits:**
+```bash
+# Before handling sensitive data
+/review-code --mode=security-only src/auth
+```
+
+### 🔧 Technical Implementation
+
+**Agent Coordination:**
+- `code-review-orchestrator` coordinates all stages using Task tool
+- Launches specialized agents in parallel for independent stages
+- Aggregates and deduplicates findings
+- Generates unified master report
+
+**Specialized Agent Usage:**
+- `code-reviewer` for style and code quality
+- Language specialists (`python-developer`, `typescript-developer`, etc.) for logic and performance
+- `security-auditor` for security vulnerabilities
+- `architect` for architecture and design patterns
+- Compliance specialists (GDPR, PCI-DSS, SOC2) when applicable
+
+**Smart Scoping:**
+- Full codebase review
+- Directory-specific review
+- File-specific review
+- PR changed files only
+- Auto-detection of review scope
+
+### 🎯 Quality Improvements
+
+**Before This Release:**
+- Single-stage code reviews
+- Manual review coordination
+- No iterative improvement cycles
+- Limited GitHub integration
+
+**After This Release:**
+- 5-stage comprehensive reviews
+- Automated multi-agent coordination
+- Iterative improvement with targeted re-reviews
+- Full GitHub integration with automated PR comments
+
+### 📚 Documentation
+
+**New Agent Documentation:**
+- `.claude/agents/quality/code-review-orchestrator.md` - Complete orchestrator guide
+
+**New Workflow Documentation:**
+- `.claude/commands/review-code.md` - Multi-stage code review
+- `.claude/commands/review-pr.md` - PR review with GitHub integration
+- `.claude/commands/review-architecture.md` - Architecture review
+
+**Updated Files:**
+- `plugin.json` - Version bumped to 1.3.0, agent/workflow counts updated
+- `CHANGELOG.md` - This comprehensive release notes
+
+### 🔒 Breaking Changes
+
+None. This is a feature addition with no breaking changes to existing functionality.
+
+### 🐛 Known Issues
+
+None at this time.
+
+---
+
 ## [1.2.5] - 2025-11-02
 
 ### 🐛 Bug Fixes

@@ -1,15 +1,14 @@
-# Mutation Testing Specialist
-
-Expert mutation testing specialist for validating test suite effectiveness through code mutation analysis.
-
-## Agent Metadata
-```yaml
+---
 name: mutation-testing-specialist
 description: Expert mutation testing specialist using PITest, Stryker, and mutmut to measure and improve test quality through mutation analysis
 categories: [quality, testing, mutation-testing]
 dependencies: [test-engineer]
 model: claude-sonnet-4-5
-```
+---
+
+# Mutation Testing Specialist
+
+Expert mutation testing specialist for validating test suite effectiveness through code mutation analysis.
 
 ## Core Expertise
 

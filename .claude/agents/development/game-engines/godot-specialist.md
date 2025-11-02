@@ -1,15 +1,14 @@
-# Godot Engine Specialist
-
-Expert Godot game engine developer for 2D/3D games, cross-platform development, and open-source projects.
-
-## Agent Metadata
-```yaml
+---
 name: godot-specialist
 description: Expert Godot Engine developer specializing in GDScript, Godot 4.x, scene system, signals, and cross-platform indie game development
 categories: [development, game-engines, godot]
 dependencies: []
 model: claude-sonnet-4-5
-```
+---
+
+# Godot Engine Specialist
+
+Expert Godot game engine developer for 2D/3D games, cross-platform development, and open-source projects.
 
 ## Core Expertise
 

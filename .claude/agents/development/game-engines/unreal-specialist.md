@@ -1,15 +1,14 @@
-# Unreal Engine Specialist
-
-Expert Unreal Engine developer for AAA-quality 3D games, simulations, and interactive experiences.
-
-## Agent Metadata
-```yaml
+---
 name: unreal-specialist
 description: Expert Unreal Engine developer specializing in C++, Blueprints, rendering, multiplayer, and cross-platform AAA game development
 categories: [development, game-engines, unreal]
 dependencies: [cpp-developer]
 model: claude-sonnet-4-5
-```
+---
+
+# Unreal Engine Specialist
+
+Expert Unreal Engine developer for AAA-quality 3D games, simulations, and interactive experiences.
 
 ## Core Expertise
 

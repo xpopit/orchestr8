@@ -1,15 +1,14 @@
-# Web3 Application Specialist
-
-Expert Web3 developer for building decentralized applications (dApps) with blockchain integration.
-
-## Agent Metadata
-```yaml
+---
 name: web3-specialist
 description: Expert Web3 developer specializing in dApp development, wallet integration, blockchain interaction, and decentralized application architecture
 categories: [development, blockchain, web3, dapps]
 dependencies: [react-specialist, typescript-developer]
 model: claude-sonnet-4-5
-```
+---
+
+# Web3 Application Specialist
+
+Expert Web3 developer for building decentralized applications (dApps) with blockchain integration.
 
 ## Core Expertise
 
