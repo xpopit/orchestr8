@@ -238,4 +238,90 @@ bucket.addLifecycleRule({
 });
 ```
 
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track AWS deployment
+WORKFLOW_ID="aws-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "cloud-setup" "aws-specialist" 1800 "provision-aws-infrastructure"
+
+# Store serverless architecture pattern
+db_store_knowledge \
+  "aws-specialist" \
+  "serverless_pattern" \
+  "lambda_dynamodb_apigateway" \
+  "API Gateway + Lambda + DynamoDB serverless stack. 1000 req/sec, < 50ms p95 latency, $0.12/million requests. Auto-scales 0-1000 concurrent." \
+  "$(cat <<'EOF'
+const handler = async (event) => {
+  await docClient.send(new PutCommand({
+    TableName: process.env.TABLE_NAME,
+    Item: { id: uuid(), ...data }
+  }));
+};
+EOF
+)"
+
+# Log ECS deployment issue
+ERROR_ID=$(db_log_error \
+  "ECSDeploymentFailed" \
+  "ECS Fargate service deployment failed: unhealthy targets timeout" \
+  "deployment" \
+  "infrastructure/ecs/service.tf" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Increased health check grace period from 30s to 120s, fixed /health endpoint" \
+  "health_check_grace_period_seconds = 120" \
+  0.93
+
+# Store cost optimization strategy
+db_store_knowledge \
+  "aws-specialist" \
+  "cost_optimization" \
+  "reserved_capacity_spot_mix" \
+  "80% reserved instances (3yr), 20% spot for batch jobs. Reduced monthly costs from $8K to $3.2K (60% savings)." \
+  "Reserved: m5.xlarge x10 (steady workload)\nSpot: c5.2xlarge x5 (fault-tolerant batch)"
+
+# Track infrastructure provisioning
+db_track_tokens "$WORKFLOW_ID" "infrastructure" "aws-specialist" 1200 "deploy-vpc-ecs-rds"
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "AWS Infrastructure Deployed" \
+  "ECS Fargate cluster with ALB, RDS PostgreSQL Multi-AZ, and CloudFront CDN deployed across 3 AZs. Auto-scaling configured."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 98.5 0
+db_log_quality_gate "$WORKFLOW_ID" "cost_optimization" "passed" 92.0 0
+db_log_quality_gate "$WORKFLOW_ID" "high_availability" "passed" 99.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:**
+- Track CloudFormation/CDK stack deployments
+- Store infrastructure configurations (VPC, ECS, Lambda)
+- Log deployment durations and resource counts
+
+**Cost Optimization:**
+- Store cost reduction strategies
+- Log resource right-sizing decisions
+- Document reserved vs spot instance strategies
+
+**Knowledge Sharing:**
+- Share serverless architecture patterns
+- Document Well-Architected Framework implementations
+- Store security best practices (IAM, KMS, Secrets Manager)
+
+**Monitoring:**
+- Send notifications for deployment failures
+- Track infrastructure provisioning metrics
+- Log security audit findings
+
 Deliver secure, scalable, cost-optimized AWS architectures following best practices and Well-Architected Framework.

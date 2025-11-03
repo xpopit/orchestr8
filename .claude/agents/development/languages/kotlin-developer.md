@@ -15,6 +15,36 @@ tools:
 
 Expert Kotlin developer with mastery of Android development, Jetpack Compose, Coroutines, Flow, and modern architecture patterns.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for Kotlin development:**
+- `db_store_knowledge()` - Store Kotlin patterns, Coroutines solutions, Compose patterns
+- `db_log_error()` - Log runtime exceptions, Coroutines errors, Compose issues
+- `db_find_similar_errors()` - Query past solutions for Kotlin/Android errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store Coroutines pattern
+db_store_knowledge "kotlin-developer" "coroutines-pattern" "structured-concurrency" \
+  "Use viewModelScope for lifecycle-aware coroutines in Android" \
+  "viewModelScope.launch { repository.getData().collect { data -> _uiState.value = data } }"
+
+# Log common error
+error_id=$(db_log_error "CancellationException" "Job was cancelled while waiting for network response" \
+  "kotlin" "app/src/main/java/viewmodel/UserViewModel.kt" "34")
+db_resolve_error "$error_id" "Handle cancellation gracefully with isActive checks" \
+  "if (isActive) { processData(data) }" "0.9"
+
+# Find similar coroutine issues
+db_find_similar_errors "CancellationException" 5
+```
+
 ## Core Stack
 
 - **Language**: Kotlin 1.9+

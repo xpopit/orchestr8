@@ -15,6 +15,36 @@ tools:
 
 Expert C++ developer with mastery of modern C++20/23, STL, design patterns, and performance optimization.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for C++ development:**
+- `db_store_knowledge()` - Store C++ patterns, RAII solutions, template metaprogramming patterns
+- `db_log_error()` - Log segfaults, memory leaks, undefined behavior
+- `db_find_similar_errors()` - Query past solutions for C++ errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store RAII pattern
+db_store_knowledge "cpp-developer" "raii-pattern" "smart-pointers" \
+  "Use unique_ptr for exclusive ownership and shared_ptr for shared ownership" \
+  "auto ptr = std::make_unique<Resource>(); auto shared = std::make_shared<Data>();"
+
+# Log memory error
+error_id=$(db_log_error "segfault" "Segmentation fault: dereferencing null pointer" \
+  "cpp" "src/core/manager.cpp" "145")
+db_resolve_error "$error_id" "Add null checks before dereferencing pointers" \
+  "if (ptr != nullptr) { ptr->process(); }" "1.0"
+
+# Find similar memory errors
+db_find_similar_errors "segfault" 5
+```
+
 ## Core Stack
 
 - **Language**: C++20/23

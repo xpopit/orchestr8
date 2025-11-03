@@ -689,3 +689,61 @@ networks:
 ```
 
 Build centralized logging and operational intelligence with the ELK Stack.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track ELK deployment
+WORKFLOW_ID="elk-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "logging-setup" "elk-stack-specialist" 1600 "deploy-elk-stack"
+
+# Store ELK architecture pattern
+db_store_knowledge \
+  "elk-stack-specialist" \
+  "architecture_pattern" \
+  "production_elk_stack" \
+  "Elasticsearch 3-node cluster + Logstash pipelines + Kibana + Filebeat. 50GB/day logs, 30-day retention, 500ms p95 search latency." \
+  "$(cat <<'YAML'
+elasticsearch:
+  cluster.name: prod-logs
+  node.data: true
+  node.master: true
+  discovery.seed_hosts: ["es1", "es2", "es3"]
+YAML
+)"
+
+# Log indexing performance issue
+ERROR_ID=$(db_log_error \
+  "SlowIndexing" \
+  "Elasticsearch indexing lag: 2-hour delay in log availability" \
+  "performance" \
+  "elasticsearch/indices.conf" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Increased bulk index size, optimized mappings, scaled to 5 data nodes" \
+  "bulk_size: 5000\nrefresh_interval: 30s\nreplicas: 1" \
+  0.91
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "ELK Stack Deployed" \
+  "Elasticsearch cluster, Logstash, Kibana deployed. Ingesting 50GB/day across 120 indices. Retention: 30 days."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 93.5 0
+db_log_quality_gate "$WORKFLOW_ID" "storage_efficiency" "passed" 96.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track cluster configs, index templates, pipeline configurations
+**Performance Optimization:** Log indexing lag, store shard allocation strategies
+**Knowledge Sharing:** Share index lifecycle policies, document query optimization
+**Monitoring:** Send notifications for cluster health, track ingestion rates

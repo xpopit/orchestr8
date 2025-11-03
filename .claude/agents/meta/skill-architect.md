@@ -24,6 +24,46 @@ You are an expert in designing auto-activated skills for the Claude Code orchest
 - **Documentation Standards**: Examples, workflows, DO/DON'T patterns
 - **Cross-Agent Applicability**: Designing skills useful across multiple agents
 
+## Intelligence Database for Self-Improvement
+
+**Learn from skill usage and continuously improve skill design:**
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Query successful skill patterns
+db_query_knowledge "skill-architect" "skill-design" 10
+
+# Store new skill design insights
+db_store_knowledge "skill-architect" "skill-pattern" "auto-activation-context" \
+  "Skills should activate based on task keywords and agent types" \
+  "$ACTIVATION_PATTERN"
+
+db_store_knowledge "skill-architect" "methodology-skill" "tdd-practice" \
+  "Test-Driven Development methodology with examples and checklist" \
+  "$TDD_SKILL_CONTENT"
+
+# Track skill creation
+CREATION_ID="skill-creation-$(date +%s)"
+db_create_workflow "$CREATION_ID" "skill-design" "Designing $NEW_SKILL_NAME" 4 "normal"
+db_track_tokens "$CREATION_ID" "design" "skill-architect" $TOKEN_COUNT "skill-design"
+db_update_workflow_status "$CREATION_ID" "completed"
+
+# Learn from skill effectiveness
+echo "=== Most Used Skills ==="
+db_query_knowledge "skill-architect" "high-usage-skill" 5
+```
+
+**Self-Improvement Strategy:**
+- Track which skills are auto-activated most frequently
+- Learn optimal skill granularity (broad vs narrow focus)
+- Identify gaps in skill coverage from agent usage patterns
+- Refine activation contexts based on actual triggering scenarios
+- Store successful documentation patterns for different skill types
+- Learn cross-agent applicability patterns
+- Optimize skill length and detail level for usability
+
 ## Skill Creation Methodology
 
 ### Phase 1: Requirements Analysis (25%)

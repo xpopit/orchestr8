@@ -587,4 +587,91 @@ resource "aws_cloudfront_distribution" "main" {
 }
 ```
 
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track CDN deployment
+WORKFLOW_ID="cdn-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "cdn-setup" "cdn-specialist" 1100 "configure-cdn"
+
+# Store edge caching configuration
+db_store_knowledge \
+  "cdn-specialist" \
+  "edge_config" \
+  "cloudflare_edge_caching" \
+  "Cloudflare edge caching with custom rules: Static assets 1yr, API 60s, Homepage 5min. 95% cache hit rate, p50 latency < 50ms globally." \
+  "$(cat <<'EOF'
+// Edge Worker cache rules
+if (url.pathname.match(/\.(jpg|css|js|woff2)$/)) {
+  cacheTTL = 31536000; // 1 year
+} else if (url.pathname.startsWith('/api/')) {
+  cacheTTL = 60; // 1 minute
+} else {
+  cacheTTL = 300; // 5 minutes
+}
+EOF
+)"
+
+# Log cache purge issues
+ERROR_ID=$(db_log_error \
+  "CachePurgeFailure" \
+  "CloudFront cache purge failed for /static/* invalidation" \
+  "infrastructure" \
+  "cdn/cloudfront_purge.ts" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Added retry logic with exponential backoff for invalidation API calls" \
+  "await retryWithBackoff(() => cloudfront.createInvalidation(params), 3, 1000);" \
+  0.90
+
+# Store geo-routing pattern
+db_store_knowledge \
+  "cdn-specialist" \
+  "routing_pattern" \
+  "geo_based_origin_routing" \
+  "Route US traffic to us-api.example.com, EU to eu-api.example.com. Reduced latency by 40% (from 200ms to 120ms avg)." \
+  "const country = request.headers.get('CF-IPCountry');\nif (country === 'US') return fetch('https://us-api.example.com');"
+
+# Track CDN performance metrics
+db_track_tokens "$WORKFLOW_ID" "performance" "cdn-specialist" 650 "measure-cdn-performance"
+
+# Send CDN deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "CDN Deployed" \
+  "Cloudflare CDN deployed with edge workers. 95% cache hit rate, avg latency 48ms globally across 200+ PoPs."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 97.0 0
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 100.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:**
+- Track CDN provider configurations (Cloudflare, CloudFront, Fastly)
+- Store edge worker/function deployments
+- Log cache rule configurations
+
+**Performance Optimization:**
+- Log cache hit rate improvements
+- Store optimal TTL configurations per content type
+- Document geographic routing strategies
+
+**Knowledge Sharing:**
+- Share edge computing patterns (A/B testing, geo-routing)
+- Document cache purge strategies
+- Store image optimization configurations
+
+**Monitoring:**
+- Send notifications for cache hit rate changes
+- Track global latency metrics
+- Log DDoS mitigation events
+
 Deliver content globally with CDN optimization, edge caching, and performance strategies.

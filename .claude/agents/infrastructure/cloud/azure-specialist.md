@@ -657,3 +657,62 @@ resource "azurerm_kubernetes_cluster" "main" {
 ```
 
 Deploy and manage cloud infrastructure on Microsoft Azure with enterprise-grade solutions.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track Azure deployment
+WORKFLOW_ID="azure-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "cloud-setup" "azure-specialist" 1650 "provision-azure-infrastructure"
+
+# Store Azure Functions pattern
+db_store_knowledge \
+  "azure-specialist" \
+  "serverless_pattern" \
+  "azure_functions_cosmos_servicebus" \
+  "Azure Functions + Cosmos DB + Service Bus messaging. Consumption plan: pay-per-execution, auto-scale to 200 instances. < 100ms p95 latency." \
+  "export const handler: AzureFunction = async (context, req) => {\n  await cosmosContainer.items.create(data);\n};"
+
+# Log App Service deployment issue
+ERROR_ID=$(db_log_error \
+  "AppServiceDeploymentFailed" \
+  "Azure App Service deployment timeout: health check failed" \
+  "deployment" \
+  "infrastructure/app_service.tf" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Increased deployment slot warmup time and added proper health endpoint" \
+  "always_on = true\nhealth_check_path = '/health'" \
+  0.91
+
+# Store AKS configuration
+db_store_knowledge \
+  "azure-specialist" \
+  "kubernetes_config" \
+  "aks_production_cluster" \
+  "AKS cluster: 3 node pools (system, user, spot), auto-scaling 3-20 nodes, Azure CNI networking, managed identity enabled." \
+  "vm_size = 'Standard_D4s_v3'\nautoscaling { min_node_count = 3\nmax_node_count = 20 }"
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "Azure Infrastructure Deployed" \
+  "AKS cluster, App Services, Cosmos DB, and Service Bus deployed across 3 regions. Geo-replication enabled."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 97.0 0
+db_log_quality_gate "$WORKFLOW_ID" "high_availability" "passed" 98.5 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track ARM template/Bicep deployments, store resource configurations
+**Cost Optimization:** Log resource right-sizing, document reserved instances
+**Knowledge Sharing:** Share serverless patterns, AKS configurations, security practices
+**Monitoring:** Send deployment notifications, track provisioning metrics

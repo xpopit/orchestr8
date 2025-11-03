@@ -767,3 +767,63 @@ inhibit_rules:
 ```
 
 Deliver comprehensive observability with metrics, logs, traces, and proactive alerting for production systems.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track observability deployment
+WORKFLOW_ID="observability-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "observability-setup" "observability-specialist" 1750 "deploy-observability-stack"
+
+# Store OpenTelemetry configuration
+db_store_knowledge \
+  "observability-specialist" \
+  "tracing_config" \
+  "distributed_tracing_setup" \
+  "OpenTelemetry: auto-instrumentation for Node.js/Python/Go. Jaeger backend, 100% trace sampling in dev, 1% in prod. p95 trace lookup < 200ms." \
+  "$(cat <<'YAML'
+processors:
+  batch:
+    timeout: 10s
+    send_batch_size: 1024
+exporters:
+  jaeger:
+    endpoint: jaeger:14250
+YAML
+)"
+
+# Log trace storage issue
+ERROR_ID=$(db_log_error \
+  "TraceStorageOverflow" \
+  "Jaeger storage at 95% capacity, traces being dropped" \
+  "infrastructure" \
+  "observability/jaeger/storage.yml" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Reduced trace retention from 7d to 3d, implemented tail-based sampling" \
+  "retention: 3d\nsampling_strategy: tail_based\nsampling_rate: 0.05" \
+  0.92
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "Observability Stack Deployed" \
+  "OpenTelemetry + Prometheus + Jaeger + Grafana deployed. Full-stack observability: logs, metrics, traces across 45 services."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "coverage" "passed" 98.0 0
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 95.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track instrumentation configs, collector pipelines
+**Performance Optimization:** Log trace storage issues, store sampling strategies
+**Knowledge Sharing:** Share distributed tracing patterns, document SLO dashboards
+**Monitoring:** Send notifications for observability system health, track telemetry volumes

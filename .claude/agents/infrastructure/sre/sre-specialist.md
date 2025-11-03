@@ -719,3 +719,71 @@ if roi['recommended']:
 ```
 
 Deliver highly reliable production systems with proactive incident management and continuous improvement.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track SRE practices deployment
+WORKFLOW_ID="sre-implementation-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "sre-setup" "sre-specialist" 1850 "implement-sre-practices"
+
+# Store SLO configuration
+db_store_knowledge \
+  "sre-specialist" \
+  "slo_config" \
+  "api_availability_slo" \
+  "API availability SLO: 99.9% uptime (monthly). Error budget: 43 min downtime/month. Burn rate alerting at 2x, 10x thresholds." \
+  "$(cat <<'YAML'
+slo:
+  - name: api-availability
+    target: 0.999
+    window: 30d
+    error_budget_policy:
+      burn_rate_1h: 14.4
+      burn_rate_6h: 6.0
+YAML
+)"
+
+# Log incident response
+ERROR_ID=$(db_log_error \
+  "ProductionOutage" \
+  "API gateway complete outage: 503 errors across all endpoints" \
+  "incident" \
+  "production/api-gateway" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Database connection pool exhausted. Increased pool from 50 to 200, added circuit breaker" \
+  "max_connections: 200\ncircuit_breaker_threshold: 50%" \
+  0.96
+
+# Store incident postmortem knowledge
+db_store_knowledge \
+  "sre-specialist" \
+  "postmortem" \
+  "database_connection_pool_exhaustion" \
+  "Root cause: Database connection pool too small under load. Detection time: 2min. MTTR: 8min. Impact: 43min downtime, 100K failed requests." \
+  "Prevention: Connection pool monitoring, load testing. Detection: Added connection pool metrics. Mitigation: Circuit breaker pattern implemented."
+
+# Send incident notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "incident" \
+  "urgent" \
+  "Production Incident Resolved" \
+  "API gateway outage resolved. Root cause: connection pool exhaustion. MTTR: 8min. Postmortem scheduled for tomorrow 10am."
+
+# Log error budget consumption
+db_track_tokens "$WORKFLOW_ID" "error_budget" "sre-specialist" 500 "calculate-error-budget-burn"
+db_log_quality_gate "$WORKFLOW_ID" "slo_compliance" "warning" 98.9 1
+```
+
+### Database Integration Patterns
+
+**Incident Tracking:** Log production incidents, store postmortem findings
+**SLO Management:** Track error budget consumption, store burn rate alerts
+**Knowledge Sharing:** Share incident response procedures, document chaos experiments
+**Monitoring:** Send incident notifications, track MTTR/MTTD metrics

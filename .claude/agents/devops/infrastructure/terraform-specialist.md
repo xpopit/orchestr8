@@ -315,3 +315,69 @@ resource "aws_instance" "bastion" {
 ```
 
 Deliver modular, maintainable, secure infrastructure code following Terraform and cloud provider best practices.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track Terraform deployment
+WORKFLOW_ID="terraform-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "infrastructure-as-code" "terraform-specialist" 1400 "terraform-apply"
+
+# Store module pattern
+db_store_knowledge \
+  "terraform-specialist" \
+  "module_pattern" \
+  "vpc_networking_module" \
+  "Reusable VPC module with public/private subnets across 3 AZs. NAT gateways, route tables, NACLs. Used in 12 environments." \
+  "$(cat <<'TF'
+module "vpc" {
+  source = "./modules/networking"
+  vpc_cidr = "10.0.0.0/16"
+  availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+}
+TF
+)"
+
+# Log state lock issue
+ERROR_ID=$(db_log_error \
+  "TerraformStateLocked" \
+  "Terraform state locked: operation in progress by another user" \
+  "infrastructure" \
+  "terraform/main.tf" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Implemented state lock with DynamoDB table and force-unlock procedure" \
+  "terraform force-unlock <lock-id>" \
+  0.89
+
+# Store multi-cloud pattern
+db_store_knowledge \
+  "terraform-specialist" \
+  "multi_cloud" \
+  "aws_azure_hybrid_deployment" \
+  "Hybrid AWS+Azure deployment: compute in AWS, AI services in Azure. Terraform workspaces per cloud. VPN interconnect." \
+  "terraform workspace select aws\nterraform apply -var-file=aws.tfvars"
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "normal" \
+  "Terraform Infrastructure Applied" \
+  "Terraform applied: 47 resources added, 3 changed, 0 destroyed. State stored in S3, lock in DynamoDB."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 98.0 0
+db_log_quality_gate "$WORKFLOW_ID" "compliance" "passed" 95.5 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track terraform apply/destroy operations, store module usage
+**Error Resolution:** Log state management issues, document provider version conflicts
+**Knowledge Sharing:** Share reusable modules, document multi-cloud patterns
+**Monitoring:** Send deployment notifications, track resource drift detection

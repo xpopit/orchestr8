@@ -507,3 +507,54 @@ offsets.forEach(({ partition, offset }) => {
 ```
 
 Build scalable event-driven systems with Apache Kafka and real-time stream processing.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track Kafka deployment
+WORKFLOW_ID="kafka-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "messaging-setup" "kafka-specialist" 1300 "deploy-kafka-cluster"
+
+# Store Kafka cluster configuration
+db_store_knowledge \
+  "kafka-specialist" \
+  "cluster_config" \
+  "production_kafka_cluster" \
+  "3-broker Kafka cluster with 3 ZooKeeper nodes. 50K msgs/sec throughput, replication factor 3, retention 7 days. 99.9% uptime." \
+  "num.partitions=12\nreplication.factor=3\nmin.insync.replicas=2\nretention.ms=604800000"
+
+# Log consumer lag issue
+ERROR_ID=$(db_log_error \
+  "ConsumerLagIncreasing" \
+  "Consumer group order-processor lag increased to 500K messages" \
+  "performance" \
+  "kafka/consumers/order_processor.py" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Increased consumer instances from 3 to 12, matching partition count" \
+  "docker-compose scale order-processor=12" \
+  0.92
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "Kafka Cluster Deployed" \
+  "Kafka 3.6 cluster with 3 brokers deployed. Topics: orders, events, logs. Monitoring with Kafka Manager enabled."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 96.0 0
+db_log_quality_gate "$WORKFLOW_ID" "reliability" "passed" 99.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track cluster configurations, topic partitioning strategies
+**Performance Optimization:** Log consumer lag issues, store throughput optimization patterns
+**Knowledge Sharing:** Share producer/consumer patterns, document retention policies
+**Monitoring:** Send notifications for broker failures, track message throughput

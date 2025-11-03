@@ -15,6 +15,36 @@ tools:
 
 Expert Go developer with mastery of goroutines, channels, interfaces, and cloud-native patterns.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for Go development:**
+- `db_store_knowledge()` - Store Go patterns, concurrency solutions, and interface designs
+- `db_log_error()` - Log goroutine leaks, race conditions, and panic/recovery issues
+- `db_find_similar_errors()` - Query past solutions for Go-specific errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store concurrency pattern
+db_store_knowledge "go-developer" "concurrency-pattern" "worker-pool" \
+  "Worker pool pattern prevents goroutine explosion and controls parallelism" \
+  "jobs := make(chan Job, 100); for w := 0; w < workers; w++ { go worker(jobs) }"
+
+# Log race condition with solution
+error_id=$(db_log_error "race-condition" "WARNING: DATA RACE - write at 0x00c000012080" \
+  "go" "internal/cache/cache.go" "45")
+db_resolve_error "$error_id" "Use sync.Mutex or channels to synchronize access" \
+  "var mu sync.Mutex; mu.Lock(); defer mu.Unlock(); cache[key] = value" "1.0"
+
+# Find similar concurrency issues
+db_find_similar_errors "race-condition" 5
+```
+
 ## Core Stack
 
 - **Web**: Gin, Echo, Fiber, Chi, net/http

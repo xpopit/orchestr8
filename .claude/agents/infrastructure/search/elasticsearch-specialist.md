@@ -612,3 +612,69 @@ async function createSnapshot() {
 ```
 
 Build scalable, fast search experiences with Elasticsearch for full-text search and analytics.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track Elasticsearch deployment
+WORKFLOW_ID="elasticsearch-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "search-setup" "elasticsearch-specialist" 1350 "deploy-elasticsearch"
+
+# Store search optimization pattern
+db_store_knowledge \
+  "elasticsearch-specialist" \
+  "search_optimization" \
+  "product_search_index" \
+  "E-commerce product search: edge-ngram tokenizer, synonym filters, boosted fields (title^3, description^1). < 50ms p95, 95% relevance score." \
+  "$(cat <<'JSON'
+{
+  "settings": {
+    "analysis": {
+      "tokenizer": {
+        "edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 2,
+          "max_gram": 10
+        }
+      }
+    }
+  }
+}
+JSON
+)"
+
+# Log search performance issue
+ERROR_ID=$(db_log_error \
+  "SlowSearchQuery" \
+  "Product search query taking 2000ms, exceeds 100ms SLA" \
+  "performance" \
+  "elasticsearch/queries/product_search.json" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Added query result caching, reduced from clause from 100 to 20, optimized scoring" \
+  "\"size\": 20\n\"track_total_hits\": false\n# Added request cache" \
+  0.94
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "normal" \
+  "Elasticsearch Cluster Deployed" \
+  "Elasticsearch 8.x cluster deployed. Indices: products, orders, users. Full-text search and analytics enabled."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "search_performance" "passed" 96.5 0
+db_log_quality_gate "$WORKFLOW_ID" "relevance" "passed" 94.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track index mappings, analyzer configurations
+**Performance Optimization:** Log slow queries, store aggregation optimization patterns
+**Knowledge Sharing:** Share search relevance tuning, document indexing strategies
+**Monitoring:** Send notifications for cluster health, track query latency

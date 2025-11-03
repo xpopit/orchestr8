@@ -620,4 +620,89 @@ def get_user(user_id: str):
     return db.users.find_one({"_id": user_id})
 ```
 
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track caching optimization
+WORKFLOW_ID="cache-optimization-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "cache-optimization" "redis-cache-specialist" 850 "optimize-cache"
+
+# Store cache-aside pattern knowledge
+db_store_knowledge \
+  "redis-cache-specialist" \
+  "caching_pattern" \
+  "cache_aside_with_ttl" \
+  "Cache-aside pattern with adaptive TTL based on access frequency. High-traffic keys: 3600s, Low-traffic: 300s. Reduced DB load by 78%." \
+  "$(cat <<'EOF'
+async function getOrSet(key, fetcher, ttl) {
+  const cached = await redis.get(key);
+  if (cached) return JSON.parse(cached);
+  const value = await fetcher();
+  await redis.setex(key, ttl, JSON.stringify(value));
+  return value;
+}
+EOF
+)"
+
+# Log cache stampede resolution
+ERROR_ID=$(db_log_error \
+  "CacheStampede" \
+  "Cache stampede on product:featured - 500 concurrent DB queries on cache miss" \
+  "performance" \
+  "cache/product_cache.ts" \
+  67)
+
+db_resolve_error "$ERROR_ID" \
+  "Implemented distributed locking with Redlock to prevent stampede" \
+  "const lock = await redlock.acquire(['locks:product:featured'], 5000);\ntry { /* fetch and cache */ } finally { await lock.release(); }" \
+  0.95
+
+# Store write-through pattern
+db_store_knowledge \
+  "redis-cache-specialist" \
+  "caching_pattern" \
+  "write_through_cache" \
+  "Write-through cache for user profiles. All writes go through cache first. Ensures consistency, < 5ms read latency." \
+  "await cache.set(key, value);\nawait db.update(key, value);"
+
+# Track cache performance gains
+db_track_tokens "$WORKFLOW_ID" "performance" "redis-cache-specialist" 400 "measure-performance"
+
+# Send cache metrics notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "metrics" \
+  "normal" \
+  "Cache Performance Improved" \
+  "Cache hit rate increased from 72% to 94%. Average response time reduced from 120ms to 18ms. DB load reduced by 78%."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 96.5 0
+```
+
+### Database Integration Patterns
+
+**Performance Tracking:**
+- Log cache hit rate improvements
+- Track query response time reductions
+- Store optimal caching strategies
+
+**Error Resolution:**
+- Log cache stampede incidents
+- Store distributed locking patterns
+- Document cache invalidation strategies
+
+**Knowledge Sharing:**
+- Share cache-aside, write-through, write-behind patterns
+- Document TTL optimization strategies
+- Store rate limiting implementations
+
+**Monitoring:**
+- Send notifications for cache performance changes
+- Track memory usage and eviction patterns
+- Log cache warming strategies
+
 Build high-performance distributed caching with Redis and advanced patterns.

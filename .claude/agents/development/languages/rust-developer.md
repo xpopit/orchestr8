@@ -15,6 +15,36 @@ tools:
 
 Expert Rust developer with mastery of ownership, lifetimes, async programming, and zero-cost abstractions.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for Rust development:**
+- `db_store_knowledge()` - Store ownership patterns, lifetime solutions, and async patterns
+- `db_log_error()` - Log borrow checker errors, lifetime issues, and compilation problems
+- `db_find_similar_errors()` - Query past solutions for tricky Rust compiler errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store lifetime pattern solution
+db_store_knowledge "rust-developer" "lifetime-pattern" "self-referential-struct" \
+  "Use Pin<Box<>> for self-referential structs or refactor to avoid self-references" \
+  "struct Data { ptr: *const u8 }; impl Data { fn new() -> Pin<Box<Self>> { ... } }"
+
+# Log borrow checker error with solution
+error_id=$(db_log_error "E0502" "cannot borrow as mutable because it is also borrowed as immutable" \
+  "rust" "src/main.rs" "128")
+db_resolve_error "$error_id" "Split into separate scopes or clone the immutable borrow" \
+  "let x = data.clone(); // Then mutably borrow original" "0.95"
+
+# Find solutions for similar borrow checker issues
+db_find_similar_errors "E0502" 3
+```
+
 ## Core Stack
 
 - **Web**: Axum, Actix-web, Rocket, Warp

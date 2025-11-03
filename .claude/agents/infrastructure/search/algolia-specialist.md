@@ -560,3 +560,64 @@ async function getClickThroughRate() {
 ```
 
 Build instant, typo-tolerant search experiences with Algolia's hosted search service.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track Algolia deployment
+WORKFLOW_ID="algolia-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "search-setup" "algolia-specialist" 950 "configure-algolia"
+
+# Store Algolia search configuration
+db_store_knowledge \
+  "algolia-specialist" \
+  "search_config" \
+  "instant_search_setup" \
+  "InstantSearch.js: faceted search with 300K products. < 10ms avg search, typo-tolerance, synonyms, geo-search. 10M searches/month." \
+  "$(cat <<'JS'
+searchClient.search([{
+  indexName: 'products',
+  params: {
+    query: 'laptop',
+    filters: 'category:electronics',
+    facets: ['brand', 'price_range']
+  }
+}]);
+JS
+)"
+
+# Log replica sync issue
+ERROR_ID=$(db_log_error \
+  "ReplicaSyncLag" \
+  "Algolia replica index sync lagging by 15 minutes" \
+  "deployment" \
+  "algolia/indices/products_replica.ts" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Optimized replica settings, reduced attribute size, batched updates" \
+  "replicas: ['products_price_asc', 'products_rating_desc']\nattributesToRetrieve: ['id', 'name', 'price']" \
+  0.89
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "normal" \
+  "Algolia Search Configured" \
+  "Algolia indices configured: products (300K records), content (50K). InstantSearch UI deployed. < 10ms search latency."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "search_performance" "passed" 98.5 0
+db_log_quality_gate "$WORKFLOW_ID" "relevance" "passed" 96.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track index configurations, replica setups
+**Performance Optimization:** Log search latency, store relevance tuning strategies
+**Knowledge Sharing:** Share faceting patterns, document ranking formulas
+**Monitoring:** Send notifications for quota usage, track search analytics

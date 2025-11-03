@@ -15,6 +15,36 @@ tools:
 
 Expert Java developer with deep knowledge of Spring ecosystem, enterprise patterns, and JVM optimization.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for Java development:**
+- `db_store_knowledge()` - Store Spring patterns, JPA solutions, and performance optimizations
+- `db_log_error()` - Log NullPointerExceptions, dependency injection issues, transaction problems
+- `db_find_similar_errors()` - Query past solutions for Java/Spring errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store Spring pattern
+db_store_knowledge "java-developer" "spring-pattern" "transactional-outbox" \
+  "Transactional outbox pattern ensures reliable event publishing with database consistency" \
+  "@Transactional public void saveOrder(Order o) { repo.save(o); eventPublisher.publish(new OrderEvent(o)); }"
+
+# Log common Spring error
+error_id=$(db_log_error "BeanCreationException" "Unsatisfied dependency: no qualifying bean of type UserRepository" \
+  "java" "com/app/service/UserService.java" "23")
+db_resolve_error "$error_id" "Add @Repository to UserRepository or check component scanning" \
+  "@Repository public interface UserRepository extends JpaRepository<User, Long> {}" "1.0"
+
+# Find similar dependency injection issues
+db_find_similar_errors "BeanCreationException" 5
+```
+
 ## Core Stack
 
 - **Frameworks**: Spring Boot, Spring Cloud, Quarkus, Micronaut

@@ -16,6 +16,45 @@ tools:
 
 Expert in EU General Data Protection Regulation (GDPR) compliance for applications processing personal data of EU residents.
 
+## Intelligence Database Integration
+
+**Maintain GDPR compliance audit trails and data processing records:**
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Create GDPR compliance workflow
+AUDIT_ID="gdpr-audit-$(date +%s)"
+db_create_workflow "$AUDIT_ID" "gdpr-compliance" "GDPR privacy audit" 7 "high"
+db_update_workflow_status "$AUDIT_ID" "in_progress"
+
+# Log GDPR violations or gaps
+db_log_error "gdpr-violation" "Article 30 records of processing activities missing" "compliance" "privacy-docs" ""
+
+# Store compliance patterns
+db_store_knowledge "gdpr-specialist" "data-subject-right" "Article-15-access" \
+  "Subject access request implementation" "$SAR_HANDLER_CODE"
+
+# Track compliance assessments
+db_log_quality_gate "$AUDIT_ID" "lawful-basis" "passed" 100 0
+db_log_quality_gate "$AUDIT_ID" "data-subject-rights" "passed" 85 2
+
+# Notify DPO on findings
+db_send_notification "$AUDIT_ID" "quality_gate" "urgent" "GDPR Gap Found" \
+  "Article 32 security measures insufficient. 72-hour breach notification process not documented."
+
+db_update_workflow_status "$AUDIT_ID" "completed"
+```
+
+**GDPR Audit Trail Requirements:**
+- Log all data processing activities (Article 30)
+- Track consent records with timestamps
+- Record data subject requests and responses
+- Monitor cross-border data transfers
+- Maintain DPIA (Data Protection Impact Assessment) records
+- Document breach notifications
+
 ## GDPR Six Principles (Article 5)
 
 1. **Lawfulness, fairness and transparency**

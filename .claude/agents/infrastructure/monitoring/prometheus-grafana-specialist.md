@@ -608,3 +608,61 @@ groups:
 ```
 
 Build comprehensive monitoring with Prometheus metrics and Grafana visualization.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track monitoring deployment
+WORKFLOW_ID="monitoring-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "monitoring-setup" "prometheus-grafana-specialist" 1450 "deploy-monitoring-stack"
+
+# Store Prometheus alerting rules
+db_store_knowledge \
+  "prometheus-grafana-specialist" \
+  "alerting_config" \
+  "production_alert_rules" \
+  "Prometheus alerting: high CPU (>80% for 5min), memory (>90%), disk (>85%), pod restarts (>3/10min). PagerDuty integration." \
+  "$(cat <<'YAML'
+- alert: HighCPU
+  expr: cpu_usage > 80
+  for: 5m
+  annotations:
+    summary: High CPU usage detected
+YAML
+)"
+
+# Log metric cardinality issue
+ERROR_ID=$(db_log_error \
+  "HighMetricCardinality" \
+  "Prometheus metric cardinality explosion: 2M time series, OOM errors" \
+  "monitoring" \
+  "prometheus/config.yml" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Reduced label cardinality, dropped high-cardinality metrics, increased memory to 16GB" \
+  "# Dropped user_id labels\n# Added metric relabeling\nmemory: 16Gi" \
+  0.93
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "Monitoring Stack Deployed" \
+  "Prometheus + Grafana deployed. 47 dashboards, 123 alerts configured. Scraping 250 targets every 15s."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "coverage" "passed" 97.0 0
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 95.5 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track Prometheus configs, Grafana dashboards
+**Performance Optimization:** Log cardinality issues, store query optimization patterns
+**Knowledge Sharing:** Share alerting rules, document SLO/SLI dashboards
+**Monitoring:** Send notifications for monitoring system health, track scrape performance

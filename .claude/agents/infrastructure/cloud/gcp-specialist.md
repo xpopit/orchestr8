@@ -742,3 +742,62 @@ resource "google_container_node_pool" "main" {
 ```
 
 Deploy and manage cloud infrastructure on Google Cloud Platform with serverless and data analytics.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track GCP deployment
+WORKFLOW_ID="gcp-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "cloud-setup" "gcp-specialist" 1550 "provision-gcp-infrastructure"
+
+# Store Cloud Run pattern
+db_store_knowledge \
+  "gcp-specialist" \
+  "serverless_pattern" \
+  "cloud_run_firestore_pubsub" \
+  "Cloud Run + Firestore + Pub/Sub serverless stack. Auto-scales 0-1000 instances, < 200ms cold start, $0.10/million requests." \
+  "const app = express();\napp.listen(PORT, () => console.log(\`Server on \${PORT}\`));"
+
+# Log Cloud Run deployment issue
+ERROR_ID=$(db_log_error \
+  "CloudRunDeploymentFailed" \
+  "Cloud Run revision failed: container startup timeout" \
+  "deployment" \
+  "infrastructure/cloud_run.tf" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Optimized Docker image (multi-stage build), reduced startup from 45s to 8s" \
+  "FROM node:18-alpine AS build\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production" \
+  0.94
+
+# Store GKE configuration
+db_store_knowledge \
+  "gcp-specialist" \
+  "kubernetes_config" \
+  "gke_autopilot_cluster" \
+  "GKE Autopilot cluster in 3 zones, auto-scaling, auto-repair, auto-upgrade. Fully managed nodes, $0.10/hour cluster fee + pod resources." \
+  "mode = 'autopilot'\nrelease_channel = 'REGULAR'"
+
+# Send deployment notification  
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "GCP Infrastructure Deployed" \
+  "Cloud Run services, GKE cluster, Cloud SQL, and Pub/Sub topics deployed. Multi-region setup complete."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 96.5 0
+db_log_quality_gate "$WORKFLOW_ID" "cost_optimization" "passed" 93.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track Terraform/gcloud deployments, store service configurations
+**Performance Optimization:** Log cold start improvements, document container optimizations
+**Knowledge Sharing:** Share Cloud Run patterns, GKE configs, BigQuery schemas
+**Monitoring:** Send deployment notifications, track resource provisioning

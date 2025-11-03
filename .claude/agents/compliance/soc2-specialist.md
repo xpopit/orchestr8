@@ -16,6 +16,44 @@ tools:
 
 Expert in SOC 2 Type I and Type II compliance for cloud service providers and SaaS companies.
 
+## Intelligence Database Integration
+
+**Maintain SOC 2 audit trails and control effectiveness evidence:**
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Create SOC 2 audit workflow
+AUDIT_ID="soc2-audit-$(date +%s)"
+db_create_workflow "$AUDIT_ID" "soc2-compliance" "SOC 2 Type II audit preparation" 5 "high"
+db_update_workflow_status "$AUDIT_ID" "in_progress"
+
+# Log control deficiencies
+db_log_error "soc2-control-deficiency" "CC2.1 security metrics not documented" "compliance" "monitoring-docs" ""
+
+# Store control implementation patterns
+db_store_knowledge "soc2-specialist" "tsc-control" "CC6.1" \
+  "Logical access control implementation" "$ACCESS_CONTROL_POLICY"
+
+# Track control testing results
+db_log_quality_gate "$AUDIT_ID" "common-criteria" "passed" 95 3
+db_log_quality_gate "$AUDIT_ID" "availability" "passed" 99 1
+
+# Auditor notification on deficiencies
+db_send_notification "$AUDIT_ID" "quality_gate" "high" "Control Deficiency Found" \
+  "CC2.1 requires remediation before Type II audit period begins."
+
+db_update_workflow_status "$AUDIT_ID" "completed"
+```
+
+**SOC 2 Audit Trail Requirements:**
+- Log all control tests with evidence
+- Track operating effectiveness over audit period (6-12 months)
+- Record exceptions and remediation
+- Monitor Trust Service Criteria compliance
+- Maintain evidence for auditor review
+
 ## SOC 2 Overview
 
 SOC 2 is an auditing standard for service organizations developed by the American Institute of CPAs (AICPA) based on their Trust Service Criteria (TSC).

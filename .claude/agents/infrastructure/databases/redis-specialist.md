@@ -255,4 +255,91 @@ slow_logs = redis_client.slowlog_get(10)
 # redis-cli MONITOR
 ```
 
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track Redis deployment
+WORKFLOW_ID="redis-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "cache-setup" "redis-specialist" 900 "provision-redis"
+
+# Store cache invalidation patterns
+db_store_knowledge \
+  "redis-specialist" \
+  "cache_pattern" \
+  "tag_based_invalidation" \
+  "Tag-based cache invalidation using Redis Sets. Invalidate all products with single tag delete. Hit rate improved from 65% to 92%." \
+  "$(cat <<'EOF'
+# Store with tags
+SETEX product:123 3600 '{"data": "..."}'
+SADD tag:products product:123
+SADD tag:category:electronics product:123
+
+# Invalidate by tag
+SMEMBERS tag:products  # Get all keys
+DEL <keys...>
+EOF
+)"
+
+# Log cache performance issue
+ERROR_ID=$(db_log_error \
+  "LowCacheHitRate" \
+  "Cache hit rate dropped to 45% (expected 85%+)" \
+  "performance" \
+  "cache/user_session.py" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Increased TTL from 300s to 3600s and implemented cache warming" \
+  "redis_client.setex(key, 3600, value)  # Extended TTL\n# Added cache warming on deploy" \
+  0.88
+
+# Store rate limiting pattern
+db_store_knowledge \
+  "redis-specialist" \
+  "rate_limiting" \
+  "sliding_window_limiter" \
+  "Sliding window rate limiter using sorted sets. 1000 req/hour per user. Memory efficient, accurate." \
+  "ZREMRANGEBYSCORE key 0 (now-window)\nZCARD key  # Count requests\nZADD key now now"
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "normal" \
+  "Redis Cluster Deployed" \
+  "Redis 7.0 cluster with 6 nodes deployed. Replication active, monitoring enabled. Cache hit rate: 91%."
+
+# Track cluster metrics
+db_track_tokens "$WORKFLOW_ID" "cluster-config" "redis-specialist" 600 "configure-cluster"
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 94.0 0
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 100.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:**
+- Track cluster configuration and node setup
+- Store replication and persistence strategies
+- Log memory usage and eviction policies
+
+**Performance Optimization:**
+- Log cache hit rate improvements
+- Store optimal TTL configurations
+- Document rate limiting implementations
+
+**Knowledge Sharing:**
+- Share cache invalidation strategies
+- Document pub/sub patterns
+- Store session management configurations
+
+**Monitoring:**
+- Send notifications for high memory usage
+- Track cache performance metrics
+- Log cluster failover events
+
 Deliver high-performance Redis deployments for caching, real-time features, and distributed systems.

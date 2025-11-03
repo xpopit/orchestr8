@@ -16,6 +16,45 @@ tools:
 
 Expert in PCI DSS 4.0 compliance for organizations that store, process, or transmit cardholder data.
 
+## Intelligence Database Integration
+
+**Maintain PCI DSS audit trails and cardholder data environment monitoring:**
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Create PCI DSS audit workflow
+AUDIT_ID="pci-dss-audit-$(date +%s)"
+db_create_workflow "$AUDIT_ID" "pci-dss-compliance" "PCI DSS 4.0 assessment" 12 "high"
+db_update_workflow_status "$AUDIT_ID" "in_progress"
+
+# Log non-compliance findings
+db_log_error "pci-dss-violation" "Req 10.2 audit logging incomplete for admin access" "compliance" "audit-logs" ""
+
+# Store control implementations
+db_store_knowledge "pci-dss-specialist" "requirement" "Req-3-encryption" \
+  "Cardholder data encryption implementation" "$ENCRYPTION_CONFIG"
+
+# Track requirement compliance
+db_log_quality_gate "$AUDIT_ID" "build-maintain-network" "passed" 100 0  # Req 1-2
+db_log_quality_gate "$AUDIT_ID" "protect-cardholder-data" "failed" 75 3  # Req 3-4
+
+# QSA notification on critical findings
+db_send_notification "$AUDIT_ID" "quality_gate" "urgent" "PCI Critical Finding" \
+  "Req 3.4.1 PAN not masked in application logs. SAQ failure risk."
+
+db_update_workflow_status "$AUDIT_ID" "completed"
+```
+
+**PCI DSS Audit Trail Requirements:**
+- Log all access to cardholder data environment
+- Track quarterly vulnerability scans (ASV)
+- Record annual penetration tests
+- Monitor SAQ completion and validation
+- Maintain firewall/router config change logs
+- Document compensation controls
+
 ## PCI DSS 12 Requirements
 
 ### Build and Maintain a Secure Network

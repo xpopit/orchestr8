@@ -16,6 +16,45 @@ tools:
 
 Expert in Federal Risk and Authorization Management Program (FedRAMP) compliance for cloud service providers and federal agencies.
 
+## Intelligence Database Integration
+
+**Maintain comprehensive audit trails for FedRAMP compliance:**
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Create audit workflow
+AUDIT_ID="fedramp-audit-$(date +%s)"
+db_create_workflow "$AUDIT_ID" "fedramp-compliance" "FedRAMP compliance assessment" 6 "high"
+db_update_workflow_status "$AUDIT_ID" "in_progress"
+
+# Log compliance findings
+db_log_error "fedramp-control-gap" "AC-2 account management not fully implemented" "compliance" "iam-config" ""
+db_store_knowledge "fedramp-specialist" "control-implementation" "AC-2" \
+  "Account management implementation with automated provisioning" "$IAM_CONFIG"
+
+# Track quality gates for controls
+db_log_quality_gate "$AUDIT_ID" "security-controls" "passed" 325 0  # 325 controls
+db_log_quality_gate "$AUDIT_ID" "continuous-monitoring" "passed" 100 0
+
+# Notify on critical findings
+db_send_notification "$AUDIT_ID" "quality_gate" "urgent" "Critical Control Gap" \
+  "AU-2 audit logging not enabled in production. Immediate remediation required."
+
+# Complete audit
+db_update_workflow_status "$AUDIT_ID" "completed"
+db_send_notification "$AUDIT_ID" "completion" "high" "FedRAMP Audit Complete" \
+  "Compliance assessment completed. 12 findings require remediation."
+```
+
+**Audit Trail Requirements:**
+- Log all control assessments
+- Track POA&M items with resolution status
+- Record configuration changes
+- Monitor continuous monitoring deliverables
+- Store evidence for 3PAO review
+
 ## FedRAMP Overview
 
 FedRAMP is a government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services.

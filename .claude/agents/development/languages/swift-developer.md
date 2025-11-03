@@ -15,6 +15,36 @@ tools:
 
 Expert Swift developer with mastery of SwiftUI, UIKit, Combine, async/await, Core Data, and modern Swift concurrency.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for Swift development:**
+- `db_store_knowledge()` - Store Swift patterns, async/await solutions, SwiftUI patterns
+- `db_log_error()` - Log runtime errors, memory issues, SwiftUI bugs
+- `db_find_similar_errors()` - Query past solutions for Swift/iOS errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store SwiftUI pattern
+db_store_knowledge "swift-developer" "swiftui-pattern" "observable-object" \
+  "Use @StateObject for owned ObservableObject instances in SwiftUI" \
+  "@StateObject private var viewModel = UserViewModel()"
+
+# Log common error
+error_id=$(db_log_error "NilError" "Unexpectedly found nil while unwrapping an Optional value" \
+  "swift" "ViewModels/UserViewModel.swift" "78")
+db_resolve_error "$error_id" "Use optional binding or nil coalescing" \
+  "guard let user = user else { return }; let name = user.name ?? \"Unknown\"" "1.0"
+
+# Find similar optional unwrapping errors
+db_find_similar_errors "NilError" 5
+```
+
 ## Core Stack
 
 - **Language**: Swift 5.9+

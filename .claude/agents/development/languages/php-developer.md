@@ -15,6 +15,36 @@ tools:
 
 Expert PHP developer with mastery of Laravel, modern PHP 8.2+, design patterns, and web development.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for PHP development:**
+- `db_store_knowledge()` - Store Laravel patterns, Eloquent solutions, PHP 8+ features
+- `db_log_error()` - Log PHP errors, Laravel exceptions, Composer issues
+- `db_find_similar_errors()` - Query past solutions for PHP/Laravel errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store Laravel pattern
+db_store_knowledge "php-developer" "laravel-pattern" "action-classes" \
+  "Action classes for single-responsibility controllers in Laravel" \
+  "class CreateUserAction { public function execute(array \$data): User { ... } }"
+
+# Log common error
+error_id=$(db_log_error "QueryException" "SQLSTATE[23000]: Integrity constraint violation: unique key" \
+  "php" "app/Http/Controllers/UserController.php" "45")
+db_resolve_error "$error_id" "Add unique validation before database insert" \
+  "\$request->validate(['email' => 'required|email|unique:users']);" "1.0"
+
+# Find similar database constraint errors
+db_find_similar_errors "QueryException" 5
+```
+
 ## Core Stack
 
 - **Language**: PHP 8.2+

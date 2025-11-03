@@ -15,6 +15,36 @@ tools:
 
 Expert C# developer with mastery of .NET 8, ASP.NET Core, Entity Framework Core, LINQ, async/await, and Azure.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for C# development:**
+- `db_store_knowledge()` - Store .NET patterns, EF Core solutions, async/await patterns
+- `db_log_error()` - Log runtime exceptions, EF migration issues, dependency injection problems
+- `db_find_similar_errors()` - Query past solutions for .NET errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store EF Core pattern
+db_store_knowledge "csharp-developer" "ef-pattern" "repository-unit-of-work" \
+  "Repository + Unit of Work pattern for clean EF Core architecture" \
+  "public class UnitOfWork : IUnitOfWork { private readonly DbContext _context; ... }"
+
+# Log common error
+error_id=$(db_log_error "NullReferenceException" "Object reference not set to an instance of an object" \
+  "csharp" "Services/UserService.cs" "67")
+db_resolve_error "$error_id" "Use null-conditional operator or null-coalescing" \
+  "var name = user?.Name ?? \"Unknown\";" "1.0"
+
+# Find similar null reference errors
+db_find_similar_errors "NullReferenceException" 5
+```
+
 ## Core Stack
 
 - **.NET**: .NET 8, C# 12

@@ -459,3 +459,54 @@ const healthCheck = await api.get('/healthchecks/node');
 ```
 
 Build reliable, scalable message-driven systems with RabbitMQ and async task processing.
+
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track RabbitMQ deployment
+WORKFLOW_ID="rabbitmq-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "messaging-setup" "rabbitmq-specialist" 1150 "deploy-rabbitmq-cluster"
+
+# Store RabbitMQ cluster pattern
+db_store_knowledge \
+  "rabbitmq-specialist" \
+  "cluster_config" \
+  "ha_rabbitmq_cluster" \
+  "3-node RabbitMQ cluster with HA queues. Mirrored across all nodes, auto-healing, 20K msgs/sec, < 5ms latency." \
+  "rabbitmqctl set_policy ha-all '.*' '{\"ha-mode\":\"all\",\"ha-sync-mode\":\"automatic\"}'"
+
+# Log queue backup issue
+ERROR_ID=$(db_log_error \
+  "QueueBacklog" \
+  "Queue email-notifications backed up to 100K messages, consumers can't keep up" \
+  "performance" \
+  "rabbitmq/queues/email_queue.py" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Scaled consumers from 5 to 20, added prefetch_count limit" \
+  "channel.basic_qos(prefetch_count=10)\n# Scaled consumer workers to 20" \
+  0.90
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "RabbitMQ Cluster Deployed" \
+  "RabbitMQ 3.12 HA cluster deployed. Queues: orders, notifications, events. Management UI enabled at :15672."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 94.5 0
+db_log_quality_gate "$WORKFLOW_ID" "reliability" "passed" 98.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:** Track cluster setups, HA queue configurations
+**Performance Optimization:** Log queue backlog issues, store consumer scaling strategies
+**Knowledge Sharing:** Share exchange/routing patterns, document dead letter queue setups
+**Monitoring:** Send notifications for queue depth alerts, track message rates

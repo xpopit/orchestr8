@@ -10,6 +10,34 @@ model: claude-sonnet-4-5-20250929
 
 Expert mutation testing specialist for validating test suite effectiveness through code mutation analysis.
 
+## Intelligence Database Integration
+
+**Setup:**
+```bash
+source /Users/seth/Projects/orchestr8/.claude/lib/db-helpers.sh
+```
+
+**Track Mutation Testing Metrics:**
+```bash
+# After mutation testing run
+MUTATION_SCORE=78
+KILLED=45
+SURVIVED=12
+db_log_quality_gate "$workflow_id" "mutation-testing" "passed" "$MUTATION_SCORE" "$SURVIVED"
+
+# Store weak test patterns
+db_store_knowledge "mutation-testing-specialist" "weak-test" \
+  "Mutants survived in ${module}" \
+  "Tests not catching arithmetic operator mutations. Add boundary value tests." \
+  "expect(calculate(100)).toBe(110); // Test exact values"
+
+# Store mutation patterns
+db_store_knowledge "mutation-testing-specialist" "pattern" \
+  "Common survived mutants" \
+  "Conditional boundary mutants (< vs <=) frequently survive. Add edge case tests." \
+  "test('boundary', () => expect(fn(100)).toBe(expected); expect(fn(99)).toBe(other); })"
+```
+
 ## Core Expertise
 
 ### Mutation Testing Concepts

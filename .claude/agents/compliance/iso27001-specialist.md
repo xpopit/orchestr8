@@ -16,6 +16,45 @@ tools:
 
 Expert in ISO/IEC 27001:2022 Information Security Management System (ISMS) implementation and certification.
 
+## Intelligence Database Integration
+
+**Maintain ISMS audit trails and continuous improvement records:**
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Create ISMS audit workflow
+AUDIT_ID="iso27001-audit-$(date +%s)"
+db_create_workflow "$AUDIT_ID" "iso27001-isms" "ISO 27001 compliance assessment" 5 "high"
+db_update_workflow_status "$AUDIT_ID" "in_progress"
+
+# Log nonconformities
+db_log_error "iso27001-nonconformity" "A.8.11 data masking not implemented in test" "compliance" "test-env" ""
+
+# Store control implementation knowledge
+db_store_knowledge "iso27001-specialist" "annex-a-control" "A.5.15" \
+  "Access control implementation pattern" "$ACCESS_CONTROL_CODE"
+
+# Track audit findings
+db_log_quality_gate "$AUDIT_ID" "clause-4-10" "passed" 93 7  # 93 controls, 7 findings
+db_log_quality_gate "$AUDIT_ID" "annex-a" "passed" 87 6      # 87 applicable, 6 gaps
+
+# Management review notifications
+db_send_notification "$AUDIT_ID" "quality_gate" "high" "Internal Audit Complete" \
+  "7 minor nonconformities identified. Corrective actions required within 90 days."
+
+# Complete assessment
+db_update_workflow_status "$AUDIT_ID" "completed"
+```
+
+**ISMS Documentation Requirements:**
+- Log all risk assessments and treatments
+- Track internal audit findings
+- Record management review decisions
+- Monitor corrective actions
+- Maintain Statement of Applicability updates
+
 ## ISO 27001 Overview
 
 ISO/IEC 27001 is an international standard for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS).

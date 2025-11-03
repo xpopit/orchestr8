@@ -319,4 +319,81 @@ db.documents.aggregate([
 }
 ```
 
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track MongoDB deployment
+WORKFLOW_ID="mongodb-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "database-setup" "mongodb-specialist" 1200 "provision-mongodb"
+
+# Store sharding configuration knowledge
+db_store_knowledge \
+  "mongodb-specialist" \
+  "sharding_pattern" \
+  "user_data_sharding" \
+  "Sharded collection by user_id (hashed). 3 shards, 3-node replica sets each. Handles 100K+ writes/sec." \
+  "sh.enableSharding('mydb')\nsh.shardCollection('mydb.users', { user_id: 'hashed' })"
+
+# Log aggregation pipeline optimization
+ERROR_ID=$(db_log_error \
+  "SlowAggregation" \
+  "Aggregation pipeline taking 8000ms on orders collection" \
+  "performance" \
+  "pipelines/order_analytics.js" \
+  NULL)
+
+db_resolve_error "$ERROR_ID" \
+  "Added compound index on (status, created_at) and optimized \$match stage ordering" \
+  "db.orders.createIndex({ status: 1, created_at: -1 })" \
+  0.92
+
+# Query similar aggregation issues
+db_find_similar_errors "slow aggregation pipeline" 5
+
+# Store Atlas configuration
+db_store_knowledge \
+  "mongodb-specialist" \
+  "cloud_config" \
+  "atlas_production_cluster" \
+  "M40 cluster, 3 regions (US-EAST, EU-WEST, AP-SOUTH), auto-scaling 40-80 capacity. 99.95% uptime." \
+  "Cluster Tier: M40\nRegions: 3\nBackup: Every 6h, 7 day retention\nMonitoring: Cloud Manager enabled"
+
+# Send deployment notification
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "MongoDB Cluster Deployed" \
+  "MongoDB 7.0 sharded cluster deployed across 3 regions. Replication sets active, monitoring enabled."
+
+# Log quality gates
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 95.5 0
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 98.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:**
+- Track sharding and replica set configurations
+- Store Atlas cluster configurations
+- Log index creation and optimization metrics
+
+**Performance Optimization:**
+- Log slow aggregation pipelines
+- Store optimized query patterns
+- Document index strategies for common queries
+
+**Knowledge Sharing:**
+- Share sharding key selection strategies
+- Document replica set topologies
+- Store change stream patterns
+
+**Monitoring:**
+- Send notifications for shard rebalancing events
+- Track query performance metrics
+- Log replica set failover events
+
 Deliver production-ready MongoDB deployments with optimal performance and scalability.

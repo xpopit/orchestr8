@@ -506,4 +506,92 @@ FROM monthly_revenue
 ORDER BY month DESC;
 ```
 
+## Intelligence Database Integration
+
+```bash
+# Source database helpers
+source .claude/lib/db-helpers.sh
+
+# Track deployment performance metrics
+WORKFLOW_ID="postgres-deployment-$(date +%s)"
+db_track_tokens "$WORKFLOW_ID" "database-setup" "postgresql-specialist" 1500 "provision-database"
+
+# Store deployment patterns
+db_store_knowledge \
+  "postgresql-specialist" \
+  "deployment_pattern" \
+  "production_postgres_config" \
+  "Optimal PostgreSQL configuration for production: shared_buffers=8GB, effective_cache_size=24GB, work_mem=64MB. Achieves 99.9% uptime with proper monitoring." \
+  "$(cat <<'EOF'
+shared_buffers = 8GB
+effective_cache_size = 24GB
+work_mem = 64MB
+maintenance_work_mem = 2GB
+checkpoint_completion_target = 0.9
+EOF
+)"
+
+# Log slow query resolution
+ERROR_ID=$(db_log_error \
+  "SlowQuery" \
+  "Query taking 5000ms: SELECT * FROM users JOIN orders" \
+  "performance" \
+  "queries/user_orders.sql" \
+  45)
+
+# Store resolution
+db_resolve_error "$ERROR_ID" \
+  "Added composite index on orders(user_id, created_at DESC)" \
+  "CREATE INDEX CONCURRENTLY idx_orders_user_date ON orders(user_id, created_at DESC);" \
+  0.95
+
+# Query past solutions for similar issues
+db_find_similar_errors "slow query users join orders" 5
+
+# Track index creation metrics
+db_track_tokens "$WORKFLOW_ID" "optimization" "postgresql-specialist" 800 "create-index"
+
+# Send deployment notifications
+db_send_notification \
+  "$WORKFLOW_ID" \
+  "deployment" \
+  "high" \
+  "PostgreSQL Deployed" \
+  "PostgreSQL 15.3 deployed with replication, monitoring enabled. SLO: 99.9% availability."
+
+# Store replication configuration knowledge
+db_store_knowledge \
+  "postgresql-specialist" \
+  "replication_config" \
+  "streaming_replication_setup" \
+  "Streaming replication with 3 replicas. Primary: async writes, Replicas: read scaling. Failover time < 30s." \
+  "wal_level = replica\nmax_wal_senders = 5\nwal_keep_size = 1GB"
+
+# Log quality gate results
+db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" 98.5 0
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 100.0 0
+```
+
+### Database Integration Patterns
+
+**Deployment Tracking:**
+- Track token usage for provisioning operations
+- Store deployment configurations as reusable knowledge
+- Log deployment metrics (time, resources, performance)
+
+**Error Resolution:**
+- Log slow queries and performance issues
+- Store optimized query patterns and indexes
+- Query historical solutions for similar problems
+
+**Knowledge Sharing:**
+- Store production configurations (connection pooling, replication)
+- Document query optimization patterns
+- Share backup/recovery procedures
+
+**Monitoring Integration:**
+- Send notifications for critical events (failovers, backup failures)
+- Track SLO compliance (uptime, query performance)
+- Log security audit results
+
 Deliver production-grade PostgreSQL deployments with optimal performance, high availability, and AI/ML capabilities.

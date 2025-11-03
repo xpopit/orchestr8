@@ -7,6 +7,26 @@ argumentHint: "[bug-description]"
 
 Autonomous bug fixing from reproduction to production deployment with root cause analysis and regression prevention.
 
+## Database Intelligence Integration
+
+**At workflow start:**
+```bash
+source /Users/seth/Projects/orchestr8/.claude/lib/db-helpers.sh
+
+# Create workflow record
+WORKFLOW_ID="fix-bug-$(date +%s)"
+db_create_workflow "$WORKFLOW_ID" "fix-bug" "$*" 5 "high"
+db_update_workflow_status "$WORKFLOW_ID" "in_progress"
+
+# Check for similar past bugs (learn from history!)
+echo "=== Searching for similar past bugs ==="
+BUG_PATTERN=$(echo "$*" | head -c 100)
+db_find_similar_errors "$BUG_PATTERN" 5
+
+# Query past bug fix workflows for estimation
+db_find_similar_workflows "fix-bug" 5
+```
+
 ## Execution Instructions
 
 ### Phase 1: Bug Triage & Reproduction (15%)
@@ -46,6 +66,26 @@ Autonomous bug fixing from reproduction to production deployment with root cause
    ```
 
 **CHECKPOINT**: Bug reproduced with failing test ✓
+
+```bash
+# Log the error to database
+ERROR_TYPE=$(determine_error_type)
+ERROR_MSG=$(extract_error_message)
+CATEGORY=$(categorize_error)  # e.g., "sql", "authentication", "validation"
+FILE_PATH=$(get_affected_file)
+LINE_NUM=$(get_error_line)
+
+ERROR_ID=$(db_log_error "$ERROR_TYPE" "$ERROR_MSG" "$CATEGORY" "$FILE_PATH" "$LINE_NUM")
+echo "Error logged with ID: $ERROR_ID"
+
+# Send notification for critical bugs
+SEVERITY=$(assess_bug_severity)
+if [ "$SEVERITY" = "critical" ]; then
+  db_send_notification "$WORKFLOW_ID" "bug_critical" "urgent" \
+    "Critical Bug Reproduced" \
+    "Bug affects: ${CATEGORY}. Requires immediate attention."
+fi
+```
 
 ### Phase 2: Root Cause Analysis (20%)
 
@@ -167,6 +207,16 @@ Autonomous bug fixing from reproduction to production deployment with root cause
    ```
 
 **CHECKPOINT**: All quality gates passed ✓
+
+```bash
+# Log quality gates for bug fix
+db_log_quality_gate "$WORKFLOW_ID" "regression_test" "passed" 100 0
+db_log_quality_gate "$WORKFLOW_ID" "code_review" "passed" 95 0
+db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 100 0
+
+# Track token usage for testing phase
+db_track_tokens "$WORKFLOW_ID" "testing" "test-engineer" $TEST_TOKENS "comprehensive-testing"
+```
 
 ### Phase 5: Documentation & Deployment (15%)
 
@@ -461,6 +511,50 @@ After each bug fix, document:
 ### Action Items
 - [ ] [Item 1]
 - [ ] [Item 2]
+```
+
+## Workflow Completion & Learning
+
+**At workflow end:**
+```bash
+# Mark error as resolved in database
+RESOLUTION_SUMMARY="[Brief description of fix]"
+RESOLUTION_CODE="[Key code snippet that fixed the issue]"
+CONFIDENCE=0.95  # How confident we are this fully fixes the issue
+
+db_resolve_error "$ERROR_ID" "$RESOLUTION_SUMMARY" "$RESOLUTION_CODE" $CONFIDENCE
+
+# Calculate total token usage
+TOTAL_TOKENS=$(sum_agent_token_usage)
+db_track_tokens "$WORKFLOW_ID" "completion" "orchestrator" $TOTAL_TOKENS "bug-fix-complete"
+
+# Update workflow status
+db_update_workflow_status "$WORKFLOW_ID" "completed"
+
+# Store lessons learned
+ROOT_CAUSE=$(summarize_root_cause)
+PREVENTION=$(list_prevention_measures)
+db_store_knowledge "debugger" "bug_pattern" "$CATEGORY" \
+  "Bug type: ${ERROR_TYPE}. Root cause: ${ROOT_CAUSE}. Prevention: ${PREVENTION}" \
+  "$RESOLUTION_CODE"
+
+# Get workflow metrics
+echo "=== Bug Fix Metrics ==="
+db_workflow_metrics "$WORKFLOW_ID"
+
+# Get error statistics to track improvement
+echo "=== Error Statistics (Last 30 days) ==="
+db_error_stats 30
+
+# Send completion notification
+DURATION=$(calculate_workflow_duration)
+db_send_notification "$WORKFLOW_ID" "workflow_complete" "high" \
+  "Bug Fixed & Deployed" \
+  "Bug resolved in ${DURATION} minutes. Root cause: ${ROOT_CAUSE}. Confidence: ${CONFIDENCE}"
+
+# Display token usage
+echo "=== Token Usage Report ==="
+db_token_savings "$WORKFLOW_ID"
 ```
 
 This workflow ensures every bug is fixed properly, thoroughly tested, and learned from. Autonomous, comprehensive, and production-ready.

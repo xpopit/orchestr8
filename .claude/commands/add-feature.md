@@ -11,6 +11,22 @@ You are orchestrating the complete implementation of a new feature from requirem
 
 Use the `feature-orchestrator` agent to coordinate this entire workflow.
 
+## Database Intelligence Integration
+
+**At workflow start, source the database helpers:**
+```bash
+source /Users/seth/Projects/orchestr8/.claude/lib/db-helpers.sh
+
+# Create workflow record
+WORKFLOW_ID="add-feature-$(date +%s)"
+db_create_workflow "$WORKFLOW_ID" "add-feature" "$*" 4 "normal"
+db_update_workflow_status "$WORKFLOW_ID" "in_progress"
+
+# Query similar past workflows for estimation
+echo "=== Learning from past feature additions ==="
+db_find_similar_workflows "add-feature" 5
+```
+
 ## Execution Steps
 
 ### Phase 1: Analysis & Design (20%)
@@ -82,40 +98,81 @@ Execute tasks based on feature scope:
 Run all gates in parallel:
 
 1. **Code Review** - `code-reviewer`:
-   ```
-   - Clean code principles
-   - Best practices
-   - SOLID principles
-   - No code smells
+   ```bash
+   # Log quality gate
+   db_log_quality_gate "$WORKFLOW_ID" "code_review" "running"
+
+   # Run review
+   # - Clean code principles
+   # - Best practices
+   # - SOLID principles
+   # - No code smells
+
+   # Log result
+   db_log_quality_gate "$WORKFLOW_ID" "code_review" "passed" 95 0
+   db_send_notification "$WORKFLOW_ID" "quality_gate" "normal" "Code Review Passed" "Feature code meets quality standards"
    ```
 
 2. **Testing** - `test-engineer`:
-   ```
-   - Adequate test coverage (>80%)
-   - All tests passing
-   - Edge cases covered
+   ```bash
+   # Log quality gate
+   db_log_quality_gate "$WORKFLOW_ID" "testing" "running"
+
+   # Run tests
+   # - Adequate test coverage (>80%)
+   # - All tests passing
+   # - Edge cases covered
+
+   # Log result with coverage score
+   COVERAGE=$(get_test_coverage)
+   db_log_quality_gate "$WORKFLOW_ID" "testing" "passed" $COVERAGE 0
+   db_send_notification "$WORKFLOW_ID" "quality_gate" "normal" "Tests Passed" "Coverage: ${COVERAGE}%"
    ```
 
 3. **Security** - `security-auditor`:
-   ```
-   - Input validation
-   - No vulnerabilities
-   - No secrets in code
-   - OWASP compliance
+   ```bash
+   # Log quality gate
+   db_log_quality_gate "$WORKFLOW_ID" "security" "running"
+
+   # Run security checks
+   # - Input validation
+   # - No vulnerabilities
+   # - No secrets in code
+   # - OWASP compliance
+
+   ISSUES_FOUND=$(count_security_issues)
+   db_log_quality_gate "$WORKFLOW_ID" "security" "passed" 100 $ISSUES_FOUND
+   db_send_notification "$WORKFLOW_ID" "quality_gate" "high" "Security Scan Clean" "No vulnerabilities found"
    ```
 
 4. **Performance** - `performance-analyzer` (if performance-critical):
-   ```
-   - No N+1 queries
-   - Response times acceptable
-   - Bundle size reasonable (frontend)
+   ```bash
+   # Log quality gate
+   db_log_quality_gate "$WORKFLOW_ID" "performance" "running"
+
+   # Check performance
+   # - No N+1 queries
+   # - Response times acceptable
+   # - Bundle size reasonable (frontend)
+
+   PERF_SCORE=$(calculate_performance_score)
+   db_log_quality_gate "$WORKFLOW_ID" "performance" "passed" $PERF_SCORE 0
+   db_send_notification "$WORKFLOW_ID" "quality_gate" "normal" "Performance Check Passed" "Score: ${PERF_SCORE}"
    ```
 
 5. **Accessibility** - `accessibility-expert` (if UI changes):
-   ```
-   - WCAG 2.1 AA compliance
-   - Keyboard navigation
-   - Screen reader compatible
+   ```bash
+   # Log quality gate
+   db_log_quality_gate "$WORKFLOW_ID" "accessibility" "running"
+
+   # Check accessibility
+   # - WCAG 2.1 AA compliance
+   # - Keyboard navigation
+   # - Screen reader compatible
+
+   A11Y_SCORE=$(run_accessibility_audit)
+   db_log_quality_gate "$WORKFLOW_ID" "accessibility" "passed" $A11Y_SCORE 0
+   db_send_notification "$WORKFLOW_ID" "quality_gate" "normal" "Accessibility Passed" "WCAG 2.1 AA compliant"
    ```
 
 **All gates must PASS before proceeding**
@@ -201,6 +258,37 @@ The feature orchestrator will:
 ❌ Don't forget documentation
 ❌ Don't deploy without staging verification
 
+## Workflow Completion & Learning
+
+**At workflow end:**
+```bash
+# Calculate token usage across all agents
+TOTAL_TOKENS=$(sum_agent_token_usage)
+db_track_tokens "$WORKFLOW_ID" "completion" "orchestrator" $TOTAL_TOKENS "workflow-complete"
+
+# Update workflow status
+db_update_workflow_status "$WORKFLOW_ID" "completed"
+
+# Store lessons learned
+db_store_knowledge "feature-orchestrator" "best_practice" "add-feature" \
+  "Key learnings from this feature addition: [summarize what worked well, what challenges occurred, optimization opportunities]" \
+  "# Example code pattern that worked well"
+
+# Get final metrics
+echo "=== Workflow Metrics ==="
+db_workflow_metrics "$WORKFLOW_ID"
+
+# Send completion notification
+DURATION=$(calculate_workflow_duration)
+db_send_notification "$WORKFLOW_ID" "workflow_complete" "high" \
+  "Feature Added Successfully" \
+  "Feature completed in ${DURATION} minutes. All quality gates passed. Token usage: ${TOTAL_TOKENS}."
+
+# Display token savings compared to average
+echo "=== Token Usage Report ==="
+db_token_savings "$WORKFLOW_ID"
+```
+
 ## Notes
 
 - Feature orchestrator maintains context and coordinates agents
@@ -208,3 +296,4 @@ The feature orchestrator will:
 - Tests written alongside implementation (TDD preferred)
 - Parallel execution for maximum speed
 - User intervention only for major decisions
+- **Database tracks all phases, quality gates, and learnings for continuous improvement**

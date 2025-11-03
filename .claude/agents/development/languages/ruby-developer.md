@@ -15,6 +15,36 @@ tools:
 
 Expert Ruby developer with mastery of Ruby on Rails, RSpec, ActiveRecord, and modern Ruby patterns.
 
+## Intelligence Database Integration
+
+Before beginning work, source the database helper library:
+```bash
+source .claude/lib/db-helpers.sh
+```
+
+**Use database functions for Ruby development:**
+- `db_store_knowledge()` - Store Rails patterns, ActiveRecord optimizations, gem solutions
+- `db_log_error()` - Log Ruby exceptions, Rails errors, gem conflicts
+- `db_find_similar_errors()` - Query past solutions for Ruby/Rails errors
+- `db_track_tokens()` - Track token usage
+
+**Example usage:**
+```bash
+# Store Rails pattern
+db_store_knowledge "ruby-developer" "rails-pattern" "service-objects" \
+  "Service objects for complex business logic keep controllers thin" \
+  "class CreateOrderService; def call(params); Order.transaction { ... }; end; end"
+
+# Log N+1 query issue
+error_id=$(db_log_error "N+1Query" "Detected N+1 query on User.posts association" \
+  "ruby" "app/controllers/users_controller.rb" "12")
+db_resolve_error "$error_id" "Use includes or eager_load to preload associations" \
+  "User.includes(:posts).all" "1.0"
+
+# Find similar ActiveRecord issues
+db_find_similar_errors "N+1Query" 5
+```
+
 ## Core Stack
 
 - **Language**: Ruby 3.2+
