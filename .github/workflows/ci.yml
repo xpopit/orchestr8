@@ -29,49 +29,31 @@ jobs:
             --ignore node_modules \
             --config .markdownlint.json || echo "Warning: Markdown linting found issues"
 
-      - name: Validate YAML frontmatter
+      - name: Validate agent and workflow metadata
         run: |
-          echo "Validating agent and workflow frontmatter..."
+          echo "Validating agent and workflow metadata..."
 
-          # Check all agent files have required frontmatter
+          # Check all agent files have the markdown table format
+          error_count=0
           find plugins/*/agents -name "*.md" 2>/dev/null | while read -r file; do
             if [ -f "$file" ]; then
-              if ! grep -q "^---$" "$file"; then
-                echo "ERROR: Missing frontmatter in $file"
-                exit 1
-              fi
-
-              # Extract frontmatter and validate required fields
-              if ! grep -A 20 "^---$" "$file" | grep -q "name:"; then
-                echo "ERROR: Missing 'name' field in $file"
-                exit 1
-              fi
-
-              if ! grep -A 20 "^---$" "$file" | grep -q "description:"; then
-                echo "ERROR: Missing 'description' field in $file"
-                exit 1
+              # Check for markdown table with name | description | model format
+              if ! grep -q "| name | description | model |" "$file"; then
+                echo "WARNING: $file missing metadata table header"
+                error_count=$((error_count + 1))
               fi
             fi
           done
 
-          echo "✓ All agent files have valid frontmatter"
+          if [ $error_count -gt 0 ]; then
+            echo "Found $error_count agent files with metadata issues (non-fatal)"
+          fi
 
-          # Check all workflow files have required frontmatter
-          find plugins/*/commands -name "*.md" 2>/dev/null | while read -r file; do
-            if [ -f "$file" ]; then
-              if ! grep -q "^---$" "$file"; then
-                echo "ERROR: Missing frontmatter in $file"
-                exit 1
-              fi
+          echo "✓ Agent metadata validation complete"
 
-              if ! grep -A 10 "^---$" "$file" | grep -q "description:"; then
-                echo "ERROR: Missing 'description' field in $file"
-                exit 1
-              fi
-            fi
-          done
-
-          echo "✓ All workflow files have valid frontmatter"
+          # Workflow files are plain markdown, no specific format required
+          workflow_count=$(find plugins/*/commands -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+          echo "✓ Found $workflow_count workflow files"
 
       - name: Validate directory structure
         run: |

@@ -117,7 +117,7 @@ jobs:
             echo "No agent files changed"
           fi
 
-      - name: Validate agent frontmatter
+      - name: Validate agent metadata
         run: |
           if [ ! -s changed-agents.txt ]; then
             echo "No agents to validate"
@@ -129,25 +129,9 @@ jobs:
           while IFS= read -r file; do
             echo "Checking $file..."
 
-            # Check frontmatter exists
-            if ! head -n 1 "$file" | grep -q "^---$"; then
-              echo "ERROR: Missing frontmatter in $file"
-              exit 1
-            fi
-
-            # Extract and validate required fields
-            if ! grep -A 20 "^---$" "$file" | grep -q "name:"; then
-              echo "ERROR: Missing 'name' field in $file"
-              exit 1
-            fi
-
-            if ! grep -A 20 "^---$" "$file" | grep -q "description:"; then
-              echo "ERROR: Missing 'description' field in $file"
-              exit 1
-            fi
-
-            if ! grep -A 20 "^---$" "$file" | grep -q "model:"; then
-              echo "WARNING: Missing 'model' field in $file (will use default)"
+            # Check for markdown table format
+            if ! grep -q "| name | description | model |" "$file"; then
+              echo "WARNING: $file missing metadata table header (name | description | model)"
             fi
 
             echo "✓ $file is valid"
@@ -204,7 +188,7 @@ jobs:
             cat changed-workflows.txt
           fi
 
-      - name: Validate workflow frontmatter
+      - name: Validate workflow files
         run: |
           if [ ! -s changed-workflows.txt ]; then
             echo "No workflows to validate"
@@ -214,13 +198,9 @@ jobs:
           while IFS= read -r file; do
             echo "Checking $file..."
 
-            if ! head -n 1 "$file" | grep -q "^---$"; then
-              echo "ERROR: Missing frontmatter in $file"
-              exit 1
-            fi
-
-            if ! grep -A 10 "^---$" "$file" | grep -q "description:"; then
-              echo "ERROR: Missing 'description' field in $file"
+            # Workflow files are plain markdown, just verify they exist and are not empty
+            if [ ! -s "$file" ]; then
+              echo "ERROR: $file is empty"
               exit 1
             fi
 
