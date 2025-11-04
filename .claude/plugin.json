@@ -1,7 +1,7 @@
 {
   "name": "orchestr8",
-  "version": "2.4.0",
-  "description": "Enterprise-grade hierarchical multi-agent orchestration system with 72 specialized agents, 19 autonomous workflows, and 8 reusable skills",
+  "version": "2.4.1",
+  "description": "Enterprise-grade hierarchical multi-agent orchestration system with 75 specialized agents, 19 autonomous workflows, and 8 reusable skills",
   "author": "Seth Schultz",
   "license": "MIT",
   "repository": "https://github.com/seth-schultz/orchestr8",
@@ -17,7 +17,7 @@
     "infrastructure"
   ],
   "features": {
-    "agents": 72,
+    "agents": 75,
     "workflows": 19,
     "skills": 8,
     "hierarchical": true,

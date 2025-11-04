@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai)
 
-**The most comprehensive, enterprise-grade orchestration system for Claude Code** — featuring 72 specialized agents, 19 autonomous workflows, 8 reusable skills, **meta-orchestration** (self-extending plugin that creates its own agents/workflows/skills), enterprise compliance (FedRAMP, ISO 27001, SOC2, GDPR, PCI-DSS), ML/data pipelines, API design (GraphQL/gRPC), message queues (Kafka/RabbitMQ), search (Elasticsearch/Algolia), multi-cloud (AWS/Azure/GCP), and observability (Prometheus/ELK).
+**The most comprehensive, enterprise-grade orchestration system for Claude Code** — featuring 75 specialized agents, 19 autonomous workflows, 8 reusable skills, **meta-orchestration** (self-extending plugin that creates its own agents/workflows/skills), enterprise compliance (FedRAMP, ISO 27001, SOC2, GDPR, PCI-DSS), ML/data pipelines, API design (GraphQL/gRPC), message queues (Kafka/RabbitMQ), search (Elasticsearch/Algolia), multi-cloud (AWS/Azure/GCP), and observability (Prometheus/ELK).
 
 ## 🎯 What Makes This Different
 
@@ -25,7 +25,7 @@ While other projects provide agent collections, this system delivers a **complet
 
 ---
 
-## 🎉 New in v2.4.0: Phase 1 Architecture Improvements
+## 🎉 New in v2.4.1: Database Specialists + Architecture Improvements
 
 **Enterprise-Ready Features:**
 
@@ -304,10 +304,16 @@ ls .claude/
 </details>
 
 <details>
-<summary><b>🗄️ Database Specialists (3)</b> - Data storage & optimization</summary>
+<summary><b>🗄️ Database Specialists (9)</b> - Data storage & optimization</summary>
 
 - `postgresql-specialist` - Query optimization, pgvector for AI embeddings, replication, partitioning, EXPLAIN analysis
+- `mysql-specialist` - InnoDB optimization, replication (master-slave, group), partitioning, XtraBackup, full-text search
+- `oracle-specialist` - RAC, ASM, PL/SQL optimization, Data Guard, RMAN, AWR tuning, partitioning strategies
+- `sqlserver-specialist` - Always On Availability Groups, T-SQL, Query Store, SSIS/SSRS, columnstore indexes
 - `mongodb-specialist` - Aggregation pipelines, sharding, replication sets, Atlas Vector Search, change streams
+- `cassandra-specialist` - CQL, partition key design, replication strategies, compaction tuning, nodetool operations
+- `dynamodb-specialist` - Single-table design, GSI/LSI, DynamoDB Streams, DAX caching, capacity optimization
+- `neo4j-specialist` - Cypher queries, graph algorithms (PageRank, shortest path), recommendation engines, GDS library
 - `redis-specialist` - Caching strategies, pub/sub, rate limiting, session management, clustering
 
 </details>
@@ -562,12 +568,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/new-project "Project description with requirements"
+/orchestr8:new-project "Project description with requirements"
 ```
 
 **Example:**
 ```bash
-/new-project "Build an e-commerce API with:
+/orchestr8:new-project "Build an e-commerce API with:
 - User authentication (OAuth2 + JWT)
 - Product catalog with search and filters
 - Shopping cart and checkout
@@ -598,12 +604,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/add-feature "Feature description with acceptance criteria"
+/orchestr8:add-feature "Feature description with acceptance criteria"
 ```
 
 **Example:**
 ```bash
-/add-feature "Add two-factor authentication with:
+/orchestr8:add-feature "Add two-factor authentication with:
 - SMS verification option
 - Authenticator app (TOTP) option
 - Backup codes (10 codes)
@@ -662,7 +668,7 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Example:**
 ```bash
-/optimize-performance "API response times are slow, especially /products endpoint"
+/orchestr8:optimize-performance "API response times are slow, especially /products endpoint"
 ```
 
 **What Happens:**
@@ -685,12 +691,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/refactor "Description of refactoring goal"
+/orchestr8:refactor "Description of refactoring goal"
 ```
 
 **Example:**
 ```bash
-/refactor "Extract authentication logic into reusable AuthService with proper error handling"
+/orchestr8:refactor "Extract authentication logic into reusable AuthService with proper error handling"
 ```
 
 **What Happens:**
@@ -714,12 +720,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/fix-bug "Bug description and reproduction steps"
+/orchestr8:fix-bug "Bug description and reproduction steps"
 ```
 
 **Example:**
 ```bash
-/fix-bug "Users can't login after password reset. Steps: 1) Request password reset 2) Click reset link 3) Enter new password 4) Login fails with 401 error"
+/orchestr8:fix-bug "Users can't login after password reset. Steps: 1) Request password reset 2) Click reset link 3) Enter new password 4) Login fails with 401 error"
 ```
 
 **What Happens:**
@@ -746,7 +752,7 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Example:**
 ```bash
-/deploy "production" "blue-green"
+/orchestr8:deploy "production" "blue-green"
 ```
 
 **Deployment Strategies:**
@@ -777,7 +783,7 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Example:**
 ```bash
-/test-web-ui "http://localhost:3000" --fix-issues --generate-tests
+/orchestr8:test-web-ui "http://localhost:3000" --fix-issues --generate-tests
 ```
 
 **What Happens:**
@@ -812,12 +818,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/build-ml-pipeline "ML problem description with data sources and requirements"
+/orchestr8:build-ml-pipeline "ML problem description with data sources and requirements"
 ```
 
 **Example:**
 ```bash
-/build-ml-pipeline "Build customer churn prediction model. Data in PostgreSQL. Need real-time predictions via API. Weekly retraining."
+/orchestr8:build-ml-pipeline "Build customer churn prediction model. Data in PostgreSQL. Need real-time predictions via API. Weekly retraining."
 ```
 
 **What Happens:**
@@ -853,7 +859,7 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Example:**
 ```bash
-/setup-monitoring "Kubernetes cluster with 20 microservices. Need metrics, logs, traces, and SLO monitoring with PagerDuty."
+/orchestr8:setup-monitoring "Kubernetes cluster with 20 microservices. Need metrics, logs, traces, and SLO monitoring with PagerDuty."
 ```
 
 **What Happens:**
@@ -887,12 +893,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/modernize-legacy "Description of legacy system and modernization goals"
+/orchestr8:modernize-legacy "Description of legacy system and modernization goals"
 ```
 
 **Example:**
 ```bash
-/modernize-legacy "Django 2.2 app to Django 4.2. PostgreSQL with 10M+ records. Zero downtime required."
+/orchestr8:modernize-legacy "Django 2.2 app to Django 4.2. PostgreSQL with 10M+ records. Zero downtime required."
 ```
 
 **What Happens:**
@@ -929,12 +935,12 @@ Workflows are the easiest way to accomplish complex tasks.
 
 **Syntax:**
 ```bash
-/optimize-costs "Cloud environment description and cost reduction goals"
+/orchestr8:optimize-costs "Cloud environment description and cost reduction goals"
 ```
 
 **Example:**
 ```bash
-/optimize-costs "AWS spending $50k/month. Microservices on EKS, RDS, S3 storage. Need 40% reduction."
+/orchestr8:optimize-costs "AWS spending $50k/month. Microservices on EKS, RDS, S3 storage. Need 40% reduction."
 ```
 
 **What Happens:**
@@ -1652,7 +1658,7 @@ Bug fix is complete when:
 ## Example Usage
 
 \```
-/fix-bug "Users can't upload files larger than 5MB. Getting 500 error.
+/orchestr8:fix-bug "Users can't upload files larger than 5MB. Getting 500 error.
 Error log shows 'Request Entity Too Large'. Should support up to 50MB."
 \```
 
@@ -1676,7 +1682,7 @@ Error log shows 'Request Entity Too Large'. Should support up to 50MB."
 #### Using Your Custom Workflow
 
 ```bash
-/fix-bug "Users getting timeout error when uploading large files"
+/orchestr8:fix-bug "Users getting timeout error when uploading large files"
 ```
 
 ---
@@ -1688,7 +1694,7 @@ Error log shows 'Request Entity Too Large'. Should support up to 50MB."
 **Goal:** Build a complete SaaS application for team collaboration
 
 ```bash
-/new-project "Build a team collaboration SaaS with:
+/orchestr8:new-project "Build a team collaboration SaaS with:
 - Multi-tenant architecture (separate data per team)
 - User authentication (OAuth2, Google/GitHub login)
 - Real-time chat and notifications (WebSocket)
@@ -1724,7 +1730,7 @@ Error log shows 'Request Entity Too Large'. Should support up to 50MB."
 **Goal:** Add AI-powered content moderation
 
 ```bash
-/add-feature "Implement AI content moderation with:
+/orchestr8:add-feature "Implement AI content moderation with:
 - Automatic detection of inappropriate content (text, images)
 - Content flagging with confidence scores
 - Manual review queue for moderators
@@ -1753,7 +1759,7 @@ Error log shows 'Request Entity Too Large'. Should support up to 50MB."
 **Goal:** Migrate legacy PHP application to modern stack
 
 ```bash
-/new-project "Migrate legacy PHP application to modern architecture:
+/orchestr8:new-project "Migrate legacy PHP application to modern architecture:
 
 Current State:
 - Monolithic PHP application (10 years old)
@@ -1791,12 +1797,12 @@ Target State:
 
 **❌ Bad:**
 ```
-/new-project "Build a website"
+/orchestr8:new-project "Build a website"
 ```
 
 **✅ Good:**
 ```
-/new-project "Build an e-commerce website with:
+/orchestr8:new-project "Build an e-commerce website with:
 - User registration and authentication
 - Product catalog with 10,000+ items
 - Search with filters (price, category, ratings)
@@ -2139,7 +2145,7 @@ Built on research and inspiration from:
 git clone https://github.com/seth-schultz/orchestr8 .claude
 
 # Start building
-/new-project "Your amazing idea here"
+/orchestr8:new-project "Your amazing idea here"
 ```
 
 **Welcome to autonomous software engineering.** 🚀

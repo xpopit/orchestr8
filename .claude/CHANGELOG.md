@@ -5,6 +5,73 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.1] - 2025-11-04
+
+### 🗄️ Database Specialists
+
+**New Database Agents (6 agents)**
+- **mysql-specialist** - Expert MySQL database specialist for performance tuning, replication, InnoDB optimization, and production database management
+  - Query optimization with EXPLAIN analysis
+  - InnoDB buffer pool tuning and transaction optimization
+  - Master-slave and group replication setup
+  - Connection pooling with mysql2 and mysqlconnector
+  - Partitioning strategies (range, hash, list)
+  - Full-text search and spatial indexes
+  - Backup/restore with mysqldump and Percona XtraBackup
+  - Production configuration tuning
+
+- **oracle-specialist** - Expert Oracle Database specialist for RAC, ASM, PL/SQL optimization, and enterprise deployments
+  - Execution plan analysis with AWR reports
+  - PL/SQL optimization with BULK COLLECT and pipelined functions
+  - Real Application Clusters (RAC) configuration
+  - Automatic Storage Management (ASM)
+  - Partitioning strategies (range, list, hash, composite)
+  - Data Guard and GoldenGate for high availability
+  - RMAN backup and point-in-time recovery
+  - Virtual Private Database and Transparent Data Encryption
+
+- **sqlserver-specialist** - Expert SQL Server specialist for Always On, T-SQL, SSIS/SSRS, and enterprise database management
+  - Execution plan analysis with DMVs
+  - T-SQL stored procedures with error handling
+  - Always On Availability Groups configuration
+  - Query Store for performance monitoring
+  - Partitioning and columnstore indexes
+  - Backup strategies with compression and Azure integration
+  - Dynamic Data Masking and Always Encrypted
+  - Integration Services (SSIS) and Reporting Services (SSRS)
+
+- **cassandra-specialist** - Expert Apache Cassandra specialist for distributed NoSQL, CQL, and massive scale deployments
+  - Query-first data modeling with partition keys
+  - CQL query optimization and best practices
+  - Replication strategies (NetworkTopologyStrategy)
+  - Consistency level tuning (QUORUM, LOCAL_QUORUM)
+  - Compaction strategies (STCS, LCS, TWCS)
+  - Node.js and Python driver integration
+  - Nodetool commands for cluster management
+  - Backup and snapshot management
+
+- **dynamodb-specialist** - Expert AWS DynamoDB specialist for NoSQL, serverless architecture, and single-table design
+  - Single-table design patterns with PK/SK
+  - Global Secondary Indexes (GSI) and sparse indexes
+  - DynamoDB Streams for event-driven architecture
+  - AWS SDK v3 for Node.js with transactions
+  - DAX caching for microsecond latency
+  - TTL (Time To Live) for automatic cleanup
+  - On-demand vs provisioned capacity optimization
+  - PartiQL for SQL-like queries
+
+- **neo4j-specialist** - Expert Neo4j graph database specialist for Cypher, graph algorithms, and network analysis
+  - Graph data modeling with nodes and relationships
+  - Cypher query optimization and pattern matching
+  - Recommendation engine patterns (collaborative filtering)
+  - Graph algorithms (PageRank, community detection, shortest path)
+  - Neo4j Graph Data Science (GDS) library
+  - Node.js and Python driver integration
+  - Causal clustering for high availability
+  - Full-text and spatial indexes
+
+**Total Agent Count: 75 specialized agents**
+
 ## [2.4.0] - 2025-11-04
 
 ### 🎯 Explicit Task Tool Delegation Pattern (BREAKTHROUGH IMPROVEMENT)
