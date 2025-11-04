@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| code-reviewer | Performs comprehensive code reviews checking for best practices, clean code principles, security issues, performance problems, and maintainability. Use after implementation to validate code quality before merging or deployment. | sonnet |
+---
+name: code-reviewer
+description: Performs comprehensive code reviews checking for best practices, clean code principles, security issues, performance problems, and maintainability. Use after implementation to validate code quality before merging or deployment.
+model: sonnet
+---
 
 # Code Reviewer Agent
 

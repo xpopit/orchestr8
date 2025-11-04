@@ -1,0 +1,9 @@
+{
+  "name": "infrastructure-messaging",
+  "version": "4.0.0",
+  "description": "Message queue specialists for Apache Kafka and RabbitMQ (2 agents)",
+  "author": {
+    "name": "Seth Schultz",
+    "email": "orchestr8@sethschultz.com"
+  }
+}

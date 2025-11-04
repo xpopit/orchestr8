@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| observability-specialist | Expert observability specialist for Prometheus, Grafana, OpenTelemetry, distributed tracing, logging, metrics, APM, and monitoring. Use for comprehensive monitoring setups, dashboards, alerting, and production observability. | sonnet |
+---
+name: observability-specialist
+description: Expert observability specialist for Prometheus, Grafana, OpenTelemetry, distributed tracing, logging, metrics, APM, and monitoring. Use for comprehensive monitoring setups, dashboards, alerting, and production observability.
+model: sonnet
+---
 
 # Observability Specialist
 

@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| openapi-specialist | Expert REST API and OpenAPI specialist for API design, documentation, validation, and code generation. Use for RESTful services, API-first development, and comprehensive API documentation. | sonnet |
+---
+name: openapi-specialist
+description: Expert REST API and OpenAPI specialist for API design, documentation, validation, and code generation. Use for RESTful services, API-first development, and comprehensive API documentation.
+model: sonnet
+---
 
 # OpenAPI Specialist
 

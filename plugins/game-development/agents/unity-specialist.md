@@ -1,8 +1,8 @@
-| Attribute | Value |
-|-----------|-------|
-| name | unity-specialist |
-| description | Expert Unity game engine developer specializing in C# scripting, Unity Editor, physics, animations, UI, multiplayer, and platform deployment |
-| model | sonnet |
+---
+name: unity-specialist
+description: Expert Unity game engine developer specializing in C# scripting, Unity Editor, physics, animations, UI, multiplayer, and platform deployment
+model: sonnet
+---
 
 # Unity Specialist
 

@@ -1,0 +1,9 @@
+{
+  "name": "infrastructure-monitoring",
+  "version": "4.0.0",
+  "description": "Monitoring and observability specialists for Prometheus/Grafana, ELK Stack, OpenTelemetry, and SRE practices (4 agents)",
+  "author": {
+    "name": "Seth Schultz",
+    "email": "orchestr8@sethschultz.com"
+  }
+}

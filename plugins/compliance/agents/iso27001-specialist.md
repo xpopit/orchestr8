@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| iso27001-specialist | Expert ISO/IEC 27001 Information Security Management System (ISMS) compliance specialist. Ensures compliance with ISO 27001:2022 standards, Annex A controls, risk assessment, and certification audit processes. Use for international security certifications and ISMS implementation. | sonnet |
+---
+name: iso27001-specialist
+description: Expert ISO/IEC 27001 Information Security Management System (ISMS) compliance specialist. Ensures compliance with ISO 27001:2022 standards, Annex A controls, risk assessment, and certification audit processes. Use for international security certifications and ISMS implementation.
+model: sonnet
+---
 
 # ISO 27001 Compliance Specialist
 

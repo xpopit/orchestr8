@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai)
 
-**The most comprehensive, enterprise-grade orchestration system for Claude Code** — featuring 75 specialized agents across 18 modular plugins, 19 autonomous workflows, 4 reusable skills, **opt-in plugin loading** (install only what you need), **meta-orchestration** (self-extending plugin that creates its own agents/workflows/skills), enterprise compliance (FedRAMP, ISO 27001, SOC2, GDPR, PCI-DSS), ML/data pipelines, API design (GraphQL/gRPC), message queues (Kafka/RabbitMQ), search (Elasticsearch/Algolia), multi-cloud (AWS/Azure/GCP), and observability (Prometheus/ELK).
+**The most comprehensive, enterprise-grade orchestration system for Claude Code** — featuring 74 specialized agents across 18 modular plugins, 19 autonomous workflows, 4 reusable skills, **opt-in plugin loading** (install only what you need), **meta-orchestration** (self-extending plugin that creates its own agents/workflows/skills), enterprise compliance (FedRAMP, ISO 27001, SOC2, GDPR, PCI-DSS), ML/data pipelines, API design (GraphQL/gRPC), message queues (Kafka/RabbitMQ), search (Elasticsearch/Algolia), multi-cloud (AWS/Azure/GCP), and observability (Prometheus/ELK).
 
 ## 🎯 What Makes This Different
 
@@ -61,11 +61,13 @@ tools: [Read, Write, Edit, Bash]
 ---
 ```
 
-**New Format (v3.0):**
+**New Format (v4.0.0 - Claude Code Compatible):**
 ```markdown
-| name | description | model |
-|------|-------------|-------|
-| python-developer | Expert Python developer... | sonnet |
+---
+name: python-developer
+description: Expert Python developer...
+model: sonnet
+---
 ```
 
 ### 📦 Available Plugins
@@ -82,7 +84,7 @@ tools: [Read, Write, Edit, Bash]
 | `compliance` | 5 | 0 | FedRAMP, ISO 27001, SOC2, GDPR, PCI-DSS |
 | ... and 10 more | 27 | 3 | Infrastructure, mobile, game dev, etc. |
 
-**Total: 75 agents, 19 workflows across 18 plugins**
+**Total: 74 agents, 19 workflows across 18 plugins**
 
 ### ⚠️ Breaking Changes from v2.x
 - Agent frontmatter format changed (YAML → markdown table)
@@ -266,7 +268,7 @@ ls .claude/
 └─────────────────────────────────────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────────┐
-│ Layer 2: Specialized Agents (72+)                          │
+│ Layer 2: Specialized Agents (74)                           │
 │ Dev, API, Testing, Messaging, SRE, DBs, Search, Cloud      │
 └─────────────────────────────────────────────────────────────┘
                           ↓
@@ -1130,14 +1132,7 @@ Agents are defined as Markdown files with YAML frontmatter.
 ---
 name: mobile-developer
 description: Expert mobile developer specializing in iOS (Swift), Android (Kotlin), and React Native. Use for mobile app development, native features, app store deployment, and mobile-specific optimization.
-model: claude-sonnet-4-5
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Glob
-  - Grep
+model: sonnet
 ---
 
 # Mobile Developer Agent
@@ -1591,7 +1586,7 @@ Workflows orchestrate multiple agents to complete complex tasks.
 ```markdown
 ---
 description: Reproduce, fix, and validate bugs with regression tests
-argumentHint: "[bug-description]"
+argument-hint: "[bug-description]"
 ---
 
 # Bug Fix Workflow
@@ -2162,7 +2157,7 @@ We welcome contributions! Here's how:
 
 ## 📊 Project Stats
 
-- **72+ Agents** across 4 layers
+- **74 Agents** across 4 layers
 - **12,000+ Lines** of documentation and agent definitions
 - **11 Languages** with specialized developers (Python, TypeScript, Java, Go, Rust, C#, Swift, Kotlin, Ruby, PHP, C++)
 - **5 Quality Gates** for enterprise standards

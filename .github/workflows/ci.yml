@@ -31,25 +31,31 @@ jobs:
 
       - name: Validate agent and workflow metadata
         run: |
-          echo "Validating agent and workflow metadata..."
-
-          # Check all agent files have the markdown table format
-          error_count=0
+          echo "Validating agent frontmatter format..."
           find plugins/*/agents -name "*.md" 2>/dev/null | while read -r file; do
-            if [ -f "$file" ]; then
-              # Check for markdown table with name | description | model format
-              if ! grep -q "| name | description | model |" "$file"; then
-                echo "WARNING: $file missing metadata table header"
-                error_count=$((error_count + 1))
-              fi
+            # Check for YAML frontmatter delimiters
+            if ! head -1 "$file" | grep -q "^---$"; then
+              echo "ERROR: $file missing YAML frontmatter"
+              exit 1
+            fi
+
+            # Validate required fields exist
+            if ! grep -q "^name:" "$file"; then
+              echo "ERROR: $file missing 'name' field in frontmatter"
+              exit 1
+            fi
+
+            if ! grep -q "^description:" "$file"; then
+              echo "ERROR: $file missing 'description' field in frontmatter"
+              exit 1
+            fi
+
+            if ! grep -q "^model:" "$file"; then
+              echo "ERROR: $file missing 'model' field in frontmatter"
+              exit 1
             fi
           done
-
-          if [ $error_count -gt 0 ]; then
-            echo "Found $error_count agent files with metadata issues (non-fatal)"
-          fi
-
-          echo "✓ Agent metadata validation complete"
+          echo "✓ All agents have valid YAML frontmatter"
 
           # Workflow files are plain markdown, no specific format required
           workflow_count=$(find plugins/*/commands -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
@@ -105,14 +111,23 @@ jobs:
           done
 
           # Check that each plugin has required structure
+          echo "Validating plugin structure..."
           for plugin_dir in plugins/*/; do
             plugin_name=$(basename "$plugin_dir")
-            plugin_json="$plugin_dir/plugin.json"
+            plugin_json="$plugin_dir/.claude-plugin/plugin.json"
 
             if [ ! -f "$plugin_json" ]; then
-              echo "WARNING: Plugin $plugin_name missing plugin.json"
+              echo "ERROR: Plugin $plugin_name missing .claude-plugin/plugin.json"
+              exit 1
+            fi
+
+            # Validate plugin.json has required fields
+            if ! jq -e '.name' "$plugin_json" > /dev/null 2>&1; then
+              echo "ERROR: Plugin $plugin_name plugin.json missing 'name' field"
+              exit 1
             fi
           done
+          echo "✓ All plugins have valid structure"
 
           echo "✓ All required files present"
 

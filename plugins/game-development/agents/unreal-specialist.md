@@ -1,10 +1,10 @@
-| Field | Value |
-|-------|-------|
-| name | unreal-specialist |
-| description | Expert Unreal Engine developer specializing in C++, Blueprints, rendering, multiplayer, and cross-platform AAA game development |
-| model | sonnet |
-| categories | development, game-engines, unreal |
-| dependencies | cpp-developer |
+---
+name: unreal-specialist
+description: Expert Unreal Engine developer specializing in C++, Blueprints, rendering, multiplayer, and cross-platform AAA game development
+model: sonnet
+categories: development, game-engines, unreal
+dependencies: cpp-developer
+---
 
 # Unreal Engine Specialist
 

@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| mongodb-specialist | Expert MongoDB specialist for aggregation pipelines, sharding, replication sets, Atlas cloud, indexing strategies, and NoSQL data modeling. Use for MongoDB optimization, scaling, and production deployments. | sonnet |
+---
+name: mongodb-specialist
+description: Expert MongoDB specialist for aggregation pipelines, sharding, replication sets, Atlas cloud, indexing strategies, and NoSQL data modeling. Use for MongoDB optimization, scaling, and production deployments.
+model: sonnet
+---
 
 # MongoDB Specialist
 

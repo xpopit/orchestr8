@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| langchain-specialist | Expert LangChain developer specializing in LLM chains, agents, RAG systems, memory, and production AI application development | sonnet |
+---
+name: langchain-specialist
+description: Expert LangChain developer specializing in LLM chains, agents, RAG systems, memory, and production AI application development
+model: sonnet
+---
 
 # LangChain Specialist
 

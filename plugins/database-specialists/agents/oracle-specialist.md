@@ -1,8 +1,8 @@
-| Field | Value |
-|-------|-------|
-| name | oracle-specialist |
-| description | Expert Oracle Database specialist for performance tuning, RAC, ASM, PL/SQL optimization, partitioning, and enterprise database management. Use for Oracle-specific optimization, high availability, and enterprise deployments. |
-| model | sonnet |
+---
+name: oracle-specialist
+description: Expert Oracle Database specialist for performance tuning, RAC, ASM, PL/SQL optimization, partitioning, and enterprise database management. Use for Oracle-specific optimization, high availability, and enterprise deployments.
+model: sonnet
+---
 
 # Oracle Database Specialist
 

@@ -129,9 +129,26 @@ jobs:
           while IFS= read -r file; do
             echo "Checking $file..."
 
-            # Check for markdown table format
-            if ! grep -q "| name | description | model |" "$file"; then
-              echo "WARNING: $file missing metadata table header (name | description | model)"
+            # Check for YAML frontmatter delimiters
+            if ! head -1 "$file" | grep -q "^---$"; then
+              echo "ERROR: $file missing YAML frontmatter"
+              exit 1
+            fi
+
+            # Validate required fields exist
+            if ! grep -q "^name:" "$file"; then
+              echo "ERROR: $file missing 'name' field in frontmatter"
+              exit 1
+            fi
+
+            if ! grep -q "^description:" "$file"; then
+              echo "ERROR: $file missing 'description' field in frontmatter"
+              exit 1
+            fi
+
+            if ! grep -q "^model:" "$file"; then
+              echo "ERROR: $file missing 'model' field in frontmatter"
+              exit 1
             fi
 
             echo "✓ $file is valid"

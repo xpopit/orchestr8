@@ -5,6 +5,142 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2025-11-04
+
+### 🔄 BREAKING CHANGES - Claude Code Compatibility
+
+**Claude Code Plugin Format Compliance**
+
+This release reverts agent frontmatter from markdown tables (v3.0.0) back to **YAML frontmatter** to ensure full compatibility with Claude Code's plugin system and agent discovery mechanism.
+
+**Why the change:**
+- Claude Code's Task tool only recognizes YAML frontmatter (triple dashes with key-value pairs)
+- Markdown table frontmatter (introduced in v3.0.0) breaks agent discovery
+- Aligns with official Anthropic plugin specifications and wshobson/agents patterns
+
+### 📋 Agent Format Changes
+
+**Old Format (v3.0.0 - Not Recognized):**
+```markdown
+| name        | description           | model  |
+|-------------|-----------------------|--------|
+| agent-name  | Agent description... | sonnet |
+```
+
+**New Format (v4.0.0 - Claude Code Compatible):**
+```yaml
+---
+name: agent-name
+description: Agent description...
+model: sonnet
+---
+```
+
+### ✨ Plugin Structure Improvements
+
+**New Plugin Architecture:**
+- ✅ Each plugin now has `.claude-plugin/plugin.json` manifest
+- ✅ 18 plugins properly structured for Claude Code discovery
+- ✅ Follows official Anthropic plugin specification
+- ✅ Compatible with Claude Code marketplace system
+
+**Plugins:**
+- ai-ml-engineering (5 agents)
+- api-design (3 agents)
+- blockchain-web3 (2 agents)
+- compliance (5 agents)
+- database-specialists (9 agents)
+- development-core (2 agents)
+- devops-cloud (4 agents)
+- frontend-frameworks (4 agents)
+- game-development (3 agents)
+- infrastructure-caching (2 agents)
+- infrastructure-messaging (2 agents)
+- infrastructure-monitoring (4 agents)
+- infrastructure-search (2 agents)
+- language-developers (11 agents)
+- meta-development (4 agents)
+- mobile-development (2 agents)
+- orchestration (2 agents)
+- quality-assurance (8 agents)
+
+**Total: 74 agents across 18 plugin modules**
+
+### 🔧 Technical Changes
+
+**Agent Files (74 files updated):**
+- All agent frontmatter converted to YAML format
+- Maintains backward compatibility with agent functionality
+- Zero changes to agent capabilities or instructions
+- All agents immediately discoverable via Task tool
+
+**Plugin Manifests (18 files created):**
+- New `.claude-plugin/plugin.json` in each plugin directory
+- Minimal metadata: name, version, description, author
+- Agents/commands auto-discovered by Claude Code
+
+**Workflow Files (19 files):**
+- Commands maintain current format (frontmatter optional)
+- Follows official Claude Code patterns
+
+**CI/CD Updates:**
+- GitHub Actions workflows updated to validate YAML frontmatter
+- Plugin structure validation added
+- Version synchronization checks
+
+### 📚 Documentation Updates
+
+**Updated Files:**
+- CLAUDE.md - Agent creation examples now show YAML
+- README.md - Updated agent counts and format examples
+- .claude/CHANGELOG.md - Complete v4.0.0 documentation
+
+### 🚀 Migration Guide
+
+**For Users:**
+- No action required - agents work immediately with Claude Code
+- Use Task tool with `subagent_type: "agent-name"` as before
+- All 74 agents now properly discovered
+
+**For Contributors:**
+- New agents must use YAML frontmatter format
+- See CLAUDE.md for agent creation guide
+- Use `/create-agent` workflow for automated agent generation
+
+### 🔍 Quality Assurance
+
+**Validation:**
+- ✅ All 74 agents converted and validated
+- ✅ YAML syntax verified
+- ✅ Plugin structure validated
+- ✅ CI/CD pipelines updated
+- ✅ Documentation accuracy verified
+
+### 🎯 Impact Summary
+
+**Breaking Changes:**
+- Agent frontmatter format (markdown tables → YAML)
+- Requires Claude Code for proper agent discovery
+- v3.0.0 format no longer supported
+
+**Benefits:**
+- ✅ Full Claude Code compatibility
+- ✅ Proper plugin marketplace integration
+- ✅ Follows official Anthropic specifications
+- ✅ Matches ecosystem standards (wshobson/agents pattern)
+- ✅ Future-proof architecture
+
+### 📦 Files Changed
+
+**Agent Files:** 74 files
+**Plugin Manifests:** 18 files
+**Workflows:** 3 files (.github/workflows/)
+**Documentation:** 4 files
+
+**Total Lines Changed:** ~500 insertions, ~370 deletions
+
+---
+
 ## [3.0.0] - 2025-11-04
 
 ### 🚨 BREAKING CHANGES

@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| mysql-specialist | Expert MySQL database specialist for performance tuning, replication, InnoDB optimization, query optimization, and production database management. Use for MySQL-specific optimization, scaling, and troubleshooting. | sonnet |
+---
+name: mysql-specialist
+description: Expert MySQL database specialist for performance tuning, replication, InnoDB optimization, query optimization, and production database management. Use for MySQL-specific optimization, scaling, and troubleshooting.
+model: sonnet
+---
 
 # MySQL Specialist
 

@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| fullstack-developer | Expert full-stack developer capable of implementing complete features spanning frontend, backend, database, and integration. Use when features require coordinated frontend and backend changes, complex integrations, or when you need a single agent to own an entire feature end-to-end. | sonnet |
+---
+name: fullstack-developer
+description: Expert full-stack developer capable of implementing complete features spanning frontend, backend, database, and integration. Use when features require coordinated frontend and backend changes, complex integrations, or when you need a single agent to own an entire feature end-to-end.
+model: sonnet
+---
 
 # Full-Stack Developer Agent
 

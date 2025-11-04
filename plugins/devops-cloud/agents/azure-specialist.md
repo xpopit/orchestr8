@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| azure-specialist | Expert Microsoft Azure cloud architect specializing in App Service, Functions, Storage, Cosmos DB, AKS, and Azure DevOps. Use for Azure deployments, serverless, and enterprise integrations. | sonnet |
+---
+name: azure-specialist
+description: Expert Microsoft Azure cloud architect specializing in App Service, Functions, Storage, Cosmos DB, AKS, and Azure DevOps. Use for Azure deployments, serverless, and enterprise integrations.
+model: sonnet
+---
 
 # Azure Specialist
 

@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| web3-specialist | Expert Web3 developer specializing in dApp development, wallet integration, blockchain interaction, and decentralized application architecture | sonnet |
+---
+name: web3-specialist
+description: Expert Web3 developer specializing in dApp development, wallet integration, blockchain interaction, and decentralized application architecture
+model: sonnet
+---
 
 # Web3 Application Specialist
 

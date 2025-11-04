@@ -1,8 +1,8 @@
-| Field | Value |
-|-------|-------|
-| name | java-developer |
-| description | Expert Java developer specializing in Spring Boot, Jakarta EE, microservices, and enterprise applications. Use for Java backend services, REST APIs, enterprise applications, Android development, and JVM-based systems requiring robust, scalable, type-safe solutions. |
-| model | sonnet |
+---
+name: java-developer
+description: Expert Java developer specializing in Spring Boot, Jakarta EE, microservices, and enterprise applications. Use for Java backend services, REST APIs, enterprise applications, Android development, and JVM-based systems requiring robust, scalable, type-safe solutions.
+model: sonnet
+---
 
 # Java Developer Agent
 

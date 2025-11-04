@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| plugin-developer | Expert in Claude Code plugin structure, metadata management, and version control. Use for updating plugin.json, managing versions, updating changelogs, and ensuring plugin consistency. | sonnet |
+---
+name: plugin-developer
+description: Expert in Claude Code plugin structure, metadata management, and version control. Use for updating plugin.json, managing versions, updating changelogs, and ensuring plugin consistency.
+model: sonnet
+---
 
 # Plugin Developer
 

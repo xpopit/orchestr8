@@ -1,8 +1,8 @@
-| Property | Value |
-|----------|-------|
-| name | cpp-developer |
-| description | Expert C++ developer specializing in modern C++20/23, game development, systems programming, high-performance computing, embedded systems, and cross-platform development. Use for performance-critical applications, game engines, system-level programming, and applications requiring low-level control. |
-| model | sonnet |
+---
+name: cpp-developer
+description: Expert C++ developer specializing in modern C++20/23, game development, systems programming, high-performance computing, embedded systems, and cross-platform development. Use for performance-critical applications, game engines, system-level programming, and applications requiring low-level control.
+model: sonnet
+---
 
 # C++ Developer Agent
 

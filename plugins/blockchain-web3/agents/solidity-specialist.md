@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| solidity-specialist | Expert Solidity developer specializing in smart contract development, security best practices, gas optimization, and DeFi protocols | sonnet |
+---
+name: solidity-specialist
+description: Expert Solidity developer specializing in smart contract development, security best practices, gas optimization, and DeFi protocols
+model: sonnet
+---
 
 # Solidity Specialist
 

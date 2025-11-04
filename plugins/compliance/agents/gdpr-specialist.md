@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| gdpr-specialist | Expert GDPR (General Data Protection Regulation) compliance specialist for EU data protection. Ensures compliance with data subject rights, lawful processing, privacy by design, data breach notification, and DPO requirements. Use for applications processing EU personal data. | sonnet |
+---
+name: gdpr-specialist
+description: Expert GDPR (General Data Protection Regulation) compliance specialist for EU data protection. Ensures compliance with data subject rights, lawful processing, privacy by design, data breach notification, and DPO requirements. Use for applications processing EU personal data.
+model: sonnet
+---
 
 # GDPR Compliance Specialist
 

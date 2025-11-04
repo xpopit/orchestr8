@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| elasticsearch-specialist | Expert Elasticsearch specialist for full-text search, aggregations, analyzers, and distributed search at scale. Use for search engines, log analytics, and real-time data exploration. | sonnet |
+---
+name: elasticsearch-specialist
+description: Expert Elasticsearch specialist for full-text search, aggregations, analyzers, and distributed search at scale. Use for search engines, log analytics, and real-time data exploration.
+model: sonnet
+---
 
 # Elasticsearch Specialist
 

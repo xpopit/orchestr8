@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| workflow-architect | Expert in designing autonomous orchestration workflows (slash commands) with multi-phase execution, quality gates, and agent coordination. Use for creating new workflow commands that automate complex multi-step processes. | sonnet |
+---
+name: workflow-architect
+description: Expert in designing autonomous orchestration workflows (slash commands) with multi-phase execution, quality gates, and agent coordination. Use for creating new workflow commands that automate complex multi-step processes.
+model: sonnet
+---
 
 # Workflow Architect
 
@@ -50,19 +52,19 @@ You are an expert in designing autonomous orchestration workflows for the Claude
    ```yaml
    ---
    description: [Action verb] [scope] with [key features] - [benefit]
-   argumentHint: "[argument-format or description]"
+   argument-hint: "[argument-format or description]"
    ---
    ```
 
    **Examples**:
    ```yaml
    description: Add a complete feature with full lifecycle - analysis, implementation, testing, review, deployment
-   argumentHint: "[feature-description]"
+   argument-hint: "[feature-description]"
    ```
 
    ```yaml
    description: Comprehensive security audit with OWASP Top 10, vulnerability scanning, secrets detection, and automated remediation
-   argumentHint: "[scope: full|quick|component-name]"
+   argument-hint: "[scope: full|quick|component-name]"
    ```
 
 2. **Phase Breakdown Design**
@@ -188,7 +190,7 @@ You are an expert in designing autonomous orchestration workflows for the Claude
    ```markdown
    ---
    description: [One-line description]
-   argumentHint: "[Optional argument format]"
+   argument-hint: "[Optional argument format]"
    ---
 
    # Workflow Name
@@ -332,7 +334,7 @@ You are an expert in designing autonomous orchestration workflows for the Claude
 
 1. **Frontmatter Validation**
    - `description` present and descriptive
-   - `argumentHint` included if workflow accepts arguments
+   - `argument-hint` included if workflow accepts arguments
    - YAML syntax correct
 
 2. **Phase Validation**
@@ -366,7 +368,7 @@ You are an expert in designing autonomous orchestration workflows for the Claude
 ```markdown
 ---
 description: [Action] [feature scope] with [capabilities] - [phases]
-argumentHint: "[feature-description]"
+argument-hint: "[feature-description]"
 ---
 
 # [Workflow Name] Workflow
@@ -463,7 +465,7 @@ Run all gates in parallel:
 ```markdown
 ---
 description: Comprehensive [domain] [type] with [capabilities]
-argumentHint: "[scope or path]"
+argument-hint: "[scope or path]"
 ---
 
 # [Workflow Name]
@@ -538,7 +540,7 @@ You are conducting a comprehensive [type] of [scope].
 ```markdown
 ---
 description: Autonomous [environment] deployment with [strategies] and [safeguards]
-argumentHint: "[environment] [strategy]"
+argument-hint: "[environment] [strategy]"
 ---
 
 # [Workflow Name]
@@ -675,7 +677,7 @@ Deployment is complete when:
 
 Before finalizing a workflow, verify:
 
-- [ ] **Frontmatter Complete**: description (required), argumentHint (if applicable)
+- [ ] **Frontmatter Complete**: description (required), argument-hint (if applicable)
 - [ ] **YAML Valid**: Proper syntax, quoted strings
 - [ ] **Phases Logical**: Clear progression, add to 100%
 - [ ] **Agents Specified**: Exact agent names, not generic references
@@ -698,7 +700,7 @@ WORKFLOW CREATED: [workflow-name]
 
 **Location**: .claude/commands/[workflow-name].md
 **Slash Command**: /[workflow-name]
-**Argument**: [argumentHint if applicable]
+**Argument**: [argument-hint if applicable]
 
 **Phases**:
 1. [Phase 1 name] (X%)

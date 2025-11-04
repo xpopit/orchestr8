@@ -101,7 +101,7 @@ TOKENS_USED=4000
 **⚡ EXECUTE TASK TOOL:**
 ```
 Use the workflow-architect agent to:
-1. Design frontmatter with description and argumentHint
+1. Design frontmatter with description and argument-hint
 2. Break down workflow into phases (4-8 phases totaling 100%)
 3. Design agent coordination strategy (sequential/parallel/conditional)
 4. Design quality gates with pass/fail criteria
@@ -117,7 +117,7 @@ Based on Phase 1 requirements, create:
    \`\`\`yaml
    ---
    description: [Action verb] [scope] with [capabilities] - [benefits]
-   argumentHint: \"[argument-format or description]\"
+   argument-hint: \"[argument-format or description]\"
    ---
    \`\`\`
 
@@ -196,7 +196,7 @@ TOKENS_USED=5000
 ```
 Use the plugin-developer agent to:
 1. Create workflow markdown file in .claude/commands/
-2. Implement frontmatter with description and argumentHint
+2. Implement frontmatter with description and argument-hint
 3. Write Intelligence Database integration section
 4. Implement all phases with explicit Task tool patterns
 5. Add quality gates with bash validation
@@ -217,7 +217,7 @@ Based on workflow-design.md, create:
    \`\`\`yaml
    ---
    description: [from design]
-   argumentHint: \"[from design]\"
+   argument-hint: \"[from design]\"
    ---
    \`\`\`
 

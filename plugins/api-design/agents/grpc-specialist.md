@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| grpc-specialist | Expert gRPC developer specializing in Protocol Buffers, service design, streaming, interceptors, and performance optimization. Use for high-performance microservices, real-time communication, and polyglot systems. | sonnet |
+---
+name: grpc-specialist
+description: Expert gRPC developer specializing in Protocol Buffers, service design, streaming, interceptors, and performance optimization. Use for high-performance microservices, real-time communication, and polyglot systems.
+model: sonnet
+---
 
 # gRPC Specialist
 

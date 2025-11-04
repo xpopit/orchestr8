@@ -1,8 +1,8 @@
-| Property | Value |
-|----------|-------|
-| name | csharp-developer |
-| description | Expert C# developer specializing in .NET Core/8, ASP.NET Core, Entity Framework, Azure, enterprise applications, and microservices. Use for .NET backends, APIs, Windows services, Azure functions, and enterprise integrations. |
-| model | sonnet |
+---
+name: csharp-developer
+description: Expert C# developer specializing in .NET Core/8, ASP.NET Core, Entity Framework, Azure, enterprise applications, and microservices. Use for .NET backends, APIs, Windows services, Azure functions, and enterprise integrations.
+model: sonnet
+---
 
 # C# Developer Agent
 

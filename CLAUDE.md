@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is the **Claude Code Enterprise Orchestration System** - a hierarchical multi-agent orchestration framework that transforms Claude Code into an autonomous software engineering organization. The system includes 81+ specialized agents, 13 autonomous workflows, and comprehensive enterprise capabilities.
+This is the **Claude Code Enterprise Orchestration System** - a hierarchical multi-agent orchestration framework that transforms Claude Code into an autonomous software engineering organization. The system includes 74 specialized agents, 13 autonomous workflows, and comprehensive enterprise capabilities.
 
 ## Project Structure
 
@@ -15,7 +15,7 @@ claude-org/
 │   ├── CHANGELOG.md           # Release history
 │   ├── VERSION                # Current version (semantic versioning)
 │   ├── plugin.json            # Plugin manifest and metadata
-│   ├── agents/                # Agent definitions (81+ agents)
+│   ├── agents/                # Agent definitions (74 agents)
 │   │   ├── development/       # Language specialists, frameworks, game engines, AI/ML, blockchain
 │   │   ├── devops/            # Cloud providers, infrastructure, CI/CD
 │   │   ├── quality/           # Code review, testing, security, debugging
@@ -66,14 +66,7 @@ Agent Categories:
 ---
 name: agent-name
 description: One-line description. Use when [specific use case]. (subagent_type in Task tool)
-model: claude-sonnet-4-5  # or claude-opus-4 for strategic/complex agents
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Glob
-  - Grep
+model: sonnet
 ---
 
 # Agent Name
@@ -95,7 +88,7 @@ tools:
 ```markdown
 ---
 description: Brief description of what this workflow does
-argumentHint: "[argument-description]"  # Optional
+argument-hint: "[argument-description]"  # Optional
 ---
 
 # Workflow Name
@@ -199,7 +192,7 @@ Use the [new-agent-name] agent to [specific task]
 
 ### 1. Hierarchical Orchestration
 - **Layer 1:** Meta-orchestrators (project-orchestrator, feature-orchestrator)
-- **Layer 2:** Specialized agents (81+ domain experts)
+- **Layer 2:** Specialized agents (74 domain experts)
 - **Layer 3:** Skills (auto-activated expertise)
 - **Layer 4:** Workflows (slash commands)
 

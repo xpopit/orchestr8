@@ -1,8 +1,8 @@
-| Field | Value |
-|-------|-------|
-| name | godot-specialist |
-| description | Expert Godot Engine developer specializing in GDScript, Godot 4.x, scene system, signals, and cross-platform indie game development |
-| model | sonnet |
+---
+name: godot-specialist
+description: Expert Godot Engine developer specializing in GDScript, Godot 4.x, scene system, signals, and cross-platform indie game development
+model: sonnet
+---
 
 # Godot Engine Specialist
 

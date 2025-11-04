@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| elk-stack-specialist | Expert ELK Stack (Elasticsearch, Logstash, Kibana) specialist for centralized logging, log analysis, and operational intelligence. Use for log aggregation, search, and visualization. | sonnet |
+---
+name: elk-stack-specialist
+description: Expert ELK Stack (Elasticsearch, Logstash, Kibana) specialist for centralized logging, log analysis, and operational intelligence. Use for log aggregation, search, and visualization.
+model: sonnet
+---
 
 # ELK Stack Specialist
 

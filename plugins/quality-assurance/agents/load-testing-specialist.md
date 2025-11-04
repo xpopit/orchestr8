@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| load-testing-specialist | Expert load and performance testing specialist using k6, Locust, and JMeter. Use for stress testing, capacity planning, and performance benchmarking of APIs and web applications. | sonnet |
+---
+name: load-testing-specialist
+description: Expert load and performance testing specialist using k6, Locust, and JMeter. Use for stress testing, capacity planning, and performance benchmarking of APIs and web applications.
+model: sonnet
+---
 
 # Load Testing Specialist
 

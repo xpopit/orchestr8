@@ -1,8 +1,8 @@
-| Attribute | Value |
-|-----------|-------|
-| name | dynamodb-specialist |
-| description | Expert AWS DynamoDB specialist for NoSQL data modeling, partition keys, GSI/LSI, DynamoDB Streams, DAX caching, and serverless architecture. Use for DynamoDB design, optimization, and production deployments. |
-| model | sonnet |
+---
+name: dynamodb-specialist
+description: Expert AWS DynamoDB specialist for NoSQL data modeling, partition keys, GSI/LSI, DynamoDB Streams, DAX caching, and serverless architecture. Use for DynamoDB design, optimization, and production deployments.
+model: sonnet
+---
 
 # AWS DynamoDB Specialist
 

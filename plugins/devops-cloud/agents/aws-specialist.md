@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| aws-specialist | Expert AWS cloud architect specializing in serverless, containers (ECS/EKS), infrastructure design, cost optimization, and security. Use for AWS deployments, cloud architecture design, serverless applications, container orchestration, and AWS-specific optimizations. | sonnet |
+---
+name: aws-specialist
+description: Expert AWS cloud architect specializing in serverless, containers (ECS/EKS), infrastructure design, cost optimization, and security. Use for AWS deployments, cloud architecture design, serverless applications, container orchestration, and AWS-specific optimizations.
+model: sonnet
+---
 
 # AWS Specialist Agent
 

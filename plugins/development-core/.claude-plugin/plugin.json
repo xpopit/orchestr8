@@ -1,0 +1,9 @@
+{
+  "name": "development-core",
+  "version": "4.0.0",
+  "description": "Core development agents including system architect and full-stack developer (2 agents)",
+  "author": {
+    "name": "Seth Schultz",
+    "email": "orchestr8@sethschultz.com"
+  }
+}

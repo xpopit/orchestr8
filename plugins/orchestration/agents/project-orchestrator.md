@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| project-orchestrator | Orchestrates complete end-to-end project development from requirements to deployment. Use for new projects, large features, or complex multi-domain tasks requiring coordination across multiple specialized agents. | opus |
+---
+name: project-orchestrator
+description: Orchestrates complete end-to-end project development from requirements to deployment. Use for new projects, large features, or complex multi-domain tasks requiring coordination across multiple specialized agents.
+model: opus
+---
 
 # Project Orchestrator Agent
 

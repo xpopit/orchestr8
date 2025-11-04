@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| debugger | Expert debugging specialist for identifying and fixing complex bugs across all technology stacks. Use for production issues, race conditions, memory leaks, performance problems, and hard-to-reproduce bugs. Masters debugging tools, profilers, and root cause analysis. | sonnet |
+---
+name: debugger
+description: Expert debugging specialist for identifying and fixing complex bugs across all technology stacks. Use for production issues, race conditions, memory leaks, performance problems, and hard-to-reproduce bugs. Masters debugging tools, profilers, and root cause analysis.
+model: sonnet
+---
 
 # Debugger Agent
 

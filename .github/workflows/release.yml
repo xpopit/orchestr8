@@ -148,6 +148,20 @@ jobs:
             echo "WARNING: Expected 19 workflows, found $WORKFLOW_COUNT"
           fi
 
+          echo "Validating agent file format..."
+          find plugins/*/agents -name "*.md" 2>/dev/null | while read -r file; do
+            if ! head -1 "$file" | grep -q "^---$"; then
+              echo "ERROR: Agent $file missing YAML frontmatter"
+              exit 1
+            fi
+
+            if ! grep -q "^name:" "$file" || ! grep -q "^description:" "$file" || ! grep -q "^model:" "$file"; then
+              echo "ERROR: Agent $file missing required frontmatter fields"
+              exit 1
+            fi
+          done
+          echo "✓ All agents have valid YAML frontmatter"
+
           echo "✓ All validation checks passed"
 
   # Extract release notes from CHANGELOG

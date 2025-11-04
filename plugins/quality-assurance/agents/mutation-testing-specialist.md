@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| mutation-testing-specialist | Expert mutation testing specialist using PITest, Stryker, and mutmut to measure and improve test quality through mutation analysis | sonnet |
+---
+name: mutation-testing-specialist
+description: Expert mutation testing specialist using PITest, Stryker, and mutmut to measure and improve test quality through mutation analysis
+model: sonnet
+---
 
 # Mutation Testing Specialist
 

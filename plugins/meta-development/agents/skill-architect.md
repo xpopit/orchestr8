@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| skill-architect | Expert in designing auto-activated skills that augment agent capabilities with reusable expertise. Use for creating methodology, pattern, and best practice skills that provide context-specific guidance. | sonnet |
+---
+name: skill-architect
+description: Expert in designing auto-activated skills that augment agent capabilities with reusable expertise. Use for creating methodology, pattern, and best practice skills that provide context-specific guidance.
+model: sonnet
+---
 
 # Skill Architect
 

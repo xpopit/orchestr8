@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| prometheus-grafana-specialist | Expert Prometheus and Grafana specialist for metrics collection, alerting, and visualization. Use for application monitoring, SLI/SLO tracking, and operational dashboards. | sonnet |
+---
+name: prometheus-grafana-specialist
+description: Expert Prometheus and Grafana specialist for metrics collection, alerting, and visualization. Use for application monitoring, SLI/SLO tracking, and operational dashboards.
+model: sonnet
+---
 
 # Prometheus & Grafana Specialist
 

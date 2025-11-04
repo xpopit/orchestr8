@@ -11,18 +11,21 @@ Expert knowledge of agent design patterns for the Claude Code orchestr8 plugin s
 
 ### Agent Frontmatter Structure
 
-Every agent requires markdown table frontmatter (not YAML):
+Every agent requires YAML frontmatter (delimited by triple dashes):
 
-```markdown
-| name | description | model |
-|------|-------------|-------|
-| agent-name | Expert [role]... Use for... | sonnet |
+```yaml
+---
+name: agent-name
+description: Expert [role]... Use for...
+model: sonnet
+---
 ```
 
-**Key Changes from Old Format:**
-- Use markdown table format (not YAML with `---` delimiters)
+**Key Requirements:**
+- Use YAML format with triple dash delimiters (`---`)
 - NO `tools:` field (tools are auto-discovered)
 - Model names simplified: `opus`, `sonnet`, or `haiku` (not full IDs like `claude-opus-4-1-20250805`)
+- Required fields: `name`, `description`, `model`
 
 ### Model Selection Pattern
 
@@ -72,9 +75,11 @@ Tools are auto-discovered based on agent needs. However, agent designers should 
 ### Pattern 1: Language/Framework Specialist
 
 ```markdown
-| name | description | model |
-|------|-------------|-------|
-| technology-specialist | Expert [Technology] developer specializing in [key areas]. Use for [specific use cases]. | sonnet |
+---
+name: technology-specialist
+description: Expert [Technology] developer specializing in [key areas]. Use for [specific use cases].
+model: sonnet
+---
 
 # Technology Specialist
 
@@ -107,9 +112,11 @@ Your deliverables should be production-ready, well-tested...
 ### Pattern 2: Quality/Review Agent
 
 ```markdown
-| name | description | model |
-|------|-------------|-------|
-| review-specialist | Performs comprehensive [domain] review... | sonnet |
+---
+name: review-specialist
+description: Performs comprehensive [domain] review...
+model: sonnet
+---
 
 # Review Specialist
 
@@ -135,9 +142,11 @@ Your deliverables should be production-ready, well-tested...
 ### Pattern 3: Meta-Orchestrator
 
 ```markdown
-| name | description | model |
-|------|-------------|-------|
-| meta-orchestrator | Orchestrates [scope]... | opus |
+---
+name: meta-orchestrator
+description: Orchestrates [scope]...
+model: opus
+---
 
 # Meta Orchestrator
 
@@ -281,8 +290,8 @@ well-tested, secure, etc.] [domain] code/documentation following
 ### DO ✅
 
 **Agent Design:**
-- Use markdown table frontmatter (NOT YAML)
-- NO `tools:` field in frontmatter
+- Use YAML frontmatter with triple dashes (NOT markdown tables)
+- NO `tools:` field in frontmatter (tools are auto-discovered)
 - Use simplified model names: `opus`, `sonnet`, or `haiku` (not full IDs)
 - Follow established patterns from similar agents in the same category
 - Use `opus` for orchestrators, `sonnet` for specialists (default), `haiku` for simple/fast tasks
@@ -302,8 +311,8 @@ well-tested, secure, etc.] [domain] code/documentation following
 ### DON'T ❌
 
 **Agent Design:**
-- Don't use YAML frontmatter (use markdown table)
-- Don't include `tools:` field (removed in new format)
+- Don't use markdown table frontmatter (use YAML with `---` delimiters)
+- Don't include `tools:` field (removed in v4.0.0)
 - Don't use full model IDs (use `sonnet` or `opus`)
 - Don't use `opus` for specialized agents (only for orchestrators)
 - Don't skip code examples for technical specialists
@@ -366,7 +375,7 @@ implementation to validate code quality before merging or deployment."
 
 Before finalizing an agent:
 
-- [ ] Frontmatter uses markdown table format (NOT YAML)
+- [ ] Frontmatter uses YAML format with triple dashes (NOT markdown tables)
 - [ ] Frontmatter has name, description, model (NO tools field)
 - [ ] Name is kebab-case and matches filename
 - [ ] Description follows "Expert [role]... Use for..." pattern
@@ -380,9 +389,9 @@ Before finalizing an agent:
 
 ## Common Pitfalls
 
-1. **Using YAML frontmatter** - Must use markdown table format now
-2. **Including tools field** - Tools field is removed in new format
-3. **Using full model IDs** - Use `sonnet` or `opus`, not full IDs
+1. **Using markdown table frontmatter** - Must use YAML format with triple dashes in v4.0.0+
+2. **Including tools field** - Tools field is removed in v4.0.0 (auto-discovered)
+3. **Using full model IDs** - Use `sonnet` or `opus`, not full IDs like `claude-sonnet-4-5-20250929`
 4. **Using Opus for Specialists** - Opus is only for meta-orchestrators
 5. **Thin Documentation** - Technical agents need 5+ detailed examples
 6. **Wrong Category** - Research similar agents to find correct placement
@@ -392,7 +401,7 @@ Before finalizing an agent:
 
 ## Remember
 
-1. **Frontmatter Format**: Markdown table (NOT YAML), NO tools field
+1. **Frontmatter Format**: YAML with triple dashes (NOT markdown tables), NO tools field
 2. **Model Selection**: `opus` for orchestrators, `sonnet` for specialists (default), `haiku` for simple tasks
 3. **Model Names**: Use simplified names (`opus`/`sonnet`/`haiku`), not full IDs
 4. **Documentation**: 300-500 lines for specialists, 400+ for orchestrators
@@ -401,4 +410,4 @@ Before finalizing an agent:
 7. **Structure**: Follow established patterns from similar agents
 8. **Quality**: DO/DON'T sections are not optional
 
-Well-designed agents follow consistent patterns, use the new markdown table frontmatter format, have comprehensive documentation with real-world examples, and integrate seamlessly with the orchestr8 plugin system.
+Well-designed agents follow consistent patterns, use YAML frontmatter format (v4.0.0+), have comprehensive documentation with real-world examples, and integrate seamlessly with the orchestr8 plugin system for proper Claude Code discovery.

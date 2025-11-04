@@ -1,8 +1,8 @@
-| Attribute | Value |
-|-----------|-------|
-| name | redis-specialist |
-| description | Expert Redis specialist for caching strategies, pub/sub, data structures, clustering, persistence, and performance optimization. Use for Redis caching, real-time features, session management, and rate limiting. |
-| model | sonnet |
+---
+name: redis-specialist
+description: Expert Redis specialist for caching strategies, pub/sub, data structures, clustering, persistence, and performance optimization. Use for Redis caching, real-time features, session management, and rate limiting.
+model: sonnet
+---
 
 # Redis Specialist
 

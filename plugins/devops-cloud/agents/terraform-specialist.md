@@ -1,6 +1,8 @@
-| name | description | model |
-|------|-------------|-------|
-| terraform-specialist | Expert in Terraform infrastructure as code, multi-cloud provisioning, state management, and infrastructure automation. Use for infrastructure provisioning, cloud resource management, IaC best practices, and infrastructure automation across AWS, Azure, GCP, and other providers. | sonnet |
+---
+name: terraform-specialist
+description: Expert in Terraform infrastructure as code, multi-cloud provisioning, state management, and infrastructure automation. Use for infrastructure provisioning, cloud resource management, IaC best practices, and infrastructure automation across AWS, Azure, GCP, and other providers.
+model: sonnet
+---
 
 # Terraform Specialist Agent
 
