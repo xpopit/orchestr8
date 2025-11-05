@@ -120,7 +120,7 @@ jobs:
           path: .claude/mcp-server/orchestr8-bin/target
           key: ${{ runner.os }}-cargo-build-${{ hashFiles('.claude/mcp-server/orchestr8-bin/Cargo.lock') }}
 
-      - name: Build binaries for all platforms
+      - name: Build binaries for Linux platforms
         working-directory: .claude/mcp-server/orchestr8-bin
         run: |
           VERSION="${{ needs.detect-version.outputs.version }}"
@@ -129,22 +129,37 @@ jobs:
           # Create output directory
           mkdir -p ../../binaries
 
-          # Note: Building for macOS requires macOS runners. On Linux runners, we build for Linux targets only.
-          # For a complete cross-platform build, this should run on macOS, Windows, and Linux runners separately.
+          # Note: Building for macOS and Windows requires native runners (macOS and Windows respectively).
+          # On Linux runners, we build for Linux targets only.
 
           # Linux x86_64 (native on Ubuntu)
           echo "Building Linux x86_64..."
-          cargo build --release --target x86_64-unknown-linux-gnu
-          tar -czf ../../binaries/orchestr8-bin-linux-x86_64-$VERSION.tar.gz -C target/x86_64-unknown-linux-gnu/release orchestr8-bin
-          sha256sum ../../binaries/orchestr8-bin-linux-x86_64-$VERSION.tar.gz > ../../binaries/orchestr8-bin-linux-x86_64-$VERSION.tar.gz.sha256
+          cargo build --release --target x86_64-unknown-linux-gnu 2>&1 | tee build-x86_64.log
+          if [ $? -eq 0 ]; then
+            tar -czf ../../binaries/orchestr8-bin-linux-x86_64-$VERSION.tar.gz -C target/x86_64-unknown-linux-gnu/release orchestr8-bin
+            sha256sum ../../binaries/orchestr8-bin-linux-x86_64-$VERSION.tar.gz > ../../binaries/orchestr8-bin-linux-x86_64-$VERSION.tar.gz.sha256
+            echo "✓ Linux x86_64 build successful"
+          else
+            echo "✗ Linux x86_64 build failed"
+            exit 1
+          fi
 
           # Linux ARM64 (cross-compiled)
+          echo ""
           echo "Building Linux ARM64..."
-          cross build --release --target aarch64-unknown-linux-gnu
-          tar -czf ../../binaries/orchestr8-bin-linux-arm64-$VERSION.tar.gz -C target/aarch64-unknown-linux-gnu/release orchestr8-bin
-          sha256sum ../../binaries/orchestr8-bin-linux-arm64-$VERSION.tar.gz > ../../binaries/orchestr8-bin-linux-arm64-$VERSION.tar.gz.sha256
+          cross build --release --target aarch64-unknown-linux-gnu 2>&1 | tee build-arm64.log
+          if [ $? -eq 0 ]; then
+            tar -czf ../../binaries/orchestr8-bin-linux-arm64-$VERSION.tar.gz -C target/aarch64-unknown-linux-gnu/release orchestr8-bin
+            sha256sum ../../binaries/orchestr8-bin-linux-arm64-$VERSION.tar.gz > ../../binaries/orchestr8-bin-linux-arm64-$VERSION.tar.gz.sha256
+            echo "✓ Linux ARM64 build successful"
+          else
+            echo "✗ Linux ARM64 build failed"
+            exit 1
+          fi
 
-          echo "✓ Linux binaries built successfully (macOS and Windows builds require native runners)"
+          echo ""
+          echo "✓ All Linux binaries built successfully"
+          echo "  (macOS and Windows builds require native runners)"
           ls -lh ../../binaries/
 
       - name: Verify binaries and checksums
