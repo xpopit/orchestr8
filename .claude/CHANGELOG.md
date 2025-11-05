@@ -5,6 +5,21 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.0] - 2025-11-05
+
+### 🔒 Quality Assurance: Pre-commit Hook Enhancement
+
+**Added Rust binary version validation:**
+- Pre-commit hook now validates orchestr8-bin Cargo.toml version
+- Ensures Rust MCP server version matches plugin version
+- Prevents accidental version mismatches before committing
+- Validates during both VERSION and Cargo.toml changes
+
+**Result:** All three version sources are now synchronized and validated:
+- `.claude/VERSION` (plugin version)
+- `.claude/plugin.json` (plugin metadata)
+- `.claude/mcp-server/orchestr8-bin/Cargo.toml` (Rust binary version)
+
 ## [5.4.0] - 2025-11-05
 
 ### 🔧 Bug Fixes & Improvements: Auto-Release Workflow
