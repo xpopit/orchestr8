@@ -1,6 +1,6 @@
 {
   "name": "infrastructure-search",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Search infrastructure specialists for Elasticsearch and Algolia (2 agents)",
   "author": {
     "name": "Seth Schultz",
