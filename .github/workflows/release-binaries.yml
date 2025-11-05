@@ -50,8 +50,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          path: repo
 
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -77,27 +75,27 @@ jobs:
       - name: Cache cargo build
         uses: actions/cache@v4
         with:
-          path: repo/.claude/mcp-server/orchestr8-bin/target
+          path: .claude/mcp-server/orchestr8-bin/target
           key: ${{ runner.os }}-${{ matrix.target }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Build binary (native)
         if: '!matrix.cross'
         run: cargo build --release --target ${{ matrix.target }}
-        working-directory: repo/.claude/mcp-server/orchestr8-bin
+        working-directory: .claude/mcp-server/orchestr8-bin
 
       - name: Build binary (cross)
         if: matrix.cross
         run: cross build --release --target ${{ matrix.target }}
-        working-directory: repo/.claude/mcp-server/orchestr8-bin
+        working-directory: .claude/mcp-server/orchestr8-bin
 
       - name: Run tests
         if: '!matrix.cross'
         run: cargo test --release --target ${{ matrix.target }}
-        working-directory: repo/.claude/mcp-server/orchestr8-bin
+        working-directory: .claude/mcp-server/orchestr8-bin
 
       - name: Strip binary (Linux/macOS)
         if: matrix.os != 'windows-latest'
-        run: strip repo/.claude/mcp-server/orchestr8-bin/target/${{ matrix.target }}/release/orchestr8-bin
+        run: strip .claude/mcp-server/orchestr8-bin/target/${{ matrix.target }}/release/orchestr8-bin
 
       - name: Extract platform and arch
         id: platform
@@ -113,12 +111,11 @@ jobs:
           elif [ "${{ matrix.target }}" = "x86_64-pc-windows-msvc" ]; then
             echo "binary_name=orchestr8-bin-windows-x86_64" >> $GITHUB_OUTPUT
           fi
-        shell: bash
 
       - name: Create archive (Unix)
         if: matrix.archive == 'tar.gz'
         run: |
-          cd repo/.claude/mcp-server/orchestr8-bin/target/${{ matrix.target }}/release
+          cd .claude/mcp-server/orchestr8-bin/target/${{ matrix.target }}/release
           tar -czf ../../../../../${{ steps.platform.outputs.binary_name }}.tar.gz orchestr8-bin
           cd ../../../../../
 
@@ -126,34 +123,32 @@ jobs:
         if: matrix.archive == 'zip'
         shell: pwsh
         run: |
-          cd repo\.claude\mcp-server\orchestr8-bin\target\${{ matrix.target }}\release
+          cd .claude\mcp-server\orchestr8-bin\target\${{ matrix.target }}\release
           Compress-Archive -Path orchestr8-bin.exe -DestinationPath ..\..\..\..\..\${{ steps.platform.outputs.binary_name }}.zip
           cd ..\..\..\..\
 
       - name: Generate SHA256 checksum (Unix)
         if: matrix.archive == 'tar.gz'
         run: |
-          cd repo
-          sha256sum ${{ steps.platform.outputs.binary_name }}.tar.gz > ${{ steps.platform.outputs.binary_name }}.tar.gz.sha256
+          sha256sum orchestr8-bin-*.tar.gz > orchestr8-bin-*.tar.gz.sha256 || true
 
       - name: Generate SHA256 checksum (Windows)
         if: matrix.archive == 'zip'
         shell: pwsh
         run: |
-          cd repo
-          $file = "${{ steps.platform.outputs.binary_name }}.zip"
+          $file = Get-Item "orchestr8-bin-*.zip"
           $hash = (Get-FileHash -Algorithm SHA256 $file).Hash
-          "$hash  $file" | Out-File "$file.sha256"
+          "$hash  $($file.Name)" | Out-File "$($file.Name).sha256"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: orchestr8-bin-${{ matrix.target }}
           path: |
-            repo/orchestr8-bin-*.tar.gz
-            repo/orchestr8-bin-*.tar.gz.sha256
-            repo/orchestr8-bin-*.zip
-            repo/orchestr8-bin-*.zip.sha256
+            orchestr8-bin-*.tar.gz
+            orchestr8-bin-*.tar.gz.sha256
+            orchestr8-bin-*.zip
+            orchestr8-bin-*.zip.sha256
 
   upload-binaries-to-release:
     name: Upload Binaries to Release
