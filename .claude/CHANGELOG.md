@@ -5,6 +5,22 @@ All notable changes to the Claude Code Orchestration System.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.8.1] - 2025-11-05
+
+### 🔧 Fix: Complete Version Synchronization
+
+**Improvements:**
+- Fixed sync-plugin-versions script to update ALL version locations (v1.0 → v2.0)
+- Script now updates: .claude/VERSION, plugin.json, marketplace.json, Cargo.toml
+- Updated GitHub Actions workflows for agent-definitions directory validation
+- Fixed marketplace.json version mismatch issue
+
+**Result:**
+- ✅ All version locations now synchronized in single command
+- ✅ Prevents future CI/CD version mismatch errors
+- ✅ No more manual marketplace.json or Cargo.toml updates needed
+- ✅ Ready for reliable version management going forward
+
 ## [5.8.0] - 2025-11-05
 
 ### ✨ Enhancement: True JIT Loading via agent-definitions Directory
