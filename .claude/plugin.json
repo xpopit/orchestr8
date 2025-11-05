@@ -55,11 +55,11 @@
   },
   "commands": {
     "description": "20 orchestration workflows for end-to-end project lifecycle",
-    "path": "./commands/"
+    "path": "../commands/"
   },
   "skills": {
     "description": "Reusable expertise patterns (auto-activated by Claude Code)",
-    "path": "./skills/"
+    "path": "../skills/"
   },
   "hooks": "./hooks/hooks.json",
   "requirements": {
