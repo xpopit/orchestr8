@@ -2,7 +2,10 @@
   "name": "orchestr8",
   "version": "4.2.0",
   "description": "Enterprise-grade hierarchical multi-agent orchestration system with 74 specialized agents, 20 autonomous workflows, MCP offloading (50%+ token reduction), opt-in plugin loading, and 4 reusable skills",
-  "author": "Seth Schultz",
+  "author": {
+    "name": "Seth Schultz",
+    "email": "orchestr8@sethschultz.com"
+  },
   "license": "MIT",
   "repository": "https://github.com/seth-schultz/orchestr8",
   "keywords": [

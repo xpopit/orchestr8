@@ -5,5 +5,8 @@
   "author": {
     "name": "Seth Schultz",
     "email": "orchestr8@sethschultz.com"
-  }
+  },
+  "license": "MIT",
+  "repository": "https://github.com/seth-schultz/orchestr8/tree/main/plugins/language-developers",
+  "keywords": ["python", "typescript", "java", "go", "rust", "csharp", "swift", "kotlin", "ruby", "php", "cpp"]
 }
