@@ -1,7 +1,7 @@
 ---
 name: security-auditor
 description: Performs comprehensive security audits checking for vulnerabilities, compliance issues, and security best practices. Use before deployment, for security-sensitive changes, or regular security assessments. Critical for authentication, authorization, data handling, and external integrations.
-model: opus
+model: sonnet
 ---
 
 # Security Auditor Agent

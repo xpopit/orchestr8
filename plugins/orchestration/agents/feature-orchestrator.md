@@ -1,7 +1,7 @@
 ---
 name: feature-orchestrator
 description: Orchestrates complete feature development lifecycle from requirements to deployment. Use when adding new features to existing projects, implementing user stories, or completing bounded development tasks that span multiple domains (frontend, backend, testing, docs).
-model: opus
+model: sonnet
 ---
 
 # Feature Orchestrator Agent

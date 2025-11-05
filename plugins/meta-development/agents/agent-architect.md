@@ -1,7 +1,7 @@
 ---
 name: agent-architect
 description: Expert in designing Claude Code agents following established patterns and best practices. Use for creating new specialized agents, determining tool selection, model choice, and documentation structure.
-model: sonnet
+model: haiku
 ---
 
 # Agent Architect

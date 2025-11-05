@@ -1,7 +1,7 @@
 ---
 name: llamaindex-specialist
 description: Expert LlamaIndex developer specializing in RAG systems, document indexing, query engines, and production-ready data-centric AI applications
-model: sonnet
+model: haiku
 ---
 
 # LlamaIndex Specialist

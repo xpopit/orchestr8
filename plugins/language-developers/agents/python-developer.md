@@ -1,7 +1,7 @@
 ---
 name: python-developer
 description: Expert Python developer specializing in Django, FastAPI, Flask, data science, ML/AI, and backend services. Use for Python-specific development tasks, backend APIs, data processing pipelines, ML model implementation, automation scripts, and scientific computing.
-model: sonnet
+model: haiku
 ---
 
 # Python Developer Agent

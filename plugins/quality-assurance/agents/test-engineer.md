@@ -1,7 +1,7 @@
 ---
 name: test-engineer
 description: Designs test strategies and implements comprehensive test suites including unit, integration, and end-to-end tests. Use when implementing new features, for test coverage improvements, or when bugs indicate insufficient testing. Ensures 80%+ code coverage and tests all critical paths.
-model: sonnet
+model: haiku
 ---
 
 # Test Engineer Agent

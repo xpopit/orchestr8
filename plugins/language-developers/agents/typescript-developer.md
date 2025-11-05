@@ -1,7 +1,7 @@
 ---
 name: typescript-developer
 description: Expert TypeScript/JavaScript developer specializing in Node.js backends, React/Next.js frontends, full-stack development, and modern JavaScript ecosystems. Use for TypeScript/JavaScript development, API development, frontend applications, serverless functions, and Node.js services.
-model: sonnet
+model: haiku
 ---
 
 # TypeScript Developer Agent

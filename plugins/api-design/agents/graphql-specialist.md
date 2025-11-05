@@ -1,7 +1,7 @@
 ---
 name: graphql-specialist
 description: Expert GraphQL developer specializing in schema design, resolvers, Apollo Server/Client, subscriptions, and performance optimization. Use for GraphQL API design, federation, and real-time applications.
-model: sonnet
+model: haiku
 ---
 
 # GraphQL Specialist

@@ -1,7 +1,7 @@
 ---
 name: nextjs-specialist
 description: Expert Next.js developer specializing in App Router, Server Components, Server Actions, ISR, SSR, SSG, and performance optimization. Use for Next.js 14+ applications, full-stack React, and production deployments.
-model: sonnet
+model: haiku
 ---
 
 # Next.js Specialist

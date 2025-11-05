@@ -1,7 +1,7 @@
 ---
 name: openapi-specialist
 description: Expert REST API and OpenAPI specialist for API design, documentation, validation, and code generation. Use for RESTful services, API-first development, and comprehensive API documentation.
-model: sonnet
+model: haiku
 ---
 
 # OpenAPI Specialist

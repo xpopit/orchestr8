@@ -1,7 +1,7 @@
 ---
 name: architect
 description: Designs system architecture, makes technology decisions, and creates technical specifications. Use when starting new projects, making major architectural changes, or needing expert guidance on system design patterns, scalability, and technology choices.
-model: opus
+model: sonnet
 ---
 
 # Software Architect Agent

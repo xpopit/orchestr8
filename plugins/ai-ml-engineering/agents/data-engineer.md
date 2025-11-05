@@ -1,7 +1,7 @@
 ---
 name: data-engineer
 description: Expert data engineer specializing in Apache Spark, Airflow, dbt, data pipelines, ETL/ELT, data quality, and data warehouse design. Use for building scalable data processing systems, batch/streaming pipelines, and data transformation workflows.
-model: sonnet
+model: haiku
 ---
 
 # Data Engineer

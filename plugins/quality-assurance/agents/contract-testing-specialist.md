@@ -1,7 +1,7 @@
 ---
 name: contract-testing-specialist
 description: Expert contract testing specialist using Pact, Spring Cloud Contract, and Postman for consumer-driven contract testing and API compatibility validation
-model: sonnet
+model: haiku
 ---
 
 # Contract Testing Specialist

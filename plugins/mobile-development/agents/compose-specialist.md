@@ -1,7 +1,7 @@
 ---
 name: compose-specialist
 description: Expert Jetpack Compose developer for Android apps with declarative UI, Material Design 3, MVVM, Kotlin Coroutines, and Play Store deployment. Use for modern Android development and reactive UIs.
-model: sonnet
+model: haiku
 ---
 
 # Jetpack Compose Specialist

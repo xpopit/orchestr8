@@ -1,7 +1,7 @@
 ---
 name: workflow-architect
 description: Expert in designing autonomous orchestration workflows (slash commands) with multi-phase execution, quality gates, and agent coordination. Use for creating new workflow commands that automate complex multi-step processes.
-model: sonnet
+model: haiku
 ---
 
 # Workflow Architect

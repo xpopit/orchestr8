@@ -1,7 +1,7 @@
 ---
 name: pci-dss-specialist
 description: Expert PCI DSS (Payment Card Industry Data Security Standard) compliance specialist for organizations processing credit card payments. Ensures compliance with 12 requirements, SAQ completion, and quarterly scans. Use for e-commerce, payment processors, and card-accepting applications.
-model: sonnet
+model: haiku
 ---
 
 # PCI DSS Compliance Specialist

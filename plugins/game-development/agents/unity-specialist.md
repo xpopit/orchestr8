@@ -1,7 +1,7 @@
 ---
 name: unity-specialist
 description: Expert Unity game engine developer specializing in C# scripting, Unity Editor, physics, animations, UI, multiplayer, and platform deployment
-model: sonnet
+model: haiku
 ---
 
 # Unity Specialist

@@ -35,7 +35,7 @@ This is an enterprise-grade orchestration system for Claude Code that enables au
 **Meta-Orchestrators** coordinate entire workflows and manage agent lifecycles.
 
 ```
-project-orchestrator (Opus 4)
+project-orchestrator (Sonnet)
 ├── Requirements Analysis
 ├── Architecture Design
 ├── Development Coordination
@@ -122,7 +122,7 @@ project-orchestrator (Opus 4)
 
 ```
 ┌─────────────────────────┐
-│  Project Orchestrator   │ (Opus 4 - Strategic)
+│  Project Orchestrator   │ (Sonnet - Strategic)
 └──────────┬──────────────┘
            │
     ┌──────┴───────┬────────────┬──────────┐

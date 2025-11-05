@@ -1,7 +1,7 @@
 ---
 name: solidity-specialist
 description: Expert Solidity developer specializing in smart contract development, security best practices, gas optimization, and DeFi protocols
-model: sonnet
+model: haiku
 ---
 
 # Solidity Specialist

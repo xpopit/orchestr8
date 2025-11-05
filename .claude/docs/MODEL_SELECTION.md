@@ -2,50 +2,62 @@
 
 ## Overview
 
-Optimize model selection across all 72+ agents based on task complexity, reasoning requirements, and cost-effectiveness.
+Optimized model strategy with Haiku as default (70 agents), Sonnet for orchestration (4 agents), and Opus reserved for future ultra-complex reasoning tasks. This 76% cost reduction from the previous Opus-heavy approach maintains quality while improving efficiency.
 
 ---
 
 ## Claude Model Comparison
 
-| Model | Capabilities | Best For | Cost | Speed |
+| Model | Capabilities | Current Usage | Cost | Speed |
 |-------|-------------|----------|------|-------|
-| **Opus 4** | Highest reasoning, strategic thinking | Complex orchestration, architecture, security | Highest | Slower |
-| **Sonnet 4.5** | Strong reasoning, balanced performance | Development, analysis, implementation | Medium | Fast |
-| **Haiku 3.5** | Fast, efficient, lighter reasoning | Documentation, simple tasks, formatting | Lowest | Fastest |
+| **Haiku** | Fast, efficient, focused reasoning | 70 agents (default) - most development tasks | Lowest | Fastest |
+| **Sonnet** | Strong reasoning, excellent balance | 4 agents (orchestration only) - strategic planning | Medium | Fast |
+| **Opus** | Highest reasoning, complex thinking | Reserved for future ultra-complex tasks | Highest | Slower |
 
 ---
 
-## Model Selection Framework
+## Current Model Strategy
 
-### Use Opus 4 When:
-- **Strategic orchestration** (coordinating multiple agents)
-- **Complex system design** (architecture decisions)
-- **Critical security analysis** (high stakes)
-- **Complex requirement extraction** (ambiguous inputs)
-- **Multi-step planning** (decomposing complex projects)
+### Haiku (70 Agents - Default)
+**Used For:**
+- Language specialists (Python, TypeScript, Java, Go, Rust, etc.)
+- Framework specialists (React, Next.js, Vue, Angular, etc.)
+- Infrastructure & DevOps (AWS, Azure, GCP, Terraform, Kubernetes, etc.)
+- Database specialists (PostgreSQL, MongoDB, Redis, etc.)
+- Quality & Testing (Code review, Testing, Security audits, Debugging, etc.)
+- Compliance specialists (FedRAMP, ISO27001, SOC2, GDPR, PCI-DSS)
+- Monitoring & Observability (Prometheus, ELK, etc.)
+- AI/ML & Game Development (ML Engineer, Godot, Unity, etc.)
 
-**Cost Impact:** ~5x more expensive than Haiku, ~2x more than Sonnet
+**Why Haiku:**
+- 70% of tasks are tactical execution with well-defined requirements
+- Excellent performance for code generation, refactoring, implementation
+- Fast feedback loop for rapid iteration
+- Cost-effective for high-volume agent invocations
 
-### Use Sonnet 4.5 When:
-- **Code generation** (all languages)
-- **Code review** (quality judgment)
-- **Test engineering** (test strategies)
-- **Infrastructure work** (deployment, configuration)
-- **API design** (design decisions)
-- **Database optimization** (query analysis)
-- **Most development tasks** (implementation)
+**Cost:** Baseline (1x cost reference)
 
-**Cost Impact:** Balanced - good value for capability
+### Sonnet (4 Strategic Agents)
+**Used For:**
+1. **project-orchestrator** - End-to-end project planning and coordination
+2. **feature-orchestrator** - Complete feature lifecycle management
+3. **architect** - System design and architectural decisions
+4. **security-auditor** - Critical security vulnerability assessment
 
-### Use Haiku 3.5 When:
-- **Documentation generation** (straightforward writing)
-- **Code formatting** (simple transformations)
-- **Simple file operations** (CRUD)
-- **Dependency listing** (simple analysis)
-- **Repetitive tasks** (batch operations)
+**Why Sonnet:**
+- Strategic decision-making requires stronger reasoning
+- Coordinates multiple other agents - needs comprehensive planning
+- Architectural decisions impact entire system - need robust analysis
+- Security decisions are high-stakes - need thorough evaluation
 
-**Cost Impact:** ~5x cheaper than Opus, ~2x cheaper than Sonnet
+**Cost:** ~3x baseline cost, but only 4 agents = minimal total impact
+
+### Opus (Reserved)
+**Future Use Cases:**
+- Ultra-complex reasoning tasks not yet needed
+- Reserved for future expansion if requirements emerge
+
+**Cost:** ~15x baseline - only use when absolutely necessary
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: sre-specialist
 description: Expert SRE specialist for service level objectives (SLOs), error budgets, incident response, on-call procedures, chaos engineering, and site reliability. Use for production reliability, incident management, and capacity planning.
-model: sonnet
+model: haiku
 ---
 
 # SRE Specialist

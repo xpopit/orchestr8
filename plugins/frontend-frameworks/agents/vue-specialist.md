@@ -1,7 +1,7 @@
 ---
 name: vue-specialist
 description: Expert Vue.js developer specializing in Vue 3 Composition API, Pinia state management, TypeScript, Vite, and performance optimization. Use for Vue 3 applications, SPA development, and modern frontend architecture.
-model: sonnet
+model: haiku
 ---
 
 # Vue Specialist

@@ -23,7 +23,7 @@ The system includes a comprehensive **agent-registry.yml** (`.claude/agent-regis
 - **Role-based mapping**: Logical roles (system_architect, frontend_developer, etc.) mapped to specific agents
 - **Primary + fallback agents**: Automatic fallback if primary agent unavailable
 - **Capability tags**: Each agent tagged with expertise areas for smart matching
-- **Model recommendations**: Opus 4 for strategic decisions, Sonnet 4.5 for tactical execution
+- **Model recommendations**: Sonnet for strategic orchestration, Haiku for tactical execution
 - **Use case guidance**: When to use each agent with specific examples
 
 Reference the agent registry when selecting agents to ensure optimal task assignment with built-in resilience.

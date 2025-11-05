@@ -208,9 +208,9 @@ Every workflow enforces:
 - All gates must pass, no exceptions
 
 ### 4. Model Selection Strategy
-- **Opus 4:** Strategic orchestrators, complex architecture decisions
-- **Sonnet 4.5:** Most specialized agents (tactical execution)
-- **Haiku:** Quick, straightforward tasks (when explicitly beneficial)
+- **Sonnet:** Strategic orchestrators (4 agents), complex architecture decisions
+- **Haiku:** Most specialized agents (70 agents), tactical execution
+- **Opus:** Reserved for future ultra-complex reasoning tasks
 
 ## Common Development Tasks
 

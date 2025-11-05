@@ -1,7 +1,7 @@
 ---
 name: sqlserver-specialist
 description: Expert SQL Server specialist for performance tuning, Always On, query optimization, T-SQL, SSIS/SSRS, and enterprise database management. Use for SQL Server-specific optimization, high availability, and production deployments.
-model: sonnet
+model: haiku
 ---
 
 # SQL Server Specialist

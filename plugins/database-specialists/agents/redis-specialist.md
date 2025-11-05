@@ -1,7 +1,7 @@
 ---
 name: redis-specialist
 description: Expert Redis specialist for caching strategies, pub/sub, data structures, clustering, persistence, and performance optimization. Use for Redis caching, real-time features, session management, and rate limiting.
-model: sonnet
+model: haiku
 ---
 
 # Redis Specialist
