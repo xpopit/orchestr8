@@ -39,7 +39,7 @@ Use the architect agent to:
 4. Create architecture map document
 5. Create analysis task list
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Discover and map system architecture"
 prompt: "Analyze the system architecture and create a comprehensive map:
 
@@ -143,7 +143,7 @@ Use the architect agent to:
 4. Generate pattern analysis report
 5. Provide pattern recommendations
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Analyze architecture patterns and violations"
 prompt: "Evaluate the architecture pattern for appropriateness and violations:
 
@@ -259,7 +259,7 @@ Use the architect agent to:
 4. Assess design pattern implementation quality
 5. Generate SOLID compliance report
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Review SOLID principles and design patterns"
 prompt: "Evaluate SOLID principles and design pattern usage:
 
@@ -404,7 +404,7 @@ Use the architect agent to:
 5. Evaluate async processing architecture
 6. Generate scalability report
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Analyze scalability and performance architecture"
 prompt: "Evaluate the system's scalability and performance architecture:
 
@@ -561,7 +561,7 @@ Use the security-auditor agent to:
 5. Check security best practices compliance
 6. Generate security architecture report
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Review security architecture and design"
 prompt: "Evaluate the security architecture design:
 
@@ -717,7 +717,7 @@ Use the code-reviewer agent to:
 4. Quantify technical debt by impact and effort
 5. Generate technical debt report with prioritization
 
-subagent_type: "code-reviewer"
+subagent_type: "quality-assurance:code-reviewer"
 description: "Assess technical debt and code quality"
 prompt: "Analyze technical debt and maintainability issues:
 
@@ -875,7 +875,7 @@ Use the api-designer agent to:
 4. Check circuit breaker, retry, timeout configurations
 5. Generate API architecture report
 
-subagent_type: "api-designer"
+subagent_type: "api-design:openapi-specialist"
 description: "Review API and integration architecture"
 prompt: "Evaluate API design and integration patterns:
 
@@ -1029,7 +1029,7 @@ Use the architect agent to:
 5. Provide clear next steps
 6. Generate final comprehensive report
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Generate comprehensive architecture review report"
 prompt: "Synthesize all architecture analyses into final report:
 

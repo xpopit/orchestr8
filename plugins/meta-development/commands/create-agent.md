@@ -9,7 +9,7 @@ You MUST immediately delegate this entire workflow to the agent-architect using 
 **Delegation Instructions:**
 ```
 Use Task tool with:
-- subagent_type: "agent-architect"
+- subagent_type: "meta-development:agent-architect"
 - description: "Create new specialized agent with validation"
 - prompt: "Execute the create-agent workflow for: [user's agent requirements].
 
@@ -62,7 +62,7 @@ Use the agent-architect agent to:
 6. Select appropriate model (Opus vs Sonnet)
 7. Determine required tools for agent type
 
-subagent_type: "agent-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Analyze requirements for new agent"
 prompt: "Analyze requirements for creating a new agent:
 
@@ -170,7 +170,7 @@ Use the agent-architect agent to:
 5. Plan testing patterns section
 6. Design closing deliverables statement
 
-subagent_type: "agent-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Design complete agent architecture"
 prompt: "Design the complete agent architecture:
 
@@ -286,7 +286,7 @@ Use the agent-architect agent to:
 8. Write Best Practices (DO/DON'T) section
 9. Write closing deliverables statement
 
-subagent_type: "agent-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Implement complete agent file"
 prompt: "Implement the complete agent markdown file:
 
@@ -447,7 +447,7 @@ Use the agent-architect agent to:
 7. Validate file placement in correct category
 8. Test agent can be loaded (YAML valid)
 
-subagent_type: "agent-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Validate agent implementation quality"
 prompt: "Validate the implemented agent:
 
@@ -545,7 +545,7 @@ Use the plugin-developer agent to:
 4. Add relevant keywords if new domain
 5. Verify version synchronization
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Update plugin metadata for new agent"
 prompt: "Update plugin metadata for the new agent:
 
@@ -664,7 +664,7 @@ Use the plugin-developer agent to:
 3. Document agent capabilities and use cases
 4. Include emoji category indicator
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Document new agent in CHANGELOG"
 prompt: "Document the new agent in CHANGELOG:
 

@@ -144,8 +144,8 @@ jobs:
             echo "WARNING: Expected 75 agents, found $AGENT_COUNT"
           fi
 
-          if [ "$WORKFLOW_COUNT" -ne 19 ]; then
-            echo "WARNING: Expected 19 workflows, found $WORKFLOW_COUNT"
+          if [ "$WORKFLOW_COUNT" -ne 20 ]; then
+            echo "WARNING: Expected 20 workflows, found $WORKFLOW_COUNT"
           fi
 
           echo "Validating agent file format..."

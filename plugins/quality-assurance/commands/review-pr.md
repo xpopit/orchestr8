@@ -30,14 +30,14 @@ This workflow provides thorough PR review by:
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the code-archaeologist agent to:
+Use the debugger agent to:
 1. Fetch PR details from GitHub (number, title, body, author, branches)
 2. Get PR diff and identify all changed files
 3. Categorize files by type (frontend, backend, tests, config, docs)
 4. Analyze PR context (size, change type, risk level, related issues)
 5. Create review plan with TodoWrite
 
-subagent_type: "code-archaeologist"
+subagent_type: "quality-assurance:debugger"
 description: "Gather PR context and metadata"
 prompt: "Fetch and analyze Pull Request #$1:
 
@@ -138,7 +138,7 @@ Use the code-reviewer agent to:
 4. Check for screenshots if UI changes
 5. Validate metadata (labels, reviewers, milestone)
 
-subagent_type: "code-reviewer"
+subagent_type: "quality-assurance:code-reviewer"
 description: "Validate PR metadata quality"
 prompt: "Validate metadata for PR #$PR_NUMBER:
 
@@ -219,7 +219,7 @@ Use the code-reviewer agent to:
 4. Identify complex functions (cyclomatic complexity)
 5. Generate line-level style feedback
 
-subagent_type: "code-reviewer"
+subagent_type: "quality-assurance:code-reviewer"
 description: "Review code style and readability"
 prompt: "Review style and readability for PR #$PR_NUMBER:
 
@@ -278,7 +278,7 @@ Use the appropriate language specialist agent to:
 4. Verify error handling
 5. Validate correctness of implementation
 
-subagent_type: "typescript-specialist"
+subagent_type: "language-developers:typescript-developer"
 description: "Review logic and correctness"
 prompt: "Review logic and correctness for PR #$PR_NUMBER:
 
@@ -323,7 +323,7 @@ Use the security-auditor agent to:
 4. Review authentication/authorization changes
 5. Analyze new dependency security
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Security audit of PR changes"
 prompt: "Perform security audit for PR #$PR_NUMBER:
 
@@ -391,7 +391,7 @@ Use the performance-analyzer agent to:
 4. Identify potential memory leaks
 5. Check database query optimization
 
-subagent_type: "performance-analyzer"
+subagent_type: "infrastructure-monitoring:performance-analyzer"
 description: "Analyze performance impact"
 prompt: "Analyze performance impact for PR #$PR_NUMBER:
 
@@ -444,7 +444,7 @@ Use the architect agent to:
 4. Assess scalability impact
 5. Verify design pattern usage
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Review architectural impact"
 prompt: "Review architecture for PR #$PR_NUMBER:
 
@@ -499,7 +499,7 @@ Use the technical-writer agent to:
 4. Format for GitHub markdown
 5. Include positive findings and recommendations
 
-subagent_type: "technical-writer"
+subagent_type: "development-core:architect"
 description: "Generate PR review summary"
 prompt: "Generate comprehensive review summary for PR #$PR_NUMBER:
 
@@ -603,7 +603,7 @@ Use the code-reviewer agent to:
 4. Apply appropriate labels
 5. Update PR metadata if needed
 
-subagent_type: "code-reviewer"
+subagent_type: "quality-assurance:code-reviewer"
 description: "Post review to GitHub"
 prompt: "Post review feedback to PR #$PR_NUMBER:
 

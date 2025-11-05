@@ -9,7 +9,7 @@ You MUST immediately delegate this entire workflow to the fullstack-developer or
 **Delegation Instructions:**
 ```
 Use Task tool with:
-- subagent_type: "fullstack-developer"
+- subagent_type: "development-core:fullstack-developer"
 - description: "Optimize application performance end-to-end"
 - prompt: "Execute the optimize-performance workflow for: [user's target/requirements].
 
@@ -86,7 +86,7 @@ Use the performance-analyzer agent to:
 5. Run infrastructure profiling (CloudWatch, container metrics)
 6. Capture baseline metrics in JSON format
 
-subagent_type: "performance-analyzer"
+subagent_type: "infrastructure-monitoring:performance-analyzer"
 description: "Profile and establish performance baseline"
 prompt: "Establish comprehensive performance baseline for: $1
 
@@ -208,7 +208,7 @@ Use the architect agent to:
 4. Identify trade-offs and risks
 5. Define performance budget
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Design comprehensive optimization strategy"
 prompt: "Design optimization strategy based on baseline metrics:
 
@@ -310,7 +310,7 @@ Use the frontend-developer agent to:
 4. Add service worker for caching
 5. Optimize bundle with tree shaking and minification
 
-subagent_type: "frontend-developer"
+subagent_type: "frontend-frameworks:react-specialist"
 description: "Implement frontend performance optimizations"
 prompt: "Implement frontend optimizations from OPTIMIZATION-STRATEGY.md:
 
@@ -407,7 +407,7 @@ Use the backend-developer agent to:
 4. Optimize database connection pooling
 5. Add response compression
 
-subagent_type: "backend-developer"
+subagent_type: "development-core:fullstack-developer"
 description: "Implement backend performance optimizations"
 prompt: "Implement backend optimizations from OPTIMIZATION-STRATEGY.md:
 
@@ -511,14 +511,14 @@ TOKENS_USED=7000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the database-specialist agent to:
+Use the database-specialists:postgresql-specialist to:
 1. Create missing indexes based on slow query analysis
 2. Rewrite inefficient queries
 3. Create materialized views for expensive aggregations
 4. Optimize database configuration
 5. Validate index usage
 
-subagent_type: "database-specialist"
+subagent_type: "database-specialists:postgresql-specialist"
 description: "Implement database performance optimizations"
 prompt: "Implement database optimizations from OPTIMIZATION-STRATEGY.md:
 
@@ -627,7 +627,7 @@ Use the performance-analyzer agent to:
 5. Validate all performance targets met
 6. Generate comprehensive performance report
 
-subagent_type: "performance-analyzer"
+subagent_type: "infrastructure-monitoring:performance-analyzer"
 description: "Benchmark improvements and validate targets"
 prompt: "Benchmark performance improvements and validate all targets met:
 

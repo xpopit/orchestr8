@@ -26,7 +26,7 @@ Use the fullstack-developer or frontend-developer agent to:
 4. Map navigation structure and interactive elements
 5. Identify key user flows to test
 
-subagent_type: "fullstack-developer"
+subagent_type: "development-core:fullstack-developer"
 description: "Launch application and discover structure"
 prompt: "Launch and discover web application: $*
 
@@ -104,7 +104,7 @@ Use the visual-testing agent to:
 4. Detect layout issues (overflow, overlapping)
 5. Test dark mode if applicable
 
-subagent_type: "visual-testing"
+subagent_type: "quality-assurance:playwright-specialist"
 description: "Perform comprehensive visual testing"
 prompt: "Visual testing for application: $*
 
@@ -197,7 +197,7 @@ Use the visual-testing agent to:
 4. Test search and filtering
 5. Verify error handling
 
-subagent_type: "visual-testing"
+subagent_type: "quality-assurance:playwright-specialist"
 description: "Test all functional user flows"
 prompt: "Functional testing for application: $*
 
@@ -294,7 +294,7 @@ Use the accessibility-tester agent to:
 4. Check color contrast ratios
 5. Validate ARIA labels and semantic HTML
 
-subagent_type: "accessibility-tester"
+subagent_type: "quality-assurance:accessibility-expert"
 description: "Audit accessibility compliance"
 prompt: "Accessibility testing for application: $*
 
@@ -401,7 +401,7 @@ Use the performance-analyzer agent to:
 4. Detect performance bottlenecks
 5. Measure Time to Interactive (TTI)
 
-subagent_type: "performance-analyzer"
+subagent_type: "infrastructure-monitoring:performance-analyzer"
 description: "Analyze web performance metrics"
 prompt: "Performance testing for application: $*
 
@@ -502,7 +502,7 @@ Use the ui-debugger agent to:
 4. Debug detected issues
 5. Suggest fixes for common problems
 
-subagent_type: "ui-debugger"
+subagent_type: "quality-assurance:debugger"
 description: "Debug issues using Chrome DevTools Protocol"
 prompt: "Debug web application using DevTools: $*
 
@@ -604,7 +604,7 @@ Use the test-engineer agent to:
 4. Add accessibility tests
 5. Generate test configuration
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Generate automated test suite"
 prompt: "Generate automated test suite for application: $*
 

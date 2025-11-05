@@ -31,7 +31,7 @@ Use the devops-engineer agent to:
 4. Assess deployment targets
 5. Create CI/CD pipeline strategy
 
-subagent_type: "devops-engineer"
+subagent_type: "devops-cloud:devops-engineer"
 description: "Analyze project and design CI/CD strategy"
 prompt: "Analyze project for CI/CD pipeline setup:
 
@@ -140,7 +140,7 @@ Use the ci-cd-engineer agent to:
 4. Configure artifact storage
 5. Set up environment-specific configurations
 
-subagent_type: "ci-cd-engineer"
+subagent_type: "devops-cloud:devops-engineer"
 description: "Implement build and test pipeline"
 prompt: "Implement CI/CD build pipeline:
 
@@ -293,7 +293,7 @@ Use the security-auditor agent to:
 4. Add container image scanning (if Docker used)
 5. Configure license compliance checking
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Add security scanning to CI/CD pipeline"
 prompt: "Add comprehensive security scanning to CI/CD pipeline:
 
@@ -464,7 +464,7 @@ Use the devops-engineer agent to:
 5. Set up monitoring and alerting
 6. Create rollback procedures
 
-subagent_type: "devops-engineer"
+subagent_type: "devops-cloud:devops-engineer"
 description: "Configure deployment and monitoring"
 prompt: "Configure deployment automation and monitoring:
 

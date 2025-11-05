@@ -1,72 +1,72 @@
 # Agent Registry
 # Maps logical roles to specialized agents with fallback options
-# Version: 2.4.0
+# Version: 4.2.0 (Updated with namespaced agent references)
 
 roles:
   # Architecture & Design
   system_architect:
-    primary: architect
-    fallbacks: [fullstack-developer, project-orchestrator]
+    primary: development-core:architect
+    fallbacks: [development-core:fullstack-developer, orchestration:project-orchestrator]
     capabilities: [architecture, system-design, scalability]
     model: sonnet
     use_when: "designing system architecture, making architectural decisions"
-    
+
   # Frontend Development
   frontend_developer:
-    primary: frontend-developer
-    fallbacks: [fullstack-developer, react-specialist]
+    primary: frontend-frameworks:react-specialist
+    fallbacks: [development-core:fullstack-developer, frontend-frameworks:nextjs-specialist]
     capabilities: [react, vue, angular, ui-components]
     model: haiku
     use_when: "building UI components, client-side logic"
-    
+
   react_specialist:
-    primary: react-specialist
-    fallbacks: [frontend-developer, nextjs-specialist]
+    primary: frontend-frameworks:react-specialist
+    fallbacks: [frontend-frameworks:nextjs-specialist, development-core:fullstack-developer]
     capabilities: [react, hooks, context, performance]
     model: haiku
     use_when: "complex React implementations, performance optimization"
-    
-  # Backend Development  
+
+  # Backend Development
   backend_developer:
-    primary: backend-developer
-    fallbacks: [fullstack-developer, python-developer]
+    primary: development-core:fullstack-developer
+    fallbacks: [language-developers:python-developer, language-developers:typescript-developer]
     capabilities: [apis, business-logic, databases]
     model: haiku
     use_when: "building APIs, business logic, backend services"
-    
+
   # Quality Assurance
   code_reviewer:
-    primary: code-reviewer
-    fallbacks: [architect, fullstack-developer]
+    primary: quality-assurance:code-reviewer
+    fallbacks: [development-core:architect, development-core:fullstack-developer]
     capabilities: [code-review, best-practices, patterns]
     model: haiku
     use_when: "code review, quality validation"
-    
+
   test_engineer:
-    primary: test-engineer
-    fallbacks: [fullstack-developer, qa-engineer]
+    primary: quality-assurance:test-engineer
+    fallbacks: [development-core:fullstack-developer, quality-assurance:debugger]
     capabilities: [testing, test-automation, coverage]
     model: haiku
     use_when: "writing tests, test automation"
-    
+
   security_auditor:
-    primary: security-auditor
-    fallbacks: [fullstack-developer, compliance-officer]
+    primary: quality-assurance:security-auditor
+    fallbacks: [development-core:fullstack-developer, general-purpose]
     capabilities: [security, vulnerabilities, compliance]
     model: sonnet
     use_when: "security audits, vulnerability scanning"
-    
+
   # Orchestration
   project_orchestrator:
-    primary: project-orchestrator
-    fallbacks: [architect, feature-orchestrator]
+    primary: orchestration:project-orchestrator
+    fallbacks: [development-core:architect, orchestration:feature-orchestrator]
     capabilities: [orchestration, coordination, planning]
     model: sonnet
     use_when: "end-to-end project coordination"
-    
+
   feature_orchestrator:
-    primary: feature-orchestrator
-    fallbacks: [project-orchestrator, fullstack-developer]
+    primary: orchestration:feature-orchestrator
+    fallbacks: [orchestration:project-orchestrator, development-core:fullstack-developer]
     capabilities: [feature-delivery, coordination, integration]
     model: sonnet
     use_when: "complete feature development"

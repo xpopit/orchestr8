@@ -27,7 +27,7 @@ Use the skill-architect agent to:
 3. Determine skill type (methodology, pattern, best practice, framework knowledge)
 4. Identify trigger conditions for auto-activation
 
-subagent_type: "skill-architect"
+subagent_type: "meta-development:skill-architect"
 description: "Validate skill requirements and determine if skill is appropriate"
 prompt: "Validate if the following requirements should be implemented as a skill:
 
@@ -131,7 +131,7 @@ Use the skill-architect agent to:
 4. Design 5+ code example scenarios
 5. Define DO/DON'T patterns
 
-subagent_type: "skill-architect"
+subagent_type: "meta-development:skill-architect"
 description: "Design skill structure, auto-activation, and content outline"
 prompt: "Design the structure and auto-activation rules for the validated skill:
 
@@ -258,7 +258,7 @@ Use the skill-architect agent to:
 4. Ensure cross-agent applicability
 5. Follow wshobson/agents skill pattern
 
-subagent_type: "skill-architect"
+subagent_type: "meta-development:skill-architect"
 description: "Implement complete skill markdown file with examples"
 prompt: "Implement the skill based on the design document:
 
@@ -521,7 +521,7 @@ Use the test-engineer agent to:
 4. Check for overlaps with existing skills
 5. Ensure cross-agent applicability
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Test skill content and validate quality"
 prompt: "Test and validate the newly created skill:
 
@@ -669,7 +669,7 @@ Use the plugin-developer agent to:
 4. Validate plugin.json syntax
 5. Create integration summary
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Integrate skill into plugin and update metadata"
 prompt: "Integrate the new skill into the orchestr8 plugin:
 

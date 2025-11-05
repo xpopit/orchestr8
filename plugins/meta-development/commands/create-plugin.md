@@ -21,14 +21,14 @@ echo "Workflow ID: $workflow_id"
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the plugin-architect agent to:
+Use the agent-architect agent to:
 1. Extract plugin specifications from user requirements
 2. Identify plugin domain and category
 3. Determine plugin scope (agents, commands, skills)
 4. Assess plugin complexity and components needed
 5. Research similar plugins for patterns
 
-subagent_type: "plugin-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Analyze requirements for new plugin"
 prompt: "Analyze requirements for creating a new Claude Code plugin:
 
@@ -137,14 +137,14 @@ TOKENS_USED=5000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the plugin-architect agent to:
+Use the agent-architect agent to:
 1. Design plugin directory structure
 2. Design plugin.json manifest with all required fields
 3. Design .claude-plugin/marketplace.json entry
 4. Plan component organization (agents, commands, skills)
 5. Design README structure and documentation plan
 
-subagent_type: "plugin-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Design plugin architecture and structure"
 prompt: "Design the complete plugin architecture:
 
@@ -320,7 +320,7 @@ Use the plugin-developer agent to:
 4. Create VERSION file (1.0.0)
 5. Create empty component directories (agents/, commands/, skills/)
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Create plugin directory structure and manifests"
 prompt: "Create the plugin directory structure and manifest files:
 
@@ -505,14 +505,14 @@ TOKENS_USED=4000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the plugin-architect agent to:
+Use the agent-architect agent to:
 1. Orchestrate component creation using sub-workflows
 2. Create agents via /create-agent (if needed)
 3. Create commands via /create-workflow (if needed)
 4. Create skills via /create-skill (if needed)
 5. Update plugin.json with component counts after each creation
 
-subagent_type: "plugin-architect"
+subagent_type: "meta-development:agent-architect"
 description: "Orchestrate creation of plugin components"
 prompt: "Create all plugin components using specialized workflows:
 
@@ -670,7 +670,7 @@ Use the technical-writer agent to:
 4. Create installation and usage guide
 5. Add examples and troubleshooting
 
-subagent_type: "technical-writer"
+subagent_type: "general-purpose"
 description: "Create plugin documentation"
 prompt: "Create comprehensive documentation for the new plugin:
 
@@ -903,7 +903,7 @@ Use the plugin-developer agent to:
 4. Validate all version files synchronized
 5. Create integration summary report
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Integrate plugin into orchestr8 ecosystem"
 prompt: "Integrate the new plugin into the orchestr8 plugin ecosystem:
 
@@ -1150,7 +1150,7 @@ Use the test-engineer agent to:
 4. Validate documentation quality and completeness
 5. Generate comprehensive validation report
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Validate plugin integration and quality"
 prompt: "Validate the newly created plugin:
 

@@ -27,7 +27,7 @@ Use the security-auditor agent to:
 3. Create threat model (attack vectors, surfaces, adversaries)
 4. Identify compliance requirements (SOC2, GDPR, HIPAA, PCI-DSS)
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Define security audit scope and threat model"
 prompt: "Perform security reconnaissance and scoping:
 
@@ -152,7 +152,7 @@ Use the security-auditor agent to:
 4. Scan container security (if applicable)
 5. Audit infrastructure as code security
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Execute automated security scanning tools"
 prompt: "Run comprehensive automated security scans:
 
@@ -333,7 +333,7 @@ Use the security-auditor agent with code-reviewer to:
 9. Review A09:2021 - Security Logging and Monitoring Failures
 10. Review A10:2021 - Server-Side Request Forgery (SSRF)
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Manual OWASP Top 10 security review"
 prompt: "Perform comprehensive OWASP Top 10 manual code review:
 
@@ -615,7 +615,7 @@ Use the security-auditor agent to:
 4. Audit PCI-DSS requirements (if handling payment cards)
 5. Generate compliance status report
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Validate compliance requirements"
 prompt: "Validate compliance with applicable frameworks:
 
@@ -716,7 +716,7 @@ Use the security-auditor agent with appropriate development agents to:
 4. Create implementation plans for complex fixes
 5. Verify all remediations
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Plan and execute security remediations"
 prompt: "Create and execute remediation plan:
 
@@ -897,7 +897,7 @@ Use the technical-writer agent to:
 6. Provide recommendations and next steps
 7. Generate metrics dashboard
 
-subagent_type: "technical-writer"
+subagent_type: "development-core:architect"
 description: "Generate comprehensive security audit report"
 prompt: "Create comprehensive security audit report:
 

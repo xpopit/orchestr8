@@ -28,7 +28,7 @@ Use the requirements-analyzer agent to:
 4. Create user stories if applicable
 5. Assess project scope and complexity
 
-subagent_type: "requirements-analyzer"
+subagent_type: "general-purpose"
 description: "Analyze project requirements and define scope"
 prompt: "Analyze requirements for new project:
 
@@ -108,7 +108,7 @@ Use the architect agent to:
 5. Design data models and API contracts
 6. Present architecture to user for approval
 
-subagent_type: "architect"
+subagent_type: "development-core:architect"
 description: "Design system architecture and tech stack"
 prompt: "Design complete system architecture for project:
 
@@ -203,7 +203,7 @@ Use the appropriate language-specific agent to:
 5. Create basic configuration files (.env.example, etc.)
 6. Set up code quality tools (linting, formatting)
 
-subagent_type: "[typescript-developer|python-developer|java-developer|go-developer|rust-developer]"
+subagent_type: "[language-developers:typescript-developer|language-developers:python-developer|language-developers:java-developer|language-developers:go-developer|language-developers:rust-developer]"
 description: "Initialize project structure and dependencies"
 prompt: "Initialize project based on architecture:
 
@@ -306,7 +306,7 @@ Use the backend-developer agent to:
 5. Set up error handling and logging
 6. Implement input validation and sanitization
 
-subagent_type: "backend-developer"
+subagent_type: "development-core:fullstack-developer"
 description: "Implement backend APIs and business logic"
 prompt: "Implement complete backend based on design:
 
@@ -415,7 +415,7 @@ Use the frontend-developer agent to:
 6. Add form validation and error handling
 7. Ensure responsive design and accessibility
 
-subagent_type: "frontend-developer"
+subagent_type: "frontend-frameworks:react-specialist"
 description: "Implement frontend UI and integration"
 prompt: "Implement complete frontend based on design:
 
@@ -526,7 +526,7 @@ Use the test-engineer agent to:
 5. Add performance tests if applicable
 6. Run all tests and ensure they pass
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Implement comprehensive test suite"
 prompt: "Create complete test suite for project:
 
@@ -646,7 +646,7 @@ Use the code-reviewer agent to:
 5. Check documentation and comments
 6. Generate code review report
 
-subagent_type: "code-reviewer"
+subagent_type: "quality-assurance:code-reviewer"
 description: "Comprehensive code quality review"
 prompt: "Review all project code for quality:
 
@@ -700,7 +700,7 @@ Use the security-auditor agent to:
 5. Verify OWASP Top 10 compliance
 6. Generate security audit report
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Security audit and vulnerability scan"
 prompt: "Perform comprehensive security audit:
 
@@ -751,7 +751,7 @@ Use the performance-analyzer agent to:
 5. Test API response times
 6. Generate performance report
 
-subagent_type: "performance-analyzer"
+subagent_type: "quality-assurance:performance-analyzer"
 description: "Performance profiling and optimization"
 prompt: "Analyze project performance:
 
@@ -841,7 +841,7 @@ Use the ci-cd-engineer agent to:
 5. Configure deployment automation
 6. Add environment-specific configurations
 
-subagent_type: "ci-cd-engineer"
+subagent_type: "devops-cloud:terraform-specialist"
 description: "Set up CI/CD pipeline"
 prompt: "Set up complete CI/CD pipeline:
 
@@ -890,7 +890,7 @@ Use appropriate infrastructure agent to:
 5. Set up monitoring and logging
 6. Configure backups
 
-subagent_type: "[terraform-specialist|aws-specialist|docker-specialist]"
+subagent_type: "[devops-cloud:terraform-specialist|devops-cloud:aws-specialist|devops-cloud:docker-specialist]"
 description: "Set up infrastructure and hosting"
 prompt: "Set up complete infrastructure:
 
@@ -946,7 +946,7 @@ Use the technical-writer agent to:
 5. Write deployment guide
 6. Add troubleshooting guide
 
-subagent_type: "technical-writer"
+subagent_type: "development-core:fullstack-developer"
 description: "Create complete project documentation"
 prompt: "Create comprehensive documentation:
 
@@ -1010,7 +1010,7 @@ Use the devops-engineer agent to:
 5. Verify deployment health
 6. Set up rollback plan
 
-subagent_type: "devops-engineer"
+subagent_type: "devops-cloud:terraform-specialist"
 description: "Deploy application to environments"
 prompt: "Deploy application to production:
 

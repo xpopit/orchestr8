@@ -28,7 +28,7 @@ Use the workflow-architect agent to:
 4. Determine required agents and quality gates
 5. Research similar workflows for patterns
 
-subagent_type: "workflow-architect"
+subagent_type: "meta-development:workflow-architect"
 description: "Analyze requirements for new workflow"
 prompt: "Analyze requirements for creating a new workflow:
 
@@ -107,7 +107,7 @@ Use the workflow-architect agent to:
 4. Design quality gates with pass/fail criteria
 5. Define 8-12 specific success criteria
 
-subagent_type: "workflow-architect"
+subagent_type: "meta-development:workflow-architect"
 description: "Design workflow architecture and phases"
 prompt: "Design the complete workflow architecture:
 
@@ -203,7 +203,7 @@ Use the plugin-developer agent to:
 6. Include success criteria checklist
 7. Add usage examples and anti-patterns
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Implement workflow markdown file"
 prompt: "Implement the complete workflow file:
 
@@ -343,7 +343,7 @@ Use the plugin-developer agent to:
 4. Update CHANGELOG.md with workflow details
 5. Verify all integration points
 
-subagent_type: "plugin-developer"
+subagent_type: "meta-development:plugin-developer"
 description: "Integrate workflow into plugin"
 prompt: "Integrate the new workflow into the Claude Code plugin:
 
@@ -448,7 +448,7 @@ Use the test-engineer agent to:
 4. Create workflow usage documentation
 5. Generate test report
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Test and document new workflow"
 prompt: "Test the newly created workflow:
 

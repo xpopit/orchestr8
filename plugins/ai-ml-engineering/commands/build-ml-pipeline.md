@@ -23,7 +23,7 @@ echo "Workflow ID: $workflow_id"
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-subagent_type: "ml-engineer"
+subagent_type: "ai-ml-engineering:ml-engineer"
 description: "Analyze ML requirements and design pipeline architecture"
 prompt: "Analyze ML requirements and design complete pipeline architecture:
 
@@ -115,7 +115,7 @@ TOKENS_USED=5000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-subagent_type: "data-engineer"
+subagent_type: "ai-ml-engineering:data-engineer"
 description: "Build data ingestion and feature engineering pipelines"
 prompt: "Build complete data pipeline based on architecture:
 
@@ -256,7 +256,7 @@ TOKENS_USED=8000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-subagent_type: "ml-engineer"
+subagent_type: "ai-ml-engineering:ml-engineer"
 description: "Train ML models with experimentation and tracking"
 prompt: "Train and optimize ML models with comprehensive experiment tracking:
 
@@ -389,7 +389,7 @@ TOKENS_USED=10000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-subagent_type: "mlops-specialist"
+subagent_type: "ai-ml-engineering:mlops-specialist"
 description: "Deploy ML model with MLOps best practices"
 prompt: "Deploy ML model to production with complete MLOps setup:
 
@@ -572,7 +572,7 @@ TOKENS_USED=9000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:observability-specialist"
 description: "Set up ML model monitoring and observability"
 prompt: "Implement comprehensive monitoring for ML model in production:
 
@@ -712,7 +712,7 @@ TOKENS_USED=7000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-subagent_type: "mlops-specialist"
+subagent_type: "ai-ml-engineering:mlops-specialist"
 description: "Set up continuous training and automated retraining"
 prompt: "Implement continuous training pipeline with automated retraining:
 

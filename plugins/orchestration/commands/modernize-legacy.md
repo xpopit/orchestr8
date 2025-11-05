@@ -32,7 +32,7 @@ Use the code-archaeologist agent to:
 6. Create risk assessment
 7. Develop modernization strategy
 
-subagent_type: "code-archaeologist"
+subagent_type: "quality-assurance:debugger"
 description: "Analyze legacy codebase and create modernization roadmap"
 prompt: "Analyze legacy system for modernization: $1
 
@@ -154,7 +154,7 @@ Use the test-engineer agent to:
 4. Implement end-to-end tests for business workflows
 5. Establish performance baselines
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Create comprehensive test suite for legacy code"
 prompt: "Create test coverage for legacy system: $1
 
@@ -286,7 +286,7 @@ Use the appropriate language specialist agent to:
 4. Handle language upgrades, framework migrations, or architecture refactoring
 5. Validate at each increment
 
-subagent_type: "[python-developer|typescript-developer|java-developer|go-developer|rust-developer|architect]"
+subagent_type: "[language-developers:python-developer|language-developers:typescript-developer|language-developers:java-developer|language-developers:go-developer|language-developers:rust-developer|development-core:architect]"
 description: "Modernize legacy code incrementally"
 prompt: "Modernize legacy system incrementally: $1
 
@@ -466,7 +466,7 @@ Use the database-specialist agent to:
 4. Create data transformation pipelines
 5. Plan cutover strategy
 
-subagent_type: "database-specialist"
+subagent_type: "database-specialists:postgresql-specialist"
 description: "Migrate data with zero data loss"
 prompt: "Implement data migration for modernization: $1
 
@@ -586,7 +586,7 @@ Use the performance-analyzer agent to:
 4. Run load testing
 5. Validate performance improvements
 
-subagent_type: "performance-analyzer"
+subagent_type: "quality-assurance:performance-analyzer"
 description: "Optimize performance and validate improvements"
 prompt: "Optimize modernized codebase performance: $1
 
@@ -701,7 +701,7 @@ Use the technical-writer agent to:
 4. Document rollback procedures
 5. Create monitoring and alerting guide
 
-subagent_type: "technical-writer"
+subagent_type: "development-core:fullstack-developer"
 description: "Create documentation and deployment guides"
 prompt: "Document modernization and create deployment guides: $1
 

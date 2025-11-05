@@ -9,7 +9,7 @@ You MUST immediately delegate this entire workflow to the observability-speciali
 **Delegation Instructions:**
 ```
 Use Task tool with:
-- subagent_type: "observability-specialist"
+- subagent_type: "infrastructure-monitoring:observability-specialist"
 - description: "Deploy complete observability stack from scratch to production"
 - prompt: "Execute the setup-monitoring workflow for: [user's infrastructure description].
 
@@ -61,7 +61,7 @@ Use the architect and sre-specialist agents to:
 3. Design comprehensive monitoring stack
 4. Create deployment plan
 
-subagent_type: "architect"
+subagent_type: "system-architecture:architect"
 description: "Design observability architecture and define SLOs"
 prompt: "Design comprehensive observability architecture for: $*
 
@@ -155,13 +155,13 @@ TOKENS_USED=5000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the observability-specialist and kubernetes-expert agents to:
+Use the observability-specialist and kubernetes-specialist agents to:
 1. Deploy Prometheus server
 2. Deploy and configure exporters
 3. Deploy Grafana
 4. Configure recording rules
 
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:observability-specialist"
 description: "Deploy Prometheus and Grafana metrics infrastructure"
 prompt: "Deploy metrics infrastructure based on deployment-plan.md
 
@@ -268,7 +268,7 @@ Use the observability-specialist and language-specific developers to:
 3. Integrate OpenTelemetry for distributed tracing
 4. Implement health check endpoints
 
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:observability-specialist"
 description: "Instrument applications with metrics, logs, and traces"
 prompt: "Instrument all applications for observability
 
@@ -392,13 +392,13 @@ TOKENS_USED=9000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the observability-specialist and kubernetes-expert agents to:
+Use the observability-specialist and kubernetes-specialist agents to:
 1. Deploy log aggregation platform
 2. Configure log collection from all services
 3. Set up log parsing and indexing
 4. Create log dashboards
 
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:observability-specialist"
 description: "Deploy logging infrastructure and aggregation"
 prompt: "Deploy comprehensive logging infrastructure
 
@@ -508,7 +508,7 @@ Use the observability-specialist agent to:
 3. Set up trace visualization
 4. Create service dependency maps
 
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:observability-specialist"
 description: "Deploy distributed tracing infrastructure"
 prompt: "Deploy comprehensive distributed tracing
 
@@ -622,7 +622,7 @@ Use the observability-specialist agent to:
 3. Create SLO dashboards
 4. Create database dashboards
 
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:observability-specialist"
 description: "Create comprehensive monitoring dashboards"
 prompt: "Create production-grade monitoring dashboards
 
@@ -780,7 +780,7 @@ Use the sre-specialist and observability-specialist agents to:
 3. Set up notification channels
 4. Create runbooks for common alerts
 
-subagent_type: "sre-specialist"
+subagent_type: "infrastructure-monitoring:sre-specialist"
 description: "Configure comprehensive alerting and incident response"
 prompt: "Set up production alerting and incident response
 
@@ -945,7 +945,7 @@ Use the observability-specialist and infrastructure-engineer agents to:
 3. Set up long-term storage
 4. Implement backup and disaster recovery
 
-subagent_type: "infrastructure-engineer"
+subagent_type: "infrastructure-monitoring:infrastructure-engineer"
 description: "Optimize monitoring stack and ensure high availability"
 prompt: "Optimize and harden monitoring infrastructure
 

@@ -9,7 +9,7 @@ You MUST immediately delegate this entire workflow to the feature-orchestrator a
 **Delegation Instructions:**
 ```
 Use Task tool with:
-- subagent_type: "feature-orchestrator"
+- subagent_type: "orchestration:feature-orchestrator"
 - description: "Implement complete feature from analysis to deployment"
 - prompt: "Execute the add-feature workflow for: [user's feature description].
 
@@ -45,7 +45,7 @@ Use the requirements-analyzer agent to:
 4. Define acceptance criteria
 5. Create detailed task plan
 
-subagent_type: "requirements-analyzer"
+subagent_type: "general-purpose"
 description: "Analyze feature requirements and design solution"
 prompt: "Analyze requirements for new feature: $*
 
@@ -145,7 +145,7 @@ Use the appropriate backend agent to:
 4. Write unit tests for backend
 5. Write integration tests for API
 
-subagent_type: "[backend-developer|python-developer|typescript-developer|java-developer|go-developer|rust-developer]"
+subagent_type: "[development-core:fullstack-developer|language-developers:python-developer|language-developers:typescript-developer|language-developers:java-developer|language-developers:go-developer|language-developers:rust-developer]"
 description: "Implement backend components for feature"
 prompt: "Implement backend for feature: $*
 
@@ -232,7 +232,7 @@ Use the frontend-developer agent to:
 4. Write component tests
 5. Write E2E tests
 
-subagent_type: "frontend-developer"
+subagent_type: "frontend-frameworks:react-specialist"
 description: "Implement frontend components for feature"
 prompt: "Implement frontend for feature: $*
 
@@ -337,7 +337,7 @@ Use the code-reviewer agent to:
 4. Validate SOLID principles
 5. Identify code smells
 
-subagent_type: "code-reviewer"
+subagent_type: "quality-assurance:code-reviewer"
 description: "Review feature code quality"
 prompt: "Review code quality for feature: $*
 
@@ -415,7 +415,7 @@ Use the test-engineer agent to:
 4. Check test quality
 5. Generate coverage report
 
-subagent_type: "test-engineer"
+subagent_type: "quality-assurance:test-engineer"
 description: "Validate comprehensive testing"
 prompt: "Validate testing for feature: $*
 
@@ -495,7 +495,7 @@ Use the security-auditor agent to:
 4. Verify OWASP compliance
 5. Generate security report
 
-subagent_type: "security-auditor"
+subagent_type: "quality-assurance:security-auditor"
 description: "Audit feature security"
 prompt: "Security audit for feature: $*
 
@@ -571,14 +571,14 @@ echo "✅ Security audit passed"
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the performance-analyzer agent to:
+Use the infrastructure-monitoring:prometheus-grafana-specialist to:
 1. Check for N+1 queries
 2. Verify response times
 3. Analyze bundle size (frontend)
 4. Check memory usage
 5. Generate performance report
 
-subagent_type: "performance-analyzer"
+subagent_type: "infrastructure-monitoring:prometheus-grafana-specialist"
 description: "Analyze feature performance"
 prompt: "Performance analysis for feature: $*
 
@@ -639,14 +639,14 @@ echo "✅ Performance analysis passed (Score: ${PERF_SCORE})"
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the accessibility-expert agent to:
+Use the general-purpose agent to:
 1. Check WCAG 2.1 AA compliance
 2. Verify keyboard navigation
 3. Test screen reader compatibility
 4. Check color contrast
 5. Generate accessibility report
 
-subagent_type: "accessibility-expert"
+subagent_type: "general-purpose"
 description: "Audit feature accessibility"
 prompt: "Accessibility audit for feature: $*
 
@@ -729,7 +729,7 @@ Use the technical-writer agent to:
 4. Update architecture docs if design changed
 5. Create deployment documentation
 
-subagent_type: "technical-writer"
+subagent_type: "development-core:fullstack-developer"
 description: "Document feature and prepare deployment"
 prompt: "Document feature and prepare for deployment: $*
 

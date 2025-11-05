@@ -9,7 +9,7 @@ You MUST immediately delegate this entire workflow to the appropriate orchestrat
 **Delegation Instructions:**
 ```
 Use Task tool with:
-- subagent_type: "devops-orchestrator" or "aws-specialist"
+- subagent_type: "orchestration:project-orchestrator" or "devops-cloud:aws-specialist"
 - description: "Execute complete cloud cost optimization workflow"
 - prompt: "Execute the optimize-costs workflow for: [user's infrastructure description].
 
@@ -63,7 +63,7 @@ Use the aws-specialist (or appropriate cloud specialist) to:
 4. Find unutilized/underutilized resources
 5. Audit resource tagging compliance
 
-subagent_type: "aws-specialist"
+subagent_type: "devops-cloud:aws-specialist"
 description: "Analyze cloud infrastructure costs and identify waste"
 prompt: "Perform comprehensive cost analysis for: $*
 
@@ -168,7 +168,7 @@ Use the aws-specialist (or cloud specialist) to:
 4. Identify overprovisioned resources
 5. Create right-sizing implementation plan
 
-subagent_type: "aws-specialist"
+subagent_type: "devops-cloud:aws-specialist"
 description: "Analyze resource utilization and recommend right-sizing"
 prompt: "Perform right-sizing analysis for: $*
 
@@ -300,7 +300,7 @@ Use the aws-specialist (or cloud specialist) to:
 4. Convert storage types for cost savings
 5. Calculate storage savings
 
-subagent_type: "aws-specialist"
+subagent_type: "devops-cloud:aws-specialist"
 description: "Optimize storage costs and implement lifecycle policies"
 prompt: "Implement storage optimization for: $*
 
@@ -427,7 +427,7 @@ Use the aws-specialist (or cloud specialist) to:
 4. Identify spot instance opportunities
 5. Create commitment strategy
 
-subagent_type: "aws-specialist"
+subagent_type: "devops-cloud:aws-specialist"
 description: "Analyze and recommend reserved capacity purchases"
 prompt: "Analyze reserved capacity opportunities for: $*
 
@@ -528,14 +528,14 @@ TOKENS_USED=6000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the infrastructure-engineer or devops-orchestrator to:
+Use the devops-cloud:terraform-specialist to:
 1. Configure auto-scaling groups
 2. Set up scheduled scaling for dev/test
 3. Optimize Lambda memory allocation
 4. Implement auto-scaling policies
 5. Calculate scaling savings
 
-subagent_type: "infrastructure-engineer"
+subagent_type: "devops-cloud:terraform-specialist"
 description: "Implement auto-scaling and scheduling for cost optimization"
 prompt: "Implement auto-scaling and scheduling for: $*
 
@@ -666,14 +666,14 @@ TOKENS_USED=7000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the infrastructure-engineer or aws-specialist to:
+Use the devops-cloud:aws-specialist to:
 1. Optimize data transfer costs
 2. Consolidate load balancers
 3. Implement VPC endpoints
 4. Optimize NAT gateway usage
 5. Calculate networking savings
 
-subagent_type: "infrastructure-engineer"
+subagent_type: "devops-cloud:terraform-specialist"
 description: "Optimize networking and data transfer costs"
 prompt: "Optimize networking costs for: $*
 
@@ -746,14 +746,14 @@ TOKENS_USED=5000
 
 **⚡ EXECUTE TASK TOOL:**
 ```
-Use the observability-specialist or aws-specialist to:
+Use the infrastructure-monitoring:prometheus-grafana-specialist to:
 1. Set up cost anomaly detection
 2. Configure budget alerts
 3. Implement tagging enforcement
 4. Create showback/chargeback reports
 5. Deploy cost monitoring dashboards
 
-subagent_type: "observability-specialist"
+subagent_type: "infrastructure-monitoring:prometheus-grafana-specialist"
 description: "Implement FinOps monitoring and governance"
 prompt: "Implement FinOps monitoring for: $*
 
