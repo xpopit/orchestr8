@@ -61,7 +61,35 @@
     "description": "Reusable expertise patterns (auto-activated by Claude Code)",
     "path": "../skills/"
   },
-  "hooks": "./hooks/hooks.json",
+  "hooks": {
+    "session-start": {
+      "matcher": {
+        "source": ["startup", "resume"]
+      },
+      "action": "shell",
+      "command": "bash .claude/hooks/session-start.sh",
+      "onError": "warn",
+      "description": "Initialize MCP server and orchestr8 environment on session start"
+    },
+    "post-install": {
+      "action": "shell",
+      "command": "bash .claude/hooks/post-install.sh",
+      "onError": "warn",
+      "description": "Set up orchestr8 plugin after installation"
+    },
+    "post-write": {
+      "action": "shell",
+      "command": "bash .claude/hooks/post-write.sh",
+      "onError": "ignore",
+      "description": "Track file writes for agent optimization"
+    },
+    "post-edit": {
+      "action": "shell",
+      "command": "bash .claude/hooks/post-edit.sh",
+      "onError": "ignore",
+      "description": "Track file edits for agent optimization"
+    }
+  },
   "requirements": {
     "claude": ">=1.0.0"
   }
