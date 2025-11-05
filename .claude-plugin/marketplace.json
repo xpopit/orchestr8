@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "orchestr8",
-      "source": "./.claude",
+      "source": "./",
       "description": "MCP-powered orchestration engine: 74 agents, 20 workflows, JIT loading, fast Rust stdio server with DuckDB agent registry",
       "version": "5.8.1"
     }
