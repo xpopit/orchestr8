@@ -1,7 +1,7 @@
 {
   "name": "orchestr8",
-  "version": "4.3.0",
-  "description": "Enterprise-grade hierarchical multi-agent orchestration system with 74 specialized agents, 20 autonomous workflows, MCP offloading (50%+ token reduction), opt-in plugin loading, and 4 reusable skills",
+  "version": "5.0.0",
+  "description": "Enterprise-grade hierarchical multi-agent orchestration with ultra-fast Rust MCP stdio server (74 agents, <1ms queries, zero port conflicts, project-scoped, precompiled binaries)",
   "author": {
     "name": "Seth Schultz",
     "email": "orchestr8@sethschultz.com"
@@ -13,15 +13,12 @@
     "multi-agent",
     "autonomous",
     "enterprise",
-    "development",
-    "devops",
-    "quality",
-    "compliance",
-    "infrastructure",
-    "plugins",
-    "modular",
+    "rust",
     "mcp",
-    "context-optimization"
+    "stdio",
+    "agent-discovery",
+    "context-optimization",
+    "high-performance"
   ],
   "features": {
     "agents": 74,
@@ -31,9 +28,13 @@
     "hierarchical": true,
     "autonomous": true,
     "modular": true,
-    "mcp_offloading": true,
+    "mcp_transport": "stdio",
+    "database": "duckdb-inmemory",
+    "query_latency": "<1ms",
+    "project_scoped": true,
     "token_reduction": "50%+"
   },
+  "hooks": "${CLAUDE_PLUGIN_ROOT}/orchestr8-bin/hooks.json",
   "requirements": {
     "claude": ">=1.0.0"
   }

@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "command": "${CLAUDE_PLUGIN_ROOT}/orchestr8-bin/init.sh"
+      }
+    ]
+  }
+}

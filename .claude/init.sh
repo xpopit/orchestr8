@@ -2,6 +2,7 @@
 
 # MCP Server Initialization Script
 # Installs dependencies and starts the MCP server for Claude Code Orchestration System
+# Automatically allocates memory based on system RAM
 
 set -e
 
@@ -14,8 +15,36 @@ echo ""
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MCP_DIR="$SCRIPT_DIR/mcp-server"
 
+# Calculate memory allocation based on system RAM
+echo "[0/7] Detecting system memory..."
+if command -v sysctl &> /dev/null; then
+    # macOS
+    TOTAL_MEM_BYTES=$(sysctl -n hw.memsize 2>/dev/null || echo "0")
+elif command -v free &> /dev/null; then
+    # Linux
+    TOTAL_MEM_BYTES=$(($(free -b | awk 'NR==2 {print $2}')))
+else
+    TOTAL_MEM_BYTES=0
+fi
+
+if [ "$TOTAL_MEM_BYTES" -gt 0 ]; then
+    TOTAL_MEM_MB=$((TOTAL_MEM_BYTES / 1024 / 1024))
+    # Allocate 10% of system RAM, minimum 256MB, maximum 2GB
+    ALLOCATED_MEM=$((TOTAL_MEM_MB / 10))
+    if [ "$ALLOCATED_MEM" -lt 256 ]; then
+        ALLOCATED_MEM=256
+    elif [ "$ALLOCATED_MEM" -gt 2048 ]; then
+        ALLOCATED_MEM=2048
+    fi
+    echo "✓ System RAM: ${TOTAL_MEM_MB}MB → Allocating ${ALLOCATED_MEM}MB to MCP server"
+    export MCP_MAX_MEMORY_MB=$ALLOCATED_MEM
+else
+    echo "⚠️  Could not detect system RAM, using default 1GB"
+    export MCP_MAX_MEMORY_MB=1024
+fi
+
 # Check Node.js version
-echo "[1/6] Checking Node.js..."
+echo "[1/7] Checking Node.js..."
 if ! command -v node &> /dev/null; then
     echo "❌ Node.js not found"
     echo ""
@@ -39,7 +68,7 @@ echo "✓ Node.js $(node -v) found"
 
 # Check npm
 echo ""
-echo "[2/6] Checking npm..."
+echo "[2/7] Checking npm..."
 if ! command -v npm &> /dev/null; then
     echo "❌ npm not found"
     echo "⚠️  MCP server will not be available. Falling back to embedded agent registry."
@@ -50,7 +79,7 @@ echo "✓ npm $(npm -v) found"
 
 # Install dependencies
 echo ""
-echo "[3/6] Installing MCP server dependencies..."
+echo "[3/7] Installing MCP server dependencies..."
 cd "$MCP_DIR"
 
 if [ ! -f "package.json" ]; then
@@ -63,13 +92,13 @@ echo "✓ Dependencies installed"
 
 # Build TypeScript
 echo ""
-echo "[4/6] Building MCP server..."
+echo "[4/7] Building MCP server..."
 npm run build --silent
 echo "✓ Build complete"
 
 # Stop existing server if running
 echo ""
-echo "[5/6] Checking for existing server..."
+echo "[5/7] Checking for existing server..."
 PID_FILE="$MCP_DIR/mcp.pid"
 
 if [ -f "$PID_FILE" ]; then
@@ -84,14 +113,14 @@ fi
 
 # Start server in background
 echo ""
-echo "[6/6] Starting MCP server..."
+echo "[6/7] Starting MCP server..."
 cd "$MCP_DIR"
 
 # Create logs directory
 mkdir -p logs data
 
-# Start server
-nohup node dist/index.js > logs/startup.log 2>&1 &
+# Start server with memory allocation
+nohup env MCP_MAX_MEMORY_MB=$ALLOCATED_MEM node dist/index.js > logs/startup.log 2>&1 &
 SERVER_PID=$!
 
 echo "✓ Server started (PID: $SERVER_PID)"
@@ -123,17 +152,26 @@ fi
 
 # Success
 echo ""
+echo "[7/7] Server verification..."
+echo "✓ MCP Server initialized successfully"
+echo ""
 echo "=================================="
-echo "✅ MCP Server Initialized"
+echo "✅ MCP Server Ready"
 echo "=================================="
 echo ""
-echo "Server Details:"
+echo "Server Configuration:"
 echo "  Port: 3700"
+echo "  Memory Allocation: ${ALLOCATED_MEM}MB (10% of system RAM)"
 echo "  PID: $SERVER_PID"
 echo "  Logs: $MCP_DIR/logs/mcp.log"
 echo "  Data: $MCP_DIR/data/"
 echo ""
-echo "Management commands:"
+echo "Management Commands:"
 echo "  Status: .claude/status.sh"
 echo "  Stop:   .claude/stop.sh"
+echo "  Reindex: curl -X POST http://localhost:3700/reindex"
+echo ""
+echo "MCP Server is now integrated with your orchestration system!"
+echo "Query agents/skills/workflows via:"
+echo "  curl -X POST http://localhost:3700 -H 'Content-Type: application/json' -d '{...}'"
 echo ""
