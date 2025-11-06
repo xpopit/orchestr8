@@ -1,7 +1,7 @@
 ---
 description: Comprehensive PR review with multi-stage analysis (style, logic, security, performance, architecture) and automated GitHub feedback
 argument-hint: [pr-number]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Pull Request Review Workflow

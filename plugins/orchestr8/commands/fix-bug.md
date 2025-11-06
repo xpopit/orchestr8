@@ -1,7 +1,7 @@
 ---
 description: Debug and fix bugs systematically with root cause analysis, regression tests, and validation
 argument-hint: [bug-description-and-reproduction-steps]
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Fix Bug Workflow

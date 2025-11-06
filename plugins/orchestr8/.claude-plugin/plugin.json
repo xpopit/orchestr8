@@ -30,7 +30,7 @@
         "--agent-dir",
         "${CLAUDE_PLUGIN_ROOT}/agent-definitions",
         "--data-dir",
-        "${CLAUDE_WORKSPACE_ROOT}/.claude/mcp-server/data",
+        "${CLAUDE_PLUGIN_ROOT}/mcp-server/data",
         "--log-level",
         "info"
       ],

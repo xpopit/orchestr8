@@ -1,7 +1,7 @@
 ---
 name: security-auditor
 description: Performs comprehensive security audits checking for vulnerabilities, compliance issues, and security best practices. Use PROACTIVELY when code involves authentication, cryptography, sensitive data handling, or external integrations to identify security vulnerabilities early. Critical for authentication, authorization, data handling, and deployment readiness.
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Security Auditor Agent

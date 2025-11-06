@@ -1,7 +1,7 @@
 ---
 name: cassandra-specialist
 description: Expert Apache Cassandra specialist for distributed NoSQL, CQL, data modeling, replication strategies, tuning, and production cluster management. Use for Cassandra deployments, high availability, and massive scale.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Apache Cassandra Specialist

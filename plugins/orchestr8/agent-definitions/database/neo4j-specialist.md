@@ -1,7 +1,7 @@
 ---
 name: neo4j-specialist
 description: Expert Neo4j graph database specialist for Cypher queries, graph modeling, relationship traversal, graph algorithms, and production deployments. Use for graph databases, knowledge graphs, recommendation engines, and network analysis.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Neo4j Graph Database Specialist

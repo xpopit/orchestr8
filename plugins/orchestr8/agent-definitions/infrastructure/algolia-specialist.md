@@ -1,7 +1,7 @@
 ---
 name: algolia-specialist
 description: Expert Algolia specialist for hosted search-as-a-service, instant search UI, personalization, and A/B testing. Use for fast, typo-tolerant search with minimal infrastructure overhead.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Algolia Specialist

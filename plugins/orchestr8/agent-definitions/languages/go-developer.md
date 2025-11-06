@@ -1,7 +1,7 @@
 ---
 name: go-developer
 description: Expert Go developer specializing in microservices, cloud-native applications, concurrent systems, and high-performance backends. Use for Go services, Kubernetes operators, CLI tools, distributed systems, and applications requiring simplicity, performance, and excellent concurrency support.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Go Developer Agent

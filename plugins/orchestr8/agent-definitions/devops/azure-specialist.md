@@ -1,7 +1,7 @@
 ---
 name: azure-specialist
 description: Expert Microsoft Azure cloud architect specializing in App Service, Functions, Storage, Cosmos DB, AKS, and Azure DevOps. Use for Azure deployments, serverless, and enterprise integrations.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Azure Specialist

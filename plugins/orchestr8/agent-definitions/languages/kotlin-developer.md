@@ -1,7 +1,7 @@
 ---
 name: kotlin-developer
 description: Expert Kotlin developer specializing in Android development, Jetpack Compose, Coroutines, Flow, Room, MVVM architecture, and backend development with Ktor/Spring Boot. Use for Android apps, Kotlin Multiplatform, server-side Kotlin, and modern mobile architectures.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Kotlin Developer Agent

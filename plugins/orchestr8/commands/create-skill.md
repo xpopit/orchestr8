@@ -1,7 +1,7 @@
 ---
 description: Create new auto-activated skill with reusable expertise, examples, and best practices
 argument-hint: [skill-requirements-or-description]
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Create Skill

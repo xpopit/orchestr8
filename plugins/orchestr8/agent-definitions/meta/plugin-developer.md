@@ -1,7 +1,7 @@
 ---
 name: plugin-developer
 description: Expert in Claude Code plugin structure, metadata management, and version control. Use for updating plugin.json, managing versions, updating changelogs, and ensuring plugin consistency.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Plugin Developer

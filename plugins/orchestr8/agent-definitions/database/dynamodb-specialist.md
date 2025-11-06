@@ -1,7 +1,7 @@
 ---
 name: dynamodb-specialist
 description: Expert AWS DynamoDB specialist for NoSQL data modeling, partition keys, GSI/LSI, DynamoDB Streams, DAX caching, and serverless architecture. Use for DynamoDB design, optimization, and production deployments.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # AWS DynamoDB Specialist

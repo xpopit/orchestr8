@@ -67,14 +67,24 @@ Transform Claude Code into a fully autonomous software engineering team. orchest
 
 ## 💻 Installation
 
-### Via Claude Code
+### Via Claude Code Marketplace
 
-1. Open Claude Code
-2. Go to Settings → Plugins → Browse Marketplace
-3. Search for "orchestr8"
-4. Click Install
+Run the following commands in Claude Code to add and install orchestr8:
 
-### Manual
+```bash
+/plugin marketplace add seth-schultz/orchestr8
+/plugin install orchestr8@seth-schultz/orchestr8
+```
+
+Or browse available plugins interactively:
+
+```bash
+/plugin
+```
+
+Then select `orchestr8` from the available plugins.
+
+### Manual Installation
 
 ```bash
 # Clone into your project workspace
@@ -84,6 +94,10 @@ cp -r orchestr8/.claude .
 # Or install as git submodule
 git submodule add https://github.com/seth-schultz/orchestr8.git .claude
 ```
+
+### Verification
+
+After installation, verify orchestr8 is loaded by typing `/` in Claude Code. You should see all 20 workflows listed (e.g., `/orchestr8:new-project`, `/orchestr8:add-feature`, etc.).
 
 ## 🎮 Quick Start
 

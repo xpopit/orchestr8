@@ -1,7 +1,7 @@
 ---
 name: kafka-specialist
 description: Expert Apache Kafka specialist for event streaming, producers, consumers, Kafka Streams, and distributed architectures. Use for event-driven systems, real-time data pipelines, and high-throughput messaging.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Kafka Specialist

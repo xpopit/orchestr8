@@ -1,7 +1,7 @@
 ---
 description: Comprehensive architecture review covering design patterns, SOLID principles, scalability, security, technical debt, and API design
 argument-hint: [scope-or-path]
-model: opus
+model: claude-opus-4-1-20250805
 ---
 
 # Architecture Review Workflow

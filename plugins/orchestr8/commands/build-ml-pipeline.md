@@ -1,7 +1,7 @@
 ---
 description: Build complete ML pipeline from data ingestion, preprocessing, training, evaluation, to production deployment with MLOps
 argument-hint: [ml-problem-description]
-model: opus
+model: claude-opus-4-1-20250805
 ---
 
 # Build ML Pipeline Workflow

@@ -1,7 +1,7 @@
 ---
 name: gcp-specialist
 description: Expert Google Cloud Platform architect specializing in Cloud Functions, Cloud Run, GKE, Firestore, BigQuery, and Cloud Storage. Use for GCP deployments, serverless, and data analytics.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # GCP Specialist

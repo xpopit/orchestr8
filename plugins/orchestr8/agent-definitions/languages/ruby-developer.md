@@ -1,7 +1,7 @@
 ---
 name: ruby-developer
 description: Expert Ruby developer specializing in Ruby on Rails, Sinatra, RSpec, ActiveRecord, background jobs (Sidekiq), API development, and DevOps automation. Use for Rails applications, RESTful APIs, Ruby scripts, and web services.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Ruby Developer Agent

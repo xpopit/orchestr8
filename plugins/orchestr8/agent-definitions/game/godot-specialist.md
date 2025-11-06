@@ -1,7 +1,7 @@
 ---
 name: godot-specialist
 description: Expert Godot Engine developer specializing in GDScript, Godot 4.x, scene system, signals, and cross-platform indie game development
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Godot Engine Specialist

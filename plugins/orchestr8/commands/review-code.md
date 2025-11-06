@@ -1,7 +1,7 @@
 ---
 description: Comprehensive multi-stage code review evaluating style, logic, security, performance, and architecture quality
 argument-hint: [scope-path-or-all]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Multi-Stage Code Review Workflow

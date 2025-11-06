@@ -12,7 +12,7 @@ Create high-quality, token-efficient agents that maintain full autonomy and expe
 ---
 name: agent-name
 description: Concise one-line description (what + when to use)
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Agent Name
@@ -455,7 +455,7 @@ Criteria:
 ---
 name: redis-specialist
 description: Redis caching patterns, pub/sub, rate limiting, session storage. Use for distributed caching, real-time features, and high-performance data storage.
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Redis Specialist

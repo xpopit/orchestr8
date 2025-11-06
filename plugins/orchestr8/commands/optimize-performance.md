@@ -1,7 +1,7 @@
 ---
 description: Comprehensive performance optimization with profiling, bottleneck identification, and benchmarking across frontend, backend, and database
 argument-hint: [target-component-or-all]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Optimize Performance Workflow

@@ -1,7 +1,7 @@
 ---
 name: web3-specialist
 description: Expert Web3 developer specializing in dApp development, wallet integration, blockchain interaction, and decentralized application architecture
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Web3 Application Specialist

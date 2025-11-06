@@ -1,7 +1,7 @@
 ---
 name: cpp-developer
 description: Expert C++ developer specializing in modern C++20/23, game development, systems programming, high-performance computing, embedded systems, and cross-platform development. Use for performance-critical applications, game engines, system-level programming, and applications requiring low-level control.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # C++ Developer Agent

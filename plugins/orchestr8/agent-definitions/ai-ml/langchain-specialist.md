@@ -1,7 +1,7 @@
 ---
 name: langchain-specialist
 description: Expert LangChain developer specializing in LLM chains, agents, RAG systems, memory, and production AI application development
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # LangChain Specialist

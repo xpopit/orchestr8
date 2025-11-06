@@ -1,7 +1,7 @@
 ---
 name: angular-specialist
 description: Expert Angular developer specializing in Angular 17+, standalone components, signals, RxJS, TypeScript, and modern patterns. Use for Angular applications, enterprise frontends, and reactive architectures.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Angular Specialist

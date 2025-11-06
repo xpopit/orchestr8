@@ -1,7 +1,7 @@
 ---
 name: unreal-specialist
 description: Expert Unreal Engine developer specializing in C++, Blueprints, rendering, multiplayer, and cross-platform AAA game development
-model: haiku
+model: claude-haiku-4-5-20251001
 categories: development, game-engines, unreal
 dependencies: cpp-developer
 ---

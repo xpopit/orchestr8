@@ -1,7 +1,7 @@
 ---
 name: mongodb-specialist
 description: Expert MongoDB specialist for aggregation pipelines, sharding, replication sets, Atlas cloud, indexing strategies, and NoSQL data modeling. Use for MongoDB optimization, scaling, and production deployments.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # MongoDB Specialist

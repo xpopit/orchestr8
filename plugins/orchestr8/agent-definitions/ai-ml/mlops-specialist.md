@@ -1,7 +1,7 @@
 ---
 name: mlops-specialist
 description: Expert MLOps specialist for ML deployment, monitoring, MLflow, Kubeflow, model serving, A/B testing, and ML pipeline automation. Use for production ML infrastructure, continuous training, and model lifecycle management.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # MLOps Specialist

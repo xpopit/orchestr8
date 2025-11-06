@@ -1,7 +1,7 @@
 ---
 name: aws-specialist
 description: Expert AWS cloud architect specializing in serverless, containers (ECS/EKS), infrastructure design, cost optimization, and security. Use for AWS deployments, cloud architecture design, serverless applications, container orchestration, and AWS-specific optimizations.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # AWS Specialist Agent

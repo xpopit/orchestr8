@@ -1,7 +1,7 @@
 ---
 description: Setup complete CI/CD pipeline with build, test, security scanning, and automated deployment workflows
 argument-hint: [project-path] [ci-platform-optional]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Setup CI/CD Workflow

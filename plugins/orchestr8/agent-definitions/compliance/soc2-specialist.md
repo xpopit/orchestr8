@@ -1,7 +1,7 @@
 ---
 name: soc2-specialist
 description: Expert SOC 2 (Service Organization Control 2) Type I and Type II compliance specialist. Use PROACTIVELY when implementing SaaS features, cloud services, or third-party integrations to ensure compliance with Trust Service Criteria (Security, Availability, Processing Integrity, Confidentiality, Privacy) and audit readiness.
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # SOC 2 Compliance Specialist

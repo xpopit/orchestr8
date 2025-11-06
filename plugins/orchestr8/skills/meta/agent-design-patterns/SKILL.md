@@ -32,7 +32,7 @@ Every agent requires YAML frontmatter (delimited by triple dashes):
 ---
 name: agent-name
 description: Expert [role]... Use for...
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 ```
 
@@ -93,7 +93,7 @@ Tools are auto-discovered based on agent needs. However, agent designers should 
 ---
 name: technology-specialist
 description: Expert [Technology] developer specializing in [key areas]. Use for [specific use cases].
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Technology Specialist
@@ -130,7 +130,7 @@ Your deliverables should be production-ready, well-tested...
 ---
 name: review-specialist
 description: Performs comprehensive [domain] review...
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Review Specialist
@@ -160,7 +160,7 @@ model: sonnet
 ---
 name: meta-orchestrator
 description: Orchestrates [scope]...
-model: opus
+model: claude-opus-4-1-20250805
 ---
 
 # Meta Orchestrator

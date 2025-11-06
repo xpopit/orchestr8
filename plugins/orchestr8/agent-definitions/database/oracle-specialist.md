@@ -1,7 +1,7 @@
 ---
 name: oracle-specialist
 description: Expert Oracle Database specialist for performance tuning, RAC, ASM, PL/SQL optimization, partitioning, and enterprise database management. Use for Oracle-specific optimization, high availability, and enterprise deployments.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Oracle Database Specialist

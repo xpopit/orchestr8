@@ -1,7 +1,7 @@
 ---
 name: php-developer
 description: Expert PHP developer specializing in Laravel, Symfony, WordPress, PHPUnit, Composer, API development, and modern PHP 8+ features. Use for Laravel applications, WordPress plugins/themes, RESTful APIs, and enterprise PHP solutions.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # PHP Developer Agent

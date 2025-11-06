@@ -1,7 +1,7 @@
 ---
 description: Comprehensive cloud cost optimization covering right-sizing, storage, reserved capacity, auto-scaling, and FinOps governance
 argument-hint: [infrastructure-description]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Optimize Costs Workflow

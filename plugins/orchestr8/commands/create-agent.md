@@ -1,7 +1,7 @@
 ---
 description: Create new specialized agent with comprehensive instructions, validation, and plugin integration
 argument-hint: [agent-requirements-or-description]
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Create Agent Workflow

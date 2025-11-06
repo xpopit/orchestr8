@@ -1,7 +1,7 @@
 ---
 description: Deploy complete observability stack with metrics, logs, traces, dashboards, and alerting
 argument-hint: [infrastructure-description]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Setup Monitoring Workflow

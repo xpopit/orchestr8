@@ -1,7 +1,7 @@
 ---
 description: Comprehensive security audit covering vulnerability scanning, code analysis, secret detection, dependency auditing, and compliance validation
 argument-hint: [scope-or-all]
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # Security Audit Workflow

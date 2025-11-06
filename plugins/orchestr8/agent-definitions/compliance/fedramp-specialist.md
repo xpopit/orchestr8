@@ -1,7 +1,7 @@
 ---
 name: fedramp-specialist
 description: Expert FedRAMP (Federal Risk and Authorization Management Program) compliance specialist for cloud services. Use PROACTIVELY when building or deploying applications for federal agencies to ensure compliance with NIST SP 800-53 controls, FedRAMP baselines, continuous monitoring, and authorization requirements.
-model: sonnet
+model: claude-sonnet-4-5-20250929
 ---
 
 # FedRAMP Compliance Specialist

@@ -1,7 +1,7 @@
 ---
 name: observability-specialist
 description: Expert observability specialist for Prometheus, Grafana, OpenTelemetry, distributed tracing, logging, metrics, APM, and monitoring. Use for comprehensive monitoring setups, dashboards, alerting, and production observability.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Observability Specialist

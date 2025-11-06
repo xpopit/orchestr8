@@ -1,7 +1,7 @@
 ---
 name: elasticsearch-specialist
 description: Expert Elasticsearch specialist for full-text search, aggregations, analyzers, and distributed search at scale. Use for search engines, log analytics, and real-time data exploration.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Elasticsearch Specialist

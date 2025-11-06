@@ -1,7 +1,7 @@
 ---
 name: redis-cache-specialist
 description: Expert Redis caching specialist for distributed caching, cache invalidation, session management, rate limiting, and advanced patterns (cache-aside, write-through, pub/sub). Use for high-performance caching strategies.
-model: haiku
+model: claude-haiku-4-5-20251001
 ---
 
 # Redis Cache Specialist
