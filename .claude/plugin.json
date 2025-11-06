@@ -55,11 +55,11 @@
   },
   "commands": {
     "description": "20 orchestration workflows for end-to-end project lifecycle",
-    "path": "../commands/"
+    "path": "${CLAUDE_PLUGIN_ROOT}/commands"
   },
   "skills": {
     "description": "Reusable expertise patterns (auto-activated by Claude Code)",
-    "path": "../skills/"
+    "path": "${CLAUDE_PLUGIN_ROOT}/skills"
   },
   "hooks": {
     "session-start": {
@@ -67,25 +67,25 @@
         "source": ["startup", "resume"]
       },
       "action": "shell",
-      "command": "bash .claude/hooks/session-start.sh",
+      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh",
       "onError": "warn",
       "description": "Initialize MCP server and orchestr8 environment on session start"
     },
     "post-install": {
       "action": "shell",
-      "command": "bash .claude/hooks/post-install.sh",
+      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/post-install.sh",
       "onError": "warn",
       "description": "Set up orchestr8 plugin after installation"
     },
     "post-write": {
       "action": "shell",
-      "command": "bash .claude/hooks/post-write.sh",
+      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/post-write.sh",
       "onError": "ignore",
       "description": "Track file writes for agent optimization"
     },
     "post-edit": {
       "action": "shell",
-      "command": "bash .claude/hooks/post-edit.sh",
+      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/post-edit.sh",
       "onError": "ignore",
       "description": "Track file edits for agent optimization"
     }
