@@ -1,36 +1,18 @@
 {
-  "version": "1.0",
-  "hooks": [
-    {
-      "event": "session-start",
-      "matcher": {
-        "source": ["startup", "resume"]
-      },
-      "action": "shell",
-      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh",
-      "onError": "warn",
-      "description": "Initialize MCP server and orchestr8 environment on session start"
-    },
-    {
-      "event": "post-install",
-      "action": "shell",
-      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/post-install.sh",
-      "onError": "warn",
-      "description": "Set up orchestr8 plugin after installation"
-    },
-    {
-      "event": "post-write",
-      "action": "shell",
-      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/post-write.sh",
-      "onError": "ignore",
-      "description": "Track file writes for agent optimization"
-    },
-    {
-      "event": "post-edit",
-      "action": "shell",
-      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/post-edit.sh",
-      "onError": "ignore",
-      "description": "Track file edits for agent optimization"
-    }
-  ]
+  "description": "orchestr8 plugin hooks - Initialize MCP server on session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh",
+            "timeout": 30,
+            "description": "Initialize MCP server and orchestr8 environment on session start"
+          }
+        ]
+      }
+    ]
+  }
 }
