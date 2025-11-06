@@ -94,7 +94,7 @@ jobs:
         working-directory: plugins/orchestr8/mcp-server/orchestr8-bin
 
       - name: Strip binary (Linux/macOS)
-        if: matrix.os != 'windows-latest'
+        if: matrix.os != 'windows-latest' && !matrix.cross
         run: strip plugins/orchestr8/mcp-server/orchestr8-bin/target/${{ matrix.target }}/release/orchestr8-bin
 
       - name: Extract platform and arch
