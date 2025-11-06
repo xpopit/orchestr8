@@ -110,8 +110,8 @@ jobs:
         if: matrix.archive == 'tar.gz'
         run: |
           cd plugins/orchestr8/mcp-server/orchestr8-bin/target/${{ matrix.target }}/release
-          tar -czf ../../../../../${{ steps.platform.outputs.binary_name }}.tar.gz orchestr8-bin
-          cd ../../../../../
+          tar -czf ../../../../${{ steps.platform.outputs.binary_name }}.tar.gz orchestr8-bin
+          cd ../../../../
 
       - name: Create archive (Windows)
         if: matrix.archive == 'zip'
@@ -119,7 +119,7 @@ jobs:
         run: |
           cd plugins\orchestr8\mcp-server\orchestr8-bin\target\${{ matrix.target }}\release
           Compress-Archive -Path orchestr8-bin.exe -DestinationPath ..\..\..\..\..\${{ steps.platform.outputs.binary_name }}.zip
-          cd ..\..\..\..\
+          cd ..\..\..\..\..\
 
       - name: Generate SHA256 checksum (Unix)
         if: matrix.archive == 'tar.gz'
