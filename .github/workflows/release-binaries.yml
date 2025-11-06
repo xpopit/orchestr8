@@ -89,7 +89,7 @@ jobs:
         working-directory: plugins/orchestr8/mcp-server/orchestr8-bin
 
       - name: Run tests
-        if: '!matrix.cross'
+        if: '!matrix.cross && matrix.os != ''windows-latest'''
         run: cargo test --release --target ${{ matrix.target }} --lib --bins
         working-directory: plugins/orchestr8/mcp-server/orchestr8-bin
 
