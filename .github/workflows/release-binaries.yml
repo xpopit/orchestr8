@@ -130,25 +130,26 @@ jobs:
       - name: Generate SHA256 checksum (Unix)
         if: matrix.archive == 'tar.gz'
         run: |
-          sha256sum orchestr8-bin-*.tar.gz > orchestr8-bin-*.tar.gz.sha256 || true
+          ARCHIVE_NAME="${{ steps.platform.outputs.binary_name }}.tar.gz"
+          sha256sum "$ARCHIVE_NAME" > "$ARCHIVE_NAME.sha256" || true
 
       - name: Generate SHA256 checksum (Windows)
         if: matrix.archive == 'zip'
         shell: pwsh
         run: |
-          $file = Get-Item "orchestr8-bin-*.zip"
-          $hash = (Get-FileHash -Algorithm SHA256 $file).Hash
-          "$hash  $($file.Name)" | Out-File "$($file.Name).sha256"
+          $archive = "${{ steps.platform.outputs.binary_name }}.zip"
+          $hash = (Get-FileHash -Algorithm SHA256 $archive).Hash
+          "$hash  $archive" | Out-File "$archive.sha256"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: orchestr8-bin-${{ matrix.target }}
           path: |
-            orchestr8-bin-*.tar.gz
-            orchestr8-bin-*.tar.gz.sha256
-            orchestr8-bin-*.zip
-            orchestr8-bin-*.zip.sha256
+            ${{ steps.platform.outputs.binary_name }}.tar.gz
+            ${{ steps.platform.outputs.binary_name }}.tar.gz.sha256
+            ${{ steps.platform.outputs.binary_name }}.zip
+            ${{ steps.platform.outputs.binary_name }}.zip.sha256
 
   upload-binaries-to-release:
     name: Upload Binaries to Release
