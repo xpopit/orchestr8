@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.1.0] - 2025-11-07
+
+### Added
+
+- **Organized Documentation Structure**: All orchestr8-generated documentation files now organized in `.orchestr8/docs/` subdirectories by category
+  - Requirements, design, quality, security, performance, accessibility, deployment, analysis, infrastructure, and testing categories
+  - Helper script `setup-orchestr8-dirs.sh` for consistent path management
+  - Environment variable support via `ORCHESTR8_BASE` for custom locations
+
+### Changed
+
+- All 21 workflow command files updated to use new `.orchestr8/docs/{category}/` structure
+  - Project root now contains only project-relevant documentation
+  - Working documents (reports, analysis) go to organized subfolders
+  - Cleaner project root structure
+
+- Updated `.gitignore` to:
+  - Ignore `.orchestr8/docs/` (working files)
+  - Keep `.orchestr8/intelligence.db` tracked (organizational knowledge)
+
+### Improved
+
+- Documentation clarity with new `.orchestr8 Folder Structure` section in README.md
+- ARCHITECTURE.md updated with detailed file organization explanation
+- Better separation of concerns between project docs and working documents
+
 ## [6.0.1] - 2025-11-06
 
 ### Fixed
