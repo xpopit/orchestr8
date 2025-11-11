@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)[![Version](https://img.shields.io/badge/version-8.0.0--rc1-blue.svg)](VERSION)[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org)[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)[![MCP](https://img.shields.io/badge/MCP-Protocol-blueviolet.svg)](https://modelcontextprotocol.io)[![CI](https://github.com/seth-schultz/orchestr8/workflows/CI/badge.svg)](https://github.com/seth-schultz/orchestr8/actions/workflows/ci.yml)[![Security](https://github.com/seth-schultz/orchestr8/workflows/Security%20Scan/badge.svg)](https://github.com/seth-schultz/orchestr8/actions/workflows/security.yml)[![License Check](https://github.com/seth-schultz/orchestr8/workflows/License%20Compliance/badge.svg)](https://github.com/seth-schultz/orchestr8/actions/workflows/license-check.yml)![GitHub stars](https://img.shields.io/github/stars/seth-schultz/orchestr8?style=social)![GitHub forks](https://img.shields.io/github/forks/seth-schultz/orchestr8?style=social)![GitHub watchers](https://img.shields.io/github/watchers/seth-schultz/orchestr8?style=social)![GitHub issues](https://img.shields.io/github/issues/seth-schultz/orchestr8)![GitHub pull requests](https://img.shields.io/github/issues-pr/seth-schultz/orchestr8)![GitHub contributors](https://img.shields.io/github/contributors/seth-schultz/orchestr8)![Code size](https://img.shields.io/github/languages/code-size/seth-schultz/orchestr8)![Repo size](https://img.shields.io/github/repo-size/seth-schultz/orchestr8)![Lines of code](https://img.shields.io/tokei/lines/github/seth-schultz/orchestr8)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)[![Version](https://img.shields.io/badge/version-8.0.0--rc2-blue.svg)](VERSION)[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org)[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)[![MCP](https://img.shields.io/badge/MCP-Protocol-blueviolet.svg)](https://modelcontextprotocol.io)[![CI](https://github.com/seth-schultz/orchestr8/workflows/CI/badge.svg)](https://github.com/seth-schultz/orchestr8/actions/workflows/ci.yml)[![Security](https://github.com/seth-schultz/orchestr8/workflows/Security%20Scan/badge.svg)](https://github.com/seth-schultz/orchestr8/actions/workflows/security.yml)[![License Check](https://github.com/seth-schultz/orchestr8/workflows/License%20Compliance/badge.svg)](https://github.com/seth-schultz/orchestr8/actions/workflows/license-check.yml)![GitHub stars](https://img.shields.io/github/stars/seth-schultz/orchestr8?style=social)![GitHub forks](https://img.shields.io/github/forks/seth-schultz/orchestr8?style=social)![GitHub watchers](https://img.shields.io/github/watchers/seth-schultz/orchestr8?style=social)![GitHub issues](https://img.shields.io/github/issues/seth-schultz/orchestr8)![GitHub pull requests](https://img.shields.io/github/issues-pr/seth-schultz/orchestr8)![GitHub contributors](https://img.shields.io/github/contributors/seth-schultz/orchestr8)![Code size](https://img.shields.io/github/languages/code-size/seth-schultz/orchestr8)![Repo size](https://img.shields.io/github/repo-size/seth-schultz/orchestr8)![Lines of code](https://img.shields.io/tokei/lines/github/seth-schultz/orchestr8)
 
 # orchestr8
 
@@ -33,6 +33,8 @@
 
 ![Traditional vs orchestr8 Comparison](plugins/orchestr8/docs/images/diagram-comparison-1.png)
 
+</div>
+
 ### Core Capabilities
 
 | Feature | Description | Benefit |
@@ -62,25 +64,93 @@
 
 ### Prerequisites
 
-- **Node.js** ≥ 18.0.0
-- **npm** ≥ 9.0.0
 - **Claude Code** (latest version)
+- **Node.js** ≥ 18.0.0 (for manual installation only)
+- **npm** ≥ 9.0.0 (for manual installation only)
 
 ### Installation
 
+#### Option 1: Plugin Marketplace (Recommended)
+
+The easiest way to install orchestr8 is through the Claude Code plugin marketplace:
+
 ```bash
-# Clone the repository
+# Step 1: Add the orchestr8 marketplace
+/plugin marketplace add seth-schultz/orchestr8
+
+# Step 2: Install the orchestr8 plugin
+/plugin install orchestr8@seth-schultz
+
+# Step 3: Verify installation
+/help
+# You should see /orchestr8:* commands listed
+```
+
+**Interactive Installation:**
+
+Alternatively, use the interactive plugin interface:
+```bash
+/plugin
+# Select "Browse Plugins" and search for "orchestr8"
+# Click "Install" and follow prompts
+```
+
+**Plugin Management:**
+
+```bash
+# Enable the plugin (if disabled)
+/plugin enable orchestr8@seth-schultz
+
+# Disable the plugin temporarily
+/plugin disable orchestr8@seth-schultz
+
+# Uninstall the plugin
+/plugin uninstall orchestr8@seth-schultz
+```
+
+#### Option 2: Manual Installation
+
+For development or contributing:
+
+```bash
+# Step 1: Clone the repository
 git clone https://github.com/seth-schultz/orchestr8.git
 cd orchestr8
 
-# Install and build
+# Step 2: Install and build
 cd plugins/orchestr8
 npm install
 npm run build
 
-# Verify installation
+# Step 3: Verify installation
 npm test
+
+# Step 4: Link to Claude Code
+# Add to your Claude Code settings or .claude/settings.json:
+{
+  "mcpServers": {
+    "orchestr8": {
+      "command": "node",
+      "args": ["/absolute/path/to/orchestr8/plugins/orchestr8/dist/index.js"]
+    }
+  }
+}
 ```
+
+### Team Configuration
+
+For teams, add to your repository's `.claude/settings.json` to automatically install for all team members:
+
+```json
+{
+  "plugins": {
+    "marketplaces": ["seth-schultz/orchestr8"],
+    "installed": ["orchestr8@seth-schultz"]
+  }
+}
+```
+
+When team members trust the folder, orchestr8 will be installed automatically.
 
 ### Your First Workflow
 
@@ -154,6 +224,8 @@ All comprehensive documentation is in **[`plugins/orchestr8/docs/`](plugins/orch
 
 ![Architecture Diagram](plugins/orchestr8/docs/images/diagram-architecture-1.png)
 
+</div>
+
 orchestr8 implements a sophisticated MCP-based architecture optimized for token efficiency.
 
 ### Key Components
@@ -177,17 +249,24 @@ orchestr8 implements a sophisticated MCP-based architecture optimized for token 
 
 *Monthly cost comparison: Traditional approach vs orchestr8*
 
+</div>
+
 ### Performance Breakdown
 
 ![Performance Breakdown](plugins/orchestr8/docs/images/performance-breakdown-chart.png)
 
 *Response time and resource usage across different workflows*
 
+</div>
+
+
 ### Resource Relevance Comparison
 
 ![Relevance Comparison](plugins/orchestr8/docs/images/relevance-comparison-chart.png)
 
 *orchestr8's fuzzy matching delivers 95%+ relevance vs 60-70% with traditional static loading*
+
+</div>
 
 ### Key Metrics
 
@@ -362,3 +441,5 @@ orchestr8 stands on the shoulders of giants:
 Made with ❤️ by the orchestr8 community
 
 **Questions?** Check the **[documentation](plugins/orchestr8/docs/)** or [open an issue](https://github.com/seth-schultz/orchestr8/issues/new)
+
+</div>
