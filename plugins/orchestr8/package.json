@@ -1,0 +1,46 @@
+{
+  "name": "orchestr8-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for orchestr8 - Autonomous software development workflows, agents, and skills for Claude Code",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:dev": "tsc --project tsconfig.dev.json",
+    "build-index": "tsx scripts/build-index.ts",
+    "watch": "tsc --project tsconfig.dev.json --watch",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "node --test tests/unit/**/*.test.js",
+    "test:integration": "node tests/integration/mcp-server.test.js && node --test tests/integration/mcp-protocol.test.js",
+    "test:integration:protocol": "node --test tests/integration/mcp-protocol.test.js",
+    "test:integration:server": "node tests/integration/mcp-server.test.js",
+    "test:watch": "node --test --watch tests/unit/**/*.test.js",
+    "verify": "bash tests/verify-structure.sh",
+    "benchmark": "node --test tests/benchmarks/**/*.bench.js",
+    "ui": "node web-ui/server.js"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "orchestr8",
+    "ai",
+    "workflow",
+    "automation"
+  ],
+  "author": "orchestr8",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.1",
+    "@types/node": "^24.10.0",
+    "chokidar": "^4.0.3",
+    "dotenv": "^17.2.3",
+    "gray-matter": "^4.0.3",
+    "lru-cache": "^11.2.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "zod": "^3.25.76"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Enable source maps for development and debugging
+    "sourceMap": true,
+    "declarationMap": true,
+    // Disable comment removal for better debugging
+    "removeComments": false
+  }
+}

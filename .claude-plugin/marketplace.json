@@ -1,0 +1,15 @@
+{
+  "name": "orchestr8",
+  "displayName": "orchestr8 - Autonomous Development",
+  "version": "1.0.0",
+  "description": "Complete autonomous software development.",
+  "owner": {
+    "name": "orchestr8"
+  },
+  "plugins": [
+    {
+      "name": "orchestr8-mcp-plugin",
+      "source": "./plugins/orchestr8"
+    }
+  ]
+}

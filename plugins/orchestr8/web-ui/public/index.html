@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orchestr8 MCP Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.5/marked.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <h1 class="logo">
+                <span class="logo-icon">⚡</span>
+                Orchestr8 MCP
+            </h1>
+            <span class="version">v2.0.0</span>
+        </div>
+        <div class="header-center">
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-icon" id="refreshBtn" title="Refresh Data">
+                <span>↻</span>
+            </button>
+            <button class="btn btn-icon" id="clearLogsBtn" title="Clear Activity Log">
+                <span>🗑️</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="dashboard-nav">
+        <button class="nav-btn active" data-view="overview">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Overview</span>
+        </button>
+        <button class="nav-btn" data-view="testing">
+            <span class="nav-icon">🧪</span>
+            <span class="nav-label">Testing</span>
+        </button>
+        <button class="nav-btn" data-view="explorer">
+            <span class="nav-icon">🗂️</span>
+            <span class="nav-label">Resources</span>
+        </button>
+        <button class="nav-btn" data-view="activity">
+            <span class="nav-icon">📡</span>
+            <span class="nav-label">Activity</span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <!-- Overview View -->
+        <div class="view active" id="overviewView">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">🚀</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                    <div class="stat-value" id="uptimeValue">--</div>
+                    <div class="stat-footer">Server running</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📨</span>
+                        <span class="stat-label">Requests</span>
+                    </div>
+                    <div class="stat-value" id="requestsValue">0</div>
+                    <div class="stat-footer">Total processed</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-label">Avg Latency</span>
+                    </div>
+                    <div class="stat-value" id="latencyValue">--</div>
+                    <div class="stat-footer">
+                        <span>p95: <span id="p95Value">--</span></span>
+                        <span>p99: <span id="p99Value">--</span></span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">❌</span>
+                        <span class="stat-label">Errors</span>
+                    </div>
+                    <div class="stat-value" id="errorsValue">0</div>
+                    <div class="stat-footer">Error count</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">💾</span>
+                        <span class="stat-label">Memory</span>
+                    </div>
+                    <div class="stat-value" id="memoryValue">--</div>
+                    <div class="stat-footer">Heap usage</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📦</span>
+                        <span class="stat-label">Resources</span>
+                    </div>
+                    <div class="stat-value" id="resourcesValue">--</div>
+                    <div class="stat-footer">Total available</div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Request Latency Distribution</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="latencyChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Resource Usage by Category</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="resourceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <h3>Recent Activity</h3>
+                    <button class="btn btn-sm" id="viewAllActivityBtn">View All</button>
+                </div>
+                <div class="activity-list" id="recentActivityList">
+                    <div class="activity-empty">No activity yet</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testing View -->
+        <div class="view" id="testingView">
+            <div class="testing-layout">
+                <!-- Testing Panel -->
+                <div class="testing-panel">
+                    <h2>Interactive Testing</h2>
+
+                    <!-- Request Type Selector -->
+                    <div class="form-group">
+                        <label>Request Type</label>
+                        <select id="requestType" class="form-control">
+                            <option value="prompts/list">List Prompts</option>
+                            <option value="prompts/get">Get Prompt</option>
+                            <option value="resources/list">List Resources</option>
+                            <option value="resources/read">Read Resource</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Form Fields -->
+                    <div id="dynamicFormFields"></div>
+
+                    <!-- Quick Examples -->
+                    <div class="form-group">
+                        <label>Quick Examples</label>
+                        <div class="quick-examples">
+                            <button class="btn btn-sm example-btn" data-example="list-prompts">List Prompts</button>
+                            <button class="btn btn-sm example-btn" data-example="list-resources">List Resources</button>
+                            <button class="btn btn-sm example-btn" data-example="typescript-agent">TypeScript Agent</button>
+                            <button class="btn btn-sm example-btn" data-example="match-api">Match: API Skills</button>
+                            <button class="btn btn-sm example-btn" data-example="match-fullstack">Match: Full Stack</button>
+                        </div>
+                    </div>
+
+                    <!-- Execute Button -->
+                    <button class="btn btn-primary btn-block" id="executeTestBtn">
+                        Execute Test
+                    </button>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="results-panel">
+                    <div class="results-header">
+                        <h3>Test Results</h3>
+                        <div class="results-tabs">
+                            <button class="tab-btn active" data-tab="content">Content</button>
+                            <button class="tab-btn" data-tab="protocol">Protocol</button>
+                            <button class="tab-btn" data-tab="metadata">Metadata</button>
+                        </div>
+                    </div>
+
+                    <div class="results-body">
+                        <div class="tab-content active" id="contentTab">
+                            <div class="results-empty">Execute a test to see results</div>
+                        </div>
+                        <div class="tab-content" id="protocolTab">
+                            <pre class="code-block"></pre>
+                        </div>
+                        <div class="tab-content" id="metadataTab">
+                            <pre class="code-block"></pre>
+                        </div>
+                    </div>
+
+                    <div class="results-footer">
+                        <span class="results-stats" id="resultsStats"></span>
+                        <button class="btn btn-sm" id="copyResultsBtn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Explorer View -->
+        <div class="view" id="explorerView">
+            <div class="explorer-layout">
+                <!-- Sidebar -->
+                <div class="explorer-sidebar">
+                    <div class="search-box">
+                        <input type="text" id="resourceSearch" placeholder="Search resources..." class="form-control">
+                    </div>
+
+                    <div class="category-filters">
+                        <h3>Categories</h3>
+                        <div id="categoryList" class="category-list">
+                            <div class="loading">Loading categories...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resource Grid -->
+                <div class="explorer-content">
+                    <div class="explorer-header">
+                        <h2>Resource Explorer</h2>
+                        <div class="view-controls">
+                            <button class="btn btn-icon active" data-view-type="grid" title="Grid View">
+                                <span>⊞</span>
+                            </button>
+                            <button class="btn btn-icon" data-view-type="list" title="List View">
+                                <span>☰</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="resourceGrid" class="resource-grid">
+                        <div class="loading">Loading resources...</div>
+                    </div>
+
+                    <!-- Resource Detail Modal -->
+                    <div id="resourceModal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 id="modalResourceName"></h3>
+                                <button class="modal-close">&times;</button>
+                            </div>
+                            <div class="modal-body" id="modalResourceContent">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Log View -->
+        <div class="view" id="activityView">
+            <div class="activity-layout">
+                <div class="activity-controls">
+                    <h2>Live Activity Feed</h2>
+                    <div class="activity-filters">
+                        <button class="btn btn-sm filter-btn active" data-filter="all">All</button>
+                        <button class="btn btn-sm filter-btn" data-filter="mcp_request">Requests</button>
+                        <button class="btn btn-sm filter-btn" data-filter="mcp_response">Responses</button>
+                        <button class="btn btn-sm filter-btn" data-filter="error">Errors</button>
+                        <button class="btn btn-sm filter-btn" data-filter="log">Logs</button>
+                    </div>
+                    <button class="btn btn-sm" id="pauseActivityBtn">Pause</button>
+                </div>
+
+                <div class="activity-feed" id="activityFeed">
+                    <div class="activity-empty">Waiting for activity...</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

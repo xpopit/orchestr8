@@ -1,0 +1,377 @@
+---
+id: database-connection-pooling-scaling
+category: pattern
+tags: [database, connection-pooling, scaling, read-replicas, sharding, performance]
+capabilities:
+  - Connection pool configuration
+  - Read replica pattern implementation
+  - Database sharding strategies
+  - Connection management best practices
+useWhen:
+  - Connection pool exhaustion scenarios requiring pgBouncer or connection pooling middleware with max pool size tuning
+  - Read scaling requirements needing read replica configuration with round-robin load balancing across 2+ replicas
+  - High-traffic applications experiencing connection overhead requiring persistent connection reuse and prepared statement caching
+  - Distributed systems requiring horizontal database scaling through sharding strategies with consistent hashing
+  - Write-heavy workloads needing connection queue management and idle connection timeout configuration
+estimatedTokens: 680
+---
+
+# Database Connection Pooling & Scaling
+
+Patterns for efficient connection management and scaling database access through pooling, read replicas, and sharding.
+
+## Connection Pooling
+
+### PostgreSQL Connection Pool
+```typescript
+import { Pool, PoolClient } from 'pg';
+
+class DatabaseConnectionPool {
+  private pool: Pool;
+
+  constructor() {
+    this.pool = new Pool({
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT || '5432'),
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+
+      // Connection pool settings
+      max: 20,                    // Maximum connections
+      min: 5,                     // Minimum connections
+      idleTimeoutMillis: 30000,   // Close idle connections after 30s
+      connectionTimeoutMillis: 2000, // Timeout acquiring connection
+      allowExitOnIdle: false,     // Keep pool alive
+    });
+
+    // Monitor pool health
+    this.pool.on('error', (err) => {
+      console.error('Unexpected database error', err);
+    });
+
+    this.pool.on('connect', () => {
+      console.log('New database connection established');
+    });
+  }
+
+  async query<T>(text: string, params?: any[]): Promise<T[]> {
+    const start = Date.now();
+
+    try {
+      const result = await this.pool.query(text, params);
+      const duration = Date.now() - start;
+
+      // Log slow queries
+      if (duration > 1000) {
+        console.warn(`Slow query (${duration}ms):`, text);
+      }
+
+      return result.rows;
+    } catch (error) {
+      console.error('Query error:', text, params, error);
+      throw error;
+    }
+  }
+
+  async transaction<T>(callback: (client: PoolClient) => Promise<T>): Promise<T> {
+    const client = await this.pool.connect();
+
+    try {
+      await client.query('BEGIN');
+      const result = await callback(client);
+      await client.query('COMMIT');
+      return result;
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+    } finally {
+      client.release(); // Return connection to pool
+    }
+  }
+
+  async healthCheck(): Promise<boolean> {
+    try {
+      await this.pool.query('SELECT 1');
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async close(): Promise<void> {
+    await this.pool.end();
+  }
+}
+```
+
+### Pool Configuration Guidelines
+
+```typescript
+// Development (low traffic)
+{
+  max: 10,    // Fewer connections
+  min: 2,     // Minimal idle
+  idleTimeoutMillis: 10000
+}
+
+// Production (moderate traffic)
+{
+  max: 20,    // More connections
+  min: 5,     // Keep some idle
+  idleTimeoutMillis: 30000
+}
+
+// Production (high traffic)
+{
+  max: 50,    // Many connections
+  min: 10,    // Keep pool warm
+  idleTimeoutMillis: 60000
+}
+
+// Rule of thumb: max = (available_connections * 0.8) / num_app_instances
+```
+
+## Read Replica Pattern
+
+### Database Router
+```typescript
+class DatabaseRouter {
+  private primary: Pool;
+  private replicas: Pool[];
+  private replicaIndex: number = 0;
+
+  constructor() {
+    this.primary = new Pool({ /* primary config */ });
+    this.replicas = [
+      new Pool({ host: 'replica1.db.com', /* ... */ }),
+      new Pool({ host: 'replica2.db.com', /* ... */ })
+    ];
+  }
+
+  // Write operations go to primary
+  async write(query: string, params?: any[]) {
+    return this.primary.query(query, params);
+  }
+
+  // Read operations go to replicas (round-robin)
+  async read(query: string, params?: any[]) {
+    const replica = this.replicas[this.replicaIndex];
+    this.replicaIndex = (this.replicaIndex + 1) % this.replicas.length;
+    return replica.query(query, params);
+  }
+
+  // Read from primary (for critical reads requiring latest data)
+  async readFromPrimary(query: string, params?: any[]) {
+    return this.primary.query(query, params);
+  }
+}
+```
+
+### Service Layer Usage
+```typescript
+class UserService {
+  constructor(private db: DatabaseRouter) {}
+
+  // Read operations use replicas
+  async getUser(id: string): Promise<User> {
+    const [user] = await this.db.read(
+      'SELECT * FROM users WHERE id = $1',
+      [id]
+    );
+    return user;
+  }
+
+  async listUsers(limit: number = 50): Promise<User[]> {
+    return this.db.read(
+      'SELECT * FROM users ORDER BY created_at DESC LIMIT $1',
+      [limit]
+    );
+  }
+
+  // Write operations use primary
+  async createUser(data: CreateUserDto): Promise<User> {
+    const [user] = await this.db.write(
+      'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *',
+      [data.name, data.email]
+    );
+    return user;
+  }
+
+  async updateUser(id: string, data: UpdateUserDto): Promise<User> {
+    const [user] = await this.db.write(
+      'UPDATE users SET name = $1 WHERE id = $2 RETURNING *',
+      [data.name, id]
+    );
+    return user;
+  }
+
+  // Critical read that needs latest data
+  async getUserAfterWrite(id: string): Promise<User> {
+    return this.db.readFromPrimary(
+      'SELECT * FROM users WHERE id = $1',
+      [id]
+    );
+  }
+}
+```
+
+## Database Sharding
+
+### Shard Router
+```typescript
+class ShardedDatabase {
+  private shards: Pool[];
+
+  constructor(shardConfigs: DatabaseConfig[]) {
+    this.shards = shardConfigs.map(config => new Pool(config));
+  }
+
+  // Determine shard based on user ID
+  private getShardForUser(userId: string): Pool {
+    const hash = this.hashUserId(userId);
+    const shardIndex = hash % this.shards.length;
+    return this.shards[shardIndex];
+  }
+
+  private hashUserId(userId: string): number {
+    // Simple hash (use better hash in production like xxhash)
+    return userId.split('').reduce(
+      (acc, char) => acc + char.charCodeAt(0),
+      0
+    );
+  }
+
+  async getUserById(userId: string): Promise<User> {
+    const shard = this.getShardForUser(userId);
+    const result = await shard.query(
+      'SELECT * FROM users WHERE id = $1',
+      [userId]
+    );
+    return result.rows[0];
+  }
+
+  async createUser(user: CreateUserDto): Promise<User> {
+    const shard = this.getShardForUser(user.id);
+    const result = await shard.query(
+      'INSERT INTO users (id, name, email) VALUES ($1, $2, $3) RETURNING *',
+      [user.id, user.name, user.email]
+    );
+    return result.rows[0];
+  }
+
+  // Cross-shard query (expensive, avoid if possible)
+  async getAllUsers(): Promise<User[]> {
+    const results = await Promise.all(
+      this.shards.map(shard =>
+        shard.query('SELECT * FROM users')
+      )
+    );
+
+    return results.flatMap(r => r.rows);
+  }
+}
+```
+
+### Sharding Strategies
+
+**1. Hash-based (what we showed above)**
+- Pros: Even distribution
+- Cons: Hard to add shards, can't do range queries easily
+
+**2. Range-based**
+```typescript
+// Shard 1: users with ID 1-1000000
+// Shard 2: users with ID 1000001-2000000
+private getShardByRange(userId: number): Pool {
+  const usersPerShard = 1000000;
+  const shardIndex = Math.floor((userId - 1) / usersPerShard);
+  return this.shards[shardIndex];
+}
+```
+
+**3. Geographic**
+```typescript
+// Shard by region for data locality
+private getShardByRegion(region: string): Pool {
+  const shardMap = {
+    'us-east': 0,
+    'us-west': 1,
+    'eu': 2,
+    'asia': 3
+  };
+  return this.shards[shardMap[region]];
+}
+```
+
+## Connection Management Best Practices
+
+### 1. Always Release Connections
+```typescript
+// BAD
+const client = await pool.connect();
+await client.query('SELECT * FROM users');
+// Connection never released!
+
+// GOOD
+const client = await pool.connect();
+try {
+  await client.query('SELECT * FROM users');
+} finally {
+  client.release(); // Always release
+}
+```
+
+### 2. Use Transactions for Related Operations
+```typescript
+await db.transaction(async (client) => {
+  await client.query('INSERT INTO orders ...');
+  await client.query('UPDATE inventory ...');
+  // Both succeed or both rollback
+});
+```
+
+### 3. Monitor Connection Pool Metrics
+```typescript
+setInterval(() => {
+  console.log({
+    total: pool.totalCount,
+    idle: pool.idleCount,
+    waiting: pool.waitingCount
+  });
+}, 60000);
+```
+
+## Scaling Decision Matrix
+
+| Metric | Solution |
+|--------|----------|
+| Connection pool exhaustion | Increase pool size or add app instances |
+| High read load | Add read replicas |
+| High write load | Scale primary vertically or shard |
+| Geographic distribution | Geographic sharding |
+| Dataset size >1TB | Consider sharding |
+
+## Best Practices
+
+✅ **Use connection pooling** - Don't create connections per query
+✅ **Release connections** - Always call `release()` or use `finally`
+✅ **Monitor pool health** - Track connection metrics
+✅ **Use read replicas for reads** - Offload primary database
+✅ **Transaction for related writes** - Ensure consistency
+✅ **Health check connections** - Detect and handle dead connections
+
+❌ **Don't create pool per request** - Create once at startup
+❌ **Don't set max too high** - Can overwhelm database
+❌ **Don't set max too low** - Causes connection wait times
+❌ **Don't forget to close pools** - On application shutdown
+❌ **Don't shard prematurely** - Only when necessary (>1TB or write bottleneck)
+
+## When to Apply
+
+- Connection pool exhaustion errors
+- High connection overhead
+- Read-heavy workloads (use replicas)
+- Write-heavy workloads (consider sharding)
+- Multi-region deployments (geographic sharding)
+- Dataset >1TB (consider sharding)

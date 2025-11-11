@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or Discussion
+    url: https://github.com/seth-schultz/orchestr8/discussions
+    about: Ask questions or discuss ideas with the community
+  - name: Critical Security Vulnerability
+    url: https://github.com/seth-schultz/orchestr8/security/policy
+    about: Report critical security vulnerabilities privately (DO NOT create public issues)
+  - name: Documentation
+    url: https://github.com/seth-schultz/orchestr8/blob/main/README.md
+    about: View the full documentation and guides
+  - name: Contributing Guide
+    url: https://github.com/seth-schultz/orchestr8/blob/main/CONTRIBUTING.md
+    about: Learn how to contribute to orchestr8
