@@ -170,7 +170,7 @@ When team members trust the folder, orchestr8 will be installed automatically.
 
 ![Workflow Flow Diagram](plugins/orchestr8/docs/images/diagram-flow-1.png)
 
-### Available Workflows
+### Available Commands
 
 | Command | Purpose | Use Case |
 |---------|---------|----------|
@@ -182,8 +182,17 @@ When team members trust the folder, orchestr8 will be installed automatically.
 | `/orchestr8:optimize-performance` | Performance analysis and optimization | Scaling and efficiency |
 | `/orchestr8:refactor` | Safe code refactoring | Technical debt reduction |
 | `/orchestr8:deploy` | Production deployment | Release management |
+| `/orchestr8:setup-cicd` | Configure CI/CD pipelines | DevOps automation |
+| `/orchestr8:modernize-legacy` | Legacy system modernization | Cloud migration and microservices |
+| `/orchestr8:create-agent` | Create domain expert agents | Extend orchestr8 capabilities |
+| `/orchestr8:create-skill` | Create reusable skill fragments | Knowledge sharing |
+| `/orchestr8:create-workflow` | Create custom workflows | Process automation |
+| `/orchestr8:create-medium-story` | Generate Medium articles | Content creation |
+| `/orchestr8:generate-visualizations` | Create diagrams and charts | Documentation and analysis |
+| `/orchestr8:mcp-ui` | Launch MCP testing interface | Plugin development |
+| `/orchestr8:now` | Autonomous workflow execution | Dynamic task orchestration |
 
-**See** [Usage Guide](plugins/orchestr8/docs/usage/) **for complete workflow documentation.**
+**See** [Usage Guide](plugins/orchestr8/docs/usage/) **for complete command documentation.**
 
 ---
 
