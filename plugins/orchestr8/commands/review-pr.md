@@ -1,6 +1,18 @@
 ---
-description: Comprehensive PR review with code analysis, security audit, and automated GitHub feedback
-argument-hint: [pr-number]
+description: Comprehensive PR review with code analysis, security audit, and automated
+  GitHub feedback
+argument-hint:
+- pr-number
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- Write
 ---
 
 # Review Pull Request: $ARGUMENTS
@@ -13,7 +25,7 @@ You are the **Code Reviewer** responsible for comprehensive PR review across sty
 
 ## Phase 1: PR Context Gathering (0-15%)
 
-**→ Load:** orchestr8://workflows/workflow-review-pr
+**→ Load:** @orchestr8://workflows/workflow-review-pr
 
 **Activities:**
 - Fetch PR details from GitHub (title, description, author, branches)
@@ -28,7 +40,7 @@ You are the **Code Reviewer** responsible for comprehensive PR review across sty
 
 ## Phase 2: Multi-Stage Code Review (15-80%)
 
-**→ Load:** orchestr8://match?query=code+review+security+performance+architecture&categories=skill,pattern&maxTokens=2000
+**→ Load:** @orchestr8://match?query=code+review+security+performance+architecture&categories=skill,pattern&maxTokens=2000
 
 **Parallel Review Stages:**
 - **Style & Readability:** Code style, naming, complexity, formatting
@@ -52,7 +64,7 @@ You are the **Code Reviewer** responsible for comprehensive PR review across sty
 
 ## Phase 3: Review Summary & GitHub Posting (80-100%)
 
-**→ Load:** orchestr8://match?query=code+review+github+automation&categories=skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=code+review+github+automation&categories=skill&maxTokens=1000
 
 **Activities:**
 - Aggregate findings from all review stages

@@ -1,5 +1,15 @@
 ---
-description: Performance optimization through profiling, bottleneck identification, and systematic improvements
+description: Performance optimization through profiling, bottleneck identification,
+  and systematic improvements
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Optimize Performance: $ARGUMENTS
@@ -12,7 +22,7 @@ You are the **Performance Engineer** responsible for identifying bottlenecks, op
 
 ## Phase 1: Profiling & Analysis (0-30%)
 
-**→ Load:** orchestr8://workflows/workflow-performance-optimization
+**→ Load:** @orchestr8://workflows/workflow-performance-optimization
 
 **Activities:**
 - Measure current performance baselines
@@ -31,7 +41,7 @@ You are the **Performance Engineer** responsible for identifying bottlenecks, op
 
 ## Phase 2: Optimization Implementation (30-70%)
 
-**→ Load:** orchestr8://match?query=performance+optimization+caching+database+queries&categories=skill,pattern&maxTokens=2000
+**→ Load:** @orchestr8://match?query=performance+optimization+caching+database+queries&categories=skill,pattern&maxTokens=2000
 
 **Parallel tracks:**
 - **Backend Track:** Database optimization, caching, algorithm improvements
@@ -71,7 +81,7 @@ You are the **Performance Engineer** responsible for identifying bottlenecks, op
 
 ## Phase 3: Validation & Benchmarking (70-90%)
 
-**→ Load:** orchestr8://match?query=performance+testing+benchmarking+load+testing&categories=skill&maxTokens=1200
+**→ Load:** @orchestr8://match?query=performance+testing+benchmarking+load+testing&categories=skill&maxTokens=1200
 
 **Activities:**
 - Run performance benchmarks
@@ -90,7 +100,7 @@ You are the **Performance Engineer** responsible for identifying bottlenecks, op
 
 ## Phase 4: Monitoring & Documentation (90-100%)
 
-**→ Load:** orchestr8://match?query=monitoring+observability+performance+metrics&categories=guide,skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=monitoring+observability+performance+metrics&categories=guide,skill&maxTokens=1000
 
 **Activities:**
 - Set up performance monitoring

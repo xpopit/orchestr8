@@ -17,7 +17,7 @@ You are implementing a new feature in an existing codebase. You will analyze the
 
 ## Phase 1: Analysis & Design (0-20%)
 
-**→ Load:** orchestr8://match?query={{task}}+design+integration&categories=agent,pattern&maxTokens=1200
+**→ Load:** @orchestr8://match?query={{task}}+design+integration&categories=agent,pattern&maxTokens=1200
 
 **Activities:**
 - Analyze existing codebase structure
@@ -31,7 +31,7 @@ You are implementing a new feature in an existing codebase. You will analyze the
 
 ## Phase 2: Implementation (20-70%)
 
-**→ Load:** orchestr8://match?query={{task}}+implementation&categories=agent,skill,example&maxTokens=2500
+**→ Load:** @orchestr8://match?query={{task}}+implementation&categories=agent,skill,example&maxTokens=2500
 
 **Parallel tracks:**
 - **Backend:** Schema, models, business logic, API endpoints
@@ -42,7 +42,7 @@ You are implementing a new feature in an existing codebase. You will analyze the
 
 ## Phase 3: Quality Assurance (70-90%)
 
-**→ Load:** orchestr8://skills/match?query=testing+validation+quality&maxTokens=1000
+**→ Load:** @orchestr8://skills/match?query=testing+validation+quality&maxTokens=1000
 
 **Parallel tracks:**
 - **Testing:** E2E tests, edge cases, integration tests
@@ -53,7 +53,7 @@ You are implementing a new feature in an existing codebase. You will analyze the
 
 ## Phase 4: Integration & Deploy (90-100%)
 
-**→ Load:** orchestr8://skills/match?query=deployment+documentation&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=deployment+documentation&maxTokens=800
 
 **Activities:**
 - Update documentation (API docs, README, changelog)

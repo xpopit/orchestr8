@@ -28,7 +28,7 @@ You are a world-class Medium writer creating viral, engaging articles that meet 
 
 ## Phase 1: Research & Planning (0-25%)
 
-**→ Load:** orchestr8://match?query=${topic}+research+analysis&categories=agent,skill&maxTokens=1500
+**→ Load:** @orchestr8://match?query=${topic}+research+analysis&categories=agent,skill&maxTokens=1500
 
 **Activities:**
 - **Topic Analysis**: Validate evergreen potential, audience breadth, and unique angle
@@ -47,9 +47,9 @@ You are a world-class Medium writer creating viral, engaging articles that meet 
 
 ## Phase 2: Content Creation (25-70%)
 
-**→ Load:** orchestr8://agents/medium-writer-expert
+**→ Load:** @orchestr8://agents/medium-writer-expert
 
-**→ Load:** orchestr8://match?query=medium+headline+story-structure+engagement&categories=skill&maxTokens=2000
+**→ Load:** @orchestr8://match?query=medium+headline+story-structure+engagement&categories=skill&maxTokens=2000
 
 **Parallel tracks:**
 
@@ -80,7 +80,7 @@ You are a world-class Medium writer creating viral, engaging articles that meet 
 
 ## Phase 3: Optimization & Polish (70-90%)
 
-**→ Load:** orchestr8://skills/match?query=technical-writing+editing+readability&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=technical-writing+editing+readability&maxTokens=800
 
 **Quality checks:**
 
@@ -112,7 +112,7 @@ You are a world-class Medium writer creating viral, engaging articles that meet 
 
 **→ Load Publishing Expertise (JIT):**
 ```
-orchestr8://skills/medium-publishing-comprehensive
+@orchestr8://skills/medium-publishing-comprehensive
 ```
 
 ## Phase 4: Finalization & Export (90-100%)
@@ -146,11 +146,11 @@ created_date: "YYYY-MM-DD"
 
 ### 4. Generate Hero Image (Optional)
 
-**→ Load:** orchestr8://skills/medium-hero-image-generation
+**→ Load:** @orchestr8://skills/medium-hero-image-generation
 
 **For detailed hero image specifications and generation methods, see:**
 ```
-orchestr8://skills/medium-publishing-comprehensive
+@orchestr8://skills/medium-publishing-comprehensive
 ```
 (Includes: image specs, AI generation options, Unsplash search strategies)
 
@@ -172,14 +172,14 @@ Create `medium/[filename]-INSTRUCTIONS.md` with:
 
 **For complete publishing instructions template and best practices:**
 ```
-orchestr8://skills/medium-publishing-comprehensive
+@orchestr8://skills/medium-publishing-comprehensive
 ```
 (Includes: full checklist, tag strategy, publication submission guidelines)
 
 ### 7. Optional: Generate API Publishing Script
 Only if user has Medium integration token:
 
-**→ Load:** orchestr8://skills/medium-api-publishing
+**→ Load:** @orchestr8://skills/medium-api-publishing
 
 **→ Checkpoint:** Story saved to medium/ folder with publishing instructions
 
@@ -273,24 +273,24 @@ tags: ["programming", "python", "learning", "beginners", "tutorial"]
 
 **For comprehensive distribution and promotion strategies:**
 ```
-orchestr8://skills/medium-publishing-comprehensive
+@orchestr8://skills/medium-publishing-comprehensive
 ```
 (Includes: timing strategy, sharing guidelines, publication submissions, metrics tracking)
 
 ## Workflow Variations
 
 ### For Technical Content
-**→ Load:** orchestr8://agents/match?query=${tech-stack}&maxTokens=1000
+**→ Load:** @orchestr8://agents/match?query=${tech-stack}&maxTokens=1000
 
 Add technical expertise to content creation phase.
 
 ### For Personal Development
-**→ Load:** orchestr8://skills/match?query=storytelling+personal-narrative&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=storytelling+personal-narrative&maxTokens=800
 
 Enhance emotional storytelling and relatability.
 
 ### For Business/Career
-**→ Load:** orchestr8://skills/match?query=business+career+professional-development&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=business+career+professional-development&maxTokens=800
 
 Add business frameworks and career-specific insights.
 
@@ -305,7 +305,7 @@ Add business frameworks and career-specific insights.
 
 **For Medium algorithm optimization, distribution standards, and advanced publishing techniques:**
 ```
-orchestr8://skills/medium-publishing-comprehensive
+@orchestr8://skills/medium-publishing-comprehensive
 ```
 
 Now, let's create your Medium story!

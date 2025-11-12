@@ -1,6 +1,19 @@
 ---
-description: Research multiple solution approaches for a problem and recommend best option with evidence
-argument-hint: [problem-description]
+description: Research multiple solution approaches for a problem and recommend best
+  option with evidence
+argument-hint:
+- problem-description
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Research Solution: $ARGUMENTS
@@ -34,19 +47,19 @@ The delegated research workflow will load these resources progressively:
 
 ```
 # Phase 1: Hypothesis Formation
-orchestr8://registry                              # Lightweight catalog (~300 tokens)
-orchestr8://agents/research-specialist            # Research methodology (~800 tokens)
-orchestr8://skills/requirement-analysis-framework # Problem analysis (~600 tokens)
+@orchestr8://registry                              # Lightweight catalog (~300 tokens)
+@orchestr8://agents/research-specialist            # Research methodology (~800 tokens)
+@orchestr8://skills/requirement-analysis-framework # Problem analysis (~600 tokens)
 
 # Phase 2: Parallel Testing (per approach)
-orchestr8://match?query=<technology>+implementation&mode=index&maxTokens=1500
+@orchestr8://match?query=<technology>+implementation&mode=index&maxTokens=1500
 
 # Phase 3: Comparative Analysis
-orchestr8://skills/competitive-analysis           # Comparison framework (~700 tokens)
-orchestr8://skills/technology-evaluation          # Evaluation criteria (~600 tokens)
+@orchestr8://skills/competitive-analysis           # Comparison framework (~700 tokens)
+@orchestr8://skills/technology-evaluation          # Evaluation criteria (~600 tokens)
 
 # Phase 4: Recommendation
-orchestr8://patterns/trade-off-analysis-framework # Decision framework (~500 tokens)
+@orchestr8://patterns/trade-off-analysis-framework # Decision framework (~500 tokens)
 ```
 
 **Token Efficiency:**

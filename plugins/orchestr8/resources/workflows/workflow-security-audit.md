@@ -33,8 +33,8 @@ estimatedTokens: 3000
 
 **→ Load Reconnaissance & Threat Modeling Expertise (JIT):**
 ```
-orchestr8://match?query=security+threat+modeling+attack+surface+${tech-stack}&categories=skill,pattern&maxTokens=1000
-orchestr8://skills/requirement-analysis-framework
+@orchestr8://match?query=security+threat+modeling+attack+surface+${tech-stack}&categories=skill,pattern&maxTokens=1000
+@orchestr8://skills/requirement-analysis-framework
 ```
 
 **Goals:** Map attack surface and security context
@@ -53,9 +53,9 @@ orchestr8://skills/requirement-analysis-framework
 
 **→ Load Core Security Assessment Expertise (JIT):**
 ```
-orchestr8://match?query=owasp+security+vulnerabilities+${tech-stack}&categories=skill,agent&maxTokens=2500
-orchestr8://skills/security-owasp-top10
-orchestr8://agents/security-owasp-vulnerabilities
+@orchestr8://match?query=owasp+security+vulnerabilities+${tech-stack}&categories=skill,agent&maxTokens=2500
+@orchestr8://skills/security-owasp-top10
+@orchestr8://agents/security-owasp-vulnerabilities
 ```
 
 **Goals:** Identify security vulnerabilities across all dimensions
@@ -84,7 +84,7 @@ Systematically evaluate each category:
 **→ Dependency Security (JIT - CONDITIONAL):**
 ```
 # Only if application has external dependencies
-orchestr8://match?query=${package-manager}+dependency+audit+cve&categories=skill&maxTokens=800
+@orchestr8://match?query=${package-manager}+dependency+audit+cve&categories=skill&maxTokens=800
 ```
 - Run security scanners: `npm audit`, `pip-audit`, `cargo audit`, Snyk
 - Check for known vulnerabilities (CVEs) with severity ratings
@@ -97,8 +97,8 @@ orchestr8://match?query=${package-manager}+dependency+audit+cve&categories=skill
 **→ Infrastructure Security (JIT - CONDITIONAL):**
 ```
 # Only if infrastructure/cloud components in scope
-orchestr8://match?query=${cloud-provider}+infrastructure+security+hardening&categories=skill,pattern&maxTokens=1000
-orchestr8://skills/security-secrets-management
+@orchestr8://match?query=${cloud-provider}+infrastructure+security+hardening&categories=skill,pattern&maxTokens=1000
+@orchestr8://skills/security-secrets-management
 ```
 - Network configuration review (firewalls, security groups, network policies)
 - TLS/SSL configuration and certificate validation
@@ -126,7 +126,7 @@ orchestr8://skills/security-secrets-management
 **→ Data Protection & Compliance (JIT - CONDITIONAL):**
 ```
 # Only if handling sensitive data or compliance requirements
-orchestr8://match?query=${compliance-standard}+data+protection+encryption&categories=skill,agent&maxTokens=1200
+@orchestr8://match?query=${compliance-standard}+data+protection+encryption&categories=skill,agent&maxTokens=1200
 ```
 - Encryption at rest (AES-256, database encryption)
 - Encryption in transit (TLS 1.2+, certificate validation)
@@ -141,8 +141,8 @@ orchestr8://match?query=${compliance-standard}+data+protection+encryption&catego
 
 **→ Load Remediation & Reporting Expertise (JIT):**
 ```
-orchestr8://match?query=security+remediation+reporting+cvss&categories=skill&maxTokens=800
-orchestr8://skills/technical-writing-principles
+@orchestr8://match?query=security+remediation+reporting+cvss&categories=skill&maxTokens=800
+@orchestr8://skills/technical-writing-principles
 ```
 
 **Goals:** Deliver actionable security recommendations

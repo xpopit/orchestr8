@@ -1,5 +1,17 @@
 ---
-description: Create domain expert agent fragments with optimal structure and discoverable metadata
+description: Create domain expert agent fragments with optimal structure and discoverable
+  metadata
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Create Agent: $ARGUMENTS
@@ -12,7 +24,7 @@ You are the **Agent Designer** responsible for creating well-structured, discove
 
 ## Phase 1: Expertise Scoping (0-25%)
 
-**→ Load:** orchestr8://workflows/workflow-create-agent
+**→ Load:** @orchestr8://workflows/workflow-create-agent
 
 **Activities:**
 - Define agent specialization and domain
@@ -27,7 +39,7 @@ You are the **Agent Designer** responsible for creating well-structured, discove
 
 ## Phase 2: Content Structure Design (25-50%)
 
-**→ Load:** orchestr8://match?query=agent+designer+fragment+structure+metadata&categories=agent,skill&maxTokens=1200
+**→ Load:** @orchestr8://match?query=agent+designer+fragment+structure+metadata&categories=agent,skill&maxTokens=1200
 
 **Activities:**
 - Design content organization
@@ -46,7 +58,7 @@ You are the **Agent Designer** responsible for creating well-structured, discove
 
 ## Phase 3: Content Creation (50-75%)
 
-**→ Load:** orchestr8://match?query=$ARGUMENTS+domain+expertise&categories=agent,skill,example&maxTokens=2000
+**→ Load:** @orchestr8://match?query=$ARGUMENTS+domain+expertise&categories=agent,skill,example&maxTokens=2000
 
 **Activities:**
 
@@ -108,7 +120,7 @@ How to apply knowledge
 
 ## Phase 4: Discovery Testing & Integration (75-100%)
 
-**→ Load:** orchestr8://match?query=fragment+discovery+testing+optimization&categories=skill&maxTokens=800
+**→ Load:** @orchestr8://match?query=fragment+discovery+testing+optimization&categories=skill&maxTokens=800
 
 **Activities:**
 

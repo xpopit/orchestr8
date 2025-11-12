@@ -1,5 +1,17 @@
 ---
-description: Automated deployment with pre-flight checks, staging validation, and production rollout
+description: Automated deployment with pre-flight checks, staging validation, and
+  production rollout
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Deploy: $ARGUMENTS
@@ -12,7 +24,7 @@ You are the **Deployment Engineer** responsible for safe, reliable deployment to
 
 ## Phase 1: Pre-deployment Validation (0-20%)
 
-**→ Load:** orchestr8://workflows/workflow-deploy
+**→ Load:** @orchestr8://workflows/workflow-deploy
 
 **Activities:**
 - Run full test suite and verify 100% pass
@@ -29,7 +41,7 @@ You are the **Deployment Engineer** responsible for safe, reliable deployment to
 
 ## Phase 2: Staging Deployment (20-50%)
 
-**→ Load:** orchestr8://match?query=deployment+staging+validation+smoke+tests&categories=guide,skill&maxTokens=1200
+**→ Load:** @orchestr8://match?query=deployment+staging+validation+smoke+tests&categories=guide,skill&maxTokens=1200
 
 **Activities:**
 - Deploy to staging environment
@@ -47,7 +59,7 @@ You are the **Deployment Engineer** responsible for safe, reliable deployment to
 
 ## Phase 3: Production Deployment (50-80%)
 
-**→ Load:** orchestr8://match?query=deployment+blue+green+canary+zero+downtime&categories=skill,pattern&maxTokens=1500
+**→ Load:** @orchestr8://match?query=deployment+blue+green+canary+zero+downtime&categories=skill,pattern&maxTokens=1500
 
 **Activities:**
 
@@ -72,7 +84,7 @@ You are the **Deployment Engineer** responsible for safe, reliable deployment to
 
 ## Phase 4: Post-deployment Validation (80-100%)
 
-**→ Load:** orchestr8://match?query=monitoring+observability+validation&categories=guide,skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=monitoring+observability+validation&categories=guide,skill&maxTokens=1000
 
 **Activities:**
 - Verify production health status

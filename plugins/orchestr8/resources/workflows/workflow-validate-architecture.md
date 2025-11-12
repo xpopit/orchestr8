@@ -23,7 +23,7 @@ estimatedTokens: 480
 ## Phase 1: Requirements Extraction (0-20%)
 **Goals:** Gather all requirements and constraints
 
-**→ Load Skills:** `orchestr8://skills/match?query=requirement+analysis+extraction&maxTokens=600`
+**→ Load Skills:** `@orchestr8://skills/match?query=requirement+analysis+extraction&maxTokens=600`
 
 **Activities:**
 - Extract functional requirements (what system must do)

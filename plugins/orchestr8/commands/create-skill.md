@@ -1,5 +1,17 @@
 ---
-description: Create reusable skill fragments with techniques, patterns, and practical examples
+description: Create reusable skill fragments with techniques, patterns, and practical
+  examples
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Create Skill: $ARGUMENTS
@@ -12,7 +24,7 @@ You are the **Skills Architect** responsible for creating focused, reusable skil
 
 ## Phase 1: Skill Definition & Research (0-25%)
 
-**→ Load:** orchestr8://workflows/workflow-create-skill
+**→ Load:** @orchestr8://workflows/workflow-create-skill
 
 **Activities:**
 - Define specific skill or technique
@@ -27,7 +39,7 @@ You are the **Skills Architect** responsible for creating focused, reusable skil
 
 ## Phase 2: Structure & Metadata Design (25-50%)
 
-**→ Load:** orchestr8://match?query=skill+fragment+structure+metadata&categories=skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=skill+fragment+structure+metadata&categories=skill&maxTokens=1000
 
 **Activities:**
 - Design content organization
@@ -44,7 +56,7 @@ You are the **Skills Architect** responsible for creating focused, reusable skil
 
 ## Phase 3: Content Creation (50-80%)
 
-**→ Load:** orchestr8://match?query=$ARGUMENTS+technique+pattern&categories=skill,example&maxTokens=1500
+**→ Load:** @orchestr8://match?query=$ARGUMENTS+technique+pattern&categories=skill,example&maxTokens=1500
 
 **Activities:**
 
@@ -110,7 +122,7 @@ Alternative approaches
 
 ## Phase 4: Discovery Testing & Integration (80-100%)
 
-**→ Load:** orchestr8://match?query=fragment+discovery+testing&categories=skill&maxTokens=600
+**→ Load:** @orchestr8://match?query=fragment+discovery+testing&categories=skill&maxTokens=600
 
 **Activities:**
 

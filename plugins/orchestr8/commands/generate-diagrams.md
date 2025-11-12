@@ -1,6 +1,16 @@
 ---
-description: Generate Mermaid architecture diagrams (C4 L0-L3), data flows, sequence diagrams, and user journey flows from codebase analysis
-argument-hint: [scope-or-path] [--type=all|architecture|dataflow|sequence|ux|erd]
+description: Generate Mermaid architecture diagrams (C4 L0-L3), data flows, sequence
+  diagrams, and user journey flows from codebase analysis
+argument-hint: '[scope-or-path] [--type=all|architecture|dataflow|sequence|ux|erd]'
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Generate Diagrams: $ARGUMENTS
@@ -13,7 +23,7 @@ You are the **Diagram Specialist** responsible for generating visual documentati
 
 ## Phase 1: Codebase Analysis (0-30%)
 
-**→ Load:** orchestr8://match?query=architecture+analysis+diagram&categories=skill,pattern&maxTokens=1000
+**→ Load:** @orchestr8://match?query=architecture+analysis+diagram&categories=skill,pattern&maxTokens=1000
 
 **Activities:**
 - Analyze codebase structure and architecture
@@ -26,7 +36,7 @@ You are the **Diagram Specialist** responsible for generating visual documentati
 
 ## Phase 2: Architecture Diagrams (30-50%)
 
-**→ Load:** orchestr8://match?query=c4+architecture+diagrams+mermaid&categories=skill,example&maxTokens=1200
+**→ Load:** @orchestr8://match?query=c4+architecture+diagrams+mermaid&categories=skill,example&maxTokens=1200
 
 **Activities:**
 - Generate C4 Level 0: System Context (external systems, users)
@@ -39,7 +49,7 @@ You are the **Diagram Specialist** responsible for generating visual documentati
 
 ## Phase 3: Data Flow Diagrams (50-65%)
 
-**→ Load:** orchestr8://workflows/workflow-generate-visualizations
+**→ Load:** @orchestr8://workflows/workflow-generate-visualizations
 
 **Activities:**
 - Map data flows between components
@@ -52,7 +62,7 @@ You are the **Diagram Specialist** responsible for generating visual documentati
 
 ## Phase 4: Sequence Diagrams (65-80%)
 
-**→ Load:** orchestr8://match?query=sequence+diagrams+interactions&categories=skill,example&maxTokens=800
+**→ Load:** @orchestr8://match?query=sequence+diagrams+interactions&categories=skill,example&maxTokens=800
 
 **Activities:**
 - Create sequence diagrams for key user flows
@@ -65,7 +75,7 @@ You are the **Diagram Specialist** responsible for generating visual documentati
 
 ## Phase 5: User Journey & ERD Diagrams (80-100%)
 
-**→ Load:** orchestr8://match?query=user+journey+erd+visualization&categories=skill,example&maxTokens=800
+**→ Load:** @orchestr8://match?query=user+journey+erd+visualization&categories=skill,example&maxTokens=800
 
 **Activities:**
 - Create user journey maps

@@ -1,6 +1,17 @@
 ---
-description: Comprehensive cloud cost optimization covering right-sizing, storage, reserved capacity, auto-scaling, and FinOps governance
-argument-hint: [infrastructure-description]
+description: Comprehensive cloud cost optimization covering right-sizing, storage,
+  reserved capacity, auto-scaling, and FinOps governance
+argument-hint:
+- infrastructure-description
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Optimize Costs: $ARGUMENTS
@@ -13,7 +24,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 1: Cost Analysis & Discovery (0-15%)
 
-**→ Load:** orchestr8://match?query=cost+analysis+cloud+finops&categories=skill,guide&maxTokens=1000
+**→ Load:** @orchestr8://match?query=cost+analysis+cloud+finops&categories=skill,guide&maxTokens=1000
 
 **Activities:**
 - Analyze current cloud costs by service
@@ -26,7 +37,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 2: Right-Sizing Analysis (15-30%)
 
-**→ Load:** orchestr8://match?query=right-sizing+cloud+resources&categories=skill,guide&maxTokens=1000
+**→ Load:** @orchestr8://match?query=right-sizing+cloud+resources&categories=skill,guide&maxTokens=1000
 
 **Activities:**
 - Analyze resource utilization (CPU, memory, disk)
@@ -39,7 +50,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 3: Storage Optimization (30-45%)
 
-**→ Load:** orchestr8://match?query=storage+optimization+lifecycle&categories=skill,guide&maxTokens=800
+**→ Load:** @orchestr8://match?query=storage+optimization+lifecycle&categories=skill,guide&maxTokens=800
 
 **Activities:**
 - Analyze storage usage patterns
@@ -52,7 +63,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 4: Reserved Capacity & Savings Plans (45-60%)
 
-**→ Load:** orchestr8://match?query=reserved+instances+savings+plans&categories=skill,guide&maxTokens=800
+**→ Load:** @orchestr8://match?query=reserved+instances+savings+plans&categories=skill,guide&maxTokens=800
 
 **Activities:**
 - Analyze usage patterns for commitment discounts
@@ -65,7 +76,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 5: Auto-Scaling & Scheduling (60-75%)
 
-**→ Load:** orchestr8://match?query=auto-scaling+scheduling+elasticity&categories=skill,pattern&maxTokens=800
+**→ Load:** @orchestr8://match?query=auto-scaling+scheduling+elasticity&categories=skill,pattern&maxTokens=800
 
 **Activities:**
 - Configure auto-scaling policies
@@ -78,7 +89,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 6: Networking & Data Transfer (75-85%)
 
-**→ Load:** orchestr8://match?query=network+optimization+data+transfer&categories=skill&maxTokens=600
+**→ Load:** @orchestr8://match?query=network+optimization+data+transfer&categories=skill&maxTokens=600
 
 **Activities:**
 - Optimize data transfer costs
@@ -91,7 +102,7 @@ You are the **Cost Optimizer** responsible for comprehensive cloud cost optimiza
 
 ## Phase 7: FinOps Monitoring & Governance (85-100%)
 
-**→ Load:** orchestr8://workflows/workflow-optimize-costs
+**→ Load:** @orchestr8://workflows/workflow-optimize-costs
 
 **Activities:**
 - Set up cost monitoring dashboards

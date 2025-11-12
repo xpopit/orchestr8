@@ -1,6 +1,17 @@
 ---
-description: Capture organizational knowledge including patterns, anti-patterns, performance baselines, validated assumptions, technology comparisons, and refactoring opportunities
-argument-hint: [type] [details]
+description: Capture organizational knowledge including patterns, anti-patterns, performance
+  baselines, validated assumptions, technology comparisons, and refactoring opportunities
+argument-hint: '[type] [details]'
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- Write
 ---
 
 # Knowledge Capture: $ARGUMENTS
@@ -30,15 +41,15 @@ This command uses **Just-In-Time (JIT) resource loading** for maximum token effi
 
 ```
 # Phase 0: Discovery (if knowledge type needs expertise)
-orchestr8://match?query=knowledge+management+capture&mode=index&categories=agent,skill&maxTokens=500
+@orchestr8://match?query=knowledge+management+capture&mode=index&categories=agent,skill&maxTokens=500
 
 # Phase 2: Load specific expertise based on knowledge type
-orchestr8://agents/knowledge-base-agent              # Knowledge capture methodology (~800 tokens)
-orchestr8://skills/technical-writing-principles      # Documentation quality (~600 tokens)
-orchestr8://skills/fragment-metadata-optimization    # Metadata structuring (~400 tokens)
+@orchestr8://agents/knowledge-base-agent              # Knowledge capture methodology (~800 tokens)
+@orchestr8://skills/technical-writing-principles      # Documentation quality (~600 tokens)
+@orchestr8://skills/fragment-metadata-optimization    # Metadata structuring (~400 tokens)
 
 # Phase 3: Validation resources (if needed)
-orchestr8://skills/fragment-discoverability-testing  # Searchability validation (~500 tokens)
+@orchestr8://skills/fragment-discoverability-testing  # Searchability validation (~500 tokens)
 ```
 
 **Token Efficiency:**
@@ -113,7 +124,7 @@ Identified improvements ranked by ROI.
 
 ## Phase 1: Parse Input (0-10%)
 
-**→ Load (if needed):** orchestr8://match?query=input+validation+parsing&mode=index&categories=skill&maxTokens=500
+**→ Load (if needed):** @orchestr8://match?query=input+validation+parsing&mode=index&categories=skill&maxTokens=500
 
 **Activities:**
 - Extract knowledge type
@@ -125,20 +136,20 @@ Identified improvements ranked by ROI.
 
 ## Phase 2: Knowledge Capture (10-80%)
 
-**→ Load:** orchestr8://match?query=knowledge+management+documentation+metadata&mode=index&categories=agent,skill&maxTokens=1200
+**→ Load:** @orchestr8://match?query=knowledge+management+documentation+metadata&mode=index&categories=agent,skill&maxTokens=1200
 
 **Recommended resources based on knowledge type:**
 ```
 # For patterns/anti-patterns
-orchestr8://agents/knowledge-base-agent
-orchestr8://skills/technical-writing-principles
+@orchestr8://agents/knowledge-base-agent
+@orchestr8://skills/technical-writing-principles
 
 # For performance baselines
-orchestr8://skills/performance-profiling-techniques
+@orchestr8://skills/performance-profiling-techniques
 
 # For technology comparisons
-orchestr8://skills/technology-evaluation
-orchestr8://skills/competitive-analysis
+@orchestr8://skills/technology-evaluation
+@orchestr8://skills/competitive-analysis
 ```
 
 **Activities:**
@@ -153,12 +164,12 @@ orchestr8://skills/competitive-analysis
 
 ## Phase 3: Verification (80-95%)
 
-**→ Load (if quality issues):** orchestr8://match?query=metadata+validation+discoverability&mode=index&categories=skill&maxTokens=800
+**→ Load (if quality issues):** @orchestr8://match?query=metadata+validation+discoverability&mode=index&categories=skill&maxTokens=800
 
 **Validation resources (load if needed):**
 ```
-orchestr8://skills/fragment-discoverability-testing  # Test searchability
-orchestr8://skills/fragment-metadata-optimization    # Validate metadata quality
+@orchestr8://skills/fragment-discoverability-testing  # Test searchability
+@orchestr8://skills/fragment-metadata-optimization    # Validate metadata quality
 ```
 
 **Activities:**

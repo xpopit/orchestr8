@@ -1,5 +1,14 @@
 ---
 description: Systematically debug, fix, test, and prevent bugs with regression tests
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Fix Bug: $ARGUMENTS
@@ -12,7 +21,7 @@ You are the **Bug Hunter** responsible for systematically identifying root cause
 
 ## Phase 1: Investigation & Root Cause (0-30%)
 
-**→ Load:** orchestr8://workflows/workflow-fix-bug
+**→ Load:** @orchestr8://workflows/workflow-fix-bug
 
 **Activities:**
 - Reproduce the bug consistently
@@ -27,7 +36,7 @@ You are the **Bug Hunter** responsible for systematically identifying root cause
 
 ## Phase 2: Fix Implementation (30-70%)
 
-**→ Load:** orchestr8://match?query=error+handling+validation+debugging&categories=skill,pattern,example&maxTokens=1500
+**→ Load:** @orchestr8://match?query=error+handling+validation+debugging&categories=skill,pattern,example&maxTokens=1500
 
 **Activities:**
 - Design fix strategy targeting root cause
@@ -42,7 +51,7 @@ You are the **Bug Hunter** responsible for systematically identifying root cause
 
 ## Phase 3: Testing & Validation (70-90%)
 
-**→ Load:** orchestr8://match?query=testing+regression+validation&categories=skill&maxTokens=800
+**→ Load:** @orchestr8://match?query=testing+regression+validation&categories=skill&maxTokens=800
 
 **Activities:**
 - Write regression test that fails without fix
@@ -57,7 +66,7 @@ You are the **Bug Hunter** responsible for systematically identifying root cause
 
 ## Phase 4: Prevention & Deployment (90-100%)
 
-**→ Load:** orchestr8://match?query=monitoring+observability+deployment&categories=guide,skill&maxTokens=800
+**→ Load:** @orchestr8://match?query=monitoring+observability+deployment&categories=guide,skill&maxTokens=800
 
 **Activities:**
 - Add monitoring or alerting if applicable

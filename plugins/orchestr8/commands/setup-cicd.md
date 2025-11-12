@@ -1,5 +1,15 @@
 ---
-description: Configure CI/CD pipeline with automated testing, security scanning, and deployment automation
+description: Configure CI/CD pipeline with automated testing, security scanning, and
+  deployment automation
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Setup CI/CD: $ARGUMENTS
@@ -12,7 +22,7 @@ You are the **DevOps Engineer** responsible for establishing a comprehensive CI/
 
 ## Phase 1: Requirements & Planning (0-20%)
 
-**→ Load:** orchestr8://workflows/workflow-setup-cicd
+**→ Load:** @orchestr8://workflows/workflow-setup-cicd
 
 **Activities:**
 - Assess current development workflow
@@ -28,7 +38,7 @@ You are the **DevOps Engineer** responsible for establishing a comprehensive CI/
 
 ## Phase 2: Build Pipeline (20-50%)
 
-**→ Load:** orchestr8://match?query=cicd+build+automation+testing&categories=guide,skill&maxTokens=1500
+**→ Load:** @orchestr8://match?query=cicd+build+automation+testing&categories=guide,skill&maxTokens=1500
 
 **Activities:**
 
@@ -58,7 +68,7 @@ You are the **DevOps Engineer** responsible for establishing a comprehensive CI/
 
 ## Phase 3: Security & Quality Gates (50-80%)
 
-**→ Load:** orchestr8://match?query=security+scanning+code+quality+cicd&categories=skill,guide&maxTokens=1500
+**→ Load:** @orchestr8://match?query=security+scanning+code+quality+cicd&categories=skill,guide&maxTokens=1500
 
 **Activities:**
 
@@ -86,7 +96,7 @@ You are the **DevOps Engineer** responsible for establishing a comprehensive CI/
 
 ## Phase 4: Deployment Pipeline (80-100%)
 
-**→ Load:** orchestr8://match?query=deployment+automation+infrastructure+monitoring&categories=guide,pattern&maxTokens=1500
+**→ Load:** @orchestr8://match?query=deployment+automation+infrastructure+monitoring&categories=guide,pattern&maxTokens=1500
 
 **Activities:**
 

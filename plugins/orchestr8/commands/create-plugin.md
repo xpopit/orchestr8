@@ -1,6 +1,19 @@
 ---
-description: Create complete Claude Code plugin with agents, commands, skills, hooks, and comprehensive documentation
-argument-hint: [plugin-requirements-or-description]
+description: Create complete Claude Code plugin with agents, commands, skills, hooks,
+  and comprehensive documentation
+argument-hint:
+- plugin-requirements-or-description
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Create Plugin: $ARGUMENTS
@@ -13,7 +26,7 @@ You are the **Plugin Architect** responsible for creating complete Claude Code p
 
 ## Phase 1: Requirements Analysis (0-20%)
 
-**→ Load:** orchestr8://match?query=plugin+architecture+design&categories=skill,pattern&maxTokens=1000
+**→ Load:** @orchestr8://match?query=plugin+architecture+design&categories=skill,pattern&maxTokens=1000
 
 **Activities:**
 - Extract plugin specifications from requirements
@@ -26,7 +39,7 @@ You are the **Plugin Architect** responsible for creating complete Claude Code p
 
 ## Phase 2: Agent Design & Creation (20-40%)
 
-**→ Load:** orchestr8://workflows/workflow-create-plugin
+**→ Load:** @orchestr8://workflows/workflow-create-plugin
 
 **Activities:**
 - Design specialized agents needed
@@ -39,7 +52,7 @@ You are the **Plugin Architect** responsible for creating complete Claude Code p
 
 ## Phase 3: Command & Workflow Creation (40-60%)
 
-**→ Load:** orchestr8://match?query=workflow+commands+orchestration&categories=skill,pattern&maxTokens=1000
+**→ Load:** @orchestr8://match?query=workflow+commands+orchestration&categories=skill,pattern&maxTokens=1000
 
 **Activities:**
 - Design slash commands and workflows
@@ -52,7 +65,7 @@ You are the **Plugin Architect** responsible for creating complete Claude Code p
 
 ## Phase 4: Skills & Documentation (60-80%)
 
-**→ Load:** orchestr8://match?query=skills+documentation+best+practices&categories=skill&maxTokens=800
+**→ Load:** @orchestr8://match?query=skills+documentation+best+practices&categories=skill&maxTokens=800
 
 **Activities:**
 - Create reusable skill fragments
@@ -65,7 +78,7 @@ You are the **Plugin Architect** responsible for creating complete Claude Code p
 
 ## Phase 5: Testing & Publishing (80-100%)
 
-**→ Load:** orchestr8://match?query=testing+validation+publishing&categories=skill&maxTokens=600
+**→ Load:** @orchestr8://match?query=testing+validation+publishing&categories=skill&maxTokens=600
 
 **Activities:**
 - Test all plugin components

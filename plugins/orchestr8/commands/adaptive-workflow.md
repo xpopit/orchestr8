@@ -1,5 +1,18 @@
 ---
-description: Adaptive workflow selector that retrieves all workflows, selects the best match, and executes with JIT resource loading
+description: Adaptive workflow selector that retrieves all workflows, selects the
+  best match, and executes with JIT resource loading
+allowed-tools:
+- AskUserQuestion
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Adaptive Workflow - Intelligent Workflow Selection
@@ -19,7 +32,7 @@ You are the **Adaptive Workflow Coordinator**. Your mission is to intelligently 
 Use the MCP server to retrieve all available workflows:
 
 ```
-orchestr8://workflows
+@orchestr8://workflows
 ```
 
 This returns a list of all workflows with metadata including:
@@ -94,7 +107,7 @@ For each discovered workflow, evaluate:
 Based on the selected workflow(s), identify required resources:
 
 ```
-orchestr8://match?query=<workflow-specific-needs>&categories=agent,skill,pattern,example&minScore=15&maxTokens=3000
+@orchestr8://match?query=<workflow-specific-needs>&categories=agent,skill,pattern,example&minScore=15&maxTokens=3000
 ```
 
 **Resource Types:**
@@ -107,7 +120,7 @@ orchestr8://match?query=<workflow-specific-needs>&categories=agent,skill,pattern
 
 For each required resource:
 ```
-orchestr8://<category>/<resource-id>
+@orchestr8://<category>/<resource-id>
 ```
 
 **→ Optimization:**
@@ -142,8 +155,8 @@ orchestr8://<category>/<resource-id>
 
 **→ Resource Management:**
 - Query for additional resources when encountering new requirements
-- Use `orchestr8://match` for dynamic discovery
-- Load specific resources via `orchestr8://<type>/<resource>`
+- Use `@orchestr8://match` for dynamic discovery
+- Load specific resources via `@orchestr8://<type>/<resource>`
 - Track loaded resources to avoid duplication
 
 **→ Quality Gates:**
@@ -256,22 +269,22 @@ Then: Integration testing
 
 ```
 # Broad discovery
-orchestr8://match?query=<domain>&categories=agent,skill,pattern
+@orchestr8://match?query=<domain>&categories=agent,skill,pattern
 
 # Specific expertise
-orchestr8://agents/<agent-name>
+@orchestr8://agents/<agent-name>
 
 # Technique lookup
-orchestr8://match?query=<technique>&categories=skill&maxTokens=1500
+@orchestr8://match?query=<technique>&categories=skill&maxTokens=1500
 
 # Pattern research
-orchestr8://match?query=<pattern>&categories=pattern,example&minScore=20
+@orchestr8://match?query=<pattern>&categories=pattern,example&minScore=20
 ```
 
 ### Fallback Strategies
 
 **If workflow selection fails:**
-1. Query for similar workflows: `orchestr8://match?query=<intent>&categories=workflow`
+1. Query for similar workflows: `@orchestr8://match?query=<intent>&categories=workflow`
 2. Break down request into sub-tasks
 3. Use `/orchestr8:now` for autonomous handling
 4. Ask user for clarification if ambiguous

@@ -23,7 +23,7 @@ estimatedTokens: 450
 ## Phase 1: Assumption Extraction (0-25%)
 **Goals:** Identify all implicit and explicit assumptions
 
-**→ Load Skills:** `orchestr8://skills/match?query=requirement+analysis+risk&maxTokens=500`
+**→ Load Skills:** `@orchestr8://skills/match?query=requirement+analysis+risk&maxTokens=500`
 
 **Sources to Mine:**
 - Architecture documents and diagrams

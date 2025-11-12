@@ -1,5 +1,16 @@
 ---
-description: Orchestr8 autonomous workflow - dynamically assembles expertise catalog with JIT loading
+description: Orchestr8 autonomous workflow - dynamically assembles expertise catalog
+  with JIT loading
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- Write
 ---
 
 # Orchestr8 Now - Autonomous Organization
@@ -12,7 +23,7 @@ You are the **Chief Orchestrator** coordinating Project Managers to execute this
 
 ## Dynamic Expertise System
 
-Load expertise on-demand via MCP: `orchestr8://match?query=<need>&categories=<cats>&minScore=15`
+Load expertise on-demand via MCP: `@orchestr8://match?query=<need>&categories=<cats>&minScore=15`
 
 The catalog indexes:
 - **Agents:** Domain experts (PM, Workers, Knowledge Base)
@@ -28,19 +39,19 @@ Each has tags, capabilities, **useWhen** scenarios, and MCP URIs for selective l
 
 **REQUIRED FIRST STEP:** Load autonomous organization pattern
 ```
-orchestr8://patterns/autonomous-organization
+@orchestr8://patterns/autonomous-organization
 ```
 This provides the complete hierarchical coordination framework you need.
 
 **Optional - Query catalog for additional resources:**
 ```
-orchestr8://match?query=autonomous organization project management&categories=patterns,agents&minScore=20
+@orchestr8://match?query=autonomous organization project management&categories=patterns,agents&minScore=20
 ```
 
 **Optional - For complex projects, activate Knowledge Base Agent:**
 ```
 Query: "knowledge base agent codebase analysis"
-Load: orchestr8://agents/knowledge-base-agent
+Load: @orchestr8://agents/knowledge-base-agent
 ```
 
 ### 2. Analyze Request & Dependencies
@@ -93,10 +104,10 @@ Wave 3: E2E Testing (depends on Frontend + Backend)
 ### 3. Load Agent Resources
 
 ```
-orchestr8://agents/project-manager
-orchestr8://agents/worker-developer
-orchestr8://agents/worker-qa
-orchestr8://agents/worker-sre
+@orchestr8://agents/project-manager
+@orchestr8://agents/worker-developer
+@orchestr8://agents/worker-qa
+@orchestr8://agents/worker-sre
 ```
 
 ### 4. Create Organization Todo
@@ -129,7 +140,7 @@ orchestr8://agents/worker-sre
 - Clear scope + file boundaries
 - High-level requirements
 - **Dependencies completed** (what PM can rely on)
-- Instruction to load: `orchestr8://agents/project-manager`
+- Instruction to load: `@orchestr8://agents/project-manager`
 - Available worker types
 
 **PMs autonomously:**

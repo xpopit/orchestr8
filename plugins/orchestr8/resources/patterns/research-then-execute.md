@@ -67,10 +67,10 @@ Phase 4: Validation & Knowledge Extraction (90-100%)
 **JIT Loading:**
 ```markdown
 **→ Research Expertise:**
-orchestr8://agents/match?query=research+${domain}+requirements&maxTokens=1000
+@orchestr8://agents/match?query=research+${domain}+requirements&maxTokens=1000
 
 **→ Research Skills:**
-orchestr8://skills/match?query=domain+research+requirement+analysis&maxTokens=800
+@orchestr8://skills/match?query=domain+research+requirement+analysis&maxTokens=800
 ```
 
 **Output:**
@@ -110,10 +110,10 @@ orchestr8://skills/match?query=domain+research+requirement+analysis&maxTokens=80
 **JIT Loading:**
 ```markdown
 **→ Domain Experts (based on Phase 1 findings):**
-orchestr8://agents/match?query=${tech-stack}+${domain}&maxTokens=1500
+@orchestr8://agents/match?query=${tech-stack}+${domain}&maxTokens=1500
 
 **→ Architectural Patterns:**
-orchestr8://patterns/match?query=${architecture-style}+${domain}&maxTokens=1200
+@orchestr8://patterns/match?query=${architecture-style}+${domain}&maxTokens=1200
 ```
 
 **Output:**
@@ -182,10 +182,10 @@ Track D: Documentation
 **JIT Loading:**
 ```markdown
 **→ Implementation Expertise:**
-orchestr8://match?query=${tech}+${features}+${architecture}&categories=agent,skill,example&maxTokens=2500
+@orchestr8://match?query=${tech}+${features}+${architecture}&categories=agent,skill,example&maxTokens=2500
 
 **→ Testing Skills:**
-orchestr8://skills/match?query=testing+${tech}+${test-types}&maxTokens=1200
+@orchestr8://skills/match?query=testing+${tech}+${test-types}&maxTokens=1200
 ```
 
 **Output:**
@@ -228,10 +228,10 @@ orchestr8://skills/match?query=testing+${tech}+${test-types}&maxTokens=1200
 **JIT Loading:**
 ```markdown
 **→ Validation Skills:**
-orchestr8://skills/match?query=testing+validation+${domain}&maxTokens=800
+@orchestr8://skills/match?query=testing+validation+${domain}&maxTokens=800
 
 **→ Meta-Skills for Knowledge Extraction:**
-orchestr8://skills/match?query=fragment+design+optimization&maxTokens=600
+@orchestr8://skills/match?query=fragment+design+optimization&maxTokens=600
 ```
 
 **Output:**
@@ -267,7 +267,7 @@ arguments:
 ## Phase 1: Research & Requirements (0-20%)
 
 **→ Research Expertise:**
-orchestr8://match?query=research+requirements+${domain}&categories=agent,skill&maxTokens=1200
+@orchestr8://match?query=research+requirements+${domain}&categories=agent,skill&maxTokens=1200
 
 **Activities:**
 1. Extract requirements from task description
@@ -285,7 +285,7 @@ orchestr8://match?query=research+requirements+${domain}&categories=agent,skill&m
 ## Phase 2: Design & Planning (20-35%)
 
 **→ Domain Expertise:**
-orchestr8://match?query=${tech-stack}+${architecture}+${domain}&categories=agent,pattern&maxTokens=1800
+@orchestr8://match?query=${tech-stack}+${architecture}+${domain}&categories=agent,pattern&maxTokens=1800
 
 **Activities:**
 1. Design architecture based on Phase 1 findings
@@ -301,7 +301,7 @@ orchestr8://match?query=${tech-stack}+${architecture}+${domain}&categories=agent
 ## Phase 3: Implementation (35-90%)
 
 **→ Implementation Expertise:**
-orchestr8://match?query=${tech}+${features}&categories=agent,skill,example&maxTokens=2500
+@orchestr8://match?query=${tech}+${features}&categories=agent,skill,example&maxTokens=2500
 
 **Activities:**
 If parallel possible:
@@ -317,7 +317,7 @@ If sequential required:
 ## Phase 4: Validation & Knowledge Extraction (90-100%)
 
 **→ Validation & Meta-Skills:**
-orchestr8://match?query=validation+fragment+design&categories=skill&maxTokens=1000
+@orchestr8://match?query=validation+fragment+design&categories=skill&maxTokens=1000
 
 **Activities:**
 1. End-to-end validation

@@ -1,6 +1,19 @@
 ---
-description: Get expert guidance on Orchestr8 optimization strategies and resource creation
-argument-hint: "[topic] - What do you need help with? (e.g., 'create agent', 'optimize workflow', 'jit loading')"
+description: Get expert guidance on Orchestr8 optimization strategies and resource
+  creation
+argument-hint: '[topic] - What do you need help with? (e.g., ''create agent'', ''optimize
+  workflow'', ''jit loading'')'
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Orchestr8 Expert Assistance: $ARGUMENTS
@@ -23,7 +36,7 @@ I'll provide expert guidance on Orchestr8optimization and resource creation base
 
 ## Phase 1: Understanding Your Request (0-20%)
 
-**→ Load:** orchestr8://agents/orchestr8-expert
+**→ Load:** @orchestr8://agents/orchestr8-expert
 
 Let me understand what you need help with:
 
@@ -50,7 +63,7 @@ Based on your topic, I'll load targeted expertise:
 
 ### If creating new resources (agents, skills, patterns, examples, workflows):
 
-**→ Load:** orchestr8://skills/orchestr8-optimization-patterns
+**→ Load:** @orchestr8://skills/orchestr8-optimization-patterns
 
 **Guidance areas:**
 - Fragment size optimization (500-1000 tokens)
@@ -61,7 +74,7 @@ Based on your topic, I'll load targeted expertise:
 
 ### If optimizing workflows or commands:
 
-**→ Load:** orchestr8://skills/jit-loading-progressive-strategies
+**→ Load:** @orchestr8://skills/jit-loading-progressive-strategies
 
 **Guidance areas:**
 - JIT loading implementation
@@ -72,7 +85,7 @@ Based on your topic, I'll load targeted expertise:
 
 ### If working with fragments:
 
-**→ Load:** orchestr8://skills/fragment-creation-workflow
+**→ Load:** @orchestr8://skills/fragment-creation-workflow
 
 **Guidance areas:**
 - Fragment sizing decisions
@@ -82,7 +95,7 @@ Based on your topic, I'll load targeted expertise:
 
 ### If improving metadata and matching:
 
-**→ Load:** orchestr8://skills/fragment-metadata-optimization
+**→ Load:** @orchestr8://skills/fragment-metadata-optimization
 
 **Guidance areas:**
 - useWhen scenario writing
@@ -98,7 +111,7 @@ Based on your topic, I'll load targeted expertise:
 
 If examples would help, I'll load relevant ones:
 
-**→ Load (if applicable):** orchestr8://match?query=$ARGUMENTS+example&maxTokens=1000&mode=catalog
+**→ Load (if applicable):** @orchestr8://match?query=$ARGUMENTS+example&maxTokens=1000&mode=catalog
 
 This will show you:
 - Related example code and patterns
@@ -118,8 +131,8 @@ Now I'll help you apply the optimization strategies:
 
 **1. JIT Loading (91-97% reduction)**
 - Load catalog upfront, fetch resources on-demand
-- Use `orchestr8://match` queries with `maxTokens`
-- Example: `orchestr8://match?query=typescript+async&maxTokens=1200`
+- Use `@orchestr8://match` queries with `maxTokens`
+- Example: `@orchestr8://match?query=typescript+async&maxTokens=1200`
 
 **2. Fragment-Based Organization (25-40% additional)**
 - Target size: 500-1000 tokens (sweet spot: 650-850)
@@ -161,7 +174,7 @@ Now I'll help you apply the optimization strategies:
 
 **For workflows/commands:**
 ```
-□ Uses orchestr8://match for JIT loading
+□ Uses @orchestr8://match for JIT loading
 □ maxTokens specified for each query
 □ Phases clearly defined (0-X%, X-Y%, etc.)
 □ Token budget tracked per phase
@@ -225,7 +238,7 @@ Based on your topic "$ARGUMENTS", here's what to do next:
 ### If creating workflow/command:
 
 1. **Define phases:** 3-5 phases with clear goals
-2. **Add JIT loading:** `orchestr8://match` queries
+2. **Add JIT loading:** `@orchestr8://match` queries
 3. **Set budgets:** 1,000-2,000 tokens per phase
 4. **Add checkpoints:** After each phase
 5. **Document savings:** Show traditional vs JIT
@@ -259,16 +272,16 @@ Based on your topic "$ARGUMENTS", here's what to do next:
 
 ```typescript
 // Explore the expert agent
-orchestr8://agents/orchestr8-expert
+@orchestr8://agents/orchestr8-expert
 
 // Quick reference patterns
-orchestr8://skills/orchestr8-optimization-patterns
+@orchestr8://skills/orchestr8-optimization-patterns
 
 // Fragment creation workflow
-orchestr8://skills/fragment-creation-workflow
+@orchestr8://skills/fragment-creation-workflow
 
 // JIT loading strategies
-orchestr8://skills/jit-loading-progressive-strategies
+@orchestr8://skills/jit-loading-progressive-strategies
 ```
 
 ---
@@ -297,16 +310,16 @@ orchestr8://skills/jit-loading-progressive-strategies
 The following resources were dynamically loaded during this command execution:
 
 **Phase 1:**
-- orchestr8://agents/orchestr8-expert (1,850 tokens)
+- @orchestr8://agents/orchestr8-expert (1,850 tokens)
 
 **Phase 2 (based on your topic):**
-- orchestr8://skills/orchestr8-optimization-patterns (~900 tokens)
-- OR orchestr8://skills/jit-loading-progressive-strategies (~800 tokens)
-- OR orchestr8://skills/fragment-creation-workflow (~750 tokens)
-- OR orchestr8://skills/fragment-metadata-optimization (~700 tokens)
+- @orchestr8://skills/orchestr8-optimization-patterns (~900 tokens)
+- OR @orchestr8://skills/jit-loading-progressive-strategies (~800 tokens)
+- OR @orchestr8://skills/fragment-creation-workflow (~750 tokens)
+- OR @orchestr8://skills/fragment-metadata-optimization (~700 tokens)
 
 **Phase 3 (conditional):**
-- orchestr8://match?query=$ARGUMENTS+example&maxTokens=1000 (0-1,000 tokens)
+- @orchestr8://match?query=$ARGUMENTS+example&maxTokens=1000 (0-1,000 tokens)
 
 **Total tokens loaded:** 2,750-4,350 tokens (vs 23,000 traditional)
 **Efficiency achieved:** 81-88% reduction through JIT loading

@@ -1,6 +1,16 @@
 ---
-description: Generate comprehensive knowledge base reports with visualizations, trends, and insights for organizational learning
-argument-hint: [report-type] [optional-filters]
+description: Generate comprehensive knowledge base reports with visualizations, trends,
+  and insights for organizational learning
+argument-hint: '[report-type] [optional-filters]'
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Knowledge Report: $ARGUMENTS
@@ -46,7 +56,7 @@ Metrics showing how knowledge is improving outcomes.
 
 ## Phase 2: Data Collection (10-40%)
 
-**→ Load:** orchestr8://match?query=data+analysis+metrics+statistics&categories=skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=data+analysis+metrics+statistics&categories=skill&maxTokens=1000
 
 **Activities:**
 - Collect knowledge statistics
@@ -59,7 +69,7 @@ Metrics showing how knowledge is improving outcomes.
 
 ## Phase 3: Analysis and Visualization (40-80%)
 
-**→ Load:** orchestr8://agents/knowledge-base-agent
+**→ Load:** @orchestr8://agents/knowledge-base-agent
 
 **Activities:**
 - Analyze collected data

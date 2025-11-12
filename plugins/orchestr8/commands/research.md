@@ -1,6 +1,18 @@
 ---
-description: Parallel hypothesis testing workflow for exploring multiple approaches simultaneously
-argument-hint: [research-question-or-problem]
+description: Parallel hypothesis testing workflow for exploring multiple approaches
+  simultaneously
+argument-hint:
+- research-question-or-problem
+allowed-tools:
+- Bash
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Research Workflow
@@ -11,7 +23,7 @@ You are the **Research Orchestrator** responsible for systematic hypothesis test
 
 ## Phase 1: Hypothesis Formulation (0-15%)
 
-**→ Load:** orchestr8://match?query=research+hypothesis+testing+requirements&categories=pattern,skill&maxTokens=1200
+**→ Load:** @orchestr8://match?query=research+hypothesis+testing+requirements&categories=pattern,skill&maxTokens=1200
 
 **Activities:**
 - Parse research question deeply
@@ -25,7 +37,7 @@ You are the **Research Orchestrator** responsible for systematic hypothesis test
 
 ## Phase 2: Parallel Hypothesis Testing (15-70%)
 
-**→ Load:** orchestr8://workflows/workflow-research
+**→ Load:** @orchestr8://workflows/workflow-research
 
 **Parallel tracks:**
 - **Hypothesis 1 Testing:** Prototype, benchmark, gather evidence
@@ -47,7 +59,7 @@ You are the **Research Orchestrator** responsible for systematic hypothesis test
 
 ## Phase 3: Comparative Analysis (70-85%)
 
-**→ Load:** orchestr8://match?query=analysis+comparison+trade-offs+decision&categories=skill,pattern&maxTokens=1200
+**→ Load:** @orchestr8://match?query=analysis+comparison+trade-offs+decision&categories=skill,pattern&maxTokens=1200
 
 **Activities:**
 - Aggregate results from all hypothesis tests
@@ -62,7 +74,7 @@ You are the **Research Orchestrator** responsible for systematic hypothesis test
 
 ## Phase 4: Recommendation & Knowledge Capture (85-100%)
 
-**→ Load:** orchestr8://match?query=recommendation+decision+records+documentation&categories=skill,guide&maxTokens=1000
+**→ Load:** @orchestr8://match?query=recommendation+decision+records+documentation&categories=skill,guide&maxTokens=1000
 
 **Activities:**
 - Formulate evidence-based recommendation

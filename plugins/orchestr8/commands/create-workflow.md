@@ -1,5 +1,17 @@
 ---
-description: Create multi-phase workflow definitions with JIT resource loading and progress tracking
+description: Create multi-phase workflow definitions with JIT resource loading and
+  progress tracking
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Create Workflow: $ARGUMENTS
@@ -12,7 +24,7 @@ You are the **Workflow Architect** responsible for designing structured, multi-p
 
 ## Phase 1: Workflow Definition & Analysis (0-25%)
 
-**→ Load:** orchestr8://workflows/workflow-create-workflow
+**→ Load:** @orchestr8://workflows/workflow-create-workflow
 
 **Activities:**
 - Define workflow purpose and scope
@@ -28,7 +40,7 @@ You are the **Workflow Architect** responsible for designing structured, multi-p
 
 ## Phase 2: Phase Structure Design (25-50%)
 
-**→ Load:** orchestr8://match?query=workflow+phased+delivery+jit+loading&categories=pattern,skill&maxTokens=1200
+**→ Load:** @orchestr8://match?query=workflow+phased+delivery+jit+loading&categories=pattern,skill&maxTokens=1200
 
 **Activities:**
 
@@ -57,7 +69,7 @@ You are the **Workflow Architect** responsible for designing structured, multi-p
 
 ## Phase 3: Content Creation (50-80%)
 
-**→ Load:** orchestr8://match?query=$ARGUMENTS+implementation&categories=pattern,skill,example&maxTokens=2000
+**→ Load:** @orchestr8://match?query=$ARGUMENTS+implementation&categories=pattern,skill,example&maxTokens=2000
 
 **Activities:**
 
@@ -66,7 +78,7 @@ You are the **Workflow Architect** responsible for designing structured, multi-p
 - Write workflow overview with phases summary
 - Document each phase with:
   - Phase name and progress range
-  - JIT load directives with orchestr8:// URIs
+  - JIT load directives with @orchestr8:// URIs
   - Activities list
   - Parallel tracks if applicable
   - Checkpoint criteria
@@ -99,7 +111,7 @@ estimatedTokens: 500-600
 **Phases:** Phase1 (0-X%) → Phase2 (X-Y%) → Phase3 (Y-100%)
 
 ## Phase 1: Name (0-X%)
-**→ JIT Load:** orchestr8://match?query=...&maxTokens=N
+**→ JIT Load:** @orchestr8://match?query=...&maxTokens=N
 
 **Activities:**
 - Activity 1
@@ -125,23 +137,23 @@ estimatedTokens: 500-600
 **JIT Loading Patterns:**
 ```markdown
 # Static URI (specific agent/skill)
-orchestr8://agents/typescript-core
+@orchestr8://agents/typescript-core
 
 # Dynamic URI (query matching)
-orchestr8://match?query=testing+validation&maxTokens=1000
+@orchestr8://match?query=testing+validation&maxTokens=1000
 
 # Category filtering
-orchestr8://match?query=deployment&categories=guide,skill&maxTokens=800
+@orchestr8://match?query=deployment&categories=guide,skill&maxTokens=800
 
 # With argument substitution (for commands)
-orchestr8://match?query=${technology}+${domain}&maxTokens=1500
+@orchestr8://match?query=${technology}+${domain}&maxTokens=1500
 ```
 
 **→ Checkpoint:** Workflow content complete with JIT loading
 
 ## Phase 4: Testing & Integration (80-100%)
 
-**→ Load:** orchestr8://match?query=workflow+testing+discovery&categories=skill&maxTokens=600
+**→ Load:** @orchestr8://match?query=workflow+testing+discovery&categories=skill&maxTokens=600
 
 **Activities:**
 
@@ -180,7 +192,7 @@ description: Brief description
 Brief role description
 
 ## Phase 1: Name (0-X%)
-**→ Load:** orchestr8://workflows/workflow-name
+**→ Load:** @orchestr8://workflows/workflow-name
 
 [Additional command-specific content]
 ```
@@ -263,7 +275,7 @@ estimatedTokens: 520
 **Phases:** Design (0-20%) → Implementation (20-70%) → Quality (70-90%) → Deploy (90-100%)
 
 ## Phase 1: Analysis & Design (0-20%)
-**→ Load:** orchestr8://match?query=requirement+analysis+design&maxTokens=1000
+**→ Load:** @orchestr8://match?query=requirement+analysis+design&maxTokens=1000
 
 **Activities:**
 - Parse requirements, define acceptance criteria
@@ -273,7 +285,7 @@ estimatedTokens: 520
 **→ Checkpoint:** Design approved
 
 ## Phase 2: Implementation (20-70%)
-**→ Load:** orchestr8://match?query=implementation+testing&maxTokens=2000
+**→ Load:** @orchestr8://match?query=implementation+testing&maxTokens=2000
 
 **Parallel tracks:**
 - **Backend:** Schema, models, API endpoints

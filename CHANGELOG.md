@@ -53,6 +53,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+#### Documentation Cleanup
+- **Mass Documentation Update**: Reformatted and standardized markdown across all plugin resources
+  - Updated 300+ documentation files for consistent formatting
+  - Improved readability and navigation across all commands, agents, skills, patterns, and examples
+  - Enhanced cross-references and internal links
+  - Standardized code blocks, headers, and metadata sections
+  - Files affected: All commands (42), docs (73), prompts (13), resources (185), tests (1)
+
 #### Resource Organization (Major Restructuring)
 - **Eliminated `_fragments/` subdirectories** - Migrated to flat structure for better discoverability
   - Moved `resources/agents/_fragments/*.md` → `resources/agents/*.md`

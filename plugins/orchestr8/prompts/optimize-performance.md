@@ -17,7 +17,7 @@ You are optimizing performance by identifying bottlenecks and implementing targe
 
 ## Phase 1: Profiling & Analysis (0-30%)
 
-**→ Load:** orchestr8://skills/match?query=profiling+performance+analysis&maxTokens=1200
+**→ Load:** @orchestr8://skills/match?query=profiling+performance+analysis&maxTokens=1200
 
 **Activities:**
 - Measure current performance (baseline metrics)
@@ -32,7 +32,7 @@ You are optimizing performance by identifying bottlenecks and implementing targe
 
 ## Phase 2: Optimization (30-70%)
 
-**→ Load:** orchestr8://match?query={{task}}+optimization+performance&categories=agent,skill,pattern&maxTokens=2000
+**→ Load:** @orchestr8://match?query={{task}}+optimization+performance&categories=agent,skill,pattern&maxTokens=2000
 
 **Parallel tracks:**
 - **Database:** Query optimization, indexing, connection pooling
@@ -44,7 +44,7 @@ You are optimizing performance by identifying bottlenecks and implementing targe
 
 ## Phase 3: Validation (70-90%)
 
-**→ Load:** orchestr8://skills/match?query=performance+testing+benchmarking&maxTokens=1000
+**→ Load:** @orchestr8://skills/match?query=performance+testing+benchmarking&maxTokens=1000
 
 **Activities:**
 - Run performance benchmarks (before/after)
@@ -58,7 +58,7 @@ You are optimizing performance by identifying bottlenecks and implementing targe
 
 ## Phase 4: Monitoring (90-100%)
 
-**→ Load:** orchestr8://skills/match?query=monitoring+observability+alerting&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=monitoring+observability+alerting&maxTokens=800
 
 **Activities:**
 - Set up performance monitoring (APM tools)

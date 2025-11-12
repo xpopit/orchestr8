@@ -1,4 +1,16 @@
-# Legacy System Modernization
+---
+description: Modernization Architect coordinating comprehensive legacy system analysis
+  and cloud migration planni
+allowed-tools:
+- AskUserQuestion
+- Bash
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
+---# Legacy System Modernization
 
 **Request:** ${user_request}
 
@@ -128,7 +140,7 @@ Starting Phase 1: Discovery & Assessment...
 
 ```markdown
 → Load and execute:
-orchestr8://workflows/workflow-cloud-migration-planning
+@orchestr8://workflows/workflow-cloud-migration-planning
 
 Phases:
 1. Legacy System Assessment (0-25%)
@@ -150,7 +162,7 @@ Deliverables:
 
 ```markdown
 → Load and execute:
-orchestr8://workflows/workflow-microservices-transformation
+@orchestr8://workflows/workflow-microservices-transformation
 
 Phases:
 1. Monolith Analysis (0-25%)
@@ -376,25 +388,25 @@ This command automatically loads:
 
 **Patterns:**
 ```
-orchestr8://patterns/session-output-management
+@orchestr8://patterns/session-output-management
 ```
 
 **Agents:**
 ```
-orchestr8://agents/legacy-system-analyst
-orchestr8://agents/cloud-migration-architect
-orchestr8://agents/knowledge-base-agent
+@orchestr8://agents/legacy-system-analyst
+@orchestr8://agents/cloud-migration-architect
+@orchestr8://agents/knowledge-base-agent
 ```
 
 **Skills:**
 ```
-orchestr8://skills/service-dependency-mapping
+@orchestr8://skills/service-dependency-mapping
 ```
 
 **Workflows:**
 ```
-orchestr8://workflows/workflow-cloud-migration-planning
-orchestr8://workflows/workflow-microservices-transformation
+@orchestr8://workflows/workflow-cloud-migration-planning
+@orchestr8://workflows/workflow-microservices-transformation
 ```
 
 ## Examples

@@ -1,6 +1,17 @@
 ---
-description: Systematic validation of technical assumptions and constraints through empirical testing
-argument-hint: [assumptions-to-validate]
+description: Systematic validation of technical assumptions and constraints through
+  empirical testing
+argument-hint:
+- assumptions-to-validate
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Validate Assumptions: $ARGUMENTS
@@ -13,7 +24,7 @@ You are the **Assumption Validator** responsible for testing technical assumptio
 
 ## Phase 1: Assumption Identification & Classification (0-15%)
 
-**→ Load:** orchestr8://match?query=assumption+validation+risk+assessment&categories=skill,pattern&maxTokens=1200
+**→ Load:** @orchestr8://match?query=assumption+validation+risk+assessment&categories=skill,pattern&maxTokens=1200
 
 **Activities:**
 - Extract all stated and implicit assumptions
@@ -27,7 +38,7 @@ You are the **Assumption Validator** responsible for testing technical assumptio
 
 ## Phase 2: Parallel Validation Execution (15-70%)
 
-**→ Load:** orchestr8://workflows/workflow-validate-assumptions
+**→ Load:** @orchestr8://workflows/workflow-validate-assumptions
 
 **Parallel tracks:**
 - **Assumption 1 Testing:** Experiment, benchmark, gather evidence
@@ -49,7 +60,7 @@ You are the **Assumption Validator** responsible for testing technical assumptio
 
 ## Phase 3: Evidence Synthesis & Risk Assessment (70-85%)
 
-**→ Load:** orchestr8://match?query=risk+assessment+mitigation+evidence&categories=skill,pattern&maxTokens=1000
+**→ Load:** @orchestr8://match?query=risk+assessment+mitigation+evidence&categories=skill,pattern&maxTokens=1000
 
 **Activities:**
 - Aggregate all validation results
@@ -63,7 +74,7 @@ You are the **Assumption Validator** responsible for testing technical assumptio
 
 ## Phase 4: Action Plan & Knowledge Capture (85-100%)
 
-**→ Load:** orchestr8://match?query=action+plan+decision+records+monitoring&categories=skill&maxTokens=800
+**→ Load:** @orchestr8://match?query=action+plan+decision+records+monitoring&categories=skill&maxTokens=800
 
 **Activities:**
 - Create actionable recommendations for each assumption

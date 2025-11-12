@@ -17,7 +17,7 @@ You are refactoring code to improve quality, maintainability, and performance wh
 
 ## Phase 1: Analysis (0-20%)
 
-**→ Load:** orchestr8://skills/match?query=refactoring+code+quality+analysis&maxTokens=1200
+**→ Load:** @orchestr8://skills/match?query=refactoring+code+quality+analysis&maxTokens=1200
 
 **Activities:**
 - Analyze current code structure
@@ -32,7 +32,7 @@ You are refactoring code to improve quality, maintainability, and performance wh
 
 ## Phase 2: Refactoring (20-80%)
 
-**→ Load:** orchestr8://match?query={{task}}+refactoring+patterns&categories=agent,skill,pattern&maxTokens=2000
+**→ Load:** @orchestr8://match?query={{task}}+refactoring+patterns&categories=agent,skill,pattern&maxTokens=2000
 
 **Activities:**
 - Extract functions/classes for better separation
@@ -47,7 +47,7 @@ You are refactoring code to improve quality, maintainability, and performance wh
 
 ## Phase 3: Validation (80-100%)
 
-**→ Load:** orchestr8://skills/match?query=testing+performance+validation&maxTokens=1000
+**→ Load:** @orchestr8://skills/match?query=testing+performance+validation&maxTokens=1000
 
 **Activities:**
 - Run full test suite (unit, integration, E2E)

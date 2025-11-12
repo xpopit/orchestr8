@@ -1,6 +1,17 @@
 ---
-description: Discover patterns, anti-patterns, and refactoring opportunities in existing codebase
-argument-hint: [codebase-path-or-scope]
+description: Discover patterns, anti-patterns, and refactoring opportunities in existing
+  codebase
+argument-hint:
+- codebase-path-or-scope
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Discover Patterns: $ARGUMENTS
@@ -13,7 +24,7 @@ You are the **Pattern Archaeologist** responsible for discovering patterns, anti
 
 ## Phase 1: Codebase Analysis & Pattern Identification (0-25%)
 
-**→ Load:** orchestr8://match?query=pattern+discovery+code+analysis&categories=skill,pattern&maxTokens=1200
+**→ Load:** @orchestr8://match?query=pattern+discovery+code+analysis&categories=skill,pattern&maxTokens=1200
 
 **Activities:**
 - Analyze codebase structure and organization
@@ -27,7 +38,7 @@ You are the **Pattern Archaeologist** responsible for discovering patterns, anti
 
 ## Phase 2: Pattern Classification & Documentation (25-50%)
 
-**→ Load:** orchestr8://match?query=pattern+classification+documentation&categories=skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=pattern+classification+documentation&categories=skill&maxTokens=1000
 
 **Activities:**
 - Classify discovered patterns by category (architectural, design, code, testing)
@@ -40,7 +51,7 @@ You are the **Pattern Archaeologist** responsible for discovering patterns, anti
 
 ## Phase 3: Anti-Pattern & Code Smell Detection (50-75%)
 
-**→ Load:** orchestr8://match?query=anti-patterns+code+smells+technical+debt&categories=skill,pattern&maxTokens=1200
+**→ Load:** @orchestr8://match?query=anti-patterns+code+smells+technical+debt&categories=skill,pattern&maxTokens=1200
 
 **Activities:**
 - Identify architectural anti-patterns (God Object, Spaghetti Code, Big Ball of Mud)
@@ -53,7 +64,7 @@ You are the **Pattern Archaeologist** responsible for discovering patterns, anti
 
 ## Phase 4: Refactoring Opportunities & Pattern Library (75-100%)
 
-**→ Load:** orchestr8://workflows/workflow-discover-patterns
+**→ Load:** @orchestr8://workflows/workflow-discover-patterns
 
 **Activities:**
 - Generate concrete refactoring recommendations

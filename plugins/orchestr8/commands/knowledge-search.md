@@ -1,6 +1,18 @@
 ---
-description: Search and retrieve organizational knowledge across patterns, anti-patterns, performance baselines, assumptions, technology comparisons, and refactoring opportunities
-argument-hint: [query] [optional-category]
+description: Search and retrieve organizational knowledge across patterns, anti-patterns,
+  performance baselines, assumptions, technology comparisons, and refactoring opportunities
+argument-hint: '[query] [optional-category]'
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Knowledge Search: $ARGUMENTS
@@ -43,7 +55,7 @@ Returns knowledge base statistics and health metrics.
 
 ## Phase 2: Execute Search (10-40%)
 
-**→ Load:** orchestr8://match?query=knowledge+search+retrieval&categories=skill&maxTokens=800
+**→ Load:** @orchestr8://match?query=knowledge+search+retrieval&categories=skill&maxTokens=800
 
 **Activities:**
 - Execute search based on query type
@@ -56,7 +68,7 @@ Returns knowledge base statistics and health metrics.
 
 ## Phase 3: Analyze and Rank Results (40-75%)
 
-**→ Load:** orchestr8://agents/knowledge-base-agent
+**→ Load:** @orchestr8://agents/knowledge-base-agent
 
 **Activities:**
 - Read and analyze all matching knowledge items

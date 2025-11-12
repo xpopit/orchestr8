@@ -17,7 +17,7 @@ You are the **Chief Orchestrator** creating a new project. You will analyze requ
 
 ## Phase 1: Planning (0-20%)
 
-**→ Load:** orchestr8://match?query={{task}}+architecture+planning&categories=agent,pattern&maxTokens=1500
+**→ Load:** @orchestr8://match?query={{task}}+architecture+planning&categories=agent,pattern&maxTokens=1500
 
 **Activities:**
 - Parse requirements and identify tech stack
@@ -30,7 +30,7 @@ You are the **Chief Orchestrator** creating a new project. You will analyze requ
 
 ## Phase 2: Foundation (20-50%)
 
-**→ Load:** orchestr8://match?query={{task}}+setup+configuration&categories=agent,skill,example&maxTokens=2000
+**→ Load:** @orchestr8://match?query={{task}}+setup+configuration&categories=agent,skill,example&maxTokens=2000
 
 **Activities:**
 - Create project structure and directories
@@ -44,7 +44,7 @@ You are the **Chief Orchestrator** creating a new project. You will analyze requ
 
 ## Phase 3: Implementation (50-80%)
 
-**→ Load:** orchestr8://match?query={{task}}+implementation&categories=agent,skill,example&maxTokens=2500
+**→ Load:** @orchestr8://match?query={{task}}+implementation&categories=agent,skill,example&maxTokens=2500
 
 **Parallel tracks:**
 - **Core functionality:** Implement main business logic and features
@@ -56,7 +56,7 @@ You are the **Chief Orchestrator** creating a new project. You will analyze requ
 
 ## Phase 4: Quality & Deploy (80-100%)
 
-**→ Load:** orchestr8://match?query={{task}}+testing+deployment&categories=skill,guide&maxTokens=1500
+**→ Load:** @orchestr8://match?query={{task}}+testing+deployment&categories=skill,guide&maxTokens=1500
 
 **Activities:**
 - Write tests (unit, integration, E2E)

@@ -1,5 +1,15 @@
 ---
-description: Improve code structure, quality, and maintainability without changing behavior
+description: Improve code structure, quality, and maintainability without changing
+  behavior
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- Write
 ---
 
 # Refactor: $ARGUMENTS
@@ -12,7 +22,7 @@ You are the **Code Quality Engineer** responsible for improving code structure a
 
 ## Phase 1: Analysis & Planning (0-20%)
 
-**→ Load:** orchestr8://workflows/workflow-refactor
+**→ Load:** @orchestr8://workflows/workflow-refactor
 
 **Activities:**
 - Identify code smells and quality issues
@@ -28,7 +38,7 @@ You are the **Code Quality Engineer** responsible for improving code structure a
 
 ## Phase 2: Refactoring Implementation (20-80%)
 
-**→ Load:** orchestr8://match?query=refactoring+design+patterns+code+quality&categories=skill,pattern&maxTokens=2000
+**→ Load:** @orchestr8://match?query=refactoring+design+patterns+code+quality&categories=skill,pattern&maxTokens=2000
 
 **Activities:**
 - Extract functions/classes for single responsibility
@@ -46,7 +56,7 @@ You are the **Code Quality Engineer** responsible for improving code structure a
 
 ## Phase 3: Validation & Quality Check (80-100%)
 
-**→ Load:** orchestr8://match?query=code+review+testing+performance&categories=skill&maxTokens=1000
+**→ Load:** @orchestr8://match?query=code+review+testing+performance&categories=skill&maxTokens=1000
 
 **Activities:**
 - Run full test suite and verify 100% pass

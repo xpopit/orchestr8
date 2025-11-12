@@ -15,10 +15,10 @@ useWhen:
   - Creating commands with progressive resource loading
 estimatedTokens: 900
 relatedResources:
-  - orchestr8://agents/orchestr8-expert
-  - orchestr8://skills/fragment-creation-workflow
-  - orchestr8://skills/jit-loading-progressive-strategies
-  - orchestr8://patterns/dynamic-expertise-core
+  - @orchestr8://agents/orchestr8-expert
+  - @orchestr8://skills/fragment-creation-workflow
+  - @orchestr8://skills/jit-loading-progressive-strategies
+  - @orchestr8://patterns/dynamic-expertise-core
 ---
 
 # Orchestr8 Optimization Patterns - Quick Reference
@@ -32,7 +32,7 @@ relatedResources:
 ```markdown
 ## Phase 1: Discovery (0-30%)
 
-**→ Load:** orchestr8://match?query=requirement+analysis&maxTokens=1200
+**→ Load:** @orchestr8://match?query=requirement+analysis&maxTokens=1200
 
 **Activities:**
 - Analyze requirements
@@ -42,7 +42,7 @@ relatedResources:
 
 ## Phase 2: Implementation (30-70%)
 
-**→ Load:** orchestr8://match?query=typescript+api+implementation&maxTokens=1500
+**→ Load:** @orchestr8://match?query=typescript+api+implementation&maxTokens=1500
 
 **Activities:**
 - Implement features
@@ -52,7 +52,7 @@ relatedResources:
 
 ## Phase 3: Testing (70-100%)
 
-**→ Load:** orchestr8://match?query=testing+validation&maxTokens=800
+**→ Load:** @orchestr8://match?query=testing+validation&maxTokens=800
 
 **Activities:**
 - Write tests
@@ -77,7 +77,7 @@ relatedResources:
 typescript-expert.md (600 tokens)
 ├─ Essential TypeScript patterns
 ├─ Common use cases (80% usage)
-└─ Reference: orchestr8://agents/typescript-expert-advanced
+└─ Reference: @orchestr8://agents/typescript-expert-advanced
 
 typescript-expert-advanced.md (700 tokens, loaded on-demand)
 ├─ Advanced type system features
@@ -88,12 +88,12 @@ typescript-expert-advanced.md (700 tokens, loaded on-demand)
 **Usage:**
 ```yaml
 # Common case: Load core only
-→ orchestr8://agents/typescript-expert
+→ @orchestr8://agents/typescript-expert
 Tokens: 600
 
 # Advanced case: Load both
-→ orchestr8://agents/typescript-expert
-→ orchestr8://agents/typescript-expert-advanced
+→ @orchestr8://agents/typescript-expert
+→ @orchestr8://agents/typescript-expert-advanced
 Tokens: 1,300 (vs 1,800 monolithic = 28% savings)
 ```
 
@@ -178,7 +178,7 @@ typescript-expert-advanced-types.md (700 tokens) ✅
 
 ```typescript
 // Step 1: Explore options (catalog mode)
-const query = "orchestr8://match?query=async+patterns&mode=catalog"
+const query = "@orchestr8://match?query=async+patterns&mode=catalog"
 // Returns: 5 fragments, metadata only, ~1,500 tokens
 
 // Step 2: User reviews options:
@@ -189,7 +189,7 @@ const query = "orchestr8://match?query=async+patterns&mode=catalog"
 // - performance-async-optimization.md (720 tokens)
 
 // Step 3: Load specific choice
-const specific = "orchestr8://skills/typescript-async-patterns"
+const specific = "@orchestr8://skills/typescript-async-patterns"
 // Returns: Full content, 750 tokens
 
 // Token cost: 1,500 + 750 = 2,250 tokens
@@ -225,10 +225,10 @@ Large workflow (system design, migration):
 ```markdown
 ## Phase 1: Analysis (Budget: 1,200 tokens)
 
-**→ Load:** orchestr8://match?query=system+analysis&maxTokens=1200
+**→ Load:** @orchestr8://match?query=system+analysis&maxTokens=1200
 
 **If needed (conditional):**
-**→ Load:** orchestr8://patterns/architecture-analysis (add 600 tokens)
+**→ Load:** @orchestr8://patterns/architecture-analysis (add 600 tokens)
 
 **Phase budget tracking:**
 - Base: 1,200 tokens
@@ -248,17 +248,17 @@ Large workflow (system design, migration):
 ```yaml
 relatedResources:
   # Related skills (complementary knowledge)
-  - orchestr8://skills/error-handling-async
-  - orchestr8://skills/testing-async-patterns
+  - @orchestr8://skills/error-handling-async
+  - @orchestr8://skills/testing-async-patterns
   
   # Related patterns (design approaches)
-  - orchestr8://patterns/async-concurrency-patterns
+  - @orchestr8://patterns/async-concurrency-patterns
   
   # Related examples (practical code)
-  - orchestr8://examples/typescript-async-api-client
+  - @orchestr8://examples/typescript-async-api-client
   
   # Advanced module (progressive loading)
-  - orchestr8://agents/typescript-expert-advanced
+  - @orchestr8://agents/typescript-expert-advanced
 ```
 
 **Benefits:**
@@ -289,7 +289,7 @@ argument-hint: [arguments]
 
 ## Phase 0: Planning (0-20%)
 
-**→ Load:** orchestr8://match?query=project+planning&maxTokens=800
+**→ Load:** @orchestr8://match?query=project+planning&maxTokens=800
 
 **Activities:**
 - Create project plan
@@ -299,7 +299,7 @@ argument-hint: [arguments]
 
 ## Phase 1: Implementation (20-70%)
 
-**→ Load:** orchestr8://match?query=typescript+backend+api&maxTokens=1500
+**→ Load:** @orchestr8://match?query=typescript+backend+api&maxTokens=1500
 
 **Activities:**
 - Implement backend
@@ -309,7 +309,7 @@ argument-hint: [arguments]
 
 ## Phase 2: Testing (70-100%)
 
-**→ Load:** orchestr8://match?query=e2e+testing+playwright&maxTokens=1000
+**→ Load:** @orchestr8://match?query=e2e+testing+playwright&maxTokens=1000
 
 **Activities:**
 - Write tests
@@ -384,10 +384,10 @@ Content:
 □ Copy-paste ready snippets
 
 Integration:
-□ Commands use orchestr8://match JIT loading
+□ Commands use @orchestr8://match JIT loading
 □ Workflows use progressive phased loading
 □ maxTokens specified for all match queries
-□ Cross-references use orchestr8:// URIs
+□ Cross-references use @orchestr8:// URIs
 □ Index rebuilt: npm run build-index
 ```
 
@@ -398,9 +398,9 @@ Integration:
 ### ❌ Anti-Pattern 1: Upfront Loading
 ```markdown
 # BAD: Load everything at start
-**→ Load:** orchestr8://agents/full-expert
-**→ Load:** orchestr8://skills/all-skills
-**→ Load:** orchestr8://patterns/all-patterns
+**→ Load:** @orchestr8://agents/full-expert
+**→ Load:** @orchestr8://skills/all-skills
+**→ Load:** @orchestr8://patterns/all-patterns
 
 # Result: 10,000+ tokens wasted, slow, poor UX
 ```
@@ -427,7 +427,7 @@ useWhen:
 ### ❌ Anti-Pattern 4: No Token Budgets
 ```markdown
 # BAD: Unbounded loading
-**→ Load:** orchestr8://match?query=typescript
+**→ Load:** @orchestr8://match?query=typescript
 # Could return 5,000+ tokens!
 ```
 
@@ -487,7 +487,7 @@ description: Build TypeScript REST API with testing
 
 ## Phase 1: Setup & Architecture (0-25%)
 
-**→ Load:** orchestr8://match?query=typescript+api+architecture+setup&maxTokens=1200
+**→ Load:** @orchestr8://match?query=typescript+api+architecture+setup&maxTokens=1200
 
 **Activities:**
 1. Initialize TypeScript project
@@ -503,7 +503,7 @@ description: Build TypeScript REST API with testing
 
 ## Phase 2: Implementation (25-70%)
 
-**→ Load:** orchestr8://match?query=express+routes+validation+error+handling&maxTokens=1500
+**→ Load:** @orchestr8://match?query=express+routes+validation+error+handling&maxTokens=1500
 
 **Activities:**
 1. Implement API endpoints
@@ -521,7 +521,7 @@ description: Build TypeScript REST API with testing
 
 ## Phase 3: Testing (70-90%)
 
-**→ Load:** orchestr8://match?query=api+testing+jest+supertest&maxTokens=1000
+**→ Load:** @orchestr8://match?query=api+testing+jest+supertest&maxTokens=1000
 
 **Activities:**
 1. Write integration tests
@@ -537,7 +537,7 @@ description: Build TypeScript REST API with testing
 
 ## Phase 4: Documentation (90-100%)
 
-**→ Load:** orchestr8://match?query=api+documentation+openapi&maxTokens=500
+**→ Load:** @orchestr8://match?query=api+documentation+openapi&maxTokens=500
 
 **Activities:**
 1. Generate OpenAPI spec

@@ -30,7 +30,7 @@ estimatedTokens: 520
 - Review architecture documentation vs reality
 - Identify recent changes and evolution
 
-**→ Load Patterns:** `orchestr8://patterns/match?query=architecture+layered+microservices&maxTokens=800`
+**→ Load Patterns:** `@orchestr8://patterns/match?query=architecture+layered+microservices&maxTokens=800`
 
 **Output:** Architecture inventory and diagram
 
@@ -93,7 +93,7 @@ estimatedTokens: 520
 ## Phase 3: Trade-off Analysis (80-95%)
 **Goals:** Evaluate architectural trade-offs
 
-**→ Load Framework:** `orchestr8://patterns/match?query=trade+off+analysis+architecture&maxTokens=600`
+**→ Load Framework:** `@orchestr8://patterns/match?query=trade+off+analysis+architecture&maxTokens=600`
 
 **Key Trade-offs:**
 - Consistency vs availability (CAP theorem)

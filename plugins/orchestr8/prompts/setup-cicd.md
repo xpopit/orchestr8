@@ -17,7 +17,7 @@ You are setting up a CI/CD pipeline to automate testing, building, and deploymen
 
 ## Phase 1: Requirements & Planning (0-20%)
 
-**→ Load:** orchestr8://skills/match?query=cicd+pipeline+planning&maxTokens=1200
+**→ Load:** @orchestr8://skills/match?query=cicd+pipeline+planning&maxTokens=1200
 
 **Activities:**
 - Assess current setup and gaps
@@ -32,7 +32,7 @@ You are setting up a CI/CD pipeline to automate testing, building, and deploymen
 
 ## Phase 2: Build & Test Pipeline (20-50%)
 
-**→ Load:** orchestr8://match?query={{task}}+build+test+automation&categories=skill,guide,example&maxTokens=2000
+**→ Load:** @orchestr8://match?query={{task}}+build+test+automation&categories=skill,guide,example&maxTokens=2000
 
 **Activities:**
 - Configure build steps (compile, bundle, optimize)
@@ -47,7 +47,7 @@ You are setting up a CI/CD pipeline to automate testing, building, and deploymen
 
 ## Phase 3: Deployment Pipeline (50-80%)
 
-**→ Load:** orchestr8://match?query={{task}}+deployment+automation&categories=skill,guide,example&maxTokens=1500
+**→ Load:** @orchestr8://match?query={{task}}+deployment+automation&categories=skill,guide,example&maxTokens=1500
 
 **Activities:**
 - Configure deployment stages (staging, production)
@@ -62,7 +62,7 @@ You are setting up a CI/CD pipeline to automate testing, building, and deploymen
 
 ## Phase 4: Monitoring & Optimization (80-100%)
 
-**→ Load:** orchestr8://skills/match?query=cicd+monitoring+optimization&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=cicd+monitoring+optimization&maxTokens=800
 
 **Activities:**
 - Add pipeline monitoring and metrics

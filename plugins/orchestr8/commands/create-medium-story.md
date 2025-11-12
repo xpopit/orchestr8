@@ -1,5 +1,17 @@
 ---
-description: Generate world-class Medium articles with viral potential and platform optimization
+description: Generate world-class Medium articles with viral potential and platform
+  optimization
+allowed-tools:
+- Bash
+- Edit
+- Glob
+- Grep
+- Read
+- SlashCommand
+- TodoWrite
+- WebFetch
+- WebSearch
+- Write
 ---
 
 # Create Medium Story: $ARGUMENTS
@@ -12,7 +24,7 @@ Generate a world-class Medium article optimized for viral potential, engagement,
 
 ## Phase 1: Research & Planning (0-25%)
 
-**→ Load:** orchestr8://match?query=$ARGUMENTS+research+analysis&categories=agent,skill&maxTokens=1500
+**→ Load:** @orchestr8://match?query=$ARGUMENTS+research+analysis&categories=agent,skill&maxTokens=1500
 
 **Activities:**
 - **Topic Analysis**: Validate evergreen potential, audience breadth, and unique angle
@@ -31,9 +43,9 @@ Generate a world-class Medium article optimized for viral potential, engagement,
 
 ## Phase 2: Content Creation (25-70%)
 
-**→ Load:** orchestr8://agents/medium-writer-expert
+**→ Load:** @orchestr8://agents/medium-writer-expert
 
-**→ Load:** orchestr8://match?query=medium+headline+story-structure+engagement&categories=skill&maxTokens=2000
+**→ Load:** @orchestr8://match?query=medium+headline+story-structure+engagement&categories=skill&maxTokens=2000
 
 **Parallel tracks:**
 
@@ -64,7 +76,7 @@ Generate a world-class Medium article optimized for viral potential, engagement,
 
 ## Phase 3: Optimization & Polish (70-90%)
 
-**→ Load:** orchestr8://skills/match?query=technical-writing+editing+readability&maxTokens=800
+**→ Load:** @orchestr8://skills/match?query=technical-writing+editing+readability&maxTokens=800
 
 **Quality checks:**
 
@@ -175,7 +187,7 @@ If user has Medium integration token, create `medium/[filename]-API-PUBLISH.py`:
 # This is a template - requires MEDIUM_INTEGRATION_TOKEN environment variable
 ```
 
-**→ Load:** orchestr8://skills/medium-api-publishing (only if API publishing requested)
+**→ Load:** @orchestr8://skills/medium-api-publishing (only if API publishing requested)
 
 **→ Checkpoint:** Story saved to medium/ folder with publishing instructions
 
