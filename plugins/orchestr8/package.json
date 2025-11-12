@@ -4,12 +4,15 @@
   "description": "MCP server for orchestr8 - Autonomous software development workflows, agents, and skills for Claude Code",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "build:dev": "tsc --project tsconfig.dev.json",
+    "build": "tsc && npm run copy-static",
+    "build:dev": "tsc --project tsconfig.dev.json && npm run copy-static",
+    "copy-static": "mkdir -p dist/web && cp -r src/web/static dist/web/",
     "build-index": "tsx scripts/build-index.ts",
     "watch": "tsc --project tsconfig.dev.json --watch",
     "dev": "tsx watch src/index.ts",
+    "dev:http": "ORCHESTR8_HTTP=true tsx watch src/index.ts",
     "start": "node dist/index.js",
+    "start:http": "ORCHESTR8_HTTP=true node dist/index.js",
     "clean": "rm -rf dist",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "node --test tests/unit/**/*.test.js",
@@ -18,8 +21,7 @@
     "test:integration:server": "node tests/integration/mcp-server.test.js",
     "test:watch": "node --test --watch tests/unit/**/*.test.js",
     "verify": "bash tests/verify-structure.sh",
-    "benchmark": "node --test tests/benchmarks/**/*.bench.js",
-    "ui": "node web-ui/server.js"
+    "benchmark": "node --test tests/benchmarks/**/*.bench.js"
   },
   "keywords": [
     "mcp",
@@ -31,16 +33,22 @@
   ],
   "author": "orchestr8",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.21.1",
     "@types/node": "^24.10.0",
     "chokidar": "^4.0.3",
     "dotenv": "^17.2.3",
+    "express": "^4.18.2",
     "gray-matter": "^4.0.3",
     "lru-cache": "^11.2.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
+    "ws": "^8.14.2",
     "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.10"
   }
 }

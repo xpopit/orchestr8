@@ -520,23 +520,23 @@ export class ResourceLoader {
       this.logger.debug("Using index-based lookup");
 
       try {
-        const result = await this.indexLookup.lookup(
-          parsed.matchParams.query,
-          {
-            query: parsed.matchParams.query,
-            maxResults: parsed.matchParams.maxResults || 5,
-            minScore: parsed.matchParams.minScore || 50,
-            categories: parsed.matchParams.categories,
-            mode: parsed.matchParams.mode,
-          }
-        );
+        const result = await this.indexLookup.lookup(parsed.matchParams.query, {
+          query: parsed.matchParams.query,
+          maxResults: parsed.matchParams.maxResults || 5,
+          minScore: parsed.matchParams.minScore || 50,
+          categories: parsed.matchParams.categories,
+          mode: parsed.matchParams.mode,
+        });
 
         // Cache the result
         this.cache.set(uri, result);
 
         return result;
       } catch (error) {
-        this.logger.warn("Index lookup failed, falling back to fuzzy match", error);
+        this.logger.warn(
+          "Index lookup failed, falling back to fuzzy match",
+          error,
+        );
         // Fall through to fuzzy match below
       }
     }
@@ -586,5 +586,91 @@ export class ResourceLoader {
     }
 
     return join(this.resourcesPath, pathPart + ".md");
+  }
+
+  /**
+   * Get resources by category for HTTP API
+   */
+  async getResourcesByCategory(category: string): Promise<any[]> {
+    await this.ensureIndexLoaded();
+
+    if (!this.resourceIndex) {
+      return [];
+    }
+
+    // Normalize category (remove plural 's' if present)
+    const normalizedCategory = category.endsWith("s")
+      ? category.slice(0, -1)
+      : category;
+
+    return this.resourceIndex
+      .filter((fragment) => fragment.category === normalizedCategory)
+      .map((fragment) => ({
+        id: fragment.id,
+        uri: `orchestr8://${category}/${fragment.id}`,
+        tags: fragment.tags || [],
+        capabilities: fragment.capabilities || [],
+        tokens: fragment.estimatedTokens,
+      }));
+  }
+
+  /**
+   * Search resources by query for HTTP API
+   */
+  async searchResources(query: string): Promise<any[]> {
+    await this.ensureIndexLoaded();
+
+    if (!this.resourceIndex) {
+      return [];
+    }
+
+    const lowerQuery = query.toLowerCase();
+
+    return this.resourceIndex
+      .filter((fragment) => {
+        const idMatch = fragment.id.toLowerCase().includes(lowerQuery);
+        const tagMatch = fragment.tags?.some((tag: string) =>
+          tag.toLowerCase().includes(lowerQuery),
+        );
+        const capMatch = fragment.capabilities?.some((cap: string) =>
+          cap.toLowerCase().includes(lowerQuery),
+        );
+        return idMatch || tagMatch || capMatch;
+      })
+      .map((fragment) => ({
+        id: fragment.id,
+        uri: `orchestr8://${fragment.category}/${fragment.id}`,
+        category: fragment.category,
+        tags: fragment.tags || [],
+        capabilities: fragment.capabilities || [],
+        tokens: fragment.estimatedTokens,
+      }))
+      .slice(0, 50); // Limit results
+  }
+
+  /**
+   * Get cached resource content
+   */
+  getCachedResource(uri: string): string | undefined {
+    return this.cache.get(uri);
+  }
+
+  /**
+   * Ensure resource index is loaded (for HTTP API)
+   */
+  private async ensureIndexLoaded(): Promise<void> {
+    if (this.resourceIndex) {
+      return;
+    }
+
+    // If already loading, wait for it
+    if (this.indexLoadPromise) {
+      await this.indexLoadPromise;
+      return;
+    }
+
+    // Start loading
+    this.indexLoadPromise = this.loadResourceIndex();
+    await this.indexLoadPromise;
   }
 }

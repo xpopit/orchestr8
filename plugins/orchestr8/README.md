@@ -246,7 +246,42 @@ Workflows are slash commands available in Claude Code:
 
 # Setup CI/CD
 /orchestr8:setup-cicd Setup GitHub Actions for automated testing
+
+# Legacy system modernization
+/orchestr8:modernize-legacy Analyze /codeRepos/LegacyApp for cloud migration to Azure
 ```
+
+### Web UI for Testing and Exploration
+
+Orchestr8 includes an integrated web UI for testing the MCP server, exploring resources, and viewing real-time statistics. The web UI runs automatically alongside the MCP server (no separate process needed).
+
+**Default Mode (Dual Transport):**
+When Claude Code starts the MCP server, it automatically serves the web UI on port 3000:
+- MCP stdio transport for Claude Code integration
+- HTTP/WebSocket transport for browser access
+- Access at: http://localhost:3000
+
+**HTTP-Only Mode (for Development):**
+```bash
+# Start in HTTP-only mode
+ORCHESTR8_HTTP=true npm run dev
+
+# Or use the npm script
+npm run dev:http
+
+# Web UI available at http://localhost:3000
+```
+
+**Custom Port:**
+```bash
+ORCHESTR8_HTTP_PORT=8080 npm run dev
+```
+
+**Features:**
+- Browse all agents, skills, workflows, patterns, and guides
+- Test dynamic resource matching with live queries
+- Real-time statistics from the MCP server (requests, cache hits/misses, latency)
+- WebSocket updates for live stats monitoring
 
 ### Workflow with Dynamic Resources
 

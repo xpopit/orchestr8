@@ -7,6 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.0.0-rc3] - 2025-11-11
+
+### Added
+
+- **Integrated Web UI** - Fully integrated web interface for testing and exploration
+  - **Dual Transport Architecture**: Single MCP server supports both stdio (Claude) and HTTP/WebSocket (browser)
+  - **Zero Configuration**: Web UI starts automatically with MCP server on port 3000
+  - **Real-time Statistics**: Live metrics from MCP server via WebSocket
+    - Request counts and latency percentiles (p50, p95, p99)
+    - Cache hit/miss ratios
+    - Error tracking
+    - Memory usage monitoring
+  - **Resource Browser**: Interactive exploration of all resources
+    - Browse agents, skills, workflows, patterns, guides
+    - Search and filter capabilities
+    - View resource metadata and content
+  - **Testing Interface**: Test dynamic resource matching with live queries
+  - **Statistics Module**: Centralized stats collection (`src/stats/collector.ts`)
+  - **HTTP Transport**: Express + WebSocket server (`src/transports/http.ts`)
+  - **Environment Variables**:
+    - `ORCHESTR8_HTTP=true`: Run in HTTP-only mode (development)
+    - `ORCHESTR8_HTTP_PORT=<port>`: Custom port (default: 3000)
+
+### Changed
+
+- **Package Configuration**: Changed from CommonJS to ES modules (`"type": "module"`)
+- **TypeScript Configuration**: Updated to `module: "node16"` and `moduleResolution: "node16"`
+- **Build Process**: Now copies static web files to `dist/web/static/`
+- **NPM Scripts**:
+  - `npm run dev:http`: Start in HTTP-only mode
+  - `npm run start:http`: Run built version in HTTP-only mode
+  - `npm run copy-static`: Copy web UI static files
+
+### Removed
+
+- **Separate web-ui Directory**: Consolidated into main MCP server
+- **`/orchestr8:mcp-ui` Command**: No longer needed (UI runs automatically)
+- **Standalone web-ui Server**: Eliminated redundant Express server
+
+### Technical Details
+
+- **Architecture Improvement**: Eliminated IPC overhead between separate processes
+- **Shared Resources**: Single resource loader, cache, and index for both transports
+- **Code Reuse**: Statistics, loaders, and business logic shared across transports
+- **Simplified Deployment**: Single `npm install && npm run build` for everything
+
 ## [8.0.0-rc2] - 2025-11-11
 
 ### Added
