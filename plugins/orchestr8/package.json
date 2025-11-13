@@ -1,6 +1,6 @@
 {
   "name": "orchestr8-mcp-server",
-  "version": "8.0.0-rc5",
+  "version": "8.0.0",
   "description": "MCP server for orchestr8 - Autonomous software development workflows, agents, and skills for Claude Code",
   "main": "dist/index.js",
   "scripts": {

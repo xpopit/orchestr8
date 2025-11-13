@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.0.0] - 2025-01-12
+
+### Fixed
+- Fixed plugin.json repository field format for Claude Code compatibility
+- Set NODE_ENV=test for CI test runs
+- Added comprehensive pre-commit validation script with full CI testing support
+
 ## [8.0.0-rc5] - 2025-11-12
 
 ### Added
