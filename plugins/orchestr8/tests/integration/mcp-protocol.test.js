@@ -16,10 +16,15 @@
  * dynamic resource loading via slash commands (/now, etc.)
  */
 
-const { describe, it, before, after } = require("node:test");
-const assert = require("node:assert");
-const { spawn } = require("child_process");
-const { join } = require("path");
+import { describe, it, before, after } from "node:test";
+import assert from "node:assert";
+import { spawn } from "child_process";
+import { join } from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * MCP Client for testing the orchestr8 MCP server
