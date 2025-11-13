@@ -1,5 +1,5 @@
 # Build output
-dist/
+# dist/ is committed for marketplace distribution
 *.tsbuildinfo
 
 # Orchestr8 output

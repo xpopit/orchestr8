@@ -1,0 +1,3 @@
+# Mark generated/built files
+dist/** linguist-generated=true
+dist/** -diff

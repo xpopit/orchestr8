@@ -1,0 +1,32 @@
+import { EventEmitter } from "events";
+import { ResourceProvider, RegistryConfig, RegistryStats, ProviderHealth, ProviderStats, RemoteResourceIndex, RemoteResource, SearchResponse, SearchOptions } from "./types.js";
+export declare class ProviderRegistry extends EventEmitter {
+    private providers;
+    private config;
+    private healthCheckTimer?;
+    private consecutiveFailures;
+    constructor(config?: RegistryConfig);
+    register(provider: ResourceProvider): Promise<void>;
+    unregister(name: string): Promise<boolean>;
+    getProvider(name: string): ResourceProvider | undefined;
+    getProviders(enabledOnly?: boolean): ResourceProvider[];
+    enable(name: string): boolean;
+    disable(name: string): boolean;
+    fetchIndex(providerName: string): Promise<RemoteResourceIndex>;
+    fetchResource(providerName: string, id: string, category: string): Promise<RemoteResource>;
+    search(providerName: string, query: string, options?: SearchOptions): Promise<SearchResponse>;
+    fetchAllIndexes(): Promise<RemoteResourceIndex[]>;
+    searchAll(query: string, options?: SearchOptions): Promise<SearchResponse>;
+    fetchResourceAny(id: string, category: string): Promise<RemoteResource>;
+    checkHealth(name: string): Promise<ProviderHealth>;
+    checkAllHealth(): Promise<Map<string, ProviderHealth>>;
+    getProviderStats(name: string): ProviderStats;
+    getAggregateStats(): RegistryStats;
+    private getEnabledProvider;
+    private executeWithErrorHandling;
+    private calculateFacets;
+    private emitEvent;
+    private startHealthChecks;
+    private stopHealthChecks;
+    shutdown(): Promise<void>;
+}
